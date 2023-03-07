@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 namespace DenimERP.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController: Controller
     {
         public IF_CHEM_ISSUE_DETAILS ChemIssueDetails;
         private readonly IF_LCB_PRODUCTION_ROPE_MASTER _fLcbProductionRopeMaster;
@@ -102,236 +102,13 @@ namespace DenimERP.Controllers
         [HttpGet]
         public async Task<IActionResult> Dashboard()
         {
-            //var totalPercentageOfComImpLcInformationList = await _comImpLcinformation.TotalPercentageOfComImpLcInformationList(DateTime.Now, 30 * 12);
-            var totalPercentageOfComExLcInfoList = await _comExLcinfo.TotalPercentageOfComExLcInfoList(DateTime.Now, 30 * 12);
-            var totalNumberOfFabricInfo = await _rndFabricinfo.TotalNumberOfFabricInfoExcludingAllByAsync();
-            var totalPercentageOfComExPiMaster = await _comExPimaster.TotalPercentageOfComExPiMaster(30);
-            var result = await _fPrWarpingProcessRopeMaster.GetWarpingDateWiseLengthGraph();
-
-
-
-
-            var dataPoints = new List<DataPoint>
-            {
-                //new DataPoint("L/C (Import)",Convert.ToDouble(totalPercentageOfComImpLcInformationList)),
-                new DataPoint("L/C (Export)",Convert.ToDouble(totalPercentageOfComExLcInfoList)),
-                new DataPoint("RnD Fabric Information", Convert.ToDouble(totalNumberOfFabricInfo)),
-                new DataPoint("Commercial PI (Export)",Convert.ToDouble(totalPercentageOfComExPiMaster)),
-            };
-
-
-            var dataPoints2 = new List<DataPoint2>
-            {
-                new(110, 44),
-                new (116, 31),
-                new (124, 43),
-                new (129, 45),
-                new (131, 56),
-                new (138, 79),
-                new (142, 57),
-                new (150, 56),
-                new (153, 58),
-                new (155, 92),
-                new (156, 78),
-                new (159, 64),
-                new (164, 88),
-                new (168, 112),
-                new (174, 101)
-            };
-
-            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
-            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints2);
-            ViewBag.PIChartData = await _comExPimaster.GetPIChartData();
-            ViewBag.LCChartData = await _comExLcinfo.GetLCChartData();
-            ViewBag.DyeingChartData = await _fDyeingProcessRopeMaster.GetDyeingDateWiseLength();
-            ViewBag.InspectionChartData = await _fPrInspectionProcessDetails.GetInspectionTotalLength();
-            ViewBag.FabricDeliveryChartData = await _fFsDeliverychallanPackDetails.GetFabricDeliveryChallanLength();
-            ViewBag.RealizationChartData = await _accExportRealization.GetRealizatioData();
-            ViewBag.WeavingChartData = await _fPrWeavingProduction.GetWeavingDateWiseLengthGraph();
-            ViewBag.TopStyleProductionDataList = await _fPrInspectionProcessDetails.GetTopStyleProductionData();
-            ViewBag.SizingChartData = await _fPrSizingProcessRopeDetails.GetSizingDateWiseLengthGraph();
-            ViewBag.IssuedCountData = await _ysYarnIssueDetails.GetIssuedCountData();
-            ViewBag.IssuedChemicalData = await _chemIssueDetails.GetIssuedChemicalData();
-            ViewBag.WarpingProductionData = await _fPrWarpingProcessRopeMaster.GetWarpingDateWiseLengthGraph();
-            ViewBag.WarpingData = await _fPrWarpingProcessRopeMaster.GetWarpingDataDayMonthAsync();
-            ViewBag.SizingProductionData = await _fPrSizingProcessRopeMaster.GetSizingDateWiseLengthGraph();
-            ViewBag.SizingData = await _fPrSizingProcessRopeMaster.GetSizingDataDayMonthAsync();
-            ViewBag.FinishingProductionData = await _fPrFinishingFnprocess.GetFinishingDateWiseLengthGraph();
-            ViewBag.FinishingData = await _fPrFinishingFnprocess.GetFinishingDataDayMonthAsync();
-
-            return View();
-        }
-
-        [AcceptVerbs("GET", "POST")]
-        public async Task<IActionResult> DashboardWarping()
-        {
-            ViewBag.WarpingData = await _fPrWarpingProcessRopeMaster.GetWarpingDataDayMonthAsync();
-            ViewBag.WarpingPendingSets = await _fPrWarpingProcessRopeMaster.GetWarpingPendingSets();
-            ViewBag.WarpingPendingSetList = await _fPrWarpingProcessRopeMaster.GetWarpingPendingSetList();
-            ViewBag.BudgetConsumedYarn = await _fPrWarpingProcessRopeMaster.GetBudgetConsumedYarn();
-            ViewBag.RopeWarpingProductionData = await _fPrWarpingProcessRopeMaster.GetRopeWarpingProductionData();
-            ViewBag.DirectWarpingProductionData = await _fPrWarpingProcessDwMaster.GetDirectWarpingProductionData();
-            ViewBag.EcruWarpingProductionData = await _fPrWarpingProcessEcruMaster.GetEcruWarpingProductionData();
-            ViewBag.RopeWarpingProductionList = await _fPrWarpingProcessRopeMaster.GetRopeWarpingProductionList();
-            ViewBag.EcruWarpingProductionList = await _fPrWarpingProcessEcruMaster.GetEcruWarpingProductionList();
-            ViewBag.DirectWarpingProductionList = await _fPrWarpingProcessDwMaster.GetDirectWarpingProductionList();
-            ViewBag.SectionalWarpingProductionList = await _fPrWarpingProcessSwMaster.GetSectionalWarpingProductionList();
-            ViewBag.WarpingProductionList = await _fPrWarpingProcessRopeMaster.GetWarpingProductionList();
-            ViewBag.MonthlyWarpingPendingsAndCompleteSets = await _fPrWarpingProcessRopeMaster.MonthlyWarpingPendingsAndCompleteSets();
-
-
-
             try
             {
                 return View();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        [AcceptVerbs("GET","POST")]
-        public async Task<IActionResult> DashboardDyeing()
-        {
-            ViewBag.DyeingPendingSets = await _fDyeingProcessRopeDetails.GetDyeingPendingSets();
-            ViewBag.DyeingPendingSetList = await _fDyeingProcessRopeDetails.GetDyeingPendingSetList();
-            ViewBag.DyeingProductionList = await _fDyeingProcessRopeDetails.GetDyeingProductionList();
-            ViewBag.MonthlyDyeingPendingAndCompleteSets = await _fDyeingProcessRopeDetails.GetMonthlyDyeingPendingAndCompleteSets();
-            ViewBag.DyeingChemicalConsumed = await _fDyeingProcessRopeDetails.GetDyeingChemicalConsumed();
-            ViewBag.DyeingProductionData = await _fDyeingProcessRopeDetails.GetDyeingProductionData();
-
-            try
-            {
-                return View();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        [AcceptVerbs("GET", "POST")]
-        public async Task<IActionResult> DashboardLCB()
-        {
-            ViewBag.LCBProductionData = await _fLcbProductionRopeMaster.GetLCBProductionData();
-            ViewBag.LCBProductionList = await _fLcbProductionRopeMaster.GetLCBProductionList();
-            ViewBag.MonthlyLCBPendingAndCompleteSets = await _fLcbProductionRopeMaster.GetMonthlyLCBPendingAndCompleteSets();
-            ViewBag.LcbPendingSetList = await _fLcbProductionRopeMaster.GeLcbPendingSetList();
-
-
-            try
-            {
-                return View();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        [AcceptVerbs("GET", "POST")]
-        public async Task<IActionResult> DashboardSizing()
-        {
-            ViewBag.SizingroductionData = await _fPrSizingProcessRopeMaster.GetSizingProductionData();
-            ViewBag.SizingProductionList = await _fPrSizingProcessRopeMaster.GetSizingProductionList();
-            ViewBag.SizingPendingSetList = await _fPrSizingProcessRopeMaster.GetSizingPendingSetList();
-
-
-            try
-            {
-                return View();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        [AcceptVerbs("GET", "POST")]
-        public async Task<IActionResult> DashboardWeaving()
-        {
-            ViewBag.WeavingProductionData = await _fPrWeavingProduction.GetWeavingProductionData();
-            ViewBag.WeavingProductionList = await _fPrWeavingProduction.GetWeavingProductionList();
-            ViewBag.WeavingPendingList = await _fPrWeavingProduction.GetWeavingPendingList();
-
-
-
-            try
-            {
-                return View();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        [AcceptVerbs("GET", "POST")]
-        public async Task<IActionResult> DashboardFinishing()
-        {
-            ViewBag.FinishingProductionData = await _fPrFinishingFnprocess.GetFinishingProductionData();
-
-
-            ViewBag.WarpingData = await _fPrWarpingProcessRopeMaster.GetWarpingDataDayMonthAsync();
-            ViewBag.WarpingPendingSets = await _fPrWarpingProcessRopeMaster.GetWarpingPendingSets();
-            ViewBag.WarpingPendingSetList = await _fPrWarpingProcessRopeMaster.GetWarpingPendingSetList();
-            ViewBag.BudgetConsumedYarn = await _fPrWarpingProcessRopeMaster.GetBudgetConsumedYarn();
-            ViewBag.RopeWarpingProductionData = await _fPrWarpingProcessRopeMaster.GetRopeWarpingProductionData();
-            ViewBag.DirectWarpingProductionData = await _fPrWarpingProcessDwMaster.GetDirectWarpingProductionData();
-            ViewBag.EcruWarpingProductionData = await _fPrWarpingProcessEcruMaster.GetEcruWarpingProductionData();
-            ViewBag.RopeWarpingProductionList = await _fPrWarpingProcessRopeMaster.GetRopeWarpingProductionList();
-            ViewBag.EcruWarpingProductionList = await _fPrWarpingProcessEcruMaster.GetEcruWarpingProductionList();
-            ViewBag.DirectWarpingProductionList = await _fPrWarpingProcessDwMaster.GetDirectWarpingProductionList();
-            ViewBag.SectionalWarpingProductionList = await _fPrWarpingProcessSwMaster.GetSectionalWarpingProductionList();
-            ViewBag.WarpingProductionList = await _fPrWarpingProcessRopeMaster.GetWarpingProductionList();
-            ViewBag.MonthlyWarpingPendingsAndCompleteSets = await _fPrWarpingProcessRopeMaster.MonthlyWarpingPendingsAndCompleteSets();
-
-
-
-            try
-            {
-                return View();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        [AcceptVerbs("GET", "POST")]
-        public async Task<IActionResult> DashboardInspection()
-        {
-            ViewBag.WarpingData = await _fPrWarpingProcessRopeMaster.GetWarpingDataDayMonthAsync();
-            ViewBag.WarpingPendingSets = await _fPrWarpingProcessRopeMaster.GetWarpingPendingSets();
-            ViewBag.WarpingPendingSetList = await _fPrWarpingProcessRopeMaster.GetWarpingPendingSetList();
-            ViewBag.BudgetConsumedYarn = await _fPrWarpingProcessRopeMaster.GetBudgetConsumedYarn();
-            ViewBag.RopeWarpingProductionData = await _fPrWarpingProcessRopeMaster.GetRopeWarpingProductionData();
-            ViewBag.DirectWarpingProductionData = await _fPrWarpingProcessDwMaster.GetDirectWarpingProductionData();
-            ViewBag.EcruWarpingProductionData = await _fPrWarpingProcessEcruMaster.GetEcruWarpingProductionData();
-            ViewBag.RopeWarpingProductionList = await _fPrWarpingProcessRopeMaster.GetRopeWarpingProductionList();
-            ViewBag.EcruWarpingProductionList = await _fPrWarpingProcessEcruMaster.GetEcruWarpingProductionList();
-            ViewBag.DirectWarpingProductionList = await _fPrWarpingProcessDwMaster.GetDirectWarpingProductionList();
-            ViewBag.SectionalWarpingProductionList = await _fPrWarpingProcessSwMaster.GetSectionalWarpingProductionList();
-            ViewBag.WarpingProductionList = await _fPrWarpingProcessRopeMaster.GetWarpingProductionList();
-            ViewBag.MonthlyWarpingPendingsAndCompleteSets = await _fPrWarpingProcessRopeMaster.MonthlyWarpingPendingsAndCompleteSets();
-
-
-
-            try
-            {
-                return View();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
+                return View("Error");
             }
         }
 
@@ -359,7 +136,7 @@ namespace DenimERP.Controllers
             }
             catch (Exception)
             {
-                return View($"Error");
+                return View("Error");
             }
         }
 
@@ -368,7 +145,7 @@ namespace DenimERP.Controllers
         {
             try
             {
-                return PartialView($"GetUsersName", await _userManager.Users
+                return PartialView("GetUsersName", await _userManager.Users
                     .Where(e => e.UserName.Contains(recipient))
                     .Select(e => new ApplicationUser
                     {
@@ -378,7 +155,7 @@ namespace DenimERP.Controllers
             }
             catch (Exception)
             {
-                return View($"Error");
+                return View("Error");
             }
         }
 
@@ -391,11 +168,11 @@ namespace DenimERP.Controllers
                 var user = await _userManager.GetUserAsync(User);
                 var messageIndividuals = task.Where(e => e.ReceiverId.Equals(userId) && e.SenderId.Equals(user.Id)).ToList();
 
-                return PartialView($"GetSpecificUserMessage", new ChatUsersMesaages<MESSAGE_INDIVIDUAL, ApplicationUser>(messageIndividuals, null, user));
+                return PartialView("GetSpecificUserMessage", new ChatUsersMesaages<MESSAGE_INDIVIDUAL, ApplicationUser>(messageIndividuals, null, user));
             }
             catch (Exception)
             {
-                return View($"Error");
+                return View("Error");
             }
         }
 
