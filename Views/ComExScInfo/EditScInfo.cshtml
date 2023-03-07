@@ -1,0 +1,624 @@
+﻿@model ComExScInfoViewModel
+@{
+    ViewData["Title"] = "EditScInfo";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-edit fa-lg text-success" aria-hidden="true"></i> Sales Contact</h2>
+
+<hr />
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Step 1</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle border-1" disabled="disabled">2</a>
+                <p><small>Step 2</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                <p><small>Finish</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" role="form" asp-action="EditScInfo">
+        <div class="panel panel-default setup-content" id="step-1"> 
+            <div class="panel-body row">
+                @Html.HiddenFor(c => c.cOM_EX_SCINFO.EncryptedId)
+                @Html.HiddenFor(c => c.cOM_EX_SCINFO.SCID)
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.SCDATE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.SCDATE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.SCDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.SCNO" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.SCNO" class="form-control" id="scNo" readonly />
+                        <span asp-validation-for="cOM_EX_SCINFO.SCNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.SCPERSON" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.SCPERSON" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.SCPERSON" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.SCPHONE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.SCPHONE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.SCPHONE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.SCEMAIL" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.SCEMAIL" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.SCEMAIL" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.BUYERID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.cOM_EX_SCINFO.BUYERID, new SelectList(Model.bAS_BUYERINFOs, "BUYERID", "BUYER_NAME"), "Select Buyer", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="cOM_EX_SCINFO.BUYERID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.BCPERSON" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.BCPERSON" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.BCPERSON" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.BCPHONE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.BCPHONE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.BCPHONE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.BCEMAIL" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.BCEMAIL" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.BCEMAIL" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.CURRENCY" class="control-label"></label>
+                        <select class="form-control" asp-for="cOM_EX_SCINFO.CURRENCY">
+                            <option value="BDT">BDT</option>
+                            <option value="USD">USD</option>
+                        </select>
+                        <span asp-validation-for="cOM_EX_SCINFO.CURRENCY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.DELDATE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.DELDATE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.DELDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.CON_VAL" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.CON_VAL" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.CON_VAL" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.INIDEPOSIT" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.INIDEPOSIT" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.INIDEPOSIT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.TRNSFARE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.TRNSFARE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.TRNSFARE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.DEL_STARTDATE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.DEL_STARTDATE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.DEL_STARTDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.DEL_CLOSEDATE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.DEL_CLOSEDATE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.DEL_CLOSEDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.DEV_CODE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.DEV_CODE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.DEV_CODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.FAB_PROCESS" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.FAB_PROCESS" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.FAB_PROCESS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.EXTRA_PROCESS" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.EXTRA_PROCESS" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.EXTRA_PROCESS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.INSPECTION" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.INSPECTION" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.INSPECTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.LPONOTE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.LPONOTE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.LPONOTE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.CONTRACTNOTE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.CONTRACTNOTE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.CONTRACTNOTE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+                    <a asp-action="GetComExScInfoWithPaged" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body row">
+                <div class="pl-1 col-12">
+                    <h2 class="panel-title text-success">Style Information</h2>
+                    <hr />
+                </div>
+                
+                @{
+                    if (Model.cOM_EX_SCDETAILSList.Any())
+                    {
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILSList.FirstOrDefault().STYLENAME)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILSList.FirstOrDefault().UNIT)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILSList.FirstOrDefault().QTY)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILSList.FirstOrDefault().RATE)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILSList.FirstOrDefault().AMOUNT)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILSList.FirstOrDefault().REMARKS)
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Action")
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="PreviousData"></tbody>
+                        </table>
+                    }
+                }
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCDETAILS.STYLEID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.cOM_EX_SCDETAILS.STYLEID, new SelectList(Model.cOM_EX_FABSTYLEs, "STYLEID", "STYLENAME"), htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="cOM_EX_SCDETAILS.STYLEID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCDETAILS.UNIT" class="control-label"></label>
+                        <select class="form-control" asp-for="cOM_EX_SCDETAILS.UNIT">
+                            <option>Select Unit</option>
+                            <option value="METER">Meter</option>
+                            <option value="YARD">Yard</option>
+                        </select>
+                        <span asp-validation-for="cOM_EX_SCDETAILS.UNIT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCDETAILS.QTY" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCDETAILS.QTY" class="form-control" id="qty" />
+                        <span asp-validation-for="cOM_EX_SCDETAILS.QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCDETAILS.RATE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCDETAILS.RATE" class="form-control" id="rate" />
+                        <span asp-validation-for="cOM_EX_SCDETAILS.RATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCDETAILS.AMOUNT" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCDETAILS.AMOUNT" class="form-control" readonly id="amount" />
+                        <span asp-validation-for="cOM_EX_SCDETAILS.AMOUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCDETAILS.REMARKS" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCDETAILS.REMARKS" class="form-control" id="remarks" />
+                        <span asp-validation-for="cOM_EX_SCDETAILS.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button id="btnAdd" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                    <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetComExScInfoWithPaged" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+                <table class="table mt-2" id="partialView">
+                    <thead id="thead">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILs.FirstOrDefault().STYLE.STYLENAME)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILs.FirstOrDefault().UNIT)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILs.FirstOrDefault().QTY)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILs.FirstOrDefault().RATE)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILs.FirstOrDefault().AMOUNT)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.cOM_EX_SCDETAILs.FirstOrDefault().REMARKS)
+                            </th>
+                            <th>
+                                @Html.DisplayName("Remove")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="scDetails"></tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="panel panel-primary setup-content" id="step-3">
+            <div class="panel-body row">
+                <div class="pl-1 col-12">
+                    <h2 class="panel-title text-success">Yarn Provided By <small>(Check mark for Buyer)</small> </h2>
+                    <hr />
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.WARP_PROVBY" class="control-label"></label>
+                        <select class="form-control" asp-for="cOM_EX_SCINFO.WARP_PROVBY">
+                            <option>Select Warp Yarn Provider</option>
+                            <option value="SELLER">Seller</option>
+                            <option value="BUYER">Buyer</option>
+                        </select>
+                        <span asp-validation-for="cOM_EX_SCINFO.WARP_PROVBY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.WARP_PROVBY" class="control-label"></label>
+                        <select class="form-control" asp-for="cOM_EX_SCINFO.WEFT_PROVBY">
+                            <option>Select Weft Yarn Provider</option>
+                            <option value="SELLER">Seller</option>
+                            <option value="BUYER">Buyer</option>
+                        </select>
+                        <span asp-validation-for="cOM_EX_SCINFO.WARP_PROVBY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pl-1 col-12">
+                    <h2 class="panel-title text-success">Is The Below Item Provided By Buyer?</h2>
+                    <hr />
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISPROV_CHEM" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISPROV_CHEM" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISPROV_CHEM" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISWARPING" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISWARPING" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISWARPING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISDYEING" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISDYEING" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISDYEING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISLCB" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISLCB" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISLCB" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISSIZING" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISSIZING" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISSIZING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISWEAVING" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISWEAVING" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISWEAVING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISOVERDYEING" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISOVERDYEING" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISOVERDYEING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISFINISHING" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISFINISHING" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISFINISHING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISDELMODE" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISDELMODE" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISDELMODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISPROV_TRNS" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISPROV_TRNS" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISPROV_TRNS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.ISPROVE_FARE" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="cOM_EX_SCINFO.ISPROVE_FARE" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="cOM_EX_SCINFO.ISPROVE_FARE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="pl-1 col-12">
+                    <h2 class="panel-title text-success">Payment Portion</h2>
+                    <hr />
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.PAYDATE" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.PAYDATE" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.PAYDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.PAYMODE" class="control-label"></label>
+                        <select class="form-control" asp-for="cOM_EX_SCINFO.PAYMODE">
+                            <option>Select Payment Mode</option>
+                            <option value="CASH">Cash</option>
+                            <option value="CHEQUE">Cheque</option>
+                            <option value="PAYORDER">Pay Order</option>
+                        </select>
+                        <span asp-validation-for="cOM_EX_SCINFO.PAYMODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.BANK_ID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.cOM_EX_SCINFO.BANK_ID, new SelectList(Model.bAS_BUYER_BANK_MASTERs, "BANK_ID", "PARTY_BANK"), "Select Deposit Bank", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="cOM_EX_SCINFO.BANK_ID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.CHKNO" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.CHKNO" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.CHKNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.CASHAMOUNT" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.CASHAMOUNT" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.CASHAMOUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_SCINFO.CHKAMOUNT" class="control-label"></label>
+                        <input asp-for="cOM_EX_SCINFO.CHKAMOUNT" class="form-control" />
+                        <span asp-validation-for="cOM_EX_SCINFO.CHKAMOUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-warning pull-right" type="submit">Update</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetComExScInfoWithPaged" class="btn btn-dark pull-right mr-2">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script type="text/javascript" asp-append-version="true">
+        $(function () {
+            $("#qty").on("change", function () {
+                $('#amount').val($('#qty').val() * $('#rate').val());
+            });
+
+            $("#rate").on("change", function () {
+                $('#amount').val($('#qty').val() * $('#rate').val());
+            });
+
+            $("#btnAdd").on('click', function () {
+                $.ajax({
+                    async: true,
+                    cache: false,
+                    data: $('#form').serialize(),
+                    type: "POST",
+                    url: '/ComExScInfo/AddScDetails',
+                    success: function (partialView) {
+                        $('#scDetails').html(partialView);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            });
+
+            
+            //Retrieve PI Details List
+            $.ajax({
+                async: true,
+                cache: false,
+                type: "POST",
+                data: { scNo: $('#cOM_EX_SCINFO_SCID').val()},
+                url: '/ComExScInfo/GetScDetailsList',
+                success: function (partialView) {
+                    $('#PreviousData').html(partialView);
+                },
+                error: function (e) {
+                    console.log('Failed to Retrieve PI Details.', 'error');
+                }
+            });
+        });
+        
+        //To Remove Existing SC Details List
+        function RemoveScInfo(scNo, styleId) {
+            $.ajax({
+                async: true,
+                cache: false,
+                type: "POST",
+                data: { scNo: scNo, styleId: styleId},
+                url: '/ComExScInfo/RemoveExistingScDetails',
+                success: function (partialView) {
+                    toastrNotification('Successfully Deleted SC Details.', 'success');
+                    $('#PreviousData').html(partialView);
+                },
+                error: function (e) {
+                    toastrNotification('Failed to Delete SC Details.', 'error');
+                }
+            });
+        };
+    </script>
+}

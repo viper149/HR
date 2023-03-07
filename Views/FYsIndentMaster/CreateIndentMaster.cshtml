@@ -1,0 +1,96 @@
+﻿
+@model RndYarnRequisitionViewModel
+
+@{
+    ViewData["Title"] = "Yarn Indent";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" enctype="multipart/form-data" role="form" asp-action="PostCreateIndentMaster">
+        <div class="panel panel-default">
+            <div class="panel-body row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-hourglass-o" aria-hidden="true"></i> @ViewData["Title"] Details</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentMaster.INDNO" class="control-label"></label>
+                        <input asp-for="FysIndentMaster.INDNO" class="form-control" readonly />
+                        <span asp-validation-for="FysIndentMaster.INDNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentMaster.INDDATE" class="control-label"></label>
+                        <input asp-for="FysIndentMaster.INDDATE" class="form-control" />
+                        <span asp-validation-for="FysIndentMaster.INDDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentMaster.OPT3" class="control-label"></label>
+                        <input asp-for="FysIndentMaster.OPT3" class="form-control" />
+                        <span asp-validation-for="FysIndentMaster.OPT3" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentMaster.INDSLID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FysIndentMaster.INDSLID, new SelectList(Model.RndPurchaseRequisitionMasterList, "INDSLID", "OPT2"),
+                            "Select Indent SL No.", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentMaster.INDSLID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-eye"></i> @ViewData["Title"] Details</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.PRODID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FysIndentDetails.PRODID, new SelectList(Model.BasYarnCountInfos, "COUNTID", "RND_COUNTNAME"), "Select A Count Name.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentDetails.PRODID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 row pl-4 d-none" id="yarnDetails">
+                    <div class="alert alert-secondary col-lg-12 col-md-12 col-sm-12 col-xs-12 ml-2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="alert-heading"><i class="fa fa-hand-o-left" aria-hidden="true"></i> Select The Count Name/Product Name!</h4>
+                        <p>Query result will be shown here.</p>
+                        <hr>
+                        <p class="mb-0">Select the <label asp-for="FysIndentMaster.INDSLID" class="text-danger font-weight-bold"></label> before <label asp-for="FysIndentDetails.PRODID" class="text-danger font-weight-bold"></label></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="yarnDetailsTableRetrieve"></div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit">Create</button>
+                    <button id="addToUpdate" class="btn btn-info pull-right d-none" type="button">Add</button>
+                    <a asp-action="GetIndentMaster" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+    <script asp-append-version="true" src="~/js/Indent/CreateIndentMaster.js"></script>
+}

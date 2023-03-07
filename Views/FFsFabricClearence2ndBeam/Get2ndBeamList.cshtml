@@ -1,0 +1,76 @@
+﻿@model F_FS_FABRIC_CLEARENCE_2ND_BEAM
+
+@{
+    ViewData["Title"] = "2nd Beam Information List";
+    Layout = Layout;
+}
+
+@{
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list fa-lg text-info" aria-hidden="true">@ViewData["Title"]</i>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li class="mr-2">
+                    <p>
+                        <a asp-action="Create2ndBeam" class="btn btn-primary" accesskey="a"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                    </p>
+                </li>
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content table-responsive">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TRIAL_NO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EMPID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TTID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OPT7)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ORDERNO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SETID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LBTEST_ID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LGTEST_ID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.QUALITY_COMMENTS)
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+}
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true" src="~/js/FFsFabricClearence2ndBeam/Get2ndBeamList.js"></script>
+
+}

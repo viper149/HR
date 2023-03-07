@@ -1,0 +1,18 @@
+﻿@model SizingChartDataViewModel
+
+@{
+    ViewData["Title"] = "Sizing Chart Data";
+}
+
+<div class="row text-primary">
+    <h2>Sizing Data</h2>
+</div>
+<div class="row bg-light">
+    <div class="form-group col-sm-6 col-md-6 col-lg-6 pt-2">
+        <label for="Sizing">Sizing Data:</label>
+
+        <span class="custom-form-control form-control text-dark ">
+            @Html.DisplayFor(model => model.SizingData)
+        </span>
+    </div>
+</div>

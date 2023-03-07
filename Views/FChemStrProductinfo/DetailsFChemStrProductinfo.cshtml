@@ -1,0 +1,70 @@
+﻿
+@model FChemProductEntryViewModel
+
+@{
+    ViewData["Title"] = "Chemical Product Information";
+}
+
+<h2><i class="fa fa-info-circle text-success" aria-hidden="true"></i> @ViewData["Title"] Details</h2>
+<hr />
+@{
+    if (Model != null)
+    {
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="text-white btn btn-info">@Html.DisplayNameFor(e => e.FChemStoreProductinfo.PRODUCTNAME) :   @Html.DisplayFor(e => e.FChemStoreProductinfo.PRODUCTNAME)</h2>
+                    <hr />
+                </div>
+            </div>
+
+            <div class="col-12 row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="FChemStoreProductinfo.UNIT" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">
+                            @Html.DisplayFor(model => model.FChemStoreProductinfo.UNITNAVIGATION.UNAME)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="FChemStoreProductinfo.ORIGIN" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">
+                            @Html.DisplayFor(model => model.FChemStoreProductinfo.COUNTRIES.COUNTRY_NAME)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="FChemStoreProductinfo.TYPE" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">
+                            @Html.DisplayFor(model => model.FChemStoreProductinfo.TYPENAVIGATION.CTYPE)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="FChemStoreProductinfo.SIZE" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">
+                            @Html.DisplayFor(model => model.FChemStoreProductinfo.SIZE)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="FChemStoreProductinfo.REMARKS" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">
+                            @Html.DisplayFor(model => model.FChemStoreProductinfo.REMARKS)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                @Html.ActionLink("Edit", $"EditFChemStrProductinfo", new { srId = Model.FChemStoreProductinfo.EncryptedId }, new { @class = "btn btn-warning pull-right" })
+                <a class="btn btn-dark pull-right" asp-action="GetFChemStrProductinfoTable">Back to List</a>
+            </div>
+        </div>
+    }
+}

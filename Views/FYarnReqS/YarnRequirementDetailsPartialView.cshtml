@@ -1,0 +1,68 @@
+﻿
+@model FYarnReqSViewModel
+
+@if (Model.FYarnRequirementDetailsSList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.TRNSDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.ORDERNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.SETID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.COUNTID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.LOTID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.UNIT)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.REQ_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.REMARKS)</th>
+                <th scope="col">@Html.Raw("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FYarnRequirementDetailsSList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].TRNSID)
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].YSRID)
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].TRNSDATE)
+                        @Html.DisplayFor(item => Model.FYarnRequirementDetailsSList[i].TRNSDATE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].ORDERNO)
+                        @Model.FYarnRequirementDetailsSList[i].ORDERNONavigation?.SO?.SO_NO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].SETID)
+                        @Model.FYarnRequirementDetailsSList[i].SET?.PROG_?.PROG_NO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].COUNTID)
+                        @Model.FYarnRequirementDetailsSList[i].COUNT?.COUNT?.COUNTNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].LOTID)
+                        @Model.FYarnRequirementDetailsSList[i].LOT?.LOTNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].UNIT)
+                        @Model.FYarnRequirementDetailsSList[i].UNITNavigation?.UNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].REQ_QTY)
+                        @Model.FYarnRequirementDetailsSList[i].REQ_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FYarnRequirementDetailsSList[i].REMARKS)
+                        @Model.FYarnRequirementDetailsSList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x text-danger"
+                           onclick="removeFromList('@i');" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

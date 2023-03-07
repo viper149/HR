@@ -1,0 +1,25 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExPiMaster.Reports
+@using RptPoInformation = DenimERP.Views.ComExPiMaster.Reports.RptPoInformation
+@model string
+
+@{
+    ViewData["Title"] = "Report for Production Order";
+    Layout = Layout;
+}
+
+<h2>Production Order</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RptPoInformation(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

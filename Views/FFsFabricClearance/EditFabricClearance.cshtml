@@ -1,0 +1,243 @@
+﻿
+@model FFsFabricClearanceViewModel
+
+@{
+    ViewData["Title"] = "Update Fabric Clearance";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-edit fa-lg text-warning" aria-hidden="true"></i> Update Fabric Clearance</h2>
+
+<div class="container-fluid">
+
+    <form id="form" role="form" asp-action="EditFabricClearance">
+        <div class="panel panel-default">
+            <div class="panel-body row">
+                @Html.HiddenFor(c => c.FFsFabricClearanceMaster.EncryptedId)
+                @Html.HiddenFor(c => c.FFsFabricClearanceMaster.CLID)
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.TRNSDATE" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.TRNSDATE" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.TRNSDATE" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.ORDER_NO" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FFsFabricClearanceMaster.ORDER_NO, new SelectList(Model.RndProductionOrders, "POID", "OPT1"), "Select Order", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FFsFabricClearanceMaster.ORDER_NO" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.FABCODE" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FFsFabricClearanceMaster.FABCODE, new SelectList(Model.RndFabricInfoList, "FABCODE", "STYLE_NAME"), "Select Style", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FFsFabricClearanceMaster.FABCODE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Width</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="width">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Shade Color</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="shadeColor">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.WASH_CODE" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.WASH_CODE" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.WASH_CODE" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.BUYERID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FFsFabricClearanceMaster.BUYERID, new SelectList(Model.BasBuyerInfos, "BUYERID", "BUYER_NAME"), "Select Buyer", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FFsFabricClearanceMaster.BUYERID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.FACTORYID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FFsFabricClearanceMaster.FACTORYID, new SelectList(Model.BasBuyerInfos, "BUYERID", "BUYER_NAME"), "Select Factory", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FFsFabricClearanceMaster.FACTORYID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.PACKING_LIST_DATE" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.PACKING_LIST_DATE" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.PACKING_LIST_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.DATE_FROM" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.DATE_FROM" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.DATE_FROM" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.DATE_TO" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.DATE_TO" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.DATE_TO" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.OPT1" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.OPT1" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.OPT1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.OPT2" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.OPT2" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.OPT2" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.ROLE_QTY" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.ROLE_QTY" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.ROLE_QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.SHIFT" class="control-label"></label>
+                        <select asp-for="FFsFabricClearanceMaster.SHIFT" class="form-control js-example-basic-single">
+                            <option value="">Select Shift</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                        <span asp-validation-for="FFsFabricClearanceMaster.SHIFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricClearanceMaster.REMARKS" class="control-label"></label>
+                        <input asp-for="FFsFabricClearanceMaster.REMARKS" class="form-control" />
+                        <span asp-validation-for="FFsFabricClearanceMaster.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning pull-right" type="submit" id="btn_submit">Update</button>
+                    <button id="btnAddRoll" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                    <a asp-action="GetFabricClearanceList" class="btn btn-dark pull-right mr-2">Back to List</a>
+                    <select asp-for="FFsFabricClearanceDetails.STATUS" class="form-control col-1 pull-right mr-2">
+                        <option value="3">WIP</option>
+                        <option value="2">Not OK</option>
+                        <option value="1">OK</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="rollDetails">
+                    @await Html.PartialAsync($"~/Views/FFsFabricClearance/AddRollList.cshtml", Model)
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script type="text/javascript" asp-append-version="true">
+
+        function GetOrderDetails() {
+            $.ajax({
+                async: true,
+                cache: false,
+                data: { "id": $("#FFsFabricClearanceMaster_ORDER_NO").val() },
+                type: "GET",
+                url: "/FFsFabricClearance/GetOrderDetails",
+                success: function (data, status, xhr) {
+                    console.log(data);
+                    //$("#FFsFabricClearanceMaster_FABCODE").val(data.fabcode).trigger("change");
+                    $("#width").text(data.fabWidth);
+                    $("#shadeColor").text(data.color);
+                    //$("#FFsFabricClearanceMaster_BUYERID").val(data.buyer).trigger("change");
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+
+        $(function () {
+
+            GetOrderDetails();
+
+            $("#btnAddRoll").on('click',
+                function() {
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: $('#form').serialize(),
+                        type: "POST",
+                        url: "/FFsFabricClearance/AddRollListEdit",
+                        success: function(partialView, status, xhr) {
+                            $('#rollDetails').html(partialView);
+                        },
+                        error: function(e) {
+                            console.log(e);
+                        }
+                    });
+                });
+
+
+            $("#FFsFabricClearanceDetails_STATUS").on('change',
+                function () {
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: $('#form').serialize(),
+                        type: "POST",
+                        url: "/FFsFabricClearance/SetRollStatus",
+                        success: function (partialView, status, xhr) {
+                            $('#rollDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                });
+
+            $("#FFsFabricClearanceMaster_ORDER_NO").on('change',
+                function () {
+                    GetOrderDetails();
+                });
+
+        });
+    </script>
+}

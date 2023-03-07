@@ -1,0 +1,152 @@
+﻿
+@model EditUserViewModel
+
+@{
+    ViewBag.Title = "Edit User";
+}
+
+<div class="container-fluid">
+    <form asp-action="EditUser" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(yl => yl.Id)
+        @Html.HiddenFor(yl => yl.OldPhotoPath)
+
+        <div class="card flex-md-row mb-2 box-shadow h-md-250">
+            <div class="card-body">
+                <h5 class="card-title text-info"><i class="fa fa-user"></i> Edit User</h5>
+
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="AspNetUserTypes.TYPENAME" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.TYPEID, new SelectList(Model.AspNetUserTypeses, "TYPEID", "TYPENAME"), "Select a Type Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="TYPEID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="form-group">
+                        <label class="control-label" asp-for="BID"></label>
+                        @Html.DropDownListFor(dt => dt.BID, new SelectList(Model.Companies, "ID", "COMPANY_NAME"), "Tag An Company", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="BID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="form-group">
+                        <label class="control-label">Employee No.</label>
+                        @Html.DropDownListFor(dt => dt.EMPID, new SelectList(Model.ExtendFHrEmployees, "EMPID", "EmpInfo"), "Tag An Employee From HR", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="EMPID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <label class="control-label">Change Photo</label>
+                    <div class="custom-file mb-2">
+                        <input asp-for="NewPhotoPath" class="form-control custom-file-input" />
+                        <label class="custom-file-label">Choose a profile photo...</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body d-flex flex-row-reverse align-items-center">
+                @{
+                    if (Model.OldPhotoPath != null)
+                    {
+                        <img style="width: 300px; height: 350px;" class="card-img-right flex-auto d-none d-md-block" asp-append-version="true" class="img-fluid" src="~/Files/ProfilePhotos/?fileName=@Model.OldPhotoPath" alt="@Model.UserName" />
+                    }
+                    else
+                    {
+                        <img style="width: 300px; height: 350px;" class="card-img-right flex-auto d-none d-md-block" asp-append-version="true" class="img-fluid" src="~/images/img.jpg" alt="@Model.UserName" />
+                    }
+                }
+            </div>
+        </div>
+
+
+        <div class="col-12 p-0 text-right">
+            <a class="btn btn-dark" asp-action="ListUsers" asp-controller="Administrator" accesskey="b">Back to List</a>
+            <input type="submit" value="Update" class="btn btn-warning" />
+        </div>
+
+        <div clas="col-12" style="display: flex;">
+            <div class="col-4 p-0">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <h5>@Model.UserName's Roles</h5>
+                        </div>
+                        <div>
+                            <a class="btn btn-warning" asp-action="ManageUserRoles" asp-controller="Administrator" asp-route-userId="@Model.Id">
+                                Manage Roles
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @if (Model.Roles.Any())
+                        {
+                            foreach (var role in Model.Roles)
+                            {
+                                <h6 class="card-title">@role</h6>
+                            }
+                        }
+                        else
+                        {
+                            <h6 class="card-title">None at the moment</h6>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <h5>@Model.UserName's Claims</h5>
+                        </div>
+                        <div>
+                            <a class="btn btn-warning" asp-action="ManageUserClaims" asp-controller="Administrator" asp-route-userId="@Model.Id">
+                                Manage Claims
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @if (Model.Claims.Any())
+                        {
+                            foreach (var claim in Model.Claims)
+                            {
+                                <h6 class="card-title">@claim</h6>
+                            }
+                        }
+                        else
+                        {
+                            <h6 class="card-title">None at the moment</h6>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/custom-file-input.js"></script>
+    <script>
+        $(function () {
+
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}

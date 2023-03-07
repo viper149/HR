@@ -1,0 +1,430 @@
+﻿@model PrWeavingProcessViewModel
+@{
+    ViewData["Title"] = "Weaving Beam Receive";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Weaving Beam Receive</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateWeavingBeamReceive">
+        <div class="panel panel-default">
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingBeamReceiving.RCVDATE" class="control-label"></label>
+                        <input asp-for="FPrWeavingBeamReceiving.RCVDATE" class="form-control" />
+                        <span asp-validation-for="FPrWeavingBeamReceiving.RCVDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingBeamReceiving.SETID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWeavingBeamReceiving.SETID, new SelectList(Model.PlProductionSetDistributions, "SETID", "PROG_.PROG_NO"), "Select Program/Set No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWeavingBeamReceiving.SETID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingBeamReceiving.RCVDBY" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWeavingBeamReceiving.RCVDBY, new SelectList(Model.FHrEmployees, "EMPID", "FIRST_NAME"), "Select Employee", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWeavingBeamReceiving.RCVDBY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingBeamReceiving.LOOMSPEED" class="control-label"></label>
+                        <input asp-for="FPrWeavingBeamReceiving.LOOMSPEED" class="form-control" />
+                        <span asp-validation-for="FPrWeavingBeamReceiving.LOOMSPEED" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingBeamReceiving.EFFICIENCY" class="control-label"></label>
+                        <input asp-for="FPrWeavingBeamReceiving.EFFICIENCY" class="form-control" />
+                        <span asp-validation-for="FPrWeavingBeamReceiving.EFFICIENCY" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Style Name</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="style">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Buyer</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="buyer">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Set Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="setLength">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Total Ends</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="totalEnds">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Color</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="color">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Loom Type</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="loomType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Order No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="orderNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">PO No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="poNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingBeamReceiving.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrWeavingBeamReceiving.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrWeavingBeamReceiving.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <hr />
+                    <div>
+                        <h2 class="panel-title text-success">Weft Yarn Consumption</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FPrWeavingWeftYarnConsumDetails.COUNTID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FPrWeavingWeftYarnConsumDetails.LOTID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FPrWeavingWeftYarnConsumDetails.SUPPID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FPrWeavingWeftYarnConsumDetails.RATIO)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FPrWeavingWeftYarnConsumDetails.SET_BGT)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FPrWeavingWeftYarnConsumDetails.ACT_BGT)
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Actions")
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="yarnDetails"></tbody>
+                        </table>
+                        </div>
+                    </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <hr />
+                    <h2 class="panel-title text-success">Received Beam Information</h2>
+
+                    <div class="table-responsive">
+                        <table class="table mt-2">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    Machine No.
+                                </th>
+                                <th>
+                                    Beam No.
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Beam Type")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Length")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Break.")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Ends")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Shift")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Remarks")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Is Received?")
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="beamDetails"></tbody>
+                        </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <button class="btn btn-success pull-right" type="submit" id="btn_submit">Create</button>
+                        <a asp-action="GetWeavingBeamReceiveList" class="btn btn-dark pull-right mr-2">Back to List</a>
+                    </div>
+
+                </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script type="text/javascript" asp-append-version="true">
+
+        function editYarnConsumption(e) {
+            var count_name = $(e.target).closest('tr').find(".count_name").html();
+            var lot_name = $(e.target).closest('tr').find(".lot_name").html();
+            var supp_name = $(e.target).closest('tr').find(".supp_name").html();
+            var ratio = $(e.target).closest('tr').find(".ratio").html();
+            var setQty = $(e.target).closest('tr').find(".setQty").html();
+            var actQty = $(e.target).closest('tr').find(".actQty").html();
+
+            $("#count").text(count_name);
+            $("#lot").text(lot_name);
+            $("#supplier").text(supp_name);
+            $("#ratioYarn").text(ratio);
+            $("#budget").text(setQty);
+            $("#actBudget").text(actQty);
+
+
+            $("#FPrWeavingWeftYarnConsumDetails_COUNTID").text(count_name);
+            $("#FPrWeavingWeftYarnConsumDetails_LOTID").text(lot_name);
+            $("#FPrWeavingWeftYarnConsumDetails_SUPPID").text(supp_name);
+            $("#FPrWeavingWeftYarnConsumDetails_RATIO").text(ratio);
+            $("#FPrWeavingWeftYarnConsumDetails_SET_BGT").text(setQty);
+            $("#FPrWeavingWeftYarnConsumDetails_ACT_BGT").text(actQty);
+            // Let's test it out
+            console.log(count_name, lot_name, supp_name, ratio, setQty, actQty);
+        }
+
+        function doApprove(sdid) {
+            if (sdid !== undefined) {
+                $.ajax({
+                    async: true,
+                    cache: false,
+                    data: {
+                        "sdid": sdid
+                    },
+                    type: "GET",
+                    url: "/FPrWeavingBeamReceive/DoApprove",
+                    success: function (data) {
+                        if (data) {
+                            toastr.success("Received", "Success");
+                        } else {
+                            toastr.error("You Can Not Receive", "Invalid Submission");
+                        }
+                    },
+                    error: function () {
+                        toastr.error("No Access.", "Invalid Submission");
+                    }
+                });
+            }
+        }
+
+        function DoApproveSlasherBeam(sdid) {
+            if (sdid !== undefined) {
+                $.ajax({
+                    async: true,
+                    cache: false,
+                    data: {
+                        "sdid": sdid
+                    },
+                    type: "GET",
+                    url: "/FPrWeavingBeamReceive/DoApproveSlasherBeam",
+                    success: function (data) {
+                        if (data) {
+                            toastr.success("Received", "Success");
+                        } else {
+                            toastr.error("You Can Not Receive", "Invalid Submission");
+                        }
+                    },
+                    error: function () {
+                        toastr.error("No Access.", "Invalid Submission");
+                    }
+                });
+            }
+        }
+
+        $(function () {
+            $("#FPrWeavingBeamReceiving_SETID").on('change',
+                function () {
+                    var selectedVal = $(this).val();
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: { "setId": selectedVal },
+                        type: "GET",
+                        url: "/FLcbProductionRope/GetSetDetails",
+                        success: function (data, status, xhr) {
+                            console.log(data);
+                            $("#style").text(data.comExPiDetails.style.fabcodeNavigation.stylE_NAME);
+                            $("#buyer").text(data.comExPiDetails.pimaster.buyer.buyeR_NAME);
+                            $("#color").text(data.comExPiDetails.style.fabcodeNavigation.colorcodeNavigation.color);
+                            $("#loomType").text(data.comExPiDetails.style.fabcodeNavigation.loom.looM_TYPE_NAME);
+                            $("#orderNo").text(data.comExPiDetails.sO_NO);
+                            $("#ratio").text(data.plProductionSetDistribution.subgroup.ratio);
+                            $("#totalEnds").text(data.plProductionSetDistribution.proG_.blK_PROG_.rndProductionOrder.totaL_ENOS);
+                            $("#setLength").text(data.plProductionSetDistribution.proG_.seT_QTY);
+                            $("#poNo").text(data.comExPiDetails.pimaster.pino);
+                            $("#FPrWeavingBeamReceiving_LOOMSPEED").val(data.plProductionSetDistribution.proG_.blK_PROG_.rndProductionOrder.so.style.fabcodeNavigation.loomspeed);
+                            $("#FPrWeavingBeamReceiving_EFFICIENCY").val(data.plProductionSetDistribution.proG_.blK_PROG_.rndProductionOrder.so.style.fabcodeNavigation.efficiency);
+
+
+                            var warpLength = '';
+
+                            if (data.plProductionSetDistribution.subgroup.group.rnD_DYEING_TYPE.dtype === 'Rope') {
+                                warpLength = data.plProductionSetDistribution.f_PR_WARPING_PROCESS_ROPE_DETAILS[0].warP_LENGTH_PER_SET;
+                            }
+                            else if (data.plProductionSetDistribution.subgroup.group.rnD_DYEING_TYPE.dtype === 'Slasher') {
+                                warpLength = data.plProductionSetDistribution.f_PR_SLASHER_DYEING_MASTER.warplength;
+                            }
+
+                            //var orderQtyMtr = orderQtyYds * 0.9144;
+                            //var warpLength = orderQtyMtr * 1.34;
+                            var greyLength = warpLength * 0.92;
+                            var totalRatioWeft = 0;
+
+                            var warpSetLength = data.plProductionSetDistribution.proG_.seT_QTY;
+                            var greySetLength = warpSetLength * 0.92;
+
+                            $.each(data.rndFabricCountInfoViewModels,
+                                function (id, option) {
+                                    if (option.rndFabricCountinfo.yarnfor === 2) {
+                                        totalRatioWeft += parseFloat(option.rndFabricCountinfo.ratio);
+                                    }
+                                });
+                            var yarnData = "";
+                            var beamData = "";
+                            $.each(data.rndFabricCountInfoViewModels,
+                                function (id, option) {
+                                    if (option.rndFabricCountinfo.yarnfor === 2) {
+                                        var reqKgs = 0;
+                                        var reqSetKgs = 0;
+                                        reqKgs = (greyLength * data.comExPiDetails.style.fabcodeNavigation.reeD_SPACE * data.comExPiDetails.style.fabcodeNavigation.grppi * option.rndFabricCountinfo.ratio) / (option.rndFabricCountinfo.ne * totalRatioWeft * 768 * 2.2046);
+                                        reqSetKgs = (greySetLength * data.comExPiDetails.style.fabcodeNavigation.reeD_SPACE * data.comExPiDetails.style.fabcodeNavigation.grppi * option.rndFabricCountinfo.ratio) / (option.rndFabricCountinfo.ne * totalRatioWeft * 768 * 2.2046);
+                                        var actionButton = '';
+                                        if (!option.isConsumption) {
+                                            actionButton = "<a class='fa fa-edit fa-2x-custom text-warning editYarnConsumption' onclick=editYarnConsumption(event);></a>";
+                                        } else {
+                                            actionButton = "<div class=\"round_gol\"><input type=\"checkbox\" name=\"" + option.rndFabricCountinfo.count.countname + "\" id=\"" + option.rndFabricCountinfo.count.countname + "\" checked disabled/><label for=\"" + option.rndFabricCountinfo.count.countname + "\"></label></div>";
+                                        }
+                                        var tr = "<tr>" + " <td class='count_name'> " + option.rndFabricCountinfo.count.countname +
+                                            " </td > " + " <td class='lot_name'> " + option.rndFabricCountinfo.lot.lotno +
+                                            " </td> " + " <td class='supp_name'> " + option.rndFabricCountinfo.supp.suppname +
+                                            " </td> " + " <td class='ratio'> " + option.rndFabricCountinfo.ratio +
+                                            " </td> " + " <td class='setQty'> " + reqSetKgs.toFixed(0) +
+                                            " </td> " + " <td class='actQty'> " + reqKgs.toFixed(0) +
+                                            " </td> " + " <td>" + actionButton + "</td> " +
+                                            "</tr >";
+                                        yarnData += tr;
+                                    }
+                                });
+
+                            $("#yarnDetails").html(yarnData);
+
+
+                            if (data.plProductionSetDistribution.subgroup.group.rnD_DYEING_TYPE.dtype === 'Rope') {
+                                $.each(data.plProductionSetDistribution.f_PR_SIZING_PROCESS_ROPE_MASTER[0].f_PR_SIZING_PROCESS_ROPE_DETAILS,
+                                    function (id, option) {
+                                        var isReceived = "";
+
+                                        if (option.iS_WEAVING_RECEIVED) {
+                                            isReceived = "  <div class=\"round_gol\"><input type=\"checkbox\" name=\"" + option.w_BEAM.beaM_NO + "_" + option.s_M.machinE_NO + "\" id=\"" + option.w_BEAM.beaM_NO + "_" + option.s_M.machinE_NO + "\" checked disabled/><label for=\"" + option.w_BEAM.beaM_NO + "_" + option.s_M.machinE_NO + "\"></label></div>";
+                                        }
+                                        else {
+                                            isReceived = "<div class=\"round_gol\"><input onclick=\"doApprove('" + option.sdid + "')\" type=\"checkbox\" name=\"" + option.w_BEAM.beaM_NO + "_" + option.s_M.machinE_NO + "\" id=\"" + option.w_BEAM.beaM_NO + "_" + option.s_M.machinE_NO + "\"/><label for=\"" + option.w_BEAM.beaM_NO + "_" + option.s_M.machinE_NO + "\"></label></div>";
+                                        }
+                                        if (option.iS_DELIVERABLE) {
+                                            var tr = "<tr>" +
+                                                " <td> " + option.s_M.machinE_NO + " </td > " +
+                                                " <td> " + option.w_BEAM.beaM_NO + " </td> " +
+                                                " <td> " + option.beaM_TYPE + " </td> " +
+                                                " <td> " + option.lengtH_PER_BEAM + " </td> " +
+                                                " <td> " + option.breaK_PER_BEAM + " </td> " +
+                                                " <td> " + data.plProductionSetDistribution.f_PR_SIZING_PROCESS_ROPE_MASTER[0].totaL_ENDS + " </td> " +
+                                                " <td> " + option.shift + " </td> " +
+                                                " <td> " + option.remarks + " </td> " +
+                                                " <td> " + isReceived + " </td> " +
+                                                "</tr >";
+                                            beamData += tr;
+                                        }
+                                    });
+                            }
+                            else if (data.plProductionSetDistribution.subgroup.group.rnD_DYEING_TYPE.dtype === 'Slasher') {
+                                $.each(data.plProductionSetDistribution.f_PR_SLASHER_DYEING_MASTER[0].f_PR_SLASHER_DYEING_DETAILS,
+                                    function (id, option) {
+                                        var isReceived = "";
+
+                                        if (option.iS_WEAVING_RECEIVED) {
+                                            isReceived = "  <div class=\"round_gol\"><input type=\"checkbox\" name=\"" + option.w_BEAM.beaM_NO + "_" + option.sL_M.sL_MNO + "\" id=\"" + option.w_BEAM.beaM_NO + "_" + option.sL_M.sL_MNO + "\" checked disabled/><label for=\"" + option.w_BEAM.beaM_NO + "_" + option.sL_M.sL_MNO + "\"></label></div>";
+                                        }
+                                        else {
+                                            isReceived = "<div class=\"round_gol\"><input onclick=\"DoApproveSlasherBeam('" + option.sldid + "')\" type=\"checkbox\" name=\"" + option.w_BEAM.beaM_NO + "_" + option.sL_M.sL_MNO + "\" id=\"" + option.w_BEAM.beaM_NO + "_" + option.sL_M.sL_MNO + "\"/><label for=\"" + option.w_BEAM.beaM_NO + "_" + option.sL_M.sL_MNO + "\"></label></div>";
+                                        }
+                                        if (option.iS_DELIVERABLE) {
+                                            var tr = "<tr>" +
+                                                " <td> " + option.sL_M.sL_MNO + " </td > " +
+                                                " <td> " + option.w_BEAM.beaM_NO + " </td> " +
+                                                " <td> " + option.beaM_TYPE + " </td> " +
+                                                " <td> " + option.lengtH_PER_BEAM + " </td> " +
+                                                " <td> " + option.breaK_PER_BEAM + " </td> " +
+                                                " <td> " + data.plProductionSetDistribution.f_PR_SLASHER_DYEING_MASTER[0].totaL_ENDS + " </td> " +
+                                                " <td> " + option.shift + " </td> " +
+                                                " <td> " + option.remarks + " </td> " +
+                                                " <td> " + isReceived + " </td> " +
+                                                "</tr >";
+                                            beamData += tr;
+                                        }
+                                    });
+                            }
+
+                            $("#beamDetails").html(beamData);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                });
+        });
+    </script>
+}

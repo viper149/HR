@@ -1,0 +1,561 @@
+﻿@model RndFabTestBulkViewModel
+
+@{
+    ViewData["Title"] = "Fabric Test Information";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-xing fa-lg text-success" aria-hidden="true"></i>Edit @ViewData["Title"] <i class="fa fa-at text-info">Bulk</i></h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="EditRndFabTestBulk">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                @Html.HiddenFor(modelItem => Model.RndFabtestBulk.EncryptedId)
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.LAB_NO" class="control-label"></label>
+                        <span class="input-group-btn d-flex">
+                            <button type="button" class="btn btn-warning">B</button>
+                            <input asp-for="RndFabtestBulk.LAB_NO" class="form-control" readonly="readonly" />
+                        </span>
+                        <span asp-validation-for="RndFabtestBulk.LAB_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.LTB_DATE" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.LTB_DATE" type="date" class="form-control" id="datePick" />
+                        <span asp-validation-for="RndFabtestBulk.LTB_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SHIFT" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.RndFabtestBulk.SHIFT, new SelectList(Model.FHrShiftInfoList, "ID", "SHIFT"), "Select Shift", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestBulk.SHIFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.UNWASHED_BY" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.RndFabtestBulk.UNWASHED_BY, new SelectList(Model.FHrEmployeeList, "EMPID", "FIRST_NAME"), "Select An Employee", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestBulk.UNWASHED_BY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.WASHED_BY" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.RndFabtestBulk.WASHED_BY, new SelectList(Model.FHrEmployeeList, "EMPID", "FIRST_NAME"), "Select An Employee", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestBulk.WASHED_BY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Process Route</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="pRoute">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.TEST_METHOD" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.RndFabtestBulk.TEST_METHOD, new SelectList(Model.FBasTestmethodList, "TMID", "TMNAME"), "Select Test Method", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestBulk.TEST_METHOD" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Length Sample</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="lengthS">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.LENGTH_TEST" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.LENGTH_TEST" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.LENGTH_TEST" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.PROG_NO" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.RndFabtestBulk.PROG_NO, new SelectList(Model.PlProductionSetdistributionList, "SETID", "PROG_.PROG_NO"), "Select Set No", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestBulk.PROG_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Style Name</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="style">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Buyer Name</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="buyer">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Order No.</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="order">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.TROLLEY_NO" class="control-label"></label>
+                        @*<select asp-for="RndFabtestBulk.TROLLEY_NO" class="form-control js-example-basic-single">
+                    <option value="">Select Trolly No.</option>
+                </select>*@
+
+                        @Html.DropDownListFor(dt => dt.RndFabtestBulk.TROLLEY_NO, new SelectList(Model.FPrFinishingFnprocessList, "FIN_PROCESSID", "TROLLNONavigation.NAME"), "Select Trolly No.", new { @class = "form-control js-example-basic-single" })
+
+                        <span asp-validation-for="RndFabtestBulk.TROLLEY_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Machine Name</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="machine">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Lomm No.</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="loom">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Batch No.</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="batch">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Fabric Width</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="width">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.WIDTH_OVR" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.WIDTH_OVR" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.WIDTH_OVR" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.WIDTH_CUT" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.WIDTH_CUT" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.WIDTH_CUT" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.WIDTH_WASH" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.WIDTH_WASH" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.WIDTH_WASH" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Fabric Weight</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="weight">
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.WEIGHT_UW" class="control-label"></label><sup>2</sup>)
+                        <input asp-for="RndFabtestBulk.WEIGHT_UW" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.WEIGHT_UW" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.WEIGHT_WASH" class="control-label"></label><sup>2</sup>)
+                        <input asp-for="RndFabtestBulk.WEIGHT_WASH" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.WEIGHT_WASH" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Finish EPI</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="finishepi">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.ACUW_EPI" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.ACUW_EPI" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.ACUW_EPI" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Finish PPI</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="finishppi">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.ACUW_PPI" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.ACUW_PPI" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.ACUW_PPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.ACWASH_EPI" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.ACWASH_EPI" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.ACWASH_EPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.ACWASH_PPI" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.ACWASH_PPI" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.ACWASH_PPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.STIFFNESS" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.STIFFNESS" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.STIFFNESS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.BOWING" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.BOWING" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.BOWING" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Shinkage Warp</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="shinkagewarp">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SHRINK_WARP" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SHRINK_WARP" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SHRINK_WARP" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Shinkage Weft</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="shinkageweft">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SHRINK_WEFT" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SHRINK_WEFT" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SHRINK_WEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SKEW_UW" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SKEW_UW" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SKEW_UW" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SKEW_WASH" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SKEW_WASH" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SKEW_WASH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SKEW_MOVE" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SKEW_MOVE" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SKEW_MOVE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SPIR_A" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SPIR_A" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SPIR_A" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SPIR_B" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SPIR_B" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SPIR_B" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.WEIGHT_DEAD" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.WEIGHT_DEAD" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.WEIGHT_DEAD" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Stretch Weft</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="stretchweft">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.STRWEFT_QA" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.STRWEFT_QA" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.STRWEFT_QA" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Growth Weft</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="growthweft">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.GROWTH_WEFT" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.GROWTH_WEFT" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.GROWTH_WEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.REC_WEFT" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.REC_WEFT" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.REC_WEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.STRWARP_QA" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.STRWARP_QA" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.STRWARP_QA" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Growth Wrap</label>
+                        <span class="custom-form-control-bg-slim p-0 form-control bg-e9ecef" id="growthwarp">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.GROWTH_WARP" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.GROWTH_WARP" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.GROWTH_WARP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.REC_WARP" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.REC_WARP" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.REC_WARP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.TENSILE_WARPT" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.TENSILE_WARPT" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.TENSILE_WARPT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.TENSILE_WEFTT" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.TENSILE_WEFTT" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.TENSILE_WEFTT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.TEAR_WARP" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.TEAR_WARP" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.TEAR_WARP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.TEAR_WEFT" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.TEAR_WEFT" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.TEAR_WEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SLIP_WARP" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SLIP_WARP" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SLIP_WARP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.SLIP_WEFT" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.SLIP_WEFT" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.SLIP_WEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.FAB_COMP" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.FAB_COMP" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.FAB_COMP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.CLR_DRY" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.CLR_DRY" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.CLR_DRY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.CLR_WET" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.CLR_WET" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.CLR_WET" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.CLR_CHANGE" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.CLR_CHANGE" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.CLR_CHANGE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.CLR_STAINING" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.CLR_STAINING" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.CLR_STAINING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.CCA" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.CCA" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.CCA" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.CSA" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.CSA" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.CSA" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.CCALK" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.CCALK" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.CCALK" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.CSALK" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.CSALK" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.CSALK" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.OPTION1" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.OPTION1" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.OPTION1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.OPTION2" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.OPTION2" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.OPTION2" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.PH" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.PH" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.PH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.FORMALD" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.FORMALD" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.FORMALD" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.ISSUE" class="control-label"></label>
+                        <input asp-for="RndFabtestBulk.ISSUE" class="form-control" />
+                        <span asp-validation-for="RndFabtestBulk.ISSUE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestBulk.REMARKS" class="control-label"></label>
+                        <textarea asp-for="RndFabtestBulk.REMARKS" class="form-control"></textarea>
+                        <span asp-validation-for="RndFabtestBulk.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit">Update</button>
+                    <a asp-action="GetRndFabTestBulk" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/RndFabTestBulk/CreateRndFabTestBulk.js"></script>
+}

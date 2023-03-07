@@ -1,0 +1,144 @@
+﻿@model CreateBasYarnCountInfoViewModel
+
+@{
+    ViewData["Title"] = "Create Yarn Count";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-lg fa-plus-circle text-success" aria-hidden="true"></i> @ViewData["Title"]</h2>
+<hr />
+
+<form asp-action="CreateBasYarnCountinfo" id="form" role="form">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountinfo.COUNTNAME" class="control-label"></label>
+                <input asp-for="BasYarnCountinfo.COUNTNAME" autocomplete="off" class="form-control" />
+                <span asp-validation-for="BasYarnCountinfo.COUNTNAME" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountinfo.YARN_CAT_.CATEGORY_NAME" class="control-label"></label>
+                @Html.DropDownListFor(e => e.BasYarnCountinfo.YARN_CAT_ID, new SelectList(Model.BasYarnCategories, "YARN_CAT_ID", "CATEGORY_NAME"), "Select Yarn Category", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "catName" })
+                <span asp-validation-for="BasYarnCountinfo.YARN_CAT_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountinfo.PART_ID" class="control-label"></label>
+                @Html.DropDownListFor(e => e.BasYarnCountinfo.PART_ID, new SelectList(Model.BasYarnPartNo, "PART_ID", "PART_NO"), "Select Part No.", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "partNo" })
+                <span asp-validation-for="BasYarnCountinfo.PART_ID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountinfo.UNIT" class="control-label"></label>
+                <select asp-for="BasYarnCountinfo.UNIT" class="form-control js-example-basic-single">
+                    <option value="">Select Unit</option>
+                    <option value="KG" selected>Kg</option>
+                    <option value="Roll">Roll</option>
+                </select>
+                <span asp-validation-for="BasYarnCountinfo.UNIT" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountinfo.COLOR" class="control-label"></label>
+                @Html.DropDownListFor(e => e.BasYarnCountinfo.COLOR, new SelectList(Model.BasColors, "COLORCODE", "COLOR"), "Select Color.", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "color" })
+                <span asp-validation-for="BasYarnCountinfo.COLOR" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <hr />
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountinfo.DESCRIPTION" class="control-label"></label>
+                <textarea asp-for="BasYarnCountinfo.DESCRIPTION" class="form-control"></textarea>
+                <span asp-validation-for="BasYarnCountinfo.DESCRIPTION" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountinfo.REMARKS" class="control-label"></label>
+                <textarea asp-for="BasYarnCountinfo.REMARKS" class="form-control"></textarea>
+                <span asp-validation-for="BasYarnCountinfo.REMARKS" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <h2 class="panel-title text-success"><i class="fa fa-random" aria-hidden="true"></i> Lot Information</h2>
+            <hr />
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountLotInfo.LOT.LOTNO" class="control-label"></label>
+                @Html.DropDownListFor(e => e.BasYarnCountLotInfo.LOTID, new SelectList(Model.BasYarnLotInfos, "LOTID", "LOTNO"), "Select Yarn Category", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "lotNo" })
+                <span asp-validation-for="BasYarnCountLotInfo.LOTID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="BasYarnCountLotInfo.REMARKS" class="control-label"></label>
+                <input asp-for="BasYarnCountLotInfo.REMARKS" class="form-control" />
+                <span asp-validation-for="BasYarnCountLotInfo.REMARKS" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-success pull-right" type="submit" accesskey="c">Create</button>
+            <button id="btnAddLot" class="btn btn-info pull-right mr-2" type="button" accesskey="a">Add</button>
+            <a asp-action="GetBasYarnCountinfoList" class="btn btn-dark pull-right mr-2" accesskey="b">Back to List</a>
+        </div>
+        <div class="col-12">
+            <table class="table table-hover" id="partialView">
+                @*<thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BasYarnCountLotInfo.LOT.LOTNO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BasYarnCountLotInfo.REMARKS)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Remove")
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="lotDetails"></tbody>*@
+            </table>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script type="text/javascript" asp-append-version="true">
+        $(function () {
+            $("#btnAddLot").on('click',
+                function () {
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: $('#form').serialize(),
+                        type: "POST",
+                        url: "/BasYarnCountinfo/AddLotToList",
+                        success: function (partialView, status, xhr) {
+                            $('#partialView').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                });
+        });
+    </script>
+    <script>
+        $(function () {
+
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}

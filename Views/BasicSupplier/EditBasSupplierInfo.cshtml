@@ -1,0 +1,73 @@
+﻿@model BasSupplierInfoViewModel
+
+@{
+    ViewData["Title"] = "EditBasSupplierInfo";
+    Layout = Layout;
+}
+
+<h2>Edit Supplier Info</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditBasSupplierInfo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @Html.HiddenFor(c => c.BAS_SUPPLIERINFO.SUPPID);
+            @Html.HiddenFor(c => c.BAS_SUPPLIERINFO.EncryptedId);
+
+            <div class="form-group">
+                <label asp-for="BAS_SUPPLIERINFO.SUPPNAME" class="control-label"></label>
+                <input asp-for="BAS_SUPPLIERINFO.SUPPNAME" class="form-control" />
+                <span asp-validation-for="BAS_SUPPLIERINFO.SUPPNAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="bAS_SUPP_CATEGORies.FirstOrDefault().CATNAME">
+                    @Html.DisplayNameFor(pc => pc.bAS_SUPP_CATEGORies.FirstOrDefault().CATNAME) <span class="required">*</span>
+                </label>
+                @Html.DropDownListFor(pc => pc.BAS_SUPPLIERINFO.SCATID, new SelectList(Model.bAS_SUPP_CATEGORies, "SCATID", "CATNAME"), htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                @Html.ValidationMessageFor(pc => pc.BAS_SUPPLIERINFO.SCATID, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="BAS_SUPPLIERINFO.ADDRESS" class="control-label"></label>
+                <input asp-for="BAS_SUPPLIERINFO.ADDRESS" class="form-control" />
+                <span asp-validation-for="BAS_SUPPLIERINFO.ADDRESS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BAS_SUPPLIERINFO.PHONE" class="control-label"></label>
+                <input asp-for="BAS_SUPPLIERINFO.PHONE" class="form-control" />
+                <span asp-validation-for="BAS_SUPPLIERINFO.PHONE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BAS_SUPPLIERINFO.EMAIL" class="control-label"></label>
+                <input asp-for="BAS_SUPPLIERINFO.EMAIL" class="form-control" />
+                <span asp-validation-for="BAS_SUPPLIERINFO.EMAIL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BAS_SUPPLIERINFO.CPERSON" class="control-label"></label>
+                <input asp-for="BAS_SUPPLIERINFO.CPERSON" class="form-control" />
+                <span asp-validation-for="BAS_SUPPLIERINFO.CPERSON" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BAS_SUPPLIERINFO.REMARKS" class="control-label"></label>
+                <input asp-for="BAS_SUPPLIERINFO.REMARKS" class="form-control" />
+                <span asp-validation-for="BAS_SUPPLIERINFO.REMARKS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="GetBasSupplierInfoWithPaged" class="btn btn-dark" accesskey="b">Back to List</a>
+                <input type="submit" value="Update" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        $(function () {
+
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}

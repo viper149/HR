@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.RndProductionOrder.Reports
+@using rptGIS = DenimERP.Views.RndProductionOrder.Reports.rptGIS
+@model string
+
+@{
+    ViewData["Title"] = "Fabric GIS";
+    Layout = Layout;
+}
+<h2>Fabric GIS</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptGIS(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

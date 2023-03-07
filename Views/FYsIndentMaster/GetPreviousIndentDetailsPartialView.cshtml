@@ -1,0 +1,153 @@
+﻿
+@model RndYarnRequisitionViewModel
+
+@if (Model.FysIndentDetailList.Any())
+{
+    <table class="table mt-2" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.PRODID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.SECID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.RAW)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.SLUB_CODE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.PREV_LOTID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.STOCK_AMOUNT)
+                </th>
+                <th>
+                    <i class="fa fa-edit fa-2x-custom text-danger">
+                        @Html.DisplayNameFor(model => model.FysIndentDetails.ORDER_QTY)
+                    </i>
+                </th>
+                <th>
+                    <i class="fa fa-edit fa-2x-custom text-danger">
+                        @Html.DisplayNameFor(model => model.FysIndentDetails.CNSMP_AMOUNT)
+                    </i>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.UNIT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.LAST_INDENT_NO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.TRNSDATE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.ETR)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.YARN_FOR)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.YARN_FROMNavigation.TYPENAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FysIndentDetails.REMARKS)
+                </th>
+                @*<th>@Html.DisplayName("Actions")</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FysIndentDetailList.Count; i++)
+            {
+            <tr>
+                <td>@(i+1)</td>
+                <td>
+
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].TRNSID)
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].INDID)
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].INDSLID)
+
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].PRODID)
+                    @Model.FysIndentDetailList[i].BASCOUNTINFO?.RND_COUNTNAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].SECID)
+                    @Model.FysIndentDetailList[i].SEC?.SECNAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].RAW)
+                    @Model.FysIndentDetailList[i].RAWNavigation?.RAWPER
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].SLUB_CODE)
+                    @Model.FysIndentDetailList[i].SLUB_CODENavigation?.NAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].PREV_LOTID)
+                    @Model.FysIndentDetailList[i].LOT?.LOTNO - @Model.FysIndentDetailList[i].LOT?.BRAND
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].STOCK_AMOUNT)
+                    @Model.FysIndentDetailList[i].STOCK_AMOUNT
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].ORDER_QTY)
+                    @Model.FysIndentDetailList[i].ORDER_QTY
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].CNSMP_AMOUNT)
+                    @Model.FysIndentDetailList[i].CNSMP_AMOUNT
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].UNIT)
+                    @Model.FysIndentDetailList[i].FBasUnits?.UNAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].LAST_INDENT_NO)
+                    @Model.FysIndentDetailList[i].LAST_INDENT_NO
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].TRNSDATE)
+                    @Html.DisplayFor(modelItem => Model.FysIndentDetailList[i].TRNSDATE)
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].ETR)
+                    @Html.DisplayFor(model => model.FysIndentDetailList[i].ETR)
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].YARN_FOR)
+                    @Model.FysIndentDetailList[i].YARN_FORNavigation?.YARNNAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].YARN_FROM)
+                    @Model.FysIndentDetailList[i].YARN_FROMNavigation?.TYPENAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FysIndentDetailList[i].REMARKS)
+                    @Model.FysIndentDetailList[i].REMARKS
+                </td>
+                @*<td>
+                    <i class="fa fa-trash fa-2x text-danger" onclick="removeFromList(@i)" aria-hidden="true"></i>
+                </td>*@
+            </tr>
+            }
+            <tr>
+                <td colspan="6" class="text-right text-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> <ins>Total @Html.DisplayNameFor(modelItem => Model.FysIndentDetails.ORDER_QTY)</ins></td>
+                <td>:</td>
+                <td colspan="10" class="text-danger">@Model.FysIndentDetailList.Sum(e => e.ORDER_QTY)</td>
+            </tr>
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Empty!</strong> Please Add More Items To See The List Here.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}

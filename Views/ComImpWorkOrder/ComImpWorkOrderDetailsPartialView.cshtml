@@ -1,0 +1,53 @@
+﻿@model ComImpWorkOrderViewModel
+
+@if (Model.ComImpWorkOrderDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpWorkOrderDetailsList.FirstOrDefault().COUNTID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpWorkOrderDetailsList.FirstOrDefault().LOTID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpWorkOrderDetailsList.FirstOrDefault().QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpWorkOrderDetailsList.FirstOrDefault().INDD.BASCOUNTINFO.UNIT)</th>
+                @*<th scope="col">@Html.DisplayNameFor(model => model.ComImpWorkOrderDetailsList.FirstOrDefault().UPRICE)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpWorkOrderDetailsList.FirstOrDefault().TOTAL)</th>*@
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpWorkOrderDetailsList.FirstOrDefault().REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.ComImpWorkOrderDetailsList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComImpWorkOrderDetailsList[i].TRANSID)
+                        @Html.HiddenFor(model => model.ComImpWorkOrderDetailsList[i].WOID)
+                        @Html.HiddenFor(model => model.ComImpWorkOrderDetailsList[i].NOTES)
+                        @Html.HiddenFor(model => model.ComImpWorkOrderDetailsList[i].COUNTID)
+                        @Model.ComImpWorkOrderDetailsList[i].INDD.BASCOUNTINFO?.RND_COUNTNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComImpWorkOrderDetailsList[i].LOTID)
+                        @Model.ComImpWorkOrderDetailsList[i].LOT?.LOTNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComImpWorkOrderDetailsList[i].QTY)
+                        @Model.ComImpWorkOrderDetailsList[i].QTY
+                    </td>
+                    <td>
+                        @Model.ComImpWorkOrderDetailsList[i].INDD.BASCOUNTINFO?.UNIT
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComImpWorkOrderDetailsList[i].REMARKS)
+                        @Model.ComImpWorkOrderDetailsList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveIndent(@i)" aria-hidden="false"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExLcInfo.Reports
+@using rptDateWiseLCRegister = DenimERP.Views.ComExLcInfo.Reports.rptDateWiseLCRegister
+@model int
+
+@{
+    ViewData["Title"] = "Date Wise L/C Register";
+    Layout = Layout;
+}
+<h2>Date Wise L/C Register</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptDateWiseLCRegister())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

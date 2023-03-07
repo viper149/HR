@@ -1,0 +1,312 @@
+﻿@model ComExFabStyleViewModel
+
+@{
+    ViewData["Title"] = "Commercial Export Fabric Style";
+}
+
+<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateComEXFabStyle">
+        <div class="panel panel-default">
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.STYLENAME" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.STYLENAME" class="form-control" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.STYLENAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.BRANDID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.cOM_EX_FABSTYLE.BRANDID, new SelectList(Model.bAS_BRANDINFOs, "BRANDID", "BRANDNAME"), "Select Brand", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="cOM_EX_FABSTYLE.BRANDID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.FABCODE" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.cOM_EX_FABSTYLE.FABCODE, new SelectList(Model.rND_FABRICINFOs, "FABCODE", "STYLE_NAME"), "Select Fabric Style", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "fabCode" })
+                        <span asp-validation-for="cOM_EX_FABSTYLE.FABCODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.STATUS" class="control-label"></label>
+                        <select class="form-control js-example-basic-single" asp-for="cOM_EX_FABSTYLE.STATUS">
+                            <option value="Export">Export</option>
+                            <option value="Local">Local</option>
+                        </select>
+                        <span asp-validation-for="cOM_EX_FABSTYLE.STATUS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.HSCODE" class="control-label"></label>
+                        <select asp-for="cOM_EX_FABSTYLE.HSCODE" class="form-control js-example-basic-single">
+                            <option value="">Select HS Code</option>
+                            <option value="52094200" selected="selected">52094200</option>
+                            <option value="52114200">52114200</option>
+                        </select>
+                        <span asp-validation-for="cOM_EX_FABSTYLE.HSCODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.COMM_CONST" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.COMM_CONST" class="form-control" id="cOM_EX_FABSTYLE_COMM_CONST" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.COMM_CONST" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.RND_CONST" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.RND_CONST" class="form-control custom-form-control-bg text-truncate" id="cOM_EX_FABSTYLE_RND_CONST" readonly />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.RND_CONST" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.COM_FABRIC_COMPOSITION" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.COM_FABRIC_COMPOSITION" class="form-control custom-form-control-bg text-truncate" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.COM_FABRIC_COMPOSITION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.COMPOSITION" class="control-label"></label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="composition">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.COLORCODE" class="control-label"></label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="colorcode">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">@Html.DisplayName("Weight")</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="wgdec">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">@Html.DisplayName("Width")</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="widec">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.WID" class="control-label"></label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="weave">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Shrinkage</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="shrinkage">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.FINID" class="control-label"></label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="finisH_TYPE">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TOTALENDS" class="control-label"></label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="totalends">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.BUYERID" class="control-label"></label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="buyerid">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-first-order" aria-hidden="true"></i> Fabric Information</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-end">
+                    <div class="form-group mb-0">
+                        <strong><label class="control-label mb-0">Composition</label></strong>
+                        <span class="custom-form-control form-control bg-e9ecef">
+                            <strong><span id="com">N/A</span></strong>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.BCI" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.BCI" class="form-control" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.BCI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.ORG_GOTS" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.ORG_GOTS" class="form-control" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.ORG_GOTS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.ORG_OCS" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.ORG_OCS" class="form-control" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.ORG_OCS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.RCS" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.RCS" class="form-control" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.RCS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.GRS" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.GRS" class="form-control" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.GRS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.CMIA" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.CMIA" class="form-control" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.CMIA" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="cOM_EX_FABSTYLE.REMARKS" class="control-label"></label>
+                        <input asp-for="cOM_EX_FABSTYLE.REMARKS" class="form-control" />
+                        <span asp-validation-for="cOM_EX_FABSTYLE.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button accesskey="c" class="btn btn-success pull-right" type="submit">Create</button>
+                    <a asp-action="GetComEXFabStyleWithPaged" asp-controller="ComExFabStyle" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+
+    <script type="text/javascript">
+        $(function() {
+            $("#fabCode").change(function() {
+                var selectedItem = $(this).val();
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("GetFabricInfo", "ComExFabStyle")",
+                    data: { "fabCode": selectedItem },
+                    success: function(data) {
+                        if (data != null) {
+                            //$('#rndConst').val(data.composition);
+                            $('#composition').html(data.rND_FABRICINFO.compositioN_DEC);
+                            $('#cOM_EX_FABSTYLE_COM_FABRIC_COMPOSITION').val(data.rND_FABRICINFO.compositioN_DEC);
+                            if (data.rND_FABRICINFO.composition != null) {
+                                $('#com').html(data.rND_FABRICINFO.compositioN_DEC);
+                            } else {
+                                $('#com').html("N/A");
+                            }
+                            $('#colorcode').html(data.rND_FABRICINFO.colorcodeNavigation == null ? "" : data.rND_FABRICINFO.colorcodeNavigation.color);
+                            $('#wgdec').html(data.rND_FABRICINFO.wgdec);
+                            $('#widec').html(data.rND_FABRICINFO.widec);
+                            $('#weave').html(data.rND_FABRICINFO.rnD_WEAVE == null ? "" : data.rND_FABRICINFO.rnD_WEAVE.name);
+                            $('#shrinkage').html("WARP " + data.rND_FABRICINFO.srdecwarp + " WEFT " + data.rND_FABRICINFO.srdecweft);
+
+                            $('#finisH_TYPE').html(data.rND_FABRICINFO.rnD_FINISHTYPE == null ? "" : data.rND_FABRICINFO.rnD_FINISHTYPE.typename);
+                            $('#totalends').html(data.rND_FABRICINFO.totalends);
+                            $('#buyerid').html(data.rND_FABRICINFO.buyer == null ? "" : data.rND_FABRICINFO.buyer.buyeR_NAME);
+                            var constration = "";
+                            var warpConst = "";
+                            var weftConst = "";
+                            $.each(data.rND_FABRIC_COUNTINFOs,
+                                function (index, value) {
+                                    if (value.yarnfor === 1) {
+                                        if (warpConst !== "") {
+                                            warpConst += ' + ';
+                                        }
+                                        warpConst += value.count.rnD_COUNTNAME;
+
+                                        if (value.color != null) {
+                                            warpConst += ' ' + value.color.color;
+                                        }
+                                    }
+                                    if (value.yarnfor === 2) {
+                                        if (weftConst !== "") {
+                                            weftConst += ' + ';
+                                        }
+                                        weftConst += value.count.rnD_COUNTNAME;
+
+                                        if (value.color != null) {
+                                            weftConst += ' ' + value.color.color;
+                                        }
+                                    }
+                                });
+
+                            constration = warpConst + ' X ' + weftConst + nullCheck(data.rND_FABRICINFO.fnepi, '/') + nullCheck(data.rND_FABRICINFO.fnepi, data.rND_FABRICINFO.fnepi) + nullCheck(data.rND_FABRICINFO.fnppi, 'X') + nullCheck(data.rND_FABRICINFO.fnppi, data.rND_FABRICINFO.fnppi);
+
+                            constration = constration.trim();
+
+                            if (constration.substring(0, 1) === 'X' || constration.substring(0, 1) === '/') {
+                                constration = constration.substring(1, constration.length);
+                            }
+                            if (constration.slice(-1) === 'X' || constration.slice(-1) === '/') {
+                                constration = constration.slice(0, -1);
+                            }
+                            $('#cOM_EX_FABSTYLE_RND_CONST').val(data.construction);
+                            $('#cOM_EX_FABSTYLE_COMM_CONST').val(data.construction);
+                        } else {
+                            toastrNotification("Failed To Retrieve Fabric Information.", "error");
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        toastrNotification("Failed To Retrieve Fabric Information.", "error");
+
+                    }
+                });
+            });
+        });
+
+        function nullCheck(data, value) {
+            return data ? value : '';
+        }
+    </script>
+    <script>
+        $(function () {
+
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}
+

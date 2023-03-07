@@ -1,0 +1,45 @@
+﻿
+@model List<DenimERP.Models.COM_IMP_LCDETAILS>
+
+@if (Model.Any())
+{
+    <table class="table m-4">
+        <thead>
+            <tr>
+                <th>@Html.DisplayName("FOR LC")</th>
+                <th>@Html.DisplayName("UNIT")</th>
+                <th>@Html.DisplayName("QTY")</th>
+                <th>@Html.DisplayName("RATE")</th>
+                <th>@Html.DisplayName("TOTAL")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.LCNO</td>
+                    <td>@item.UNIT</td>
+                    <td>@item.QTY</td>
+                    <td>@item.RATE</td>
+                    <td>@item.TOTAL</td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right w-25">@Html.DisplayName("Sum of total (Already used amount) : ")</td>
+                <td>@Model.Sum(e => e.TOTAL)</td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+<script type="text/javascript" asp-append-version="true">
+    $(function () {
+        var lcInfoBalance = $("#cOM_IMP_LCINFORMATION_BALANCE");
+        var setBalance = lcInfoBalance.val() - '@Model.Sum(e=>e.TOTAL)';
+
+        lcInfoBalance.val(setBalance);
+    });
+</script>

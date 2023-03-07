@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.FYarnRequirement.Report
+@using DenimERP.Views.RndProductionOrder.Reports
+@using rpt_YS_YarnRequisition_SR = DenimERP.Views.FYarnRequirement.Report.rpt_YS_YarnRequisition_SR
+@model string
+
+@{
+    ViewData["Title"] = "Yarn Purchase Requisition";
+    Layout = Layout;
+}
+<h2>Yarn Purchase Requisition</h2>
+
+@{
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rpt_YS_YarnRequisition_SR(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

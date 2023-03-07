@@ -1,0 +1,71 @@
+﻿
+@model CreateFSampleDesPatchMasterViewModel
+
+@if (Model.FSampleDespatchDetailses.Any())
+{
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleDespatchDetails.TRNS.SITEM.NAME)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleDespatchDetails.BYER.BUYER_NAME)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleDespatchDetails.ISSUE_PERSON)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleDespatchDetails.UID)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleDespatchDetails.REQ_QTY)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleDespatchDetails.DEL_QTY)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleDespatchDetails.REMARKS)</th>
+                <th>@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FSampleDespatchDetailses.Count; i++)
+            {
+                <tr>
+                    <td>@Html.Raw(i + 1)</td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].DPDID)
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].DPID)
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].TRNSID)
+                        @Model.FSampleDespatchDetailses[i].TRNS?.SITEM?.NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].BYERID)
+                        @Model.FSampleDespatchDetailses[i].BYER?.BUYER_NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].ISSUE_PERSON)
+                        @Model.FSampleDespatchDetailses[i].ISSUE_PERSON
+                    </td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].UID)
+                        @Model.FSampleDespatchDetailses[i].U?.UNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].REQ_QTY)
+                        @Model.FSampleDespatchDetailses[i].REQ_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].DEL_QTY)
+                        @Model.FSampleDespatchDetailses[i].DEL_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleDespatchDetailses[i].REMARKS)
+                        @Model.FSampleDespatchDetailses[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="removeFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Empty!</strong> Please add data to see the list.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}

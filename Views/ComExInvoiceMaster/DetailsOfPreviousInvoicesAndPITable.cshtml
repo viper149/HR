@@ -1,0 +1,96 @@
+﻿
+@model ComExInvoiceMasterCreateViewModel
+
+@{
+    <div class="col-md-6 col-sm-6 table-responsive">
+        <h2 class="panel-title text-success"><i class="fa fa-history" aria-hidden="true"></i> @Html.DisplayName("Invoices Details")</h2>
+        <div class="x_content">
+            @if (Model.ComExInvoicemaster != null && Model.ComExInvoicemaster.ComExInvdetailses.Any())
+            {
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.ComExInvdetails.INVNO)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExInvdetails.ComExFabstyle.STYLENAME)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExInvdetails.ComExFabstyle.FABCODENavigation.STYLE_NAME)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExInvdetails.RATE)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExInvdetails.QTY)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExInvdetails.AMOUNT)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ComExInvoicemaster.ComExInvdetailses)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.INVNO)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ComExFabstyle.STYLENAME)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ComExFabstyle.FABCODENavigation.STYLE_NAME)</td>
+                                <td>@Html.DisplayFor(modelItem => item.RATE)</td>
+                                <td>@Html.DisplayFor(modelItem => item.QTY)</td>
+                                <td>@Html.DisplayFor(modelItem => item.AMOUNT)</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>@Html.DisplayName("Total :")</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@Model.ComExInvoicemaster.ComExInvdetailses.Sum(e => e.QTY)</td>
+                            <td>@Model.ComExInvoicemaster.ComExInvdetailses.Sum(e => e.AMOUNT)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <text>No data has found...</text>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 table-responsive">
+        <h2 class="panel-title text-success"><i class="fa fa-history" aria-hidden="true"></i> @Html.DisplayName("PI List Details")</h2>
+        <div class="x_content">
+            @if (Model.ComExInvoicemaster != null && Model.ComExInvoicemaster.LC.COM_EX_LCDETAILS.Any(e => e.PI.COM_EX_PI_DETAILS.Any()))
+            {
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.ComExPiDetails.PIMASTER.PINO)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExPiDetails.STYLE.STYLENAME)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExPiDetails.STYLE.FABCODENavigation.STYLE_NAME)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExPiDetails.UNITPRICE)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExPiDetails.QTY)</th>
+                            <th>@Html.DisplayNameFor(model => model.ComExPiDetails.TOTAL)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ComExInvoicemaster.LC.COM_EX_LCDETAILS.SelectMany(x => x.PI.COM_EX_PI_DETAILS))
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.PIMASTER.PINO)</td>
+                                <td>@Html.DisplayFor(modelItem => item.STYLE.STYLENAME)</td>
+                                <td>@Html.DisplayFor(modelItem => item.STYLE.FABCODENavigation.STYLE_NAME)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UNITPRICE)</td>
+                                <td>@Html.DisplayFor(modelItem => item.QTY)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TOTAL)</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>@Html.DisplayName("Total :")</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@Model.ComExInvoicemaster.LC.COM_EX_LCDETAILS.Sum(e => e.PI.COM_EX_PI_DETAILS.Sum(f => f.QTY))</td>
+                            <td>@Model.ComExInvoicemaster.LC.COM_EX_LCDETAILS.Sum(e => e.PI.COM_EX_PI_DETAILS.Sum(f => f.TOTAL))</td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <text>No data has found...</text>
+            }
+        </div>
+    </div>
+}

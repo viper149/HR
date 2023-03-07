@@ -1,0 +1,288 @@
+﻿@model FPrInspectionProcessViewModel
+
+@if (Model.FPrInspectionProcessDetailsList.Any())
+{
+    <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+        <thead id="thead">
+            <tr style="font-size: 0.75rem">
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.TROLLEYNO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.OPERATOR_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.MACHINE_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.BATCH)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.ROLLNO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.LENGTH_1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.LENGTH_2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.ACT_CONS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.SHIFT)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.PICES)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.TOTAL_DEFECT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.POINT_100SQ)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.LENGTH_MTR)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.ACT_WIDTH_INCH)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.CUT_WIDTH_INCH)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.GR_WEIGHT_KG)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.WEIGHT_DEDUCT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.NET_WEIGHT_KG)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.FAB_GRADE)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @for (var i = 0; i < Model.FPrInspectionProcessDetailsList.Count; i++)
+            {
+                <tr data-toggle="collapse" data-target="#demo_@i" class="accordion-toggle collapsed">
+                    <td><span class="expand-button" style="left: -0.7rem;"></span></td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].ROLL_ID)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].INSPID)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].TROLLEYNO)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].TROLLY_STATUS)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].LENGTH_YDS)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].ACT_OZ_YDS)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].CUTPCS_YDS)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].DEF_PCS)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].CUT_PCS_SECTION)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].PICES)
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].PROCESS_TYPE)
+                        @Model.FPrInspectionProcessDetailsList[i].TROLLEYNONavigation?.TROLLNONavigation?.NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].OPERATOR_ID)
+                        @Model.FPrInspectionProcessDetailsList[i].Operator?.FIRST_NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].MACHINE_ID)
+                        @Model.FPrInspectionProcessDetailsList[i].MACHINE_?.NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].BATCH)
+                        @*@Model.FPrInspectionProcessDetailsList[i].BATCHNavigation?.NAME*@
+                        @Model.FPrInspectionProcessDetailsList[i].BATCH
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].ROLLNO)
+                        @Model.FPrInspectionProcessDetailsList[i].ROLLNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].LENGTH_1)
+                        @Model.FPrInspectionProcessDetailsList[i].LENGTH_1
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].LENGTH_2)
+                        @Model.FPrInspectionProcessDetailsList[i].LENGTH_2
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].ACT_CONS)
+                        @Model.FPrInspectionProcessDetailsList[i].ACT_CONS
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].SHIFT)
+                        @Model.FPrInspectionProcessDetailsList[i].SHIFT
+                    </td>
+                    @*<td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].PICES)
+                        @Model.FPrInspectionProcessDetailsList[i].PICES
+                    </td>*@
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].TOTAL_DEFECT)
+                        @Model.FPrInspectionProcessDetailsList[i].TOTAL_DEFECT
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].POINT_100SQ)
+                        @Model.FPrInspectionProcessDetailsList[i].POINT_100SQ
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].LENGTH_MTR)
+                        @Model.FPrInspectionProcessDetailsList[i].LENGTH_MTR
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].ACT_WIDTH_INCH)
+                        @Model.FPrInspectionProcessDetailsList[i].ACT_WIDTH_INCH
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].CUT_WIDTH_INCH)
+                        @Model.FPrInspectionProcessDetailsList[i].CUT_WIDTH_INCH
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].GR_WEIGHT_KG)
+                        @Model.FPrInspectionProcessDetailsList[i].GR_WEIGHT_KG
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].WEIGHT_DEDUCT)
+                        @Model.FPrInspectionProcessDetailsList[i].WEIGHT_DEDUCT
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].NET_WEIGHT_KG)
+                        @Model.FPrInspectionProcessDetailsList[i].NET_WEIGHT_KG
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FAB_GRADE)
+                        @Model.FPrInspectionProcessDetailsList[i].FAB_GRADE
+                    </td>
+                    @*<td>
+                        @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].REMARKS)
+                        @Model.FPrInspectionProcessDetailsList[i].REMARKS
+                    </td>*@
+                    <td>
+                        <a target='_blank' title='Print Roll Sticker' href='/FPrInspectionProcess/RRollStickerReport?rollId=@Model.FPrInspectionProcessDetailsList[i].ROLLNO' class='fa fa-print fa-2x-custom text-primary mr-2'></a>
+                        <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveRollFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="hiddenRow">
+                        <div class="accordian-body collapse show" id="demo_@i">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList.FirstOrDefault().DEF_TYPEID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList.FirstOrDefault().POINT1)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList.FirstOrDefault().POINT2)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList.FirstOrDefault().POINT3)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList.FirstOrDefault().POINT4)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList.FirstOrDefault().REMARKS)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var j = 0; j < Model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList.Count; j++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].DEF_TYPEID)
+                                                @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].ROLL_ID)
+                                                @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].DPID)
+                                                @Model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].DEF_TYPE?.NAME
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].POINT1)
+                                                @Model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].POINT1
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].POINT2)
+                                                @Model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].POINT2
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].POINT3)
+                                                @Model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].POINT3
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].POINT4)
+                                                @Model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].POINT4
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].REMARKS)
+                                                @Model.FPrInspectionProcessDetailsList[i].FPrInspectionDefectPointsList[j].REMARKS
+                                            </td>
+                                            <td>
+                                                <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveDefectFromRollList(@i, @j)" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveRollFromList(removeIndexValue) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/FPrInspectionProcess/RemoveRollFromList',
+            success: function (partialView, status, xhr) {
+                $('#rollDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    function RemoveDefectFromRollList(removeIndexValue, setRemoveIndex) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        data.push({ name: "setRemoveIndex", value: setRemoveIndex });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/FPrInspectionProcess/RemoveDefectFromRollList',
+            success: function (partialView) {
+                $('#rollDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>

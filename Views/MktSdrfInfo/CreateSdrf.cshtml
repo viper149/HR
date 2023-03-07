@@ -1,0 +1,384 @@
+﻿
+@model MktSdrfInfoViewModel
+
+@{
+    ViewData["Title"] = "Create Sample Development Requisition Form(SDRF)";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateSdrf">
+        <div class="panel panel-default">
+            BUYER_ORIGIN
+            <div class="panel-body row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.DEV_ID" class="control-label font-weight-bold"></label>
+                        <div class="form-check radio_toggle p-0">
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.DEV_ID, "11", new { @class = "dev_type" }) <span class="label-text">New Development</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.DEV_ID, "3", new { @class = "dev_type" }) <span class="label-text">Remake Development</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.DEV_ID, "6", new { @class = "dev_type" }) <span class="label-text">Re-Engineering</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="MktSdrfInfo.DEV_ID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.TEAMID" class="control-label font-weight-bold"></label>
+                        <div class="form-check radio_toggle p-0">
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.TEAMID, "215", new { @class = "team" }) <span class="label-text">Team-A</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.TEAMID, "217", new { @class = "team" }) <span class="label-text">Team-B</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.TEAMID, "216", new { @class = "team" }) <span class="label-text">Team-C</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="MktSdrfInfo.TEAMID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.FORTYPE" class="control-label font-weight-bold"></label>
+                        <div class="form-check radio_toggle p-0">
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.FORTYPE, "MEN", new { @class = "for" }) <span class="label-text">MEN</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.FORTYPE, "WOMEN", new { @class = "for" }) <span class="label-text">WOMEN</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.FORTYPE, "KID", new { @class = "for" }) <span class="label-text">KID</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.FORTYPE, "UNISEX", new { @class = "for" }) <span class="label-text">UNISEX</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="MktSdrfInfo.FORTYPE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.PRIORITY" class="control-label font-weight-bold"></label>
+                        <div class="form-check radio_toggle p-0">
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.PRIORITY, "URGENT", new { @class = "priority" }) <span class="label-text">Urgent</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.MktSdrfInfo.PRIORITY, "REGULAR", new { @class = "priority", @checked = "checked" }) <span class="label-text">Regular</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="MktSdrfInfo.PRIORITY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.SDRF_NO" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.SDRF_NO" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.SDRF_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.TRANSDATE" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.TRANSDATE" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.TRANSDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.AID" class="control-label font-weight-bold"></label>
+                        @Html.DropDownListFor(dt => dt.MktSdrfInfo.AID, new SelectList(Model.RndAnalysisSheets, "AID", "MKT_QUERY_NO"), "Select Query No", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "MktSdrfInfo_AID" })
+                        <span asp-validation-for="MktSdrfInfo.AID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.OPTION5" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.OPTION5" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.OPTION5" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.BUYER_REF" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.BUYER_REF" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.BUYER_REF" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.MKT_PERSON_ID" class="control-label font-weight-bold"></label>
+                        @Html.DropDownListFor(dt => dt.MktSdrfInfo.MKT_PERSON_ID, new SelectList(Model.MktTeams, "MKT_TEAMID", "PERSON_NAME"), "Select Related Person", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "MktSdrfInfo_MKT_PERSON_ID" })
+                        <span asp-validation-for="MktSdrfInfo.MKT_PERSON_ID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.BUYERID" class="control-label font-weight-bold"></label>
+                        @Html.DropDownListFor(dt => dt.MktSdrfInfo.BUYERID, new SelectList(Model.BuyerInfos, "BUYERID", "BUYER_NAME"), "Select Buyer", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "MktSdrfInfo_BUYERID" })
+                        <span asp-validation-for="MktSdrfInfo.BUYERID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.SEASON" class="control-label font-weight-bold"></label>
+                        <select class="form-control js-example-basic-single" asp-for="MktSdrfInfo.SEASON" asp-items="@ViewBag.Seasons">
+                            <option value="">Select A Season</option>
+                        </select>
+                        <span asp-validation-for="MktSdrfInfo.SEASON" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.BasBrandinfo.BRANDNAME" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.MktSdrfInfo.BRANDID, new SelectList(Model.BasBrandinfos, "BRANDID", "BRANDNAME"), "Select A Brand", htmlAttributes: new { @class = "form-control js-example-basic-single", @readonly = "true" })
+                        <span asp-validation-for="MktSdrfInfo.BRANDID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.SAMPLE_QTY" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.SAMPLE_QTY" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.SAMPLE_QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.CONSTRUCTION" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.CONSTRUCTION" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.CONSTRUCTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.WIDTH" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.WIDTH" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.WIDTH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.WEIGHT_AW" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.WEIGHT_AW" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.WEIGHT_AW" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.FINID" class="control-label font-weight-bold"></label>
+                        @Html.DropDownListFor(dt => dt.MktSdrfInfo.FINID, new SelectList(Model.RndFinishType, "FINID", "TYPENAME"), "Select Finish Type", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="MktSdrfInfo.FINID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.COLOR" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.COLOR" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.COLOR" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.TARGET_PRICE" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.TARGET_PRICE" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.TARGET_PRICE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.ORDER_QTY" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.ORDER_QTY" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.ORDER_QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.BUYER_ORIGIN" class="control-label font-weight-bold"></label>
+                        @Html.DropDownListFor(dt => dt.MktSdrfInfo.BUYER_ORIGIN, new SelectList(Model.Countries, "ID", "COUNTRY_NAME"), "Select Buyer Origin", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="MktSdrfInfo.BUYER_ORIGIN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.REQUIRED_DATE" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.REQUIRED_DATE" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.REQUIRED_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.OPTIONAL_DATE" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.OPTIONAL_DATE" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.OPTIONAL_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.BUYER_PREVIOUS_QTY" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.BUYER_PREVIOUS_QTY" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.BUYER_PREVIOUS_QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.IS_BUYER_VISITED_FACTORY" class="control-label font-weight-bold"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="MktSdrfInfo.IS_BUYER_VISITED_FACTORY" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="MktSdrfInfo.IS_BUYER_VISITED_FACTORY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="MktSdrfInfo.REMARKS" class="control-label font-weight-bold"></label>
+                        <input asp-for="MktSdrfInfo.REMARKS" class="form-control" />
+                        <span asp-validation-for="MktSdrfInfo.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit">Create</button>
+                    <a asp-action="GetSdrfList" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script type="text/javascript" asp-append-version="true">
+        $(function() {
+            // Get the value from a set of radio buttons
+            $('.dev_type').change(function() {
+                console.log($(this).val());
+            });
+            $('.for').change(function() {
+                console.log($(this).val());
+            });
+
+            $("#MktSdrfInfo_WEIGHT_AW").change(function() {
+                var data = $(this).val();
+                if (!isNaN(data)) {
+                    $('#MktSdrfInfo_GSM_AW').val(Math.round(data * 33.93));
+                } else {
+                    $('#MktSdrfInfo_GSM_AW').val(data);
+                }
+            });
+
+            $("#MktSdrfInfo_WEIGHT_BW").change(function() {
+                var data = $(this).val();
+                if (!isNaN(data)) {
+                    $('#MktSdrfInfo_GSM_BW').val(Math.round(data * 33.93));
+                } else {
+                    $('#MktSdrfInfo_GSM_BW').val(data);
+                }
+            });
+
+
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetSdrfNumber", "MktSdrfInfo")",
+                data: "",
+                success: function(data) {
+                    if (data != null) {
+                        console.log(data);
+                        $('#form :input').prop("disabled", false);
+                        $("#MktSdrfInfo_SDRF_NO").val(data);
+                    } else {
+                        toastrNotification("SDRF Number Not Found! Please Reload Page or Contact With Developers.", "warning");
+                        $('#form :input').prop("disabled", true);
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    toastrNotification("SDRF Number Not Found! Please Reload Page or Contact With Developers.", "warning");
+                    $('#form input').prop("disabled", true);
+                }
+            });
+
+            @*$(".team").change(function() {
+                var selectedItem = $(this).val();
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("GetTeamMembers", "MktSdrfInfo")",
+                    data: { "teamid": selectedItem },
+                    success: function(data) {
+                        if (data != null) {
+                            console.log(data);
+                            $("#MktSdrfInfo_MKT_PERSON_ID").html('');
+                            $("#MktSdrfInfo_MKT_PERSON_ID").append('<option value="" selected>Select Related Person</option>');
+
+                            $.each(data,
+                                function(id, option) {
+                                    $("#MktSdrfInfo_MKT_PERSON_ID").append($('<option></option>').val(option.mkT_TEAMID).html(option.persoN_NAME));
+                                });
+                        } else {
+                            toastrNotification("Sorry! No Team Member.", "error");
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        toastrNotification("Error: Failed To Retrieve Team Members.", "error");
+
+                    }
+                });
+            });*@
+
+            $("#MktSdrfInfo_AID").change(function() {
+                var selectedItem = $(this).val();
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("GetAnalysisDetails", "MktSdrfInfo")",
+                    data: { "aid": selectedItem },
+                    success: function(data) {
+                        if (data != null) {
+                            console.log(data);
+                            $("#MktSdrfInfo_BUYER_REF").val(data.buyeR_REF).css("border", "#006400 solid 1px");
+                            $("#MktSdrfInfo_MKT_PERSON_ID").val(data.mkT_PERSON_ID).css("border", "#006400 solid 1px");
+                            $("#MktSdrfInfo_BUYERID").val(data.buyerid).css("border", "#006400 solid 1px");
+                            $("#MktSdrfInfo_CONSTRUCTION").val(data.construction).css("border", "#006400 solid 1px");
+                            $("#MktSdrfInfo_WIDTH").val(data.fN_WIDTH).css("border", "#006400 solid 1px");
+                            $("#MktSdrfInfo_WEIGHT_AW").val(data.wA_WEIGHT).css("border", "#006400 solid 1px");
+                            $("#MktSdrfInfo_FINID").val(data.finid).css("border", "#006400 solid 1px");
+                            $("#MktSdrfInfo_COLOR").val(data.colorcode).css("border", "#006400 solid 1px");
+                        } else {
+                            toastrNotification("Sorry! No Analysis Details Found.", "error");
+                            $("#form :input").prop("disabled", true);
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        toastrNotification("Error: Failed To Retrieve Analysis Details.", "error");
+                        $("#form :input").prop("disabled", true);
+                    }
+                });
+            });
+        });
+
+    </script>
+}

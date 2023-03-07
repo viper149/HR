@@ -1,0 +1,24 @@
+﻿
+@using DenimERP.Models
+@model ComImpInvoiceInfoEditViewModel
+@inject SignInManager<ApplicationUser> _signInManager
+
+@{
+    for (var i = 0; i < Model.ComImpInvdetailsesForExistingList.Count; i++)
+    {
+        <tr>
+            @*<td>@Model.ComImpInvdetailsesForExistingList[i].TRNSDATE</td>*@
+            <td>@Model.ComImpInvdetailsesForExistingList[i].INVNO</td>
+            <td>@Model.BasProductinfos.Where(e => e.PRODID.Equals(Model.ComImpInvdetailsesForExistingList[i].PRODID)).Select(e => e.PRODNAME).FirstOrDefault()</td>
+            <td>@Model.ComImpInvdetailsesForExistingList[i].UNIT</td>
+            <td>@Model.ComImpInvdetailsesForExistingList[i].QTY</td>
+            <td>@Model.ComImpInvdetailsesForExistingList[i].RATE</td>
+            <td>@Model.ComImpInvdetailsesForExistingList[i].AMOUNT</td>
+            <td>@Model.ComImpInvdetailsesForExistingList[i].REMARKS</td>
+            <td>
+                @_signInManager.UserManager.FindByIdAsync(Model.ComImpInvdetailsesForExistingList[i].USRID).Result.UserName
+            </td>
+            <td><i class="fa fa-trash fa-2x text-danger" onclick="RemoveImportInvoiceFromPreviousList('@Model.ComImpInvdetailsesForExistingList[i].EncryptedId', '@Model.ComImpInvoiceinfo.EncryptedId');" aria-hidden="true"></i></td>
+        </tr>
+    }
+}

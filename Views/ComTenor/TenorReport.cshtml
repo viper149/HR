@@ -1,0 +1,17 @@
+﻿
+@using DevExpress.AspNetCore
+@using ComTenorData = DenimERP.Views.ComTenor.Reports.ComTenorData
+
+@{
+    ViewData["Title"] = "TenorReport";
+    Layout = Layout;
+}
+
+@section Styles {
+    <partial name="_LayoutReport"/>
+}
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new ComTenorData())
+}

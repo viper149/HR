@@ -1,0 +1,88 @@
+﻿@model FprInspectionCutPcsTransferViewModel
+
+@{
+    ViewData["Title"] = "Daily Cut Pcs Transfer Information";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateFprInspectionCutPcsTransferInfo">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrInspectionCutpcsTransfer.TRNS_DATE" class="control-label"></label>
+                        <input asp-for="FPrInspectionCutpcsTransfer.TRNS_DATE" type="date" class="form-control" id="datePick" />
+                        <span asp-validation-for="FPrInspectionCutpcsTransfer.TRNS_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrInspectionCutpcsTransfer.ROLL_NO" class="control-label"></label>
+                        <input asp-for="FPrInspectionCutpcsTransfer.ROLL_NO" type="" class="form-control" id="" />
+                        <span asp-validation-for="FPrInspectionCutpcsTransfer.ROLL_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                @*<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FPrInspectionCutpcsTransfer.ROLL_NO" class="control-label"></label>
+                            @Html.DropDownListFor(c => c.FPrInspectionCutpcsTransfer.ROLL_NO,
+                            new SelectList(Model.RollList, "ROLL_ID", "ROLLNO"), "Select Roll",
+                            new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="FPrInspectionCutpcsTransfer.ROLL_NO" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrInspectionCutpcsTransfer.QTY_YDS" class="control-label"></label>
+                        <input asp-for="FPrInspectionCutpcsTransfer.QTY_YDS" type="" class="form-control" id="" />
+                        <span asp-validation-for="FPrInspectionCutpcsTransfer.QTY_YDS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrInspectionCutpcsTransfer.QTY_KG" class="control-label"></label>
+                        <input asp-for="FPrInspectionCutpcsTransfer.QTY_KG" type="" class="form-control" id="" />
+                        <span asp-validation-for="FPrInspectionCutpcsTransfer.QTY_KG" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrInspectionCutpcsTransfer.SHIFT" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.FPrInspectionCutpcsTransfer.SHIFT,
+                            new SelectList(Model.ShiftList, "ID", "SHIFT"),
+                            "Select Shift", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrInspectionCutpcsTransfer.SHIFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrInspectionCutpcsTransfer.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrInspectionCutpcsTransfer.REMARKS" type="" class="form-control" id="" />
+                        <span asp-validation-for="FPrInspectionCutpcsTransfer.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="AttachTo">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button asp-action="CreateFprInspectionCutPcsTransferInfo" id="btnCreateLoan" class="btn btn-success nextBtn pull-right" type="submit">Create</button>
+                    <a asp-action="GetFprInspectionCutPcsTransferInfo" class="btn btn-dark pull-right">Back to List</a>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+}

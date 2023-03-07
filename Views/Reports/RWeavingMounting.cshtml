@@ -1,0 +1,21 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Weaving
+@using rptWeaving_Mounting = DenimERP.Reports.Weaving.rptWeaving_Mounting
+
+@{
+    ViewData["Title"] = "Weaving Mounting Report";
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptWeaving_Mounting())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

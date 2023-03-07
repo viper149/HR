@@ -1,0 +1,89 @@
+﻿
+@model CreateRndSampleInfoDyeingAndDetailsViewModel
+
+@if (Model.RndSampleInfoDetailses.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <span class="badge badge-light bg-info text-white d-inline">@Model.RndSampleInfoDetailses.Count</span>
+                    @Html.DisplayNameFor(e => e.RndSampleInfoDetails.COUNT.COUNTNAME)
+                </th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.TYPE)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.DESCRIPTION)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.COLORCODENavigation.COLOR)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.LOT.LOTNO)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.SUPP.SUPPNAME)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.YARN.YARNNAME)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.RATIO)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.NE)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetails.BGT)</th>
+                @*<th>@Html.DisplayName("Actions")</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.RndSampleInfoDetailses.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].TRNSID)
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].COUNTID)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].COUNT.RND_COUNTNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].TYPE)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].TYPE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].DESCRIPTION)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].DESCRIPTION)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].COLORCODE)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].COLORCODENavigation.COLOR)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].LOTID)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].LOT.LOTNO)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].SUPPID)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].SUPP.SUPPNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].YARNID)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].YARN.YARNNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].RATIO)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].RATIO)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].NE)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].NE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoDetailses[i].BGT)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoDetailses[i].BGT)
+                    </td>
+                    @*<td>
+                        <i class="fa fa-trash fa-2x text-danger" onclick="removeFromList(@i)" aria-hidden="true"></i>
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="alert-heading">Reached level 0!</h4>
+        <p>You're here because you have removed all the items or didn't added any items</p>
+        <hr>
+        <p class="mb-0">Please add more items...</p>
+    </div>
+}

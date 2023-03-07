@@ -1,0 +1,39 @@
+﻿@model F_FS_FABRIC_LOADING_BILL
+
+@{
+    ViewData["Title"] = "Fabric Loading Bill Information";
+}
+
+@{
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list fa-lg text-info" aria-hidden="true"> @ViewData["Title"]</i>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content table-responsive table-hover">
+            <table class="table" id="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.TRANSID)</th>
+                        <th>@Html.DisplayNameFor(model => model.VEHICLE_ID)</th>
+                        <th>@Html.DisplayNameFor(model => model.TRANSDATE)</th>
+                        <th>@Html.DisplayNameFor(model => model.START_TIME)</th>
+                        <th>@Html.DisplayNameFor(model => model.END_TIME)</th>
+                        <th>@Html.DisplayNameFor(model => model.ROLL_QTY)</th>
+                        <th>@Html.DisplayNameFor(model => model.RATE)</th>
+                        <th>@Html.DisplayNameFor(model => model.BILL_NO)</th>
+                        <th>@Html.DisplayNameFor(model => model.REMARKS)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+}

@@ -1,0 +1,25 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.COM_IMP
+@using rptImportInvoiceDetails = DenimERP.Reports.COM_IMP.rptImportInvoiceDetails
+
+
+@model int
+
+@{
+    ViewData["Title"] = "Date Wise Invoice Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptImportInvoiceDetails())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

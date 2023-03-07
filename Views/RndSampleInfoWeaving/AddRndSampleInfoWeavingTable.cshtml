@@ -1,0 +1,96 @@
+﻿
+@model RndSampleInfoWeavingViewModel
+
+@if (Model.RndSampleInfoWeavingDetailses.Any())
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.COUNT.COUNTNAME)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.TYPE)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.DESCRIPTION)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.COLORCODENavigation.COLOR)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.LOT.LOTNO)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.SUPP.SUPPNAME)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.YARN.YARNNAME)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.RATIO)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.NE)</th>
+                <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.BGT)</th>
+                <th>@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.RndSampleInfoWeavingDetailses.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @{
+                            if (Model.RndSampleInfoWeavingDetailses[i].WVID > 0)
+                            {
+                                <i class="fa fa-database text-danger" aria-hidden="true" title="From database."></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-plus-circle text-info" aria-hidden="true" title="New data."></i>
+                            }
+                        }
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].WVID)
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].COUNTID)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].COUNT.RND_COUNTNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].TYPE)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].TYPE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].DESCRIPTION)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].DESCRIPTION)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].COLORCODE)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].COLORCODENavigation.COLOR)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].LOTID)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].LOT.LOTNO)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].SUPPID)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].SUPP.SUPPNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].YARNID)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].YARN.YARNNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].RATIO)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].RATIO)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].NE)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].NE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(dt => dt.RndSampleInfoWeavingDetailses[i].BGT)
+                        @Html.DisplayFor(dt => dt.RndSampleInfoWeavingDetailses[i].BGT)
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x text-danger" onclick="removeFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="alert-heading">Reached level 0!</h4>
+        <p>You're here because you have removed all the items or didn't added any items</p>
+        <hr>
+        <p class="mb-0">Please add more items...</p>
+    </div>
+}

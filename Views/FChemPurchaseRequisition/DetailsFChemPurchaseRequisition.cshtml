@@ -1,0 +1,86 @@
+﻿
+@model FChemicalRequisitionViewModel
+
+@{
+    ViewData["Title"] = "Details Chemical Purchase Requirement";
+    Layout = Layout;
+}
+
+@{
+    if (Model != null)
+    {
+        <div class="col-12 row">
+
+            <div class="col-12">
+                <h2 class="text-white btn btn-info">@Html.DisplayNameFor(e => e.FChemPurchaseRequisitionMaster.INDSLDATE) : [ @Html.DisplayFor(e => e.FChemPurchaseRequisitionMaster.INDSLDATE) ]</h2>
+            </div>
+
+            <div class="col-12 row">
+                <div class="col-6">
+                    <h2 class="panel-title text-success"><i class="fa fa-flask" aria-hidden="true"></i> Chemical Information</h2>
+                </div>
+                <div class="col-6 text-right">
+                    <div class="form-group">
+                        <label asp-for="FChemPurchaseRequisitionMaster.STATUS" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.FChemPurchaseRequisitionMaster.STATUS)</div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr />
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FChemPurchaseRequisitionMaster.FBasDepartment.DEPTNAME" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FChemPurchaseRequisitionMaster.FBasDepartment.DEPTNAME)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FChemPurchaseRequisitionMaster.FBasSection.SECNAME" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FChemPurchaseRequisitionMaster.FBasSection.SECNAME)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FChemPurchaseRequisitionMaster.FBasSubsection.SSECNAME" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FChemPurchaseRequisitionMaster.FBasSubsection.SSECNAME)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FChemPurchaseRequisitionMaster.Employee.FIRST_NAME" class="control-label font-weight-bold">From Person</label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FChemPurchaseRequisitionMaster.Employee.FIRST_NAME)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FChemPurchaseRequisitionMaster.ConcernEmployee.FIRST_NAME" class="control-label font-weight-bold">To Person</label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FChemPurchaseRequisitionMaster.ConcernEmployee.FIRST_NAME)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FChemPurchaseRequisitionMaster.REMARKS" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FChemPurchaseRequisitionMaster.REMARKS)</div>
+                </div>
+            </div>
+            <div class="col-12 table-responsive">
+                <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Chemical Details</h2>
+                <hr />
+                @await Html.PartialAsync($"~/Views/FChemPurchaseRequisition/DetailsFChemPurchaseRequisitionTable.cshtml", Model)
+            </div>
+
+            <div class="col-md-12">
+                @{
+                    if (Model.FChemPurchaseRequisitionMaster.IsLocked)
+                    {
+                        @Html.ActionLink("Edit", $"EditFChemPurchaseRequisition", new { ysrId = Model.FChemPurchaseRequisitionMaster.EncryptedId }, new { @class = "btn btn-warning pull-right" })
+                    }
+                }
+                <a class="btn btn-dark pull-right" asp-action="GetPurchaseRequisition" asp-controller="FChemPurchaseRequisition">Back to List</a>
+            </div>
+        </div>
+    }
+}

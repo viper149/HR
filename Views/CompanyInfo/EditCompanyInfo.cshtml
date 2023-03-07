@@ -1,0 +1,125 @@
+﻿
+@model CompanyInfoViewModel
+
+<h2><i class="fa fa-edit text-warning" aria-hidden="true"></i> Edit @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+
+    <form asp-action="EditCompanyInfo" enctype="multipart/form-data">
+        <div class="panel-body row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(e => e.CompanyInfo.EncryptedId)
+            @Html.HiddenFor(e => e.CompanyInfo.COMPANY_NAME)
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label asp-for="CompanyInfo.LOGO" class="control-label"></label>
+                <label class="form-control">Choose a File...</label>
+                <input asp-for="Logo" class="form-control custom-file-input" />
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.COMPANY_NAME" class="control-label"></label>
+                    <input disabled="disabled" asp-for="CompanyInfo.COMPANY_NAME" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.COMPANY_NAME" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.DESCRIPTION" class="control-label"></label>
+                    <input asp-for="CompanyInfo.DESCRIPTION" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.DESCRIPTION" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.TAGLINE" class="control-label"></label>
+                    <input asp-for="CompanyInfo.TAGLINE" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.TAGLINE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.HEADOFFICE_ADDRESS" class="control-label"></label>
+                    <input asp-for="CompanyInfo.HEADOFFICE_ADDRESS" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.HEADOFFICE_ADDRESS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.FACTORY_ADDRESS" class="control-label"></label>
+                    <input asp-for="CompanyInfo.FACTORY_ADDRESS" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.FACTORY_ADDRESS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.WEB_ADDRESS" class="control-label"></label>
+                    <input asp-for="CompanyInfo.WEB_ADDRESS" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.WEB_ADDRESS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.EMAIL" class="control-label"></label>
+                    <input asp-for="CompanyInfo.EMAIL" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.EMAIL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.PHONE1" class="control-label"></label>
+                    <input asp-for="CompanyInfo.PHONE1" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.PHONE1" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.PHONE2" class="control-label"></label>
+                    <input asp-for="CompanyInfo.PHONE2" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.PHONE2" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.PHONE3" class="control-label"></label>
+                    <input asp-for="CompanyInfo.PHONE3" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.PHONE3" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.BIN_NO" class="control-label"></label>
+                    <input asp-for="CompanyInfo.BIN_NO" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.BIN_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.ETIN_NO" class="control-label"></label>
+                    <input asp-for="CompanyInfo.ETIN_NO" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.ETIN_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CompanyInfo.REMARKS" class="control-label"></label>
+                    <input asp-for="CompanyInfo.REMARKS" class="form-control" />
+                    <span asp-validation-for="CompanyInfo.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group pull-right">
+                    <a asp-action="GetCompanyInfo" class="btn btn-dark" accesskey="b">Back to List</a>
+                    <input type="submit" value="Update" class="btn btn-warning" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-file-input.js"></script>
+}

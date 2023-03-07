@@ -1,0 +1,148 @@
+﻿@model F_PR_WARPING_PROCESS_DW_MASTER
+@{
+    ViewData["Title"] = "Warping Production Process(Slasher)";
+    Layout = Layout;
+}
+
+
+@{
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> Warping Production Process(Slasher)
+                @*<small>@Html.DisplayName($"(Total Found: { Model.TotalItems })")</small>*@
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li class="mr-4">
+                    <p>
+                        <a asp-action="CreateWarpingProcessSlasher" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                    </p>
+                </li>
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content table-responsive">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.PRODUCTION_DATE)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.SET.PROG_.PROG_NO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TIME_START)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TIME_END)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BALL_NO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.WARPRATIO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.WARPLENGTH)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.REMARKS)
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+}
+
+@section Styles
+{
+    <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables/css/customerDatatable.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables/js/customerDatatable.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table').dataTable({
+                "searchPanes": true,
+                "processing": true,
+                "serverSide": true,
+                "filter": true,
+                "order": [[1, 'desc']],
+                "pageLength": 25,
+                "lengthMenu": [10, 25, 50, 100, 200, 500, 1000],
+                "ajax": {
+                    "async": "true",
+                    "url": '@Url.Action("GetTableData", "FPrWarpingProcessSlasher")',
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": [5],
+                        "orderable": false,
+                        "searchable": false
+                    }
+                ],
+                "language": {
+                    "searchPlaceholder": "Search for your desire results",
+                    "search": '<i class="fa fa-2x fa-search" aria-hidden="true"></i>',
+                    "emptyTable": '<h3>No data available</h3>',
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                    "infoFiltered": "(filtered from _MAX_ total entries)",
+                    "thousands": ",",
+                    "processing": "<i class='fa fa-4x fa-spinner' aria-hidden='true'></i>",
+                    "zeroRecords": "<h3>No matching records found</h3>",
+                    "paginate": {
+                        "first": "<i class='fa fa-angle-double-left' aria-hidden='true'></i>",
+                        "last": "<i class='fa fa-angle-double-right' aria-hidden='true'></i>",
+                        "next": "<i class='fa fa-angle-right' aria-hidden='true'></i>",
+                        "previous": "<i class='fa fa-angle-left' aria-hidden='true'></i>"
+                    },
+                    "aria": {
+                        "sortAscending": ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    }
+                },
+                "columns": [
+
+                    //{ "data": "productioN_DATE", "name": "PRODUCTION_DATE", "autoWidth": true },
+                    { "data": "set.proG_.proG_NO", "name": "SET", "autoWidth": true },
+                    { "data": "timE_START", "name": "TIME_START", "autoWidth": true },
+                    { "data": "timE_END", "name": "TIME_END", "autoWidth": true },
+                    { "data": "balL_NO", "name": "BALL_NO", "autoWidth": true },
+                    { "data": "warpratio", "name": "WARPRATIO", "autoWidth": true },
+                    { "data": "warplength", "name": "WARPLENGTH", "autoWidth": true },
+                    { "data": "remarks", "name": "REMARKS", "autoWidth": true },
+                    {
+                        "render": function (data, type, row) {
+                            debugger;
+                            //if (row.iS_DECLARE) {
+                            //    return "<a target='_blank' title='Print Warp Delivery Report' href='/FPrWarpingProcessSlasher/RWarpingDeliveryReport' class='fa fa-print fa-2x-custom text-primary mr-2'></a>" + "<a target='_blank' title='Print Warp Delivery Sticker' href='#' class='fa fa-print fa-2x-custom text-primary mr-2'></a>" +  "<a href='/FPrWarpingProcessSlasher/DetailsWarpingProcessSlasher?id=" + row.encryptedId + "' class='fa fa-info-circle fa-2x-custom text-info mr-2'></a>";
+                            //} else {
+                            return "<a target='_blank' title='Print Warp Delivery Report' href='/FPrWarpingProcessSlasher/RWarpingDeliveryReport?setNO=" + row.set.proG_.proG_NO +"' class='fa fa-print fa-2x-custom text-primary mr-2'></a>" + "<a target='_blank' title='Print Warp Delivery Sticker' href='#' class='fa fa-print fa-2x-custom text-primary mr-2'></a>" +  "<a href='/FPrWarpingProcessSlasher/DetailsWarpingProcessSlasher?id=" + row.encryptedId + "' class='fa fa-info-circle fa-2x-custom text-info mr-2'></a> <a href='/FPrWarpingProcessSlasher/EditWarpingProcessSlasher?id=" + row.encryptedId + "' class='fa fa-edit fa-2x-custom text-warning'></a>";
+                            //}
+
+
+                        }
+                    },
+                ]
+            });
+        });
+    </script>
+}

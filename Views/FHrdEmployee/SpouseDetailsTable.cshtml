@@ -1,0 +1,68 @@
+﻿@model FHrdEmployeeViewModel
+
+@if (Model.FHrdEmpSpouseList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">@Html.DisplayName("#")</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.SPID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.SPNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.SPNAME_BN)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.SP_PROFESSION)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.SP_NID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.SP_BID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.SP_PASSPORT)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.SP_DOB)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEmpSpouse.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FHrdEmpSpouseList.Count(); i++)
+            {
+            <tr>
+                <td>
+                    @(i + 1)
+                </td>
+                <td>
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].SPID)
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].SPNAME)
+                    @Model.FHrdEmpSpouseList[i].SPNAME
+                </td>
+                <td>
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].SPNAME_BN)
+                    @Model.FHrdEmpSpouseList[i].SPNAME_BN
+                </td>
+                <td>
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].SP_PROFESSION)
+                    @Model.FHrdEmpSpouseList[i].SP_PROFESSION
+                </td>
+                <td>
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].SP_NID)
+                    @Model.FHrdEmpSpouseList[i].SP_NID
+                </td>
+                <td>
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].SP_BID)
+                    @Model.FHrdEmpSpouseList[i].SP_BID
+                </td>
+                <td>
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].SP_PASSPORT)
+                    @Model.FHrdEmpSpouseList[i].SP_PASSPORT
+                </td>
+                <td>
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].SP_DOB)
+                    @Model.FHrdEmpSpouseList[i].SP_DOB?.ToString("dd MMM,yyyy")
+                </td>
+                <td>
+                    @Html.HiddenFor(d => d.FHrdEmpSpouseList[i].REMARKS)
+                    @Model.FHrdEmpSpouseList[i].REMARKS
+                </td>
+                <td>
+                    <i class="fa fa-trash fa-lg text-danger" onclick="RemoveSpouse(@i)" aria-hidden="true"></i>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

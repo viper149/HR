@@ -1,0 +1,36 @@
+﻿@model FHrdEmpEduDegreeViewModel
+<h2><i class="fa fa-edit text-warning" aria-hidden="true"></i> Edit @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="EditFHrdEmpEduDegree">
+        <div class="panel panel-default setup-content">
+            @Html.HiddenFor(d => d.FHrdEmpEduDegree.EncryptedId)
+            @Html.HiddenFor(d => d.FHrdEmpEduDegree.DEGID)
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmpEduDegree.DEGNAME" class="control-label"></label>
+                        <input disabled="disabled" asp-for="FHrdEmpEduDegree.DEGNAME" class="form-control" />
+                        <span asp-validation-for="FHrdEmpEduDegree.DEGNAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmpEduDegree.DESCRIPTION" class="control-label"></label>
+                        <input asp-for="FHrdEmpEduDegree.DESCRIPTION" class="form-control" />
+                        <span asp-validation-for="FHrdEmpEduDegree.DESCRIPTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning pull-right" type="submit">Update</button>
+                    <a asp-action="GetFHrdEmpEduDegree" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+}

@@ -1,0 +1,30 @@
+﻿
+
+@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExInvoiceMaster.Reports
+@using RPreShipmentInspectionCertificate = DenimERP.Views.ComExInvoiceMaster.Reports.RPreShipmentInspectionCertificate
+@model string
+
+@{
+    ViewData["Title"] = "Pre Shipment Inspection Beneficiary";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Reports</li>
+        <li class="breadcrumb-item active" aria-current="page"><a asp-controller="ComExInvoiceMaster" asp-action="RForwarding">@ViewData["Title"]</a></li>
+    </ol>
+</nav>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RPreShipmentInspectionCertificate(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

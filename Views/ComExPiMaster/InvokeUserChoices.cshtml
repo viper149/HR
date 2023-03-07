@@ -1,0 +1,71 @@
+﻿
+@model COM_EX_PIMASTER
+
+@{
+    ViewData["Title"] = "Printing Options";
+}
+
+<div class="container-fluid h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+
+            <div class="card text-center">
+                <div class="card-header font-weight-bold text-info">
+                    <label asp-for="PINO" class="control-label"></label> :
+                    @Model.PINO
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Check the below options</h6>
+
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a asp-action="RProductionOrder" asp-controller="ComExPiMaster" asp-route-piId="@Model.EncryptedId" target="_blank" title="Production Order">
+                                <div class="btn btn-outline-primary float-left">Production Order</div>
+                                <div class="btn btn-outline-primary float-right">
+                                    <div class="fa fa-print fa-lg text-primary"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a asp-action="RProformaInvoice" asp-controller="ComExPiMaster" asp-route-piId="@Model.EncryptedId" target="_blank" title="Proforma Invoice">
+                                <div class="btn btn-outline-primary float-left">Proforma Invoice</div>
+                                <div class="btn btn-outline-primary float-right">
+                                    <div class="fa fa-print fa-lg text-primary"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a asp-controller="ComExPiMaster" asp-action="EditPIInfo" asp-route-piId="@Model.EncryptedId" title="Modify">
+                                <div class="btn btn-outline-warning float-left">Edit</div>
+                                <div class="btn btn-outline-warning float-right">
+                                    <div class="fa fa-edit fa-lg text-warning"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a asp-controller="ComExPiMaster" asp-action="CreateComEXPIMaster" title="Create">
+                                <div class="btn btn-outline-success float-left">Add New One</div>
+                                <div class="btn btn-outline-success float-right">
+                                    <div class="fa fa-plus-circle fa-lg text-success"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a asp-controller="ComExPiMaster" asp-action="GetComExpiInfoWithPaged" title="Create">
+                                <div class="btn btn-outline-secondary float-left">Back to list</div>
+                                <div class="btn btn-outline-secondary float-right">
+                                    <div class="fa fa-arrow-left fa-lg text-secondary"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-footer">
+                Page loaded at: @DateTime.UtcNow
+            </div>
+
+        </div>
+    </div>
+</div>

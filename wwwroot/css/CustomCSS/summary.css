@@ -1,0 +1,35 @@
+﻿
+.address {
+    border: 2px solid #182432;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 5px 10px 0;
+    position: relative;
+}
+
+    .address .title {
+        color: #000;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 25px;
+        position: absolute;
+        left: 0;
+        top: -14px;
+        margin: 0;
+    }
+
+        .address .title span {
+            background: #ffffff;
+            padding: 0 5px;
+            font-size: 12px;
+        }
+
+    .address .address-line, footer .address .closed-day {
+        color: #848689;
+    }
+
+    .address .address-line {
+        line-height: 18px;
+        font-size: 12px;
+        margin-top: 10px;
+    }

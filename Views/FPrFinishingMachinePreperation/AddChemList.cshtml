@@ -1,0 +1,109 @@
+﻿@model FPrFinishingMachineCreatePreparationViewModel
+
+@if (Model.FPrFnChemicalConsumptions.Any())
+{
+
+    <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+        <thead id="thead">
+            <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.FPrFnChemicalConsumption.TRNSDATE)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrFnChemicalConsumption.CHEM_PROD_ID)
+                </th>
+                <th class=" d-none">
+                    @Html.DisplayNameFor(model => model.FPrFnChemicalConsumption.STOCK_QTY)
+                </th>
+                <th class=" d-none">
+                    @Html.DisplayNameFor(model => model.FPrFnChemicalConsumption.RECIPE)
+                </th>
+                <th class=" d-none">
+                    @Html.DisplayNameFor(model => model.FPrFnChemicalConsumption.SUG_QTY)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrFnChemicalConsumption.QTY)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrFnChemicalConsumption.REMARKS)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FPrFnChemicalConsumptions.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptions[i].TRNSID)
+                        @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptions[i].TRNSDATE)
+                        @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptions[i].CHEM_PROD_ID)
+                        @Model.FPrFnChemicalConsumptions[i].CHEM_PROD_?.PRODUCTNAME
+                    </td>
+                    <td class=" d-none">
+                        @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptions[i].STOCK_QTY)
+                        @Model.FPrFnChemicalConsumptions[i].STOCK_QTY
+                    </td>
+                    <td class=" d-none">
+                        @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptions[i].RECIPE)
+                        @Model.FPrFnChemicalConsumptions[i].RECIPE
+                    </td>
+                    <td class=" d-none">
+                        @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptions[i].SUG_QTY)
+                        @Model.FPrFnChemicalConsumptions[i].SUG_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptions[i].QTY)
+                        @Model.FPrFnChemicalConsumptions[i].QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptions[i].REMARKS)
+                        @Model.FPrFnChemicalConsumptions[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveChemFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveChemFromList(removeIndexValue) {
+        swal({
+            title: "Please Confirm",
+            text: "You won't able to revert, Are you sure to remove?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, sir",
+            cancelButtonText: "Not at all"
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    var data = $('#form').serializeArray();
+                    data.push({ name: "removeIndexValue", value: removeIndexValue });
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: data,
+                        type: "POST",
+                        url: '/FPrFinishingMachinePreperation/RemoveChemFromList',
+                        success: function (partialView, status, xhr) {
+                            $('#chemDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                }
+            });
+    }
+</script>

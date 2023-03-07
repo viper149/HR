@@ -1,0 +1,29 @@
+﻿
+@model FChemicalRequisitionViewModel
+
+@if (Model.FChemStoreIndentdetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreIndentdetails.PRODUCTID)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreIndentdetails.UNIT)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreIndentdetails.QTY)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreIndentdetails.REMARKS)</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < Model.FChemStoreIndentdetailsList.Count(); i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@Model.FChemStoreIndentdetailsList[i].PRODUCT?.PRODUCTNAME</td>
+                <td>@Model.FChemStoreIndentdetailsList[i].FBasUnits?.UNAME</td>
+                <td>@Model.FChemStoreIndentdetailsList[i].QTY</td>
+                <td>@Model.FChemStoreIndentdetailsList[i].REMARKS</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

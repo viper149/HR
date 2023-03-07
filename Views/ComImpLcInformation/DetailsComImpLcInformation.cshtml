@@ -1,0 +1,242 @@
+﻿
+@using DenimERP.Models
+@model ComImpLcInformationForCreateViewModel
+@inject SignInManager<ApplicationUser> _signInManager
+
+@{
+    ViewData["Title"] = "Commercial Import LC Information";
+}
+
+<h2><i class="fa fa-xing fa-lg text-success" aria-hidden="true"></i> Details @ViewData["Title"]</h2>
+
+@{
+    if (Model != null)
+    {
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="text-white btn btn-info" data-toggle="collapse" data-target=".basic-collapse" aria-expanded="false">@Html.DisplayNameFor(e => e.cOM_IMP_LCINFORMATION.LCNO) : [ @Html.DisplayFor(e => e.cOM_IMP_LCINFORMATION.LCNO) ]</h2>
+                </div>
+                <div class="col-6 text-right">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.ISFTT" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.ISFTT)</div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr />
+                </div>
+            </div>
+            <div class="row collapse show basic-collapse">
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.FILENO" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.FILENO)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.LCDATE" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.LCDATE)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.SHIPDATE" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.SHIPDATE)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.EXPDATE" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.EXPDATE)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.COM_IMP_LCTYPE.TYPENAME" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.COM_IMP_LCTYPE.TYPENAME)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.CAT.CATEGORY" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.CAT.CATEGORY)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.CURRENCY" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.CURRENCY)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.TOLLERANCE" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.TOLLERANCE)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.ORIGIN" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.ORIGIN)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.DESPORT" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.DESPORT)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.CNOTENO" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.CNOTENO)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.LIENVAL" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.LIENVAL)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.BALANCE" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.BALANCE)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.REMARKS" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.REMARKS)</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="cOM_IMP_LCINFORMATION.USRID" class="control-label font-weight-bold fa fa-user"></label>
+                        <div class="form-control-dark">
+                            @{
+                                if (!string.IsNullOrEmpty(Model.cOM_IMP_LCINFORMATION.USRID))
+                                {
+                                    @_signInManager.UserManager.FindByIdAsync(Model.cOM_IMP_LCINFORMATION.USRID).Result.UserName
+                                }
+                                else
+                                {
+                                    @Html.DisplayName("N/A")
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+
+                    <div class="col-12 p-0">
+                        <h2 class="panel-title text-success" data-toggle="collapse" data-target=".supplier-collapse" aria-expanded="false"><i class="fa fa-angellist"></i> Supplier Information</h2>
+                        <hr>
+
+                        <div class="col-3 collapse show supplier-collapse">
+                            <div class="form-group">
+                                <label asp-for="cOM_IMP_LCINFORMATION.SUPP.SUPPNAME" class="control-label font-weight-bold"></label>
+                                <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.SUPP.SUPPNAME)</div>
+                            </div>
+                        </div>
+                        <div class="col-3 collapse show supplier-collapse">
+                            <div class="form-group">
+                                <label asp-for="cOM_IMP_LCINFORMATION.COM_TENOR.NAME" class="control-label font-weight-bold"></label>
+                                <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.COM_TENOR.NAME)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-0">
+                        <h2 class="panel-title text-success" data-toggle="collapse" data-target=".bank-details-collapse" aria-expanded="false"><i class="fa fa-bank"></i> Bank Details</h2>
+                        <hr>
+
+                        <div class="col-3 collapse show bank-details-collapse">
+                            <div class="form-group">
+                                <label asp-for="cOM_IMP_LCINFORMATION.BANK.BEN_BANK" class="control-label font-weight-bold"></label>
+                                <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.BANK.BEN_BANK)</div>
+                            </div>
+                        </div>
+                        <div class="col-3 collapse show bank-details-collapse">
+                            <div class="form-group">
+                                <label asp-for="cOM_IMP_LCINFORMATION.BANK_.PARTY_BANK" class="control-label font-weight-bold"></label>
+                                <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.BANK_.PARTY_BANK)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-12 p-0">
+                        <h2 class="panel-title text-success" data-toggle="collapse" data-target=".files-collapse" aria-expanded="false"><i class="fa fa-files-o"></i> Files</h2>
+                        <hr>
+
+                        <div class="col-12 collapse show files-collapse">
+                            <label asp-for="cOM_IMP_LCINFORMATION.LCPATH"></label>
+                            @if (!string.IsNullOrEmpty(Model.cOM_IMP_LCINFORMATION.LCPATH))
+                            {
+                                <a asp-action="lc_files" asp-controller="Files" asp-route-fileName="@Model.cOM_IMP_LCINFORMATION.LCPATH" class="d-flex btn-link" target="_blank"><i class="fa fa-file" aria-hidden="true"> @Model.cOM_IMP_LCINFORMATION.LCPATH.Split(new char[] { ' ', '_' }, 2)[1]</i></a>
+                            }
+                            else
+                            {
+                                <br />
+                                @Html.DisplayName("N/A")
+                            }
+                        </div>
+                        <div class="col-12 collapse show files-collapse">
+                            <label asp-for="cOM_IMP_LCINFORMATION.INSPATH"></label>
+                            @if (!string.IsNullOrEmpty(Model.cOM_IMP_LCINFORMATION.INSPATH))
+                            {
+                                <a asp-action="lc_files" asp-controller="Files" asp-route-fileName="@Model.cOM_IMP_LCINFORMATION.INSPATH" class="d-flex btn-link" target="_blank"><i class="fa fa-file" aria-hidden="true"> @Model.cOM_IMP_LCINFORMATION.INSPATH.Split(new char[] { ' ', '_' }, 2)[1]</i></a>
+                            }
+                            else
+                            {
+                                <br />
+                                @Html.DisplayName("N/A")
+                            }
+                        </div>
+                    </div>
+                    <div class="col-12 p-0">
+                        <h2 class="panel-title text-success" data-toggle="collapse" data-target=".others-collapse" aria-expanded="false"><i class="fa fa-code-fork"></i> Others</h2>
+                        <hr>
+
+                        <div class="col-3 collapse show others-collapse">
+                            <div class="form-group">
+                                <label asp-for="cOM_IMP_LCINFORMATION.CAT.CATEGORY" class="control-label font-weight-bold"></label>
+                                <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.CAT.CATEGORY)</div>
+                            </div>
+                        </div>
+                        <div class="col-3 collapse show others-collapse">
+                            <div class="form-group">
+                                <label asp-for="cOM_IMP_LCINFORMATION.INS.INSNAME" class="control-label font-weight-bold"></label>
+                                <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.INS.INSNAME)</div>
+                            </div>
+                        </div>
+                        <div class="col-3 collapse show others-collapse">
+                            <div class="form-group">
+                                <label asp-for="cOM_IMP_LCINFORMATION.COM_IMP_LCTYPE.TYPENAME" class="control-label font-weight-bold"></label>
+                                <div class="form-control-dark">@Html.DisplayFor(model => model.cOM_IMP_LCINFORMATION.COM_IMP_LCTYPE.TYPENAME)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @await Html.PartialAsync($"~/Views/ComImpLcInformation/DetailsComImpLcInformationTable.cshtml", Model)
+
+            <div class="col-md-12">
+                @if (User.IsInRole("Com Imp") || User.IsInRole("Super Admin") || User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", $"EditComImpLcInformation", new { lcId = Model.cOM_IMP_LCINFORMATION.EncryptedId }, new { @class = "btn btn-warning pull-right mt-2" })
+                }
+
+                <a class="btn btn-dark pull-right mt-2" asp-action="GetComImpLcInformation" asp-controller="ComImpLcInformation">Back to List</a>
+            </div>
+        </div>
+    }
+}

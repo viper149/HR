@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Accounts
+@using rptImportRegister = DenimERP.Reports.Accounts.rptImportRegister
+@model int
+
+@{
+    ViewData["Title"] = "Import Register Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptImportRegister())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

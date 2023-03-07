@@ -1,0 +1,24 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExInvoiceMaster.Reports.Foreign
+@using RBillOfExchange1 = DenimERP.Views.ComExInvoiceMaster.Reports.Foreign.RBillOfExchange1
+@model string
+
+@{
+    ViewData["Title"] = "Bill Of Exchange 1";
+}
+
+<h2>@ViewData["Title"] Report</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RBillOfExchange1(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

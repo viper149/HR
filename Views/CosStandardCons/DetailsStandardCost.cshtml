@@ -1,0 +1,166 @@
+﻿@model COS_STANDARD_CONS
+@{
+    ViewData["Title"] = "DetailsStandardCost";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-info-circle fa-lg text-info" aria-hidden="true"></i> Standard Cost</h2>
+
+<hr />
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-body row">
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="MONTHLY_COST" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.MONTHLY_COST)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="PROD" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.PROD)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="OVERHEAD_BDT" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.OVERHEAD_BDT)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="CONV_RATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.CONV_RATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="OVERHEAD_USD" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.OVERHEAD_USD)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="LOOMSPEED" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.LOOMSPEED)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="EFFICIENCY" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.EFFICIENCY)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="GRPPI" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.GRPPI)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="CONTRACTION" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.CONTRACTION)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="STATUS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @if (Model.STATUS != null)
+                        {
+                            <span class="@Model.STATUS?text-success:text-danger"> @Html.DisplayName((bool)Model.STATUS ? "Active" : "Inactive")</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger"> @Html.DisplayName("Inactive")</span>
+                        }
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="REMARKS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.REMARKS)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="USERNAME" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.USERNAME)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="CREATED_AT" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.CREATED_AT)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="UPDATED_AT" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.UPDATED_AT)
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetCosStandardCons" class="btn btn-dark">Back to List</a>
+</div>

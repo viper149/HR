@@ -1,0 +1,56 @@
+﻿@model FGsGatepassReturnRcvViewModel
+
+@if (Model.FGsGatepassReturnRcvDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGsGatepassReturnRcvDetailsList.FirstOrDefault().PROD.PRODNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGsGatepassReturnRcvDetailsList.FirstOrDefault().PROD.UNITNavigation.UNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGsGatepassReturnRcvDetailsList.FirstOrDefault().RCV_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGsGatepassReturnRcvDetailsList.FirstOrDefault().RCV_BAG)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGsGatepassReturnRcvDetailsList.FirstOrDefault().GATE_ENTRYNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGsGatepassReturnRcvDetailsList.FirstOrDefault().REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FGsGatepassReturnRcvDetailsList.Count; i++)
+            {
+            <tr>
+                <td>@(i+1)</td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassReturnRcvDetailsList[i].TRNSID)
+                    @Html.HiddenFor(model => model.FGsGatepassReturnRcvDetailsList[i].RCVID)
+
+                    @Html.HiddenFor(model => model.FGsGatepassReturnRcvDetailsList[i].PRODID)
+                    @Model.FGsGatepassReturnRcvDetailsList[i].PROD?.PRODNAME
+                </td>
+                <td>
+                    @Model.FGsGatepassReturnRcvDetailsList[i].PROD?.UNITNavigation?.UNAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassReturnRcvDetailsList[i].RCV_QTY)
+                    @Model.FGsGatepassReturnRcvDetailsList[i].RCV_QTY
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassReturnRcvDetailsList[i].RCV_BAG)
+                    @Model.FGsGatepassReturnRcvDetailsList[i].RCV_BAG
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassReturnRcvDetailsList[i].GATE_ENTRYNO)
+                    @Model.FGsGatepassReturnRcvDetailsList[i].GATE_ENTRYNO
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassReturnRcvDetailsList[i].REMARKS)
+                    @Model.FGsGatepassReturnRcvDetailsList[i].REMARKS
+                </td>
+                <td>
+                    <i class="fa fa-trash fa-lg text-danger" onclick="RemoveIndent(@i)" aria-hidden="false"></i>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

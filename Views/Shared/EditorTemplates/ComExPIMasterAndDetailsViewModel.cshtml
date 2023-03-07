@@ -1,0 +1,36 @@
+﻿@model ComExPIMasterAndDetailsViewModel
+
+<tr>
+    <td>
+        @Html.DisplayFor(c => c.STYLENAME)
+        @Html.HiddenFor(c => c.STYLENAME, htmlAttributes: new { @class = "patialHidden" })
+        @Html.HiddenFor(c => c.STYLEID, htmlAttributes: new { @class = "patialHidden" })
+    </td>
+    <td>
+        @Html.DisplayFor(c => c.UNIT)
+        @Html.HiddenFor(c => c.UNIT, htmlAttributes: new { @class = "patialHidden" })
+    </td>
+    <td>
+        @Html.DisplayFor(c => c.COSTID)
+        @Html.HiddenFor(c => c.COSTID, htmlAttributes: new { @class = "patialHidden" })
+    </td>
+    <td>
+        @Html.DisplayFor(c => c.QTY)
+        @Html.HiddenFor(c => c.QTY, htmlAttributes: new { @class = "patialHidden" })
+    </td>
+    <td>
+        @Html.DisplayFor(c => c.UNITPRICE)
+        @Html.HiddenFor(c => c.UNITPRICE, htmlAttributes: new { @class = "patialHidden" })
+    </td>
+    <td>
+        @Html.DisplayFor(c => c.TOTAL)
+        @Html.HiddenFor(c => c.TOTAL, htmlAttributes: new { @class = "patialHidden" })
+    </td>
+    <td>
+        @Html.DisplayFor(c => c.REMARKS)
+        @Html.HiddenFor(c => c.REMARKS, htmlAttributes: new { @class = "patialHidden" })
+    </td> 
+    <td>
+        <i class="fa fa-trash fa-2x text-danger RemovePIDetails" aria-hidden="true"></i>
+    </td>
+</tr>

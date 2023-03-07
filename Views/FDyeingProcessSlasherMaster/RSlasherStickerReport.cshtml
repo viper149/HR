@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Sticker
+@using rptDyeingSticker_Slasher = DenimERP.Reports.Sticker.rptDyeingSticker_Slasher
+@model string
+
+@{
+    ViewData["Title"] = "Slasher Sticker Report";
+    Layout = Layout;
+}
+<h2>Slasher Sticker Report</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptDyeingSticker_Slasher(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

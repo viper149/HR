@@ -1,0 +1,22 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Inspection
+@model int
+
+@{
+    ViewData["Title"] = "Commercial Wastage Transfer Clearance Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rpt_INS_StyleWiseAnalysis_Shift())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

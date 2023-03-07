@@ -1,0 +1,7 @@
+﻿
+1. Scaffold-DbContext "Server=52.76.33.139;Database=PDLERP;User Id=sa;Password=FLEX@bd8691#" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -UseDatabaseNames -force
+2. Scaffold-DbContext "Server=52.76.33.139;Database=PDLERP;User Id=sa;Password=FLEX@bd8691#" Microsoft.EntityFrameworkCore.SqlServer -ContextDir Data -OutputDir Models -UseDatabaseNames -force
+3. Scaffold-DbContext "Server=52.76.33.139;Database=PDLERP;User Id=sa;Password=FLEX@bd8691#" Microsoft.EntityFrameworkCore.SqlServer -ContextDir DEMODATA -OutputDir DEMODATA -UseDatabaseNames -force
+
+//For Development
+4. Scaffold-DbContext "Server=52.76.33.139;Database=PDLERP;User Id=sa;Password=FLEX@bd8691#" Microsoft.EntityFrameworkCore.SqlServer -ContextDir DEMODATA -OutputDir DEMODATA -UseDatabaseNames -Tables TABLE1, TABLE2 -force

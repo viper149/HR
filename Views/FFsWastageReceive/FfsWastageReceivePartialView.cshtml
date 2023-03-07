@@ -1,0 +1,47 @@
+﻿
+@model FFsWastageReceiveViewModel
+
+@if (Model.FFsWastageReceiveDList.Any())
+{
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsWastageReceiveD.WPID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsWastageReceiveD.RCV_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsWastageReceiveD.TRNSDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsWastageReceiveD.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FFsWastageReceiveDList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.HiddenFor(model => model.FFsWastageReceiveDList[i].TRNSID)
+                        @Html.HiddenFor(model => model.FFsWastageReceiveDList[i].WRID)
+                        @Html.HiddenFor(model => model.FFsWastageReceiveDList[i].WPID)
+                        @Model.FFsWastageReceiveDList[i].WP?.PRODUCT_NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FFsWastageReceiveDList[i].RCV_QTY)
+                        @Html.DisplayFor(modelItem => Model.FFsWastageReceiveDList[i].RCV_QTY)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FFsWastageReceiveDList[i].TRNSDATE)
+                        @Model.FFsWastageReceiveDList[i].TRNSDATE
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FFsWastageReceiveDList[i].REMARKS)
+                        @Model.FFsWastageReceiveDList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveFFsWastageRcv('@i')" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

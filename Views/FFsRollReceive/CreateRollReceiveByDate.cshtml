@@ -1,0 +1,188 @@
+﻿
+@model FFsRollReceiveViewModel
+
+@{
+    ViewData["Title"] = "Roll Receive By Date";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateRollReceiveByDate">
+        <div class="panel panel-default">
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricRcvMaster.RCVDATE" class="control-label"></label>
+                        <input asp-for="FFsFabricRcvMaster.RCVDATE" class="form-control" />
+                        <span asp-validation-for="FFsFabricRcvMaster.RCVDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricRcvMaster.SEC.SECNAME" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FFsFabricRcvMaster.SECID, new SelectList(Model.FBasSections, "SECID", "SECNAME"), "Select Section", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FFsFabricRcvMaster.SECID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricRcvDetails.LOCATION" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FFsFabricRcvDetails.LOCATION, new SelectList(Model.FFsLocations, "ID", "LOCATION"), "Select Location", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FFsFabricRcvDetails.LOCATION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricRcvMaster.REMARKS" class="control-label"></label>
+                        <input asp-for="FFsFabricRcvMaster.REMARKS" class="form-control" />
+                        <span asp-validation-for="FFsFabricRcvMaster.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricRcvMaster.FFTR_NO" class="control-label"></label>
+                        <input asp-for="FFsFabricRcvMaster.FFTR_NO" class="form-control" />
+                        <span asp-validation-for="FFsFabricRcvMaster.FFTR_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="FFsFabricRcvDetails.ROLL_NO" class="control-label"></label>
+                        <input asp-for="FFsFabricRcvDetails.ROLL_NO" class="form-control" />
+                        <span asp-validation-for="FFsFabricRcvDetails.ROLL_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit" id="btn_submit">Receive Roll</button>
+                    <a asp-action="GetRollReceiveList" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="rollDetails">
+                    @await Html.PartialAsync($"~/Views/FFsRollReceive/RollDetailsList.cshtml", Model)
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script type="text/javascript" asp-append-version="true">
+
+        $(function () {
+
+            
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+
+
+            getRollDetails($("#FFsFabricRcvMaster_RCVDATE").val());
+
+            $("#FFsFabricRcvMaster_RCVDATE").on('change', function () {
+                getRollDetails($(this).val());
+            });
+        });
+
+        $(function() {
+
+
+            $("#FFsFabricRcvDetails_ROLL_NO").on('keyup',
+                function() {
+                    //if ($(this).val().length > 9) {
+                    //    debugger;
+                    //    toastrNotification("Please Scan Correct Roll No.", "error");
+                    //    $("#FFsFabricRcvDetails_ROLL_NO").val("");
+                    //    $("#FFsFabricRcvDetails_ROLL_NO").focus();
+                    //    return false;
+                    //}
+                        setTimeout(() => {
+                                getRollDetailsByScan($(this).val());
+                            },
+                            500);
+
+                    //if ($(this).val().length > 9) {
+                    //    debugger;
+                    //    if (!$("#FFsFabricRcvDetails_LOCATION").val()) {
+                    //        toastrNotification("Please select Location first then Scan", "error");
+                    //        $("#FFsFabricRcvDetails_ROLL_NO").val("");
+                    //        $("#FFsFabricRcvDetails_ROLL_NO").focus();
+                    //        return false;
+                    //    }
+                    //    if (!$("#FFsFabricRcvMaster_RCVDATE").val()) {
+                    //        toastrNotification("Please select Date first then Scan", "error");
+                    //        $("#FFsFabricRcvDetails_ROLL_NO").val("");
+                    //        $("#FFsFabricRcvDetails_ROLL_NO").focus();
+                    //        return false;
+                    //    }
+                    //    getRollDetailsByScan($(this).val());
+
+                    //} else {
+                    //    return false;
+                    //}
+                });
+
+        });
+
+        function getRollDetailsByScan(selectedVal) {
+            console.log(selectedVal);
+            var data = $('#form').serialize();
+            $.ajax({
+                async: true,
+                cache: false,
+                data: data,
+                type: "POST",
+                url: "/FFsRollReceive/RollDetailsListByScan",
+                success: function(partialView, status, xhr) {
+                    var result = xhr.getResponseHeader("Status");
+                    $('#rollDetails').html(partialView);
+                    console.log(result);
+                    if (result === "Success") {
+                        toastrNotification("Roll Added", "success");
+                        $("#FFsFabricRcvDetails_ROLL_NO").val("");
+                        $("#FFsFabricRcvDetails_ROLL_NO").focus();
+                    } else if (result === "Null") {
+                        toastrNotification("Roll & Date Not Matched. Please Select Correct Date", "error");
+                    } else if (result === "Error") {
+                        toastrNotification("You have already added this roll!!!", "warning");
+                        $("#FFsFabricRcvDetails_ROLL_NO").val("");
+                        $("#FFsFabricRcvDetails_ROLL_NO").focus();
+                    } else if (result === "DB") {
+                        toastrNotification("You have already Received this roll!!!", "warning");
+                        $("#FFsFabricRcvDetails_ROLL_NO").val("");
+                        $("#FFsFabricRcvDetails_ROLL_NO").focus();
+                    }
+                    $("#FFsFabricRcvMaster_RCVDATE").prop('readonly', true);
+                },
+                error: function (e) {
+                    $("#FFsFabricRcvMaster_RCVDATE").prop('readonly', true);
+                    console.log(e);
+                }
+            });
+        }
+
+        function getRollDetails(selectedVal) {
+            $.ajax({
+                async: true,
+                cache: false,
+                data: { "rcvDate": selectedVal },
+                type: "GET",
+                url: "/FFsRollReceive/RollDetailsList",
+                success: function(partialView, status, xhr) {
+                    $('#rollDetails').html(partialView);
+                },
+                error: function(e) {
+                    console.log(e);
+                }
+            });
+        }
+    </script>
+}

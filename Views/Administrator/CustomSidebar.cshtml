@@ -1,0 +1,97 @@
+﻿@model MenuMasterViewModel
+
+@{
+    ViewData["Title"] = "Menu Master";
+    Layout = Layout;
+}
+<form asp-action="CustomSidebar">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2 text-info">
+                <i class="fa fa-html5"></i> Create Menu Master Links
+                <hr />
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="was-validated">
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input asp-for="MenuMaster.USE_YN" class="custom-control-input" checked="checked">
+                        <label class="custom-control-label pt-1" asp-for="MenuMaster.USE_YN"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuMaster.MenuID" class="control-label required"></label>
+                    <input asp-for="MenuMaster.MenuID" class="form-control" />
+                    <span asp-validation-for="MenuMaster.MenuID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuMaster.MenuName" class="control-label required"></label>
+                    <input asp-for="MenuMaster.MenuName" class="form-control" />
+                    <span asp-validation-for="MenuMaster.MenuName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuMaster.Parent_MenuID" class="control-label important"></label>
+                    @Html.DropDownListFor(mm => mm.MenuMaster.Parent_MenuID, new SelectList(Model.MenuMasters, "MenuID", "MenuID"), "Select A Parent Menu Id", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="MenuMaster.Parent_MenuID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuMaster.MenuFileName" class="control-label"></label>
+                    <input asp-for="MenuMaster.MenuFileName" class="form-control" />
+                    <span asp-validation-for="MenuMaster.MenuFileName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuMaster.MenuURL" class="control-label"></label>
+                    <input asp-for="MenuMaster.MenuURL" class="form-control" />
+                    <span asp-validation-for="MenuMaster.MenuURL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuMaster.ParentMenuIcon" class="control-label"></label>
+                    <input asp-for="MenuMaster.ParentMenuIcon" class="form-control" />
+                    <span asp-validation-for="MenuMaster.ParentMenuIcon" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MenuMaster.Priority" class="control-label"></label>
+                    <input asp-for="MenuMaster.Priority" class="form-control" />
+                    <span asp-validation-for="MenuMaster.Priority" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2 text-info">
+                <i class="fa fa-hand-o-right"></i> Assign Roles
+                <hr />
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                @for (var i = 0; i < Model.UserRolesViewModels.Count; i++)
+                {
+                    <div class="custom-control custom-checkbox m-1">
+                        <input type="hidden" asp-for="@Model.UserRolesViewModels[i].RoleId" />
+                        <input type="hidden" asp-for="@Model.UserRolesViewModels[i].RoleName" />
+                        <input asp-for="@Model.UserRolesViewModels[i].IsSelected" class="custom-control-input" />
+                        <label class="custom-control-label pt-1" asp-for="@Model.UserRolesViewModels[i].IsSelected">
+                            @Model.UserRolesViewModels[i].RoleName
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+        
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-2">
+            <button type="submit" class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Save Changes</button>
+            <a asp-action="GetMenuMaster" asp-controller="Administrator" class="btn btn-dark pull-right" accesskey="b"><i class="fa fa-list-ul"></i> Back to List</a>
+        </div>
+    </div>
+</form>
+
+@section Styles {
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 200px;
+        }
+    </style>
+}
+
+@section Scripts{
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+}

@@ -1,0 +1,59 @@
+﻿
+@model F_FS_DELIVERYCHALLAN_PACK_MASTER
+
+@{
+    ViewData["Title"] = "Delivery Challan & Packing List";
+}
+
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>
+            <i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> @ViewData["Title"]
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li class="mr-2">
+                <p>
+                    <a asp-action="CreateDeliveryChallan" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                </p>
+            </li>
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content table-responsive">
+        <table class="table table-hover" id="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.D_CHALLANDATE)</th>
+                    <th>@Html.DisplayNameFor(model => model.DOID)</th>
+                    <th>@Html.DisplayNameFor(model => model.PI.PINO)</th>
+                    <th>Style No.</th>
+                    <th>@Html.DisplayNameFor(model => model.SO_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.VEHICLENONavigation.VNUMBER)</th>
+                    <th>@Html.DisplayNameFor(model => model.DELIVERY_TYPENavigation.DEL_TYPE)</th>
+                    <th>@Html.DisplayNameFor(model => model.DC_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.GP_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.LOCKNO)</th>
+                    <th>Audit By</th>
+                    <th>@Html.DisplayNameFor(model => model.REMARKS)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true" src="~/js/FFsPackingList/GetChallanList.js"></script>
+}

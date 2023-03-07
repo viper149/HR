@@ -1,0 +1,44 @@
+﻿@model BasBenBankViewModel
+
+<h2><i class="fa fa-edit fa-lg text-warning" aria-hidden="true"></i> Update Beneficiary Bank</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditBasBenBank">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @Html.HiddenFor(c => c.BasBenBankMaster.BEN_BANK)
+            @Html.HiddenFor(c => c.BasBenBankMaster.EncryptedId)
+
+            <div class="form-group">
+                <label asp-for="BasBenBankMaster.BEN_BANK" class="control-label"></label>
+                <input disabled="disabled" asp-for="BasBenBankMaster.BEN_BANK" class="form-control" />
+                <span asp-validation-for="BasBenBankMaster.BEN_BANK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BasBenBankMaster.ADDRESS" class="control-label"></label>
+                <input asp-for="BasBenBankMaster.ADDRESS" class="form-control" />
+                <span asp-validation-for="BasBenBankMaster.ADDRESS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BasBenBankMaster.BRANCH" class="control-label"></label>
+                <input asp-for="BasBenBankMaster.BRANCH" class="form-control" />
+                <span asp-validation-for="BasBenBankMaster.BRANCH" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BasBenBankMaster.REMARKS" class="control-label"></label>
+                <input asp-for="BasBenBankMaster.REMARKS" class="form-control" />
+                <span asp-validation-for="BasBenBankMaster.REMARKS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="GetBasBenBank" class="btn btn-dark" accesskey="b">Back to List</a>
+                <input type="submit" value="Update" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+}

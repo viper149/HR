@@ -1,0 +1,89 @@
+﻿@model ComExPIMasterViewModel
+
+@{
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    if (Model.cOM_EX_PI_DETAILs.Any())
+    {
+        <table class="table table-striped" id="partialView">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.cOM_EX_PI_DETAILS.STYLEID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.cOM_EX_PI_DETAILS.SO_NO)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.cOM_EX_PI_DETAILS.COSTID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.cOM_EX_PI_DETAILS.UNIT)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.cOM_EX_PI_DETAILS.QTY)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.cOM_EX_PI_DETAILS.UNITPRICE)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.cOM_EX_PI_DETAILS.TOTAL)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.cOM_EX_PI_DETAILS.REMARKS)</th>
+                    <th scope="col">@Html.DisplayName("Actions")</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.cOM_EX_PI_DETAILs.Count; i++)
+                {
+                    <tr>
+                        <td>@Html.Raw(Model.cOM_EX_PI_DETAILs[i].TRNSID > 0 ? $"<i class=\"fa fa-database text-danger\" aria-hidden=\"true\"></i> {i + 1}" : $"<i class=\"fa fa-plus-circle text-success\" aria-hidden=\"true\"></i> {i + 1}")</td>
+                        <td>
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].TRNSID)
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].PIID)
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].STYLEID)
+                            @Html.DisplayFor(e => e.cOM_EX_PI_DETAILs[i].STYLE.FABCODENavigation.STYLE_NAME)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].SO_NO)
+                            @Html.DisplayFor(e => e.cOM_EX_PI_DETAILs[i].SO_NO)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].COSTID)
+                            CS-@Html.DisplayFor(e => e.cOM_EX_PI_DETAILs[i].COSTID)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].UNIT)
+                            @Html.DisplayFor(e => e.cOM_EX_PI_DETAILs[i].F_BAS_UNITS.UNAME)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].QTY)
+                            @Html.DisplayFor(e => e.cOM_EX_PI_DETAILs[i].QTY)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].UNITPRICE)
+                            @Html.DisplayFor(e => e.cOM_EX_PI_DETAILs[i].UNITPRICE)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].TOTAL)
+                            @Html.DisplayFor(e => e.cOM_EX_PI_DETAILs[i].TOTAL)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(e => e.cOM_EX_PI_DETAILs[i].REMARKS)
+                            @Html.DisplayFor(e => e.cOM_EX_PI_DETAILs[i].REMARKS)
+                        </td>
+                        <td>
+                            @{
+                                if (Model.cOM_EX_PI_DETAILs[i].TRNSID > 0)
+                                {
+                                    <i class="fa fa-edit fa-lg text-warning cursor-pointer" onclick="EditPIInfo('@Model.cOM_EX_PI_DETAILs[i].TRNSID');" aria-hidden="true"></i>
+                                }
+                            }
+                            <i class="fa fa-trash fa-lg text-danger text-center" onclick="RemoveExportPIDetails(@i)" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>Total</td>
+                    <td>:</td>
+                    <td colspan="3"></td>
+                    <td>@Model.cOM_EX_PI_DETAILs.Sum(e => e.QTY)</td>
+                    <td></td>
+                    <td colspan="3">@Model.cOM_EX_PI_DETAILs.Sum(e => e.TOTAL)</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+}
+
+<script>
+    document.getElementById("cOM_EX_PIMASTER_NET_WEIGHT").value = '@Model.NET_WEIGHT';
+    document.getElementById("cOM_EX_PIMASTER_GRS_WEIGHT").value = '@Model.GROSS_WEIGHT';
+</script>

@@ -1,0 +1,149 @@
+﻿@model PlProductionGroupViewModel
+
+@if (Model.PlProductionPlanDetailsList.Any())
+{
+
+
+    <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+        <thead id="thead" class="bg-secondary text-light">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlProductionPlanDetailsList.FirstOrDefault().SUBGROUPNO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlProductionPlanDetailsList.FirstOrDefault().RATIO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlProductionPlanDetailsList.FirstOrDefault().REED)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlProductionPlanDetailsList.FirstOrDefault().BEAM_NO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlProductionPlanDetailsList.FirstOrDefault().REMARKS)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < Model.PlProductionPlanDetailsList.Count; i++)
+            {
+
+                <tr data-toggle="collapse" data-target="#demo_@i" class="accordion-toggle collapsed">
+                    <td><span class="expand-button"></span></td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].SUBGROUPID)
+                        @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].SUBGROUPNO)
+                        @Model.PlProductionPlanDetailsList[i].SUBGROUPNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].RATIO)
+                        @Model.PlProductionPlanDetailsList[i].RATIO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].REED)
+                        @Model.PlProductionPlanDetailsList[i].REED
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].BEAM_NO)
+                        @Model.PlProductionPlanDetailsList[i].BEAM_NO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].REMARKS)
+                        @Model.PlProductionPlanDetailsList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveSubGroupFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="hiddenRow">
+                        <div class="accordian-body collapse show" id="demo_@i">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PlProductionPlanDetailsList[i].PlProductionSetDistributionList.FirstOrDefault().PROG_ID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PlProductionPlanDetailsList[i].PlProductionSetDistributionList.FirstOrDefault().REMARKS)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var j = 0; j < Model.PlProductionPlanDetailsList[i].PlProductionSetDistributionList.Count; j++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].PlProductionSetDistributionList[j].SETID)
+                                                @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].PlProductionSetDistributionList[j].PROG_ID)
+                                                @Model.PlProductionPlanDetailsList[i].PlProductionSetDistributionList[j].PROG_.PROG_NO
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.PlProductionPlanDetailsList[i].PlProductionSetDistributionList[j].REMARKS)
+                                                @Model.PlProductionPlanDetailsList[i].PlProductionSetDistributionList[j].REMARKS
+                                            </td>
+                                            <td>
+                                                <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveProgramSetFromSubGroupList(@i, @j)" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveSubGroupFromList(removeIndexValue) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/PlProductionPlanGroupMaster/RemoveSubGroupFromList',
+            success: function (partialView, status, xhr) {
+                $('#ProgramSetDetails').html(partialView);
+                getSubGroupNo();
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    function RemoveProgramSetFromSubGroupList(removeIndexValue, setRemoveIndex) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        data.push({ name: "setRemoveIndex", value: setRemoveIndex });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/PlProductionPlanGroupMaster/RemoveProgramSetFromSubGroupList',
+            success: function (partialView) {
+                $('#ProgramSetDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>

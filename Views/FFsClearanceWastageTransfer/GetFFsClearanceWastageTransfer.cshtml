@@ -1,0 +1,32 @@
+﻿@model F_FS_CLEARANCE_WASTAGE_TRANSFER
+
+@{
+    ViewData["Title"] = "Wastage Transfer";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h6><i class="fa fa-xing fa-lg text-success" aria-hidden="true"></i>@ViewData["Title"] List</h6>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content table-responsive table-hover" id="lcList">
+        <table class="table" id="table">
+            <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.TRANSID)</th>
+                <th>@Html.DisplayNameFor(model => model.TRANSDATE)</th>
+                <th>@Html.DisplayNameFor(model => model.ITEM)</th>
+                <th>@Html.DisplayNameFor(model => model.QTY_YDS)</th>
+                <th>@Html.DisplayNameFor(model => model.QTY_KG)</th>
+                <th>@Html.DisplayNameFor(model => model.CLRBY)</th>
+                <th>@Html.DisplayNameFor(model => model.WTRNO)</th>
+                <th>@Html.DisplayNameFor(model => model.REMARKS)</th>
+                <th>@Html.DisplayName("Action")</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>

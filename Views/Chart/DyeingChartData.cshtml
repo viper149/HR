@@ -1,0 +1,24 @@
+﻿@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dyeing Chart Data";
+}
+
+<div class="row text-primary">
+    <h2>Dyeing Data</h2>
+</div>
+<div class="row bg-light">
+    <div class="form-group col-sm-6 col-md-6 col-lg-6 pt-2">
+        <label for="Ball">Rope Dyeing Data:</label>
+
+        <span class="custom-form-control form-control bg-e9ecef">
+            @Html.DisplayFor(model => model.DyeingChartDataViewModel.RopeDyeing)
+        </span>
+    </div>
+    <div class="form-group col-sm-6 col-md-6 col-lg-6 pt-2">
+        <label for="comment">Slasher Dyeing Data:</label>
+        <span class="custom-form-control form-control bg-e9ecef">
+            @Html.DisplayFor(model => model.DyeingChartDataViewModel.SlasherDyeing)
+        </span>
+    </div>
+</div>

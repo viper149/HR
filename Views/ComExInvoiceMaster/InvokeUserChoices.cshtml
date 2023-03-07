@@ -1,0 +1,26 @@
+﻿
+@model COM_EX_INVOICEMASTER
+
+@{
+    ViewData["Title"] = "Printing Options";
+}
+
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <span><i class="fa fa-print"></i> <ins>Printing Options</ins></span>
+                    <a class="btn btn-primary pull-right" asp-controller="ComExInvoiceMaster" asp-action="CreateComExInvoiceMaster"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                </div>
+                <div class="card-body justify-content-center">
+                    @await Html.PartialAsync($"~/Views/ComExInvoiceMaster/InvokeUserChoiceOptions.cshtml", Model)
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-warning pull-right" asp-controller="ComExInvoiceMaster" asp-action="EditComExInvoiceMaster"> <i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                    <a class="btn btn-primary pull-left" asp-controller="ComExInvoiceMaster" asp-action="GetComExInvoiceMaster"> <i class="fa fa-list-ul" aria-hidden="true"></i> Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

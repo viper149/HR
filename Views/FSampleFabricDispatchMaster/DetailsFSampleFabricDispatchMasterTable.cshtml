@@ -1,0 +1,53 @@
+﻿
+@model CreateFSampleFabricDispatchMasterViewModel
+
+
+@if (Model.FSampleFabricDispatchDetailses.Any())
+{
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.FSampleFabricRcvD.SITEM.NAME)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.TEAM.PERSON_NAME)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.BRAND.BRANDNAME)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.REQ_QTY)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.DEL_QTY)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.UNIT.UNAME)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.REMARKS)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.BUYER_REF)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.STYPE.STYPE)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.ATT_PERSON)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricDispatchDetails.BUYER.BUYER_NAME)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FSampleFabricDispatchDetailses.Count; i++)
+            {
+                <tr>
+                    <td>@Html.Raw(Model.FSampleFabricDispatchDetailses[i].TRNSID > 0 ? $"<i class=\"fa fa-database text-danger\" aria-hidden=\"true\"></i> {i + 1}" : $"<i class=\"fa fa-plus-circle text-success\" aria-hidden=\"true\"></i> {i + 1}")</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].FSampleFabricRcvD?.SITEM?.NAME</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].TEAM?.PERSON_NAME</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].BRAND?.BRANDNAME</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].REQ_QTY</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].DEL_QTY</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].UNIT?.UNAME</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].REMARKS</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].BUYER_REF</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].STYPE?.STYPE</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].ATT_PERSON</td>
+                    <td>@Model.FSampleFabricDispatchDetailses[i].BUYER?.BUYER_NAME</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Empty!</strong> Please add data to see the list.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}

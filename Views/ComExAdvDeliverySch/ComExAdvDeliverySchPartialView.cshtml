@@ -1,0 +1,55 @@
+﻿@model ComExAdvDeliverySchViewModel
+
+@if (Model.ComExAdvDeliverySchDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExAdvDeliverySchDetails.PIID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExAdvDeliverySchDetails.STYLE_ID)</th>
+                <th scope="col">@Html.DisplayName("Unit")</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExAdvDeliverySchDetails.PREV_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExAdvDeliverySchDetails.QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExAdvDeliverySchDetails.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.ComExAdvDeliverySchDetailsList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComExAdvDeliverySchDetailsList[i].TRNSID)
+                        @Html.HiddenFor(model => model.ComExAdvDeliverySchDetailsList[i].DSID)
+                        @Html.HiddenFor(model => model.ComExAdvDeliverySchDetailsList[i].PIID)
+                        @Model.ComExAdvDeliverySchDetailsList[i].PI?.PINO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComExAdvDeliverySchDetailsList[i].STYLE_ID)
+                        @Model.ComExAdvDeliverySchDetailsList[i].STYLE?.STYLE?.STYLENAME
+                    </td>
+                    <td>
+                        @Model.ComExAdvDeliverySchDetailsList[i].STYLE?.F_BAS_UNITS?.UNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComExAdvDeliverySchDetailsList[i].PREV_QTY)
+                        @Model.ComExAdvDeliverySchDetailsList[i].PREV_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComExAdvDeliverySchDetailsList[i].QTY)
+                        @Model.ComExAdvDeliverySchDetailsList[i].QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.ComExAdvDeliverySchDetailsList[i].REMARKS)
+                        @Model.ComExAdvDeliverySchDetailsList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveDS(@i)" aria-hidden="false"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,36 @@
+﻿
+
+@model FChemIssueViewModel
+
+@if (Model.FChemIssueDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemIssueDetails.PRODUCT.PRODUCTNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemIssueDetails.CRCVIDDNavigation.BATCHNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemIssueDetails.CISSDDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemIssueDetails.ADJ_PRO_AGNST)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemIssueDetails.ISSUE_QTY)</th>
+                <th scope="col">@Html.DisplayName("Balance After Issue")</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemIssueDetails.REMARKS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FChemIssueDetailsList.Count(); i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>@Model.FChemIssueDetailsList[i].PRODUCT?.PRODUCTNAME</td>
+                    <td>@Model.FChemIssueDetailsList[i].CRCVIDDNavigation?.BATCHNO</td>
+                    <td>@Html.DisplayFor(modelItem => Model.FChemIssueDetailsList[i].CISSDDATE)</td>
+                    <td>@Model.FChemIssueDetailsList[i].PRODUCTACCLIMATIZE?.PRODUCTNAME</td>
+                    <td>@Model.FChemIssueDetailsList[i].ISSUE_QTY</td>
+                    <td>@Model.FChemIssueDetailsList[i].REMAINING_AMOUNT</td>
+                    <td>@Model.FChemIssueDetailsList[i].REMARKS</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

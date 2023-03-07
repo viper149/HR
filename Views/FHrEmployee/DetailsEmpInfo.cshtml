@@ -1,0 +1,535 @@
+﻿
+@*@model FHrEmployeeViewModel
+
+@{
+    ViewData["Title"] = "Details Employee Information";
+    Layout = Layout;
+}
+
+@{
+    if (Model != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="text-white btn btn-info">@Html.DisplayNameFor(e => e.FHrdEmployee.EMPNO) : [ @Html.DisplayFor(e => e.FHrdEmployee.EMPNO) ]</h2>
+                        <hr />
+                    </div>
+                </div>
+                <div class="row details">
+
+                    <div class="col-6 row">
+                        <div class="col-12">
+                            <h2 class="panel-title text-info"><i class="fa fa-envira"></i> Basic Information</h2>
+                            <hr />
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.PROX_CARDNO" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.PROX_CARDNO)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.FIRST_NAME" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.FIRST_NAME)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.LAST_NAME" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.LAST_NAME)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.SUR_NAME" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.SUR_NAME)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.F_NAME" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.F_NAME)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.M_NAME" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.M_NAME)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.NID_BIDNO" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.NID_BIDNO)
+                                    @{
+                                        if (!string.IsNullOrEmpty(Model.FHrdEmployee.NID_UP))
+                                        {
+                                            <a asp-action="Nid" asp-controller="Files" asp-route-fileName="@Model.FHrdEmployee.NID_UP" class="fa fa-file text-primary" data-html="true" data-toggle="tooltip" style="text-decoration: underline;" target="_blank" title="has nid/br file"></a>
+                                        }
+                                    }
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.PASSPORT" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.PASSPORT)
+                                    @{
+                                        if (!string.IsNullOrEmpty(Model.FHrdEmployee.PASS_UP))
+                                        {
+                                            <a asp-action="Passport" asp-controller="Files" asp-route-fileName="@Model.FHrdEmployee.PASS_UP" class="fa fa-file text-primary" data-html="true" data-toggle="tooltip" style="text-decoration: underline;" target="_blank" title="has passport file"></a>
+                                        }
+                                    }
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.D_LICENSE" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.D_LICENSE)
+                                    @{
+                                        if (!string.IsNullOrEmpty(Model.FHrdEmployee.D_LICENSE_UP))
+                                        {
+                                            <a asp-action="DrivingLicense" asp-controller="Files" asp-route-fileName="@Model.FHrdEmployee.D_LICENSE_UP" class="fa fa-file text-primary" data-html="true" data-toggle="tooltip" style="text-decoration: underline;" target="_blank" title="has driving license file"></a>
+                                        }
+                                    }
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.DOB" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.DOB)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.BG.BLOOD_GROUP" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.BG.BLOOD_GROUP)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.GENDER" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.GENDER)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.NATIONALITY" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.NATIONALITY)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.M_STATUS" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.M_STATUS)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.RELIGION" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.RELIGION)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.FULL_NAME_BNG" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.FULL_NAME_BNG)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.F_NAME_BNG" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.F_NAME_BNG)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.M_NAME_BNG" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.M_NAME_BNG)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 row">
+                        <div class="col-12">
+                            <h2 class="panel-title text-info"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</h2>
+                            <hr />
+                        </div>
+                        <div class="col-6 row border-left">
+                            <div class="col-12 text-info">
+                                <h6><i class="fa fa-location-arrow" aria-hidden="true"></i> Present</h6>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="FHrdEmployee.PRE_VILLAGE" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @($"{Model.FHrdEmployee.PRE_VILLAGE} - {Model.FHrdEmployee.PRE_VILLAGE_BNG}")
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="FHrdEmployee.PRE_DISTRICT" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @($"{Model.FHrdEmployee.PRE_DISTRICTNavigation?.NAME} - {Model.FHrdEmployee.PRE_DISTRICT_BNGNavigation?.BN_NAME}")
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="FHrdEmployee.PRE_THANA" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @($"{Model.FHrdEmployee.PRE_THANANavigation?.NAME} - {Model.FHrdEmployee.PRE_THANA_BNGNavigation?.BN_NAME}")
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="FHrdEmployee.PRE_PO" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @($"{Model.FHrdEmployee.PRE_PO} - {Model.FHrdEmployee.PRE_PO_BNG}")
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 row border-left">
+                            <div class="col-12 text-info">
+                                <h6><i class="fa fa-location-arrow" aria-hidden="true"></i> Permanent</h6>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="FHrdEmployee.PER_VILLAGE" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @($"{Model.FHrdEmployee.PER_VILLAGE} - {Model.FHrdEmployee.PER_VILLAGE_BNG}")
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="FHrdEmployee.PER_DISTRICT" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @($"{Model.FHrdEmployee.PER_DISTRICTNavigation?.NAME} - {Model.FHrdEmployee.PER_DISTRICT_BNGNavigation?.BN_NAME}")
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="FHrdEmployee.PER_THANA" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @($"{Model.FHrdEmployee.PER_THANANavigation?.NAME} - {Model.FHrdEmployee.PER_THANANavigation?.BN_NAME}")
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="FHrdEmployee.PER_PO" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @($"{Model.FHrdEmployee.PER_PO} - {Model.FHrdEmployee.PER_PO_BNG}")
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 row">
+                        <div class="col-12">
+                            <h2 class="panel-title text-info"><i class="fa fa-phone-square" aria-hidden="true"></i> Contact Information</h2>
+                            <hr />
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.PMT_CONTACT_NO" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.PMT_CONTACT_NO)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <strong>
+                                    <label asp-for="FHrdEmployee.EMERGENCY_CONTACT" class="control-label"></label>
+                                </strong>
+                                <span class="custom-form-control form-control bg-e9ecef">
+                                    @Html.DisplayFor(model => model.FHrdEmployee.EMERGENCY_CONTACT)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 row d-flex">
+
+                        @if (Model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.Any())
+                        {
+                            <div class="col-6 table-responsive">
+                                <h2 class="panel-title text-success"><i class="fa fa-building"></i> Official Information</h2>
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().DEPT.DEPTNAME)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().SEC.SECNAME)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().SSEC.SSECNAME)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().DES.DESNAME)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().JOINING_DATE)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().EMP_TYPE)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().OFF_CELLNO)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().MFS_TYPE)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().MFS_DETAILS)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().CREDIT_LIMIT)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().INTERNET_PACK)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().IMEI01)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().IMEI02)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().REMARKS)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_OFFICIALINFO.FirstOrDefault().MOBILE_SET_AVAIL)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @{
+                                            foreach (var item in Model.FHrdEmployee.F_HR_EMP_OFFICIALINFO)
+                                            {
+                                                <tr>
+                                                    <td>@item.DEPT?.DEPTNAME</td>
+                                                    <td>@item.SEC?.SECNAME</td>
+                                                    <td>@item.SSEC?.SSECNAME</td>
+                                                    <td>@item.DES?.DESNAME</td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.JOINING_DATE)
+                                                    </td>
+                                                    <td>@item.EMP_TYPE</td>
+                                                    <td>@item.OFF_CELLNO</td>
+                                                    <td>@item.MFS_TYPE</td>
+                                                    <td>@item.MFS_DETAILS</td>
+                                                    <td>@item.CREDIT_LIMIT</td>
+                                                    <td>@item.INTERNET_PACK</td>
+                                                    <td>@item.IMEI01</td>
+                                                    <td>@item.IMEI02</td>
+                                                    <td>@item.REMARKS</td>
+                                                    <td>@item.MOBILE_SET_AVAIL</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+
+                        @if (Model.FHrdEmployee.F_HR_EMP_SALARYSETUP.Any())
+                        {
+                            <div class="col-6 table-responsive">
+                                <h2 class="panel-title text-success"><i class="fa fa-money"></i> Salary Setup</h2>
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().JOINING_SALARY)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().PRESENT_SALARY)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().BASIC)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().MEDICAL)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().OTHERS)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().BONUS)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().AIT)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().OTHER_ALW)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().ALW_NOTES)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().OTHER_DED)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().DED_NOTES)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().REMARKS)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().LAST_INCREMENT_AMOUNT)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_SALARYSETUP.FirstOrDefault().LAST_INCREMENT_DATE)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in Model.FHrdEmployee.F_HR_EMP_SALARYSETUP)
+                                            {
+                                                <tr>
+                                                    <td>@($"{item.JOINING_SALARY ?? 0:N}")</td>
+                                                    <td>@($"{item.PRESENT_SALARY ?? 0:N}")</td>
+                                                    <td>@($"{item.BASIC ?? 0:N}")</td>
+                                                    <td>@($"{item.MEDICAL ?? 0:N}")</td>
+                                                    <td>@($"{item.OTHERS ?? 0:N}")</td>
+                                                    <td>@($"{item.BONUS ?? 0:N}")</td>
+                                                    <td>@($"{item.AIT ?? 0:N}")</td>
+                                                    <td>@($"{item.OTHER_ALW??0:N}")</td>
+                                                    <td>@item.ALW_NOTES</td>
+                                                    <td>@($"{item.OTHER_DED ?? 0:N}")</td>
+                                                    <td>@item.DED_NOTES</td>
+                                                    <td>@item.REMARKS</td>
+                                                    <td>@($"{item.LAST_INCREMENT_AMOUNT ?? 0:N}")</td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.LAST_INCREMENT_DATE)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+
+                        @if (Model.FHrdEmployee.F_HR_EMP_EDUCATION.Any())
+                        {
+                            <div class="col-6 table-responsive">
+                                <h2 class="panel-title text-success"><i class="fa fa-book"></i> Educational Summary</h2>
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_EDUCATION.FirstOrDefault().EXAM)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_EDUCATION.FirstOrDefault().INSTITUTE)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_EDUCATION.FirstOrDefault().PASSING_YEAR)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_EDUCATION.FirstOrDefault().RESULT_CGPA)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_EDUCATION.FirstOrDefault().REMARKS)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in Model.FHrdEmployee.F_HR_EMP_EDUCATION)
+                                            {
+                                                <tr>
+                                                    <td>@item.EXAM</td>
+                                                    <td>@item.INSTITUTE</td>
+                                                    <td>@item.PASSING_YEAR</td>
+                                                    <td>@item.RESULT_CGPA</td>
+                                                    <td>@item.REMARKS</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+
+                        @if (Model.FHrdEmployee.F_HR_EMP_FAMILYDETAILS.Any())
+                        {
+                            <div class="col-6 table-responsive">
+                                <h2 class="panel-title text-success"><i class="fa fa-users"></i> Family Details</h2>
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_FAMILYDETAILS.FirstOrDefault().NAME)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_FAMILYDETAILS.FirstOrDefault().RELATION)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_FAMILYDETAILS.FirstOrDefault().DOB)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_FAMILYDETAILS.FirstOrDefault().PROFESSION)</th>
+                                            <th>@Html.DisplayNameFor(model => model.FHrdEmployee.F_HR_EMP_FAMILYDETAILS.FirstOrDefault().REMARKS)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in Model.FHrdEmployee.F_HR_EMP_FAMILYDETAILS)
+                                            {
+                                                <tr>
+                                                    <td>@item.NAME</td>
+                                                    <td>@item.RELATION</td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DOB)
+                                                    </td>
+                                                    <td>@item.PROFESSION</td>
+                                                    <td>@item.REMARKS</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    @Html.ActionLink("Edit", $"EditEmployee", new { employeeId = Model.FHrdEmployee.EncryptedId }, new { @class = "btn btn-warning pull-right mt-2" })
+                    <a class="btn btn-dark pull-right mt-2" asp-action="GetEmployee" asp-controller="FHrEmployee">Back to List</a>
+                </div>
+            </div>
+        </div>
+    }
+}*@

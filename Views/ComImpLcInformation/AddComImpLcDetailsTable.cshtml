@@ -1,0 +1,109 @@
+﻿
+@model ComImpLcInformationForCreateViewModel
+
+@if (Model.cOM_IMP_LCDETAILs.Any())
+{
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.TRNSDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.HSCODE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.BAS_PRODUCTINFO.PRODNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.PINO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.PIDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.F_BAS_UNITS.UNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.RATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.TOTAL)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.cOM_IMP_LCDETAILS.PIPATH)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.cOM_IMP_LCDETAILs.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.Raw(Model.cOM_IMP_LCDETAILs[i].TRNSID > 0 ? $"<i class=\"fa fa-database text-danger\" aria-hidden=\"true\"></i> {i + 1}" : $"<i class=\"fa fa-plus-circle text-success\" aria-hidden=\"true\"></i> {i + 1}")
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].TRNSID)
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].TRNSDATE)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].TRNSDATE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].HSCODE)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].HSCODE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].PRODID)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].BAS_PRODUCTINFO.PRODNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].PINO)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].PINO)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].PIDATE)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].PIDATE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].UNIT)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].F_BAS_UNITS.UNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].QTY)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].QTY)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].RATE)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].RATE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].TOTAL)
+                        @Html.DisplayFor(lcd => lcd.cOM_IMP_LCDETAILs[i].TOTAL)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lcd => lcd.cOM_IMP_LCDETAILs[i].PIPATH)
+                        @if (Model.cOM_IMP_LCDETAILs[i].PIPATH != null)
+                        {
+                            <a asp-action="lc_files" asp-controller="Files" asp-route-fileName="@Model.cOM_IMP_LCDETAILs[i].PIPATH" target="_blank">@Model.cOM_IMP_LCDETAILs[i].PIPATH.Split(new char[] { ' ', '_' }, 2)[1]</a>
+                        }
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveImportLCDetails(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>Sum of total</td>
+                <td>:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@($"{Model.cOM_IMP_LCDETAILs.Sum(e => e.QTY)}")</td>
+                <td></td>
+                <td id="sumOfTotal" colspan="3">@($"{Model.cOM_IMP_LCDETAILs.Sum(e => e.TOTAL)}")</td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+<script asp-append-version="true" src="~/FLEX/vendors/jquery/dist/jquery.min.js"></script>
+
+<script asp-append-version="true" type="text/javascript">
+    $(function() {
+        var lienVal = $("#cOM_IMP_LCINFORMATION_LIENVAL");
+        var lienValueBalance = $("#cOM_IMP_LCINFORMATION_BALANCE");
+        var sumOfTotal = $("#sumOfTotal");
+
+        if (lienVal) {
+            lienValueBalance.val((lienVal.val() - '@Model.cOM_IMP_LCDETAILs.Sum(e => e.TOTAL)').toFixed(4));
+        } else {
+            lienValueBalance.val(sumOfTotal.text());
+        }
+    });
+</script>

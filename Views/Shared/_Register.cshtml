@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FLEX Denim</title>
+
+    <environment include="Development">
+        <!-- Bootstrap -->
+        <link href="~/FLEX/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="~/FLEX/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="~/lib/nprogress/nprogress.css" rel="stylesheet">
+        <!-- Animate -->
+        <link href="~/FLEX/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+        <!-- Custom Theme Style -->
+        <link href="~/FLEX/build/css/custom.min.css" rel="stylesheet" asp-append-version="true">
+    </environment>
+    <environment include="Production">
+        <!-- Bootstrap -->
+        <link href="~/FLEX/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="~/FLEX/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="~/lib/nprogress/nprogress.css" rel="stylesheet">
+        <!-- Animate -->
+        <link href="~/FLEX/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+        <!-- Custom Theme Style -->
+        <link href="~/FLEX/build/css/custom.min.css" rel="stylesheet" asp-append-version="true">
+    </environment>
+
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+
+<body class="login">
+    <div>
+        <div class="login_wrapper">
+            <a class="hiddenanchor" id="signup"></a>
+            <a class="hiddenanchor" id="signin"></a>
+
+            @RenderBody()
+        </div>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.FPrInspectionProcess.Reports
+@using rptRollInformation = DenimERP.Views.FPrInspectionProcess.Reports.rptRollInformation
+@model string
+
+@{
+    ViewData["Title"] = "Roll's Sticker Information";
+    Layout = Layout;
+}
+<h2>Roll Sticker</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptRollInformation(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

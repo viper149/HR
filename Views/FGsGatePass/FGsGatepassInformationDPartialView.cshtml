@@ -1,0 +1,56 @@
+﻿@model FGsGatePassViewModel
+
+@if (Model.FGsGatepassInformationDList.Any())
+{
+    <table class="table mt-2" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th>@Html.DisplayName("#")</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.PRODID)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.ISSUE_QTY)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.UNIT_NM)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.ISSUE_BAG)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.ETR)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.REMARKS)</th>
+                <th>@Html.DisplayName("REMOVE")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FGsGatepassInformationDList.Count; i++)
+            {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassInformationDList[i].TRNSID)
+                    @Html.HiddenFor(model => model.FGsGatepassInformationDList[i].GPID)
+
+                    @Html.HiddenFor(model => model.FGsGatepassInformationDList[i].PRODID)
+                    @Model.FGsGatepassInformationDList[i].PROD?.PRODNAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassInformationDList[i].ISSUE_QTY)
+                    @Model.FGsGatepassInformationDList[i].ISSUE_QTY
+                </td>
+                <td>
+                    @Model.FGsGatepassInformationDList[i].PROD?.UNITNavigation?.UNAME
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassInformationDList[i].ISSUE_BAG)
+                    @Model.FGsGatepassInformationDList[i].ISSUE_BAG
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassInformationDList[i].ETR)
+                    @Model.FGsGatepassInformationDList[i].ETR
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.FGsGatepassInformationDList[i].REMARKS)
+                    @Model.FGsGatepassInformationDList[i].REMARKS
+                </td>
+                <td>
+                    <i class="fa fa-trash fa-lg text-danger" onclick="RemoveIndent(@i)" aria-hidden="false"></i>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,196 @@
+﻿
+@model FChemStoreReceiveViewModel
+
+@if (Model.FChemStoreReceiveDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.TRNSDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.PRODUCTID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.CINDID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.BATCHNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.MNGDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.EXDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.FRESH_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.REJ_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FChemStoreReceiveDetails.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Edit")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FChemStoreReceiveDetailsList.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].CHEMRCVID)
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].TRNSID)
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].ADJUSTED_WITH)
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].UNIT)
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].CINDDATE)
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].INVQTY)
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].RATE)
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].CURRENCY)
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].AMOUNT)
+
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].TRNSDATE)
+                        @Model.FChemStoreReceiveDetailsList[i].TRNSDATE
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].PRODUCTID)
+                        @Model.FChemStoreReceiveDetailsList[i].PRODUCTID
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].CINDID)
+                        @Model.FChemStoreReceiveDetailsList[i].CINDID
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].BATCHNO)
+                        @Model.FChemStoreReceiveDetailsList[i].BATCHNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].MNGDATE)
+                        @Model.FChemStoreReceiveDetailsList[i].MNGDATE
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].EXDATE)
+                        @Model.FChemStoreReceiveDetailsList[i].EXDATE
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].FRESH_QTY)
+                        @Model.FChemStoreReceiveDetailsList[i].FRESH_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].REJ_QTY)
+                        @Model.FChemStoreReceiveDetailsList[i].REJ_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FChemStoreReceiveDetailsList[i].REMARKS)
+                        @Model.FChemStoreReceiveDetailsList[i].REMARKS
+                    </td>
+                    <td>
+                        @if (@Model.FChemStoreReceiveDetailsList[i].QC_APPROVE.Equals("Approved"))
+                        {
+                            <span class="text-success">@Model.FChemStoreReceiveDetailsList[i].QC_APPROVE</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">@Model.FChemStoreReceiveDetailsList[i].QC_APPROVE</span>
+                        }
+                    </td>
+                    <td>
+                        @if (@Model.FChemStoreReceiveDetailsList[i].MRR_CREATE.Equals("MRR Created"))
+                        {
+                            <span class="text-success">@Model.FChemStoreReceiveDetailsList[i].MRR_CREATE</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">@Model.FChemStoreReceiveDetailsList[i].MRR_CREATE</span>
+                        }
+                    </td>
+                    <td>
+                        @if (!@Model.FChemStoreReceiveDetailsList[i].QC_APPROVE.Equals("Approved"))
+                        {
+                            <button id="approveQc" class="btn btn-success pull-right btn-sm" onclick="ApproveYarnDetails(@i, @Model.FChemStoreReceiveDetailsList[i].TRNSID)" type="button">Approve</button>
+                        }
+                        @if (@Model.FChemStoreReceiveDetailsList[i].QC_APPROVE.Equals("Approved") && @Model.FChemStoreReceiveDetailsList[i].MRR_CREATE.Equals("MRR Created"))
+                        { }
+                        else if (@Model.FChemStoreReceiveDetailsList[i].QC_APPROVE.Equals("Approved") && @Model.FChemStoreReceiveDetailsList[i].MRR_CREATE.Equals("Not Created"))
+                        {
+                            <button type="button" class="btn btn-success pull-right btn-sm" data-toggle="modal" data-target="#mrrModel" data-pass="@Model.FChemStoreReceiveDetailsList[i].TRNSID">MRR Create</button>
+
+                            <div class="modal fade" id="mrrModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="exampleModalLabel"></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label asp-for="FCsChemReceiveReport.CRDID" class="control-label"></label>
+                                                <input asp-for="FCsChemReceiveReport.CRDID" class="form-control" readonly="" value='@Model.FChemStoreReceiveDetailsList[i].TRNSID' />
+                                                <span asp-validation-for="FCsChemReceiveReport.CRDID" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="FCsChemReceiveReport.MRR_QTY" class="control-label"></label>
+                                                <input asp-for="FCsChemReceiveReport.MRR_QTY" class="form-control" />
+                                                <span asp-validation-for="FCsChemReceiveReport.MRR_QTY" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="FCsChemReceiveReport.REMARKS" class="control-label"></label>
+                                                <input asp-for="FCsChemReceiveReport.REMARKS" class="form-control" />
+                                                <span asp-validation-for="FCsChemReceiveReport.REMARKS" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button id="createButton" type="button" class="btn btn-primary">Create MRR</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <i class="fa fa-edit fa-2x-custom text-warning mr-2" onclick="DetailsPreviousRcvDetails(@i,@Model.FChemStoreReceiveDetailsList[i].TRNSID)" aria-hidden="true"></i>
+                        <i class="fa fa-trash fa-2x-custom text-danger mr-2" onclick="RemovePreviousRcvDetails(@Model.FChemStoreReceiveDetailsList[i].TRNSID, @Model.FChemStoreReceiveDetailsList[i].TRNSID)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<script type="text/javascript" asp-append-version="true">
+
+    function ApproveYarnDetails(i, trnsid) {
+
+        var formData =
+        {
+            "id": trnsid
+        }
+
+        $.ajax({
+            async: true,
+            cache: false,
+            data: formData,
+            type: "POST",
+            url: '/FChemStoreReceive/QcApprove',
+            success: function (data) {
+                console.log(data);
+                if (data === false) {
+
+                } else {
+                    alert("Chemical QC has been approved, Successfully.");
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    $(function () {
+
+        var buttonCreate = $("#createButton");
+
+        buttonCreate.on("click", function () {
+            var data = $('#form').serializeArray();
+            $.ajax({
+                async: true,
+                cache: false,
+                data: data,
+                type: "POST",
+                url: '/FChemStoreReceive/CreateMrr',
+                success: function (data) {
+                    console.log(data);
+                    $('#mrrModel').modal('hide');
+                    alert("Chemical MRR has been created successfully.");
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        });
+    });
+</script>

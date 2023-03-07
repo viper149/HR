@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="rpyDeliveryChallan" Margins="22, 21, 91, 149" PageWidth="850" PageHeight="1100" Version="19.2" FilterString="[DC_NO] = ?DC_NO" DataMember="FABRIC_DELIVERY_CHALLAN" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="4" Description="Select Challan No." ValueSourceSettings="#Ref-2" Name="DC_NO" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="5" ControlType="TopMarginBand" Name="TopMargin" HeightF="90.9052658" />
+    <Item2 Ref="6" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="148.881271" />
+    <Item3 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="144.159058">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRTable" Name="table1" TextAlignment="MiddleLeft" SizeF="804.9999,115.720879" LocationFloat="0, 0" Font="Cambria, 12pt" Padding="4,2,0,0,100">
+          <Rows>
+            <Item1 Ref="9" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="10" ControlType="XRTableCell" Name="tableCell1" Weight="0.312682381425304" RowSpan="6" Multiline="true" Text="tableCell1" TextAlignment="TopLeft" Font="Cambria, 12pt, style=Bold" Padding="4,2,0,0,100">
+                  <Summary Ref="11" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="12" EventName="BeforePrint" PropertyName="Text" Expression="sumRecordNumber([STYLE_NAME])" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="13" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="14" ControlType="XRTableCell" Name="tableCell2" Weight="1.2577109720217068" Multiline="true" Text="Fabric Code" TextAlignment="MiddleRight" Font="Cambria, 12pt, style=Bold">
+                  <StylePriority Ref="15" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="16" ControlType="XRTableCell" Name="tableCell32" Weight="0.11870498710135619" Multiline="true" Text=":" Font="Cambria, 8pt, style=Bold">
+                  <StylePriority Ref="17" UseFont="false" />
+                </Item3>
+                <Item4 Ref="18" ControlType="XRTableCell" Name="tableCell31" Weight="3.3705039063709088" Multiline="true" Text="tableCell31" Font="Cambria, 12pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="19" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[STYLE_NAME]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="20" UseFont="false" />
+                </Item4>
+                <Item5 Ref="21" ControlType="XRTableCell" Name="tableCell3" Weight="1.0514389057347175" RowSpan="6" Multiline="true" Text="tableCell3" TextAlignment="TopCenter" Padding="4,2,0,0,100">
+                  <ExpressionBindings>
+                    <Item1 Ref="22" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[NO_OF_ROW]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="23" UsePadding="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="24" ControlType="XRTableCell" Name="tableCell4" Weight="1.0348925794315484" RowSpan="6" Multiline="true" Text="tableCell4" TextAlignment="TopCenter" Padding="4,2,0,0,100">
+                  <ExpressionBindings>
+                    <Item1 Ref="25" EventName="BeforePrint" PropertyName="Text" Expression="[TOTAL_QTY]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="26" UsePadding="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="27" ControlType="XRTableCell" Name="tableCell5" Weight="1.2201424073816964" RowSpan="6" Multiline="true" TextAlignment="TopCenter" Padding="4,2,0,0,100">
+                  <StylePriority Ref="28" UsePadding="false" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item1>
+            <Item2 Ref="29" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="30" ControlType="XRTableCell" Name="tableCell6" Weight="0.312682381425304" Multiline="true" Text="tableCell6" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="31" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="32" ControlType="XRTableCell" Name="tableCell7" Weight="1.2577109720217068" Multiline="true" Text="Buyer Style" TextAlignment="MiddleRight" Font="Cambria, 12pt, style=Bold">
+                  <StylePriority Ref="33" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="34" ControlType="XRTableCell" Name="tableCell34" Weight="0.11870498710135619" Multiline="true" Text=":" Font="Cambria, 8pt, style=Bold">
+                  <StylePriority Ref="35" UseFont="false" />
+                </Item3>
+                <Item4 Ref="36" ControlType="XRTableCell" Name="tableCell33" Weight="3.3705039063709088" Multiline="true" Text="tableCell33">
+                  <ExpressionBindings>
+                    <Item1 Ref="37" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[BUYER_STYLE]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="38" ControlType="XRTableCell" Name="tableCell8" Weight="1.0514389057347175" Multiline="true" Text="tableCell8" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="39" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="40" ControlType="XRTableCell" Name="tableCell9" Weight="1.0348925794315484" Multiline="true" Text="tableCell9" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="41" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="42" ControlType="XRTableCell" Name="tableCell10" Weight="1.2201424073816964" Multiline="true" Text="tableCell10" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="43" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item2>
+            <Item3 Ref="44" ControlType="XRTableRow" Name="tableRow3" Weight="1">
+              <Cells>
+                <Item1 Ref="45" ControlType="XRTableCell" Name="tableCell11" Weight="0.312682381425304" Multiline="true" Text="tableCell11" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="46" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="47" ControlType="XRTableCell" Name="tableCell12" Weight="1.2577109720217068" Multiline="true" Text="Buyer Brand" TextAlignment="MiddleRight" Font="Cambria, 12pt, style=Bold">
+                  <StylePriority Ref="48" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="49" ControlType="XRTableCell" Name="tableCell36" Weight="0.11870498710135619" Multiline="true" Text=":" Font="Cambria, 8pt, style=Bold">
+                  <StylePriority Ref="50" UseFont="false" />
+                </Item3>
+                <Item4 Ref="51" ControlType="XRTableCell" Name="tableCell35" Weight="3.3705039063709088" Multiline="true" Text="tableCell35">
+                  <ExpressionBindings>
+                    <Item1 Ref="52" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[BRANDNAME]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="53" ControlType="XRTableCell" Name="tableCell13" Weight="1.0514389057347175" Multiline="true" Text="tableCell13" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="54" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="55" ControlType="XRTableCell" Name="tableCell14" Weight="1.0348925794315484" Multiline="true" Text="tableCell14" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="56" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="57" ControlType="XRTableCell" Name="tableCell15" Weight="1.2201424073816964" Multiline="true" Text="tableCell15" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="58" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item3>
+            <Item4 Ref="59" ControlType="XRTableRow" Name="tableRow4" Weight="1">
+              <Cells>
+                <Item1 Ref="60" ControlType="XRTableCell" Name="tableCell16" Weight="0.312682381425304" Multiline="true" Text="tableCell16" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="61" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="62" ControlType="XRTableCell" Name="tableCell17" Weight="1.2577109720217068" Multiline="true" Text="PI No" TextAlignment="MiddleRight" Font="Cambria, 12pt, style=Bold">
+                  <StylePriority Ref="63" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="64" ControlType="XRTableCell" Name="tableCell38" Weight="0.11870498710135619" Multiline="true" Text=":" Font="Cambria, 8pt, style=Bold">
+                  <StylePriority Ref="65" UseFont="false" />
+                </Item3>
+                <Item4 Ref="66" ControlType="XRTableCell" Name="tableCell37" Weight="3.3705039063709088" Multiline="true" Text="tableCell37">
+                  <ExpressionBindings>
+                    <Item1 Ref="67" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[PINO]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="68" ControlType="XRTableCell" Name="tableCell18" Weight="1.0514389057347175" Multiline="true" Text="tableCell18" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="69" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="70" ControlType="XRTableCell" Name="tableCell19" Weight="1.0348925794315484" Multiline="true" Text="tableCell19" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="71" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="72" ControlType="XRTableCell" Name="tableCell20" Weight="1.2201424073816964" Multiline="true" Text="tableCell20" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="73" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item4>
+            <Item5 Ref="74" ControlType="XRTableRow" Name="tableRow5" Weight="1">
+              <Cells>
+                <Item1 Ref="75" ControlType="XRTableCell" Name="tableCell21" Weight="0.312682381425304" Multiline="true" Text="tableCell21" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="76" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="77" ControlType="XRTableCell" Name="tableCell22" Weight="1.2577109720217068" Multiline="true" Text="Composition" TextAlignment="MiddleRight" Font="Cambria, 12pt, style=Bold">
+                  <StylePriority Ref="78" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="79" ControlType="XRTableCell" Name="tableCell40" Weight="0.11870498710135619" Multiline="true" Text=":" Font="Cambria, 8pt, style=Bold">
+                  <StylePriority Ref="80" UseFont="false" />
+                </Item3>
+                <Item4 Ref="81" ControlType="XRTableCell" Name="tableCell39" Weight="3.3705039063709088" Multiline="true" Text="tableCell39" Font="Cambria, 12pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="82" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[COM_FABRIC_COMPOSITION]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="83" UseFont="false" />
+                </Item4>
+                <Item5 Ref="84" ControlType="XRTableCell" Name="tableCell23" Weight="1.0514389057347175" Multiline="true" Text="tableCell23" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="85" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="86" ControlType="XRTableCell" Name="tableCell24" Weight="1.0348925794315484" Multiline="true" Text="tableCell24" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="87" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="88" ControlType="XRTableCell" Name="tableCell25" Weight="1.2201424073816964" Multiline="true" Text="tableCell25" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="89" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item5>
+            <Item6 Ref="90" ControlType="XRTableRow" Name="tableRow6" Weight="1">
+              <Cells>
+                <Item1 Ref="91" ControlType="XRTableCell" Name="tableCell26" Weight="0.312682381425304" Text="tableCell26" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="92" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="93" ControlType="XRTableCell" Name="tableCell27" Weight="1.2577109720217068" Text="Fabric Color" TextAlignment="MiddleRight" Font="Cambria, 12pt, style=Bold">
+                  <StylePriority Ref="94" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="95" ControlType="XRTableCell" Name="tableCell42" Weight="0.11870498710135619" Multiline="true" Text=":" Font="Cambria, 8pt, style=Bold">
+                  <StylePriority Ref="96" UseFont="false" />
+                </Item3>
+                <Item4 Ref="97" ControlType="XRTableCell" Name="tableCell41" Weight="3.3705039063709088" Multiline="true" Text="tableCell41" Font="Cambria, 12pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="98" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[COLOR]+ '   Fabric Width : '+ [WIDEC]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="99" UseFont="false" />
+                </Item4>
+                <Item5 Ref="100" ControlType="XRTableCell" Name="tableCell28" Weight="1.0514389057347175" Text="tableCell28" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="101" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="102" ControlType="XRTableCell" Name="tableCell29" Weight="1.0348925794315484" Text="tableCell29" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="103" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="104" ControlType="XRTableCell" Name="tableCell30" Weight="1.2201424073816964" Text="tableCell30" TextAlignment="MiddleCenter">
+                  <StylePriority Ref="105" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item6>
+          </Rows>
+          <StylePriority Ref="106" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item3>
+    <Item4 Ref="107" ControlType="PageHeaderBand" Name="PageHeader" HeightF="311.542328">
+      <Controls>
+        <Item1 Ref="108" ControlType="XRLabel" Name="label15" TextFormatString="{0:dd-MM-yy}" Multiline="true" Text="label15" SizeF="100,23" LocationFloat="707.0001, 0" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="109" EventName="BeforePrint" PropertyName="Text" Expression="[D_CHALLANDATE]" />
+          </ExpressionBindings>
+          <StylePriority Ref="110" UseFont="false" />
+        </Item1>
+        <Item2 Ref="111" ControlType="XRLabel" Name="label10" Multiline="true" Text="label10" SizeF="90,23" LocationFloat="714.9999, 214.999985" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="112" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[GP_NO]" />
+          </ExpressionBindings>
+          <StylePriority Ref="113" UseFont="false" />
+        </Item2>
+        <Item3 Ref="114" ControlType="XRLabel" Name="label9" Multiline="true" Text="label9" SizeF="265.000122,23.0000153" LocationFloat="432.92804, 214.999969" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="115" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[DRIVER]" />
+          </ExpressionBindings>
+          <StylePriority Ref="116" UseFont="false" />
+        </Item3>
+        <Item4 Ref="117" ControlType="XRLabel" Name="label8" Multiline="true" Text="label8" SizeF="195.805756,23" LocationFloat="135.43161, 214.999985" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="118" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[VNUMBER]" />
+          </ExpressionBindings>
+          <StylePriority Ref="119" UseFont="false" />
+        </Item4>
+        <Item5 Ref="120" ControlType="XRLabel" Name="label7" TextFormatString="{0:dd-MM-yy}" Multiline="true" Text="label7" SizeF="90,23" LocationFloat="714.9999, 170.4316" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="121" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[DODATE]" />
+          </ExpressionBindings>
+          <StylePriority Ref="122" UseFont="false" />
+        </Item5>
+        <Item6 Ref="123" ControlType="XRLabel" Name="label6" Multiline="true" Text="label6" SizeF="87.050354,23.0000076" LocationFloat="577.8778, 170.4316" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="124" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[DONO]" />
+          </ExpressionBindings>
+          <StylePriority Ref="125" UseFont="false" />
+        </Item6>
+        <Item7 Ref="126" ControlType="XRLabel" Name="label5" TextFormatString="{0:dd-MM-yy}" Multiline="true" Text="label5" SizeF="101.618713,23.0000076" LocationFloat="399.92804, 170.4316" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="127" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[LCDATE]" />
+          </ExpressionBindings>
+          <StylePriority Ref="128" UseFont="false" />
+        </Item7>
+        <Item8 Ref="129" ControlType="XRLabel" Name="label4" Multiline="true" Text="label4" SizeF="195.805725,23" LocationFloat="135.43161, 170.4316" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="130" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[LCNO]" />
+          </ExpressionBindings>
+          <StylePriority Ref="131" UseFont="false" />
+        </Item8>
+        <Item9 Ref="132" ControlType="XRLabel" Name="label3" Multiline="true" Text="label3" TextAlignment="MiddleLeft" SizeF="669.568237,23" LocationFloat="135.43161, 126.999954" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="133" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[DEL_ADDRESS]" />
+          </ExpressionBindings>
+          <StylePriority Ref="134" UseFont="false" UseTextAlignment="false" />
+        </Item9>
+        <Item10 Ref="135" ControlType="XRLabel" Name="label2" Multiline="true" Text="label2" TextAlignment="MiddleLeft" SizeF="669.568359,23" LocationFloat="135.43161, 88.99997" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="136" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[ADDRESS]" />
+          </ExpressionBindings>
+          <StylePriority Ref="137" UseFont="false" UseTextAlignment="false" />
+        </Item10>
+        <Item11 Ref="138" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" TextAlignment="MiddleLeft" SizeF="669.568359,22.9999962" LocationFloat="135.43161, 48.0000038" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="139" EventName="BeforePrint" PropertyName="Text" Expression="[FABRIC_DELIVERY_CHALLAN].[BUYER_NAME]" />
+          </ExpressionBindings>
+          <StylePriority Ref="140" UseFont="false" UseTextAlignment="false" />
+        </Item11>
+      </Controls>
+    </Item4>
+    <Item5 Ref="141" ControlType="PageFooterBand" Name="PageFooter" HeightF="58.4173279">
+      <Controls>
+        <Item1 Ref="142" ControlType="XRLabel" Name="label14" Multiline="true" Text="label14" SizeF="584.5538,23" LocationFloat="220.446091, 35.4173279" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="143" EventName="BeforePrint" PropertyName="Text" Expression="Iif([UNAME]='MTR',[PROC_AMOUNTINWORDS_DELIVERY_CHALLAN].[TOTALQTYINWORDS_MTR]+' '+[UNAME] +' Only', [PROC_AMOUNTINWORDS_DELIVERY_CHALLAN].[TOTALQTYINWORDS]+' '+[UNAME]+' Only')" />
+          </ExpressionBindings>
+          <StylePriority Ref="144" UseFont="false" />
+        </Item1>
+        <Item2 Ref="145" ControlType="XRLabel" Name="label13" Multiline="true" Text="label11" TextAlignment="TopCenter" SizeF="102.651733,23" LocationFloat="486.844666, 9.999996" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <Summary Ref="146" Running="Page" />
+          <ExpressionBindings>
+            <Item1 Ref="147" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([NO_OF_ROW])" />
+          </ExpressionBindings>
+          <StylePriority Ref="148" UseFont="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="149" ControlType="XRLabel" Name="label11" Multiline="true" Text="label11" TextAlignment="TopCenter" SizeF="98.09912,23" LocationFloat="589.4964, 9.999996" Font="Cambria, 12pt" Padding="2,2,0,0,100">
+          <Summary Ref="150" Running="Page" />
+          <ExpressionBindings>
+            <Item1 Ref="151" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([TOTAL_QTY])" />
+          </ExpressionBindings>
+          <StylePriority Ref="152" UseFont="false" UseTextAlignment="false" />
+        </Item3>
+      </Controls>
+    </Item5>
+    <Item6 Ref="153" ControlType="GroupHeaderBand" Name="GroupHeader1" Expanded="false" HeightF="0">
+      <GroupFields>
+        <Item1 Ref="154" FieldName="DC_NO" />
+      </GroupFields>
+    </Item6>
+    <Item7 Ref="155" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="30.82725">
+      <Controls>
+        <Item1 Ref="156" ControlType="XRLabel" Name="label12" Multiline="true" Text="label12" TextAlignment="BottomLeft" SizeF="410.716064,23" LocationFloat="76.12858, 7.82725" Font="Cambria, 12pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="157" EventName="BeforePrint" PropertyName="Text" Expression="'Lock No. ' + [FABRIC_DELIVERY_CHALLAN].[LOCKNO]" />
+          </ExpressionBindings>
+          <StylePriority Ref="158" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item7>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v19.2" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IlBETEVSUENvbm5lY3Rpb24iIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IlN0b3JlZFByb2NRdWVyeSIgTmFtZT0iRkFCUklDX0RFTElWRVJZX0NIQUxMQU4iPjxQcm9jTmFtZT5GQUJSSUNfREVMSVZFUllfQ0hBTExBTjwvUHJvY05hbWU+PC9RdWVyeT48UXVlcnkgVHlwZT0iU2VsZWN0UXVlcnkiIE5hbWU9IkNPTVBBTllfSU5GTyI+PFRhYmxlcz48VGFibGUgTmFtZT0iQ09NUEFOWV9JTkZPIiAvPjwvVGFibGVzPjxDb2x1bW5zPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iSUQiIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJDT01QQU5ZX05BTUUiIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJUQUdMSU5FIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iTE9HTyIgLz48Q29sdW1uIFRhYmxlPSJDT01QQU5ZX0lORk8iIE5hbWU9IkZBQ1RPUllfQUREUkVTUyIgLz48Q29sdW1uIFRhYmxlPSJDT01QQU5ZX0lORk8iIE5hbWU9IkhFQURPRkZJQ0VfQUREUkVTUyIgLz48Q29sdW1uIFRhYmxlPSJDT01QQU5ZX0lORk8iIE5hbWU9IldFQl9BRERSRVNTIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iRU1BSUwiIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJQSE9ORTEiIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJQSE9ORTIiIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJQSE9ORTMiIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJCSU5fTk8iIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJFVElOX05PIiAvPjwvQ29sdW1ucz48L1F1ZXJ5PjxRdWVyeSBUeXBlPSJTdG9yZWRQcm9jUXVlcnkiIE5hbWU9IlBST0NfQU1PVU5USU5XT1JEU19ERUxJVkVSWV9DSEFMTEFOIj48UGFyYW1ldGVyIE5hbWU9IkBEQ19OTyIgVHlwZT0iRGV2RXhwcmVzcy5EYXRhQWNjZXNzLkV4cHJlc3Npb24iPihTeXN0ZW0uU3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkpKD9EQ19OTyk8L1BhcmFtZXRlcj48UHJvY05hbWU+UFJPQ19BTU9VTlRJTldPUkRTX0RFTElWRVJZX0NIQUxMQU48L1Byb2NOYW1lPjwvUXVlcnk+PFJlc3VsdFNjaGVtYT48RGF0YVNldCBOYW1lPSJzcWxEYXRhU291cmNlMSI+PFZpZXcgTmFtZT0iRkFCUklDX0RFTElWRVJZX0NIQUxMQU4iPjxGaWVsZCBOYW1lPSJEX0NIQUxMQU5JRCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IkRfQ0hBTExBTkRBVEUiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJCVVlFUl9OQU1FIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkFERFJFU1MiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iREVMX0FERFJFU1MiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iTENOTyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJMQ0RBVEUiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJET05PIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkRPREFURSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IlZOVU1CRVIiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRFJJVkVSIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkdQX05PIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkRDX05PIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkxPQ0tOTyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJTVFlMRV9OQU1FIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkJVWUVSX1NUWUxFIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkJSQU5ETkFNRSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQSU5PIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNPTV9GQUJSSUNfQ09NUE9TSVRJT04iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ09MT1IiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iV0lERUMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iTk9fT0ZfUk9XIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iVE9UQUxfUVRZIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IlVOQU1FIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlBST0NfQU1PVU5USU5XT1JEU19ERUxJVkVSWV9DSEFMTEFOIj48RmllbGQgTmFtZT0iVE9UQUxRVFlJTldPUkRTIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlRPVEFMUVRZSU5XT1JEU19NVFIiIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iQ09NUEFOWV9JTkZPIj48RmllbGQgTmFtZT0iSUQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJDT01QQU5ZX05BTUUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVEFHTElORSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJMT0dPIiBUeXBlPSJCeXRlQXJyYXkiIC8+PEZpZWxkIE5hbWU9IkZBQ1RPUllfQUREUkVTUyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJIRUFET0ZGSUNFX0FERFJFU1MiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iV0VCX0FERFJFU1MiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRU1BSUwiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUEhPTkUxIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlBIT05FMiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQSE9ORTMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQklOX05PIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkVUSU5fTk8iIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PC9EYXRhU2V0PjwvUmVzdWx0U2NoZW1hPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 Ref="2" ObjectType="DevExpress.XtraReports.Parameters.DynamicListLookUpSettings, DevExpress.Printing.v19.2.Core" DataSource="#Ref-0" DataMember="FABRIC_DELIVERY_CHALLAN" ValueMember="DC_NO" DisplayMember="DC_NO" SortMember="DC_NO" SortOrder="Descending" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

@@ -1,0 +1,75 @@
+﻿@*@model PrFinishingProcessViewModel
+
+@if (Model.FPrFnChemicalConsumptionsList.Any())
+{
+    @for (var i = 0; i < Model.FPrFnChemicalConsumptionsList.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptionsList[i].TRNSID)
+                @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptionsList[i].TRNSDATE)
+                @Model.FPrFnChemicalConsumptionsList[i].TRNSDATE
+            </td>
+            <td>
+                @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptionsList[i].CHEM_PROD_ID)
+                @Model.FPrFnChemicalConsumptionsList[i].CHEM_PROD_.PRODUCTNAME
+            </td>
+            <td>
+                @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptionsList[i].STOCK_QTY)
+                @Model.FPrFnChemicalConsumptionsList[i].STOCK_QTY
+            </td>
+            <td>
+                @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptionsList[i].RECIPE)
+                @Model.FPrFnChemicalConsumptionsList[i].RECIPE
+            </td>
+            <td>
+                @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptionsList[i].SUG_QTY)
+                @Model.FPrFnChemicalConsumptionsList[i].SUG_QTY
+            </td>
+            <td>
+                @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptionsList[i].QTY)
+                @Model.FPrFnChemicalConsumptionsList[i].QTY
+            </td>
+            <td>
+                @Html.HiddenFor(clc => clc.FPrFnChemicalConsumptionsList[i].REMARKS)
+                @Model.FPrFnChemicalConsumptionsList[i].REMARKS
+            </td>
+            <td>
+                <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveChemFromList(@i)" aria-hidden="true"></i>
+            </td>
+        </tr>
+    }
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveChemFromList(removeIndexValue) {
+        swal({
+                title: "Please Confirm",
+                text: "You won't able to revert, Are you sure to remove?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, sir",
+                cancelButtonText: "Not at all"
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    var data = $('#form').serializeArray();
+                    data.push({ name: "removeIndexValue", value: removeIndexValue });
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: data,
+                        type: "POST",
+                        url: '/FPrFinishingProcess/RemoveChemFromList',
+                        success: function (partialView, status, xhr) {
+                            $('#chemDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                }
+            });
+    }
+</script>*@

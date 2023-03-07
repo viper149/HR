@@ -1,0 +1,144 @@
+﻿@model FPrWarpingProcessEkruMasterViewModel
+
+@if (Model.FPrWarpingProcessEcruDetailsList.Any())
+{
+    <div class="table-responsive">
+        <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+            <thead id="thead">
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().BALL_NO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().BALL_LENGTH)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().LINK_BALL_NO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().LINK_BALL_LENGTH)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().SHIFTNAME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().COUNTID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().MACHINE_ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().BREAKS_ENDS)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().ENDS_ROPE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruDetailsList.FirstOrDefault().REMARKS)
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.FPrWarpingProcessEcruDetailsList.Count; i++)
+                {
+                    <tr>
+                        <td><span class="expand-button"></span></td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].ECRU_D_ID)
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].ECRU_ID)
+                            @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].BALL_NO)
+                            @Model.FPrWarpingProcessEcruDetailsList[i].BALL_NONavigation?.BALL_NO*@
+                            
+                            
+                            @Html.DropDownListFor(dt => dt.FPrWarpingProcessEcruDetailsList[i].BALL_NO, new SelectList(Model.FBasBallInfoList, "BALLID", "BALL_NO"), "Select Ball No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+
+                        </td>
+                        <td>
+                            <input class="form-control" asp-for="FPrWarpingProcessEcruDetailsList[i].BALL_LENGTH" />
+                        </td>
+                        @*<td>
+                                @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].BGT_KG_PER_SET)
+                                @Model.FPrWarpingProcessEcruDetailsList[i].BGT_KG_PER_SET
+                            </td>*@
+                        <td>
+                            @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].LINK_BALL_NO)
+                            @Model.FPrWarpingProcessEcruDetailsList[i].LINK_BALL_NONavigation?.BALL_NO*@
+                            
+                            
+                            @Html.DropDownListFor(dt => dt.FPrWarpingProcessEcruDetailsList[i].LINK_BALL_NO, new SelectList(Model.FBasBallInfoList, "BALLID", "BALL_NO"), "Select Link Ball No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        </td>
+                        <td>
+                            <input class="form-control" asp-for="FPrWarpingProcessEcruDetailsList[i].LINK_BALL_LENGTH" />
+                        </td>
+                        <td>
+                            @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].SHIFTNAME)
+                            @Model.FPrWarpingProcessEcruDetailsList[i].SHIFTNAME*@
+                            
+                            
+                            <select asp-for="FPrWarpingProcessEcruDetailsList[i].SHIFTNAME" class="form-control js-example-basic-single">
+                                <option value="">Select Shift</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].COUNTID)
+                            @Model.FPrWarpingProcessEcruDetailsList[i].COUNT?.COUNT?.COUNTNAME
+                        </td>
+                        <td>
+                            @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].MACHINE_ID)
+                            @Model.FPrWarpingProcessEcruDetailsList[i].MACHINE_?.MACHINE_NAME*@
+                            
+                            
+                            
+                            @Html.DropDownListFor(dt => dt.FPrWarpingProcessEcruDetailsList[i].MACHINE_ID, new SelectList(Model.FPrWarpingMachineList, "ID", "MACHINE_NAME"), "Select Machine No", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        </td>
+                        <td>
+                            <input class="form-control" asp-for="FPrWarpingProcessEcruDetailsList[i].BREAKS_ENDS" />
+                        </td>
+                        <td>
+                            @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].ENDS_ROPE)
+        @Model.FPrWarpingProcessEcruDetailsList[i].ENDS_ROPE*@
+
+                            <input class="form-control" asp-for="FPrWarpingProcessEcruDetailsList[i].ENDS_ROPE" />
+                        </td>
+                        <td>
+                            @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruDetailsList[i].REMARKS)
+        @Model.FPrWarpingProcessEcruDetailsList[i].REMARKS*@
+
+                            <input class="form-control" asp-for="FPrWarpingProcessEcruDetailsList[i].REMARKS" />
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveCountFromList(@i)" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+            function RemoveCountFromList(removeIndexValue) {
+                var data = $('#form').serializeArray();
+                data.push({ name: "removeIndexValue", value: removeIndexValue });
+                $.ajax({
+                    async: true,
+                    cache: false,
+                    data: data,
+                    type: "POST",
+                    url: '/FPrWarpingProcessEcruMaster/RemoveBallNoList',
+                    success: function (partialView, status, xhr) {
+                        $('#BallDetails').html(partialView);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            }
+</script>

@@ -1,0 +1,112 @@
+﻿
+@model FGenSRequisitionViewModel
+
+@{
+    ViewData["Title"] = "General Store Indent";
+}
+
+@{
+    if (Model != null)
+    {
+        <div class="col-12 row">
+            <div class="col-6">
+                <h2 class="text-white btn btn-info">@Html.DisplayNameFor(e => e.FGenSIndentmaster.GINDNO) :  @Html.DisplayFor(e => e.FGenSIndentmaster.GINDNO)</h2>
+            </div>
+            <div class="col-6">
+                <h2 class="text-white btn btn-info">@Html.DisplayNameFor(e => e.FGenSIndentmaster.GINDDATE) :  @Html.DisplayFor(e => e.FGenSIndentmaster.GINDDATE)</h2>
+            </div>
+
+            <div class="col-12 row">
+                <div class="col-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-flask" aria-hidden="true"></i> @ViewData["Title"] Information</h2>
+                </div>
+                <div class="col-12">
+                    <hr />
+                </div>
+            </div>
+
+            @*<div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentmaster.GINDNO" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentmaster.GINDNO)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentmaster.GINDDATE" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentmaster.GINDDATE)</div>
+                </div>
+            </div>*@
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentmaster.INDSL.INDSLID" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentmaster.INDSL.INDSLID)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentmaster.INDTYPE" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentmaster.INDTYPENavigation.INDENTTYPE)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentmaster.REMARKS" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentmaster.REMARKS)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentdetails.PRODUCTID" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentdetails.PRODUCT.PRODNAME)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentdetails.QTY" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentdetails.QTY)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentdetails.VALIDITY" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentdetails.VALIDITY)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentdetails.FULL_QTY" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentdetails.FULL_QTY)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentdetails.ADD_QTY" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentdetails.ADD_QTY)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentdetails.LOCATION" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentdetails.LOCATION)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSIndentdetails.REMARKS" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSIndentdetails.REMARKS)</div>
+                </div>
+            </div>
+            <div class="col-12 table-responsive">
+                <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Indent Details</h2>
+                <hr />
+                @await Html.PartialAsync($"~/Views/FGenSIndent/DetailsFGenSIndentTable.cshtml", Model)
+            </div>
+
+            <div class="col-md-12">
+                @Html.ActionLink("Edit", $"EditFGenSIndent", new { indslId = Model.FGenSIndentmaster.EncryptedId }, new { @class = "btn btn-warning pull-right" })
+                <a class="btn btn-dark pull-right" asp-action="GetFGenSIndent" asp-controller="FGenSIndent">Back to List</a>
+            </div>
+        </div>
+    }
+}

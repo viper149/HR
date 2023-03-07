@@ -1,0 +1,24 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Post_Costing
+@using rptFDSvsPostCosting_Variance = DenimERP.Reports.Post_Costing.rptFDSvsPostCosting_Variance
+
+@model int
+
+@{
+    ViewData["Title"] = "FDS vs Actual Yarn Consumption Variance Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptFDSvsPostCosting_Variance())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

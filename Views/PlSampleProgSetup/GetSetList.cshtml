@@ -1,0 +1,151 @@
+﻿
+@model PL_BULK_PROG_SETUP_D
+
+@{
+    ViewData["Title"] = "Set List";
+    Layout = Layout;
+}
+
+@{
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> @ViewData["Title"]
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li class="mr-2">
+                    <p>
+                        <a asp-action="CreatePlBulkProgSetup" asp-controller="PlBulkProgSetup" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                    </p>
+                </li>
+                <li class="mr-2">
+                    <p>
+                        <a asp-action="RSizingDailyProductionReport" asp-controller="Reports" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> Daily Production Report</a>
+                    </p>
+                </li>
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content table-responsive">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PROG_ID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PROG_NO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SET_QTY)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Order")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Warp Qty")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Style")
+                        </th>
+                        <th>
+                            @Html.DisplayName("PI No")
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PROCESS_TYPE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.REMARKS)
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+}
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table').dataTable({
+                "searchPanes": true,
+                "processing": true,
+                "serverSide": true,
+                "filter": true,
+                "order": [[0, 'desc']],
+                "pageLength": 25,
+                "lengthMenu": [10, 25, 50, 100, 200, 500, 1000],
+                "autoWidth": false,
+                "ajax": {
+                    "async": "true",
+                    "url": '@Url.Action("GetTableSetData", "PlBulkProgSetup")',
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": [9],
+                        "orderable": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [0],
+                        "orderable": false,
+                        "searchable": false,
+                        "visible":false
+                    }
+                ],
+                "language": {
+                    "searchPlaceholder": "Search for your desire results",
+                    "search": '<i class="fa fa-2x fa-search" aria-hidden="true"></i>',
+                    "emptyTable": '<h3>No data available</h3>',
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                    "infoFiltered": "(filtered from _MAX_ total entries)",
+                    "thousands": ",",
+                    "processing": "<i class='fa fa-4x fa-spinner' aria-hidden='true'></i>",
+                    "zeroRecords": "<h3>No matching records found</h3>",
+                    "paginate": {
+                        "first": "<i class='fa fa-angle-double-left' aria-hidden='true'></i>",
+                        "last": "<i class='fa fa-angle-double-right' aria-hidden='true'></i>",
+                        "next": "<i class='fa fa-angle-right' aria-hidden='true'></i>",
+                        "previous": "<i class='fa fa-angle-left' aria-hidden='true'></i>"
+                    },
+                    "aria": {
+                        "sortAscending": ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    }
+                },
+                "columns": [
+                    { "data": "proG_ID", "name": "progId", "autoWidth": true },
+                    { "data": "proG_NO", "name": "PROG_NO", "autoWidth": true },
+                    { "data": "seT_QTY", "name": "setQty", "autoWidth": true },
+                    { "data": "opT1", "name": "So", "autoWidth": true },
+                    { "data": "opT2", "name": "warpQty", "autoWidth": true },
+                    { "data": "opT3", "name": "Style", "autoWidth": true },
+                    { "data": "opT4", "name": "PI", "autoWidth": true },
+                    { "data": "procesS_TYPE", "name": "Process", "autoWidth": true },
+                    { "data": "remarks", "name": "REMARKS", "autoWidth": true },
+                    {
+                        "render": function(data, type, row) {
+                            return "";
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

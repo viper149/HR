@@ -1,0 +1,27 @@
+﻿@model BAS_YARN_LOTINFO
+
+@{
+    ViewData["Title"] = "Details Basic Yarn Lot Info";
+    Layout = Layout;
+}
+
+<div class="well profile_view">
+    <div class="col-sm-12">
+        <h4 class="brief">Basic colors</h4>
+        <hr />
+        <div class="left col-sm-7">
+            <p><i class="fa fa-sort-numeric-asc"></i> @Html.DisplayNameFor(model => model.LOTNO): @Html.DisplayFor(model => model.LOTNO)</p>
+            <p><i class="fa fa-adjust"></i> @Html.DisplayNameFor(model => model.BRAND): @Html.DisplayFor(model => model.BRAND)</p>
+            <p><i class="fa fa-adjust"></i> @Html.DisplayNameFor(model => model.SLABCODE): @Html.DisplayFor(model => model.SLABCODE)</p>
+            <ul class="list-unstyled">
+                <li><i class="fa fa-building"></i> @Html.DisplayNameFor(model => model.REMARKS): @Html.DisplayFor(model => model.REMARKS)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class=" col-sm-6 emphasis">
+            <a asp-action="GetBasYarnLotInfoWithPaged" class="btn btn-dark">Back to List</a>
+            <a asp-action="EditBasYarnLotinfo" asp-route-basYarnLotinfoId="@Model.EncryptedId" class="btn btn-primary" accesskey="e"><i class="fa fa-user"> </i> Edit</a>
+        </div>
+    </div>
+</div>

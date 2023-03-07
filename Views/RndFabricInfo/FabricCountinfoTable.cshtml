@@ -1,0 +1,81 @@
+﻿@*@model RndFabricInfoViewModel
+
+@if (Model.Items.Any())
+{
+    for (var i = 0; i < Model.Items.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].COUNTNAME)
+                @Html.HiddenFor(c => c.Items[i].COUNTNAME, htmlAttributes: new { @class = "patialHidden" })
+                @Html.HiddenFor(c => c.Items[i].COUNTID, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].YARNTYPE)
+                @Html.HiddenFor(c => c.Items[i].YARNTYPE, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].LOTNO)
+                @Html.HiddenFor(c => c.Items[i].LOTNO, htmlAttributes: new { @class = "patialHidden" })
+                @Html.HiddenFor(c => c.Items[i].LOTID, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].SUPPNAME)
+                @Html.HiddenFor(c => c.Items[i].SUPPNAME, htmlAttributes: new { @class = "patialHidden" })
+                @Html.HiddenFor(c => c.Items[i].SUPPID, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].COLOR)
+                @Html.HiddenFor(c => c.Items[i].COLOR, htmlAttributes: new { @class = "patialHidden" })
+                @Html.HiddenFor(c => c.Items[i].COLORCODE, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].RATIO)
+                @Html.HiddenFor(c => c.Items[i].RATIO, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].NE)
+                @Html.HiddenFor(c => c.Items[i].NE, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].YARNFOR)
+                @Html.HiddenFor(c => c.Items[i].YARNFOR, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Items[i].AMOUNT)
+                @Html.HiddenFor(c => c.Items[i].AMOUNT, htmlAttributes: new { @class = "patialHidden" })
+            </td>
+            <td>
+                <i class="fa fa-trash fa-2x text-danger" onclick="RemoveRFIYC('@i')" aria-hidden="true"></i>
+            </td>
+        </tr>
+    }
+}
+
+<script type="text/javascript" asp-append-version="true">
+    $(function () {
+        var totalRope = $("#rND_FABRICINFO_TOTALROPE");
+        var totalWeft = $("#rND_FABRICINFO_TOTALWEFT");
+
+        totalRope.val('@Model.Items.Where(e=>e.YARNFOR.Equals("1")).Sum(e => e.RATIO)');
+        totalWeft.val('@Model.Items.Where(e=>e.YARNFOR.Equals("2")).Sum(e => e.RATIO)');
+    });
+
+    function RemoveRFIYC(removeIndex) {
+
+        var data = $("#form").serializeArray();
+        data.push({ name: "RemoveIndexValue", value: removeIndex });
+
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: '/RndFabricInfo/RemoveFabricCountinfo',
+            success: function (partialView) {
+                $('#orderItemsContainer').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>*@

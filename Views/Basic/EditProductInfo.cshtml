@@ -1,0 +1,59 @@
+﻿@model BasProductInfoViewModel
+
+@{
+    ViewData["Title"] = "Update product info";
+    Layout = Layout;
+}
+
+<h2>Update basic product info</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditProductInfo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(pi => pi.BAS_PRODUCTINFO.PRODID)
+            @Html.HiddenFor(pi => pi.BAS_PRODUCTINFO.EncryptedId)
+            <div class="form-group">
+                <label asp-for="BAS_PRODUCTINFO.PRODNAME" class="control-label"></label>
+                <input asp-for="BAS_PRODUCTINFO.PRODNAME" class="form-control" />
+                <span asp-validation-for="BAS_PRODUCTINFO.PRODNAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BAS_PRODUCTINFO.DESCRIPTION" class="control-label"></label>
+                <input asp-for="BAS_PRODUCTINFO.DESCRIPTION" class="form-control" />
+                <span asp-validation-for="BAS_PRODUCTINFO.DESCRIPTION" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="BAS_PRODUCTINFO.CATID"></label>
+                @Html.DropDownListFor(pc => pc.BAS_PRODUCTINFO.CATID, new SelectList(Model.BAS_PRODCATEGORies, "CATID", "CATEGORY"), htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(pc => pc.BAS_PRODUCTINFO.CATID, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="BAS_PRODUCTINFO.UNIT" class="control-label"></label>
+                <input asp-for="BAS_PRODUCTINFO.UNIT" class="form-control" />
+                <span asp-validation-for="BAS_PRODUCTINFO.UNIT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BAS_PRODUCTINFO.REMARKS" class="control-label"></label>
+                <input asp-for="BAS_PRODUCTINFO.REMARKS" class="form-control" />
+                <span asp-validation-for="BAS_PRODUCTINFO.REMARKS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-dark" asp-action="GetBasProducts" asp-controller="Basic" accesskey="b">Back to List</a>
+                <input type="submit" value="Update" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}

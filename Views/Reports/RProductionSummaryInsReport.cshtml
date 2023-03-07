@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.APCD
+@using DenimERP.Views.FPrInspectionProcess.Reports
+@using DenimERP.Views.RndFabricInfo.Reports
+@using rptInspectionProduction_Sum = DenimERP.Views.FPrInspectionProcess.Reports.rptInspectionProduction_Sum
+
+@{
+    ViewData["Title"] = "Production Summary Report";
+    Layout = Layout;
+}
+<h2>Production Summary Report</h2>
+
+@{
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptInspectionProduction_Sum())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

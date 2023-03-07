@@ -1,0 +1,267 @@
+﻿@model RndBomViewModel
+
+@{
+    ViewData["Title"] = "Bill of Materials for 1000M Fabric";
+    Layout = Layout;
+}
+
+@*<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>*@
+
+<div class="container-fluid">
+    <form id="form" enctype="multipart/form-data" role="form" asp-action="CreateRndBOM">
+        <div class="panel panel-default">
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-hourglass-half" aria-hidden="true"></i> @ViewData["Title"]</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 row">
+                    <div id="ysrdate" class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                        <div class="form-group">
+                            <label asp-for="RndBom.TRNSDATE" class="control-label"></label>
+                            <input asp-for="RndBom.TRNSDATE" class="form-control" />
+                            <span asp-validation-for="RndBom.TRNSDATE" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="RndBom.FABCODE" class="control-label"></label>
+                            @Html.DropDownListFor(dt => dt.RndBom.FABCODE, new SelectList(Model.RndFabricInfos, "FABCODE", "STYLE_NAME"), "Select Style", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="RndBom.FABCODE" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Finish Type</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="finishType">
+                            </span>
+                            @Html.HiddenFor(c=>c.RndBom.FINISH_TYPE)
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Color</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="color">
+                            </span>
+                            @Html.HiddenFor(c => c.RndBom.COLOR)
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Set No.</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="setNo">
+                            </span>
+                            @Html.HiddenFor(c => c.RndBom.PROG_NO)
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Construction</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="construction">
+                            </span>
+                            @Html.HiddenFor(c => c.RndBom.CONSTRUCTION)
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Total Ends </label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="totalEnds">
+                            </span>
+                            @Html.HiddenFor(c => c.RndBom.TOTAL_ENDS)
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Finish Weight</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="finishWeight">
+                            </span>
+                            @Html.HiddenFor(c => c.RndBom.FINISH_WEIGHT)
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Lot & Ratio</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="lotRatio">
+                            </span>
+                            @Html.HiddenFor(c => c.RndBom.LOT_RATIO)
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Width</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="width">
+                            </span>
+                            @Html.HiddenFor(c => c.RndBom.WIDTH)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+                        <h2 class="panel-title text-success">Dyeing Information</h2>
+                        <hr />
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4  text-center">
+                        <h2 class="panel-title text-success">GPL</h2>
+                        <hr />
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4  text-center">
+                        <h2 class="panel-title text-success">BOX</h2>
+                        <hr />
+                    </div>
+                    <br />
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <h2 class="panel-title text-info">Indigo</h2>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group">
+                            <input asp-for="RndBom.INDIGO_GPL" class="form-control " />
+                            <span asp-validation-for="RndBom.INDIGO_GPL" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group">
+                            <input asp-for="RndBom.INDIGO_BOX" class="form-control " />
+                            <span asp-validation-for="RndBom.INDIGO_BOX" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <h2 class="panel-title text-info">Sulphure</h2>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group">
+                            <input asp-for="RndBom.SULPHURE_GPL" class="form-control " />
+                            <span asp-validation-for="RndBom.SULPHURE_GPL" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group">
+                            <input asp-for="RndBom.SULPHURE_BOX" class="form-control " />
+                            <span asp-validation-for="RndBom.SULPHURE_BOX" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <h2 class="panel-title text-info">Others</h2>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group">
+                            <input asp-for="RndBom.OTHERS_GPL" class="form-control " />
+                            <span asp-validation-for="RndBom.OTHERS_GPL" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="form-group">
+                            <input asp-for="RndBom.OTHERS_BOX" class="form-control " />
+                            <span asp-validation-for="RndBom.OTHERS_BOX" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <h2 class="panel-title text-info">Please Specify Others Color Name</h2>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                        <div class="form-group">
+                            <input asp-for="RndBom.OTHERS_REMARKS" class="form-control " />
+                            <span asp-validation-for="RndBom.OTHERS_REMARKS" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Material Information</h2>
+                    <hr />
+                </div>
+                @*<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Material ERP Code</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="color">
+                        </span>
+                    </div>
+                </div>*@
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndBomMaterialsDetails.SECTION" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.RndBomMaterialsDetails.SECTION, new SelectList(Model.FBasSections, "SECID", "SECNAME"), "Select Section", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndBomMaterialsDetails.SECTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndBomMaterialsDetails.CHEM_PROD_ID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.RndBomMaterialsDetails.CHEM_PROD_ID, new SelectList(Model.FChemStoreProductInfo, "PRODUCTID", "PRODUCTNAME"), "Select Material", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndBomMaterialsDetails.CHEM_PROD_ID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndBomMaterialsDetails.DOSING" class="control-label"></label>
+                        <input asp-for="RndBomMaterialsDetails.DOSING" class="form-control " />
+                        <span asp-validation-for="RndBomMaterialsDetails.DOSING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndBomMaterialsDetails.CONC" class="control-label"></label>
+                        <input asp-for="RndBomMaterialsDetails.CONC" class="form-control " />
+                        <span asp-validation-for="RndBomMaterialsDetails.CONC" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndBomMaterialsDetails.SPEED" class="control-label"></label>
+                        <input asp-for="RndBomMaterialsDetails.SPEED" class="form-control " />
+                        <span asp-validation-for="RndBomMaterialsDetails.SPEED" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndBomMaterialsDetails.NO_OF_SETS" class="control-label"></label>
+                        <input asp-for="RndBomMaterialsDetails.NO_OF_SETS" class="form-control " />
+                        <span asp-validation-for="RndBomMaterialsDetails.NO_OF_SETS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndBomMaterialsDetails.REQ_QTY" class="control-label"></label>
+                        <input asp-for="RndBomMaterialsDetails.REQ_QTY" class="form-control" />
+                        <span asp-validation-for="RndBomMaterialsDetails.REQ_QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndBomMaterialsDetails.ADD_10_FOR_BOX" class="control-label"></label>
+                        <input asp-for="RndBomMaterialsDetails.ADD_10_FOR_BOX" class="form-control "/>
+                        <span asp-validation-for="RndBomMaterialsDetails.ADD_10_FOR_BOX" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit">Create</button>
+                    <button id="addToList" class="btn btn-info pull-right" type="button">Add</button>
+                    <a asp-action="GetRndBomInfo" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="materialPartialView">
+                    @await Html.PartialAsync($"~/Views/RndBom/AddMaterialList.cshtml", Model)
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+    <script asp-append-version="true" src="~/js/RndBom/CreateRndBOM.js"></script>
+}

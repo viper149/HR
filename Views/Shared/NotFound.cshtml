@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Not Found";
+}
+
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404"></div>
+        <h1 class="text-danger">404</h1>
+        <h2>Oops! There is some technical problem!!</h2>
+        <p class="text-warning">@ViewBag.ErrorMessage</p>
+        <a asp-controller="Home" asp-action="Dashboard" class="btn btn-dark"><span class="glyphicon glyphicon-home"></span> Take Me Home</a>
+        <a href="mailto:it.ho@pioneerdenim.com" class="btn btn-warning"><span class="glyphicon glyphicon-envelope"></span> Contact Support</a>
+    </div>
+</div>
+
+@section Styles{
+    <link asp-append-version="true" href="~/css/shared/not_found.css" rel="stylesheet" />
+}

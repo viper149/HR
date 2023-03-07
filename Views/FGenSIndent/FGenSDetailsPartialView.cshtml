@@ -1,0 +1,79 @@
+﻿
+@model FGenSRequisitionViewModel
+
+@if (Model.FGenSIndentdetailsesList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.PRODUCTID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.TRNSDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.VALIDITY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.PRODUCT.UNITNavigation.UNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.FULL_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.ADD_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.BAL_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.LOCATION)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FGenSIndentdetailsesList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].TRNSID)
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].GINDID)
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].INDSLID)
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].UNIT)
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].QTY)
+
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].PRODUCTID)
+                        @Model.FGenSIndentdetailsesList[i].PRODUCT?.PRODNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].TRNSDATE)
+                        @Html.DisplayFor(modelItem => Model.FGenSIndentdetailsesList[i].TRNSDATE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].VALIDITY)
+                        @Html.DisplayFor(modelItem => Model.FGenSIndentdetailsesList[i].VALIDITY)
+                        <div class="control-group text-danger">
+                            @Html.DisplayFor(modelItem => Model.FGenSIndentdetailsesList[i].Expire)
+                        </div>
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].PRODUCT.UNITNavigation.UNAME)
+                        @Html.DisplayFor(modelItem => Model.FGenSIndentdetailsesList[i].PRODUCT.UNITNavigation.UNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].FULL_QTY)
+                        @Model.FGenSIndentdetailsesList[i].FULL_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].ADD_QTY)
+                        @Model.FGenSIndentdetailsesList[i].ADD_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].BAL_QTY)
+                        @Model.FGenSIndentdetailsesList[i].BAL_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].LOCATION)
+                        @Model.FGenSIndentdetailsesList[i].LOCATION
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIndentdetailsesList[i].REMARKS)
+                        @Model.FGenSIndentdetailsesList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveIndent(@i)" aria-hidden="false"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

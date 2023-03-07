@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="rptBOMvsProduction_Sizing" Landscape="true" Margins="19, 22, 16, 24" PageWidth="1100" PageHeight="850" Version="19.2" DataMember="rptBOMvsProduction_Sizing_Consump" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="4" Description="Select a Style" ValueSourceSettings="#Ref-2" Name="STYLENAME" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="5" ControlType="TopMarginBand" Name="TopMargin" HeightF="16.145834" />
+    <Item2 Ref="6" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="24.18747" />
+    <Item3 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="20">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRTable" Name="table4" TextAlignment="MiddleCenter" SizeF="1049,20" LocationFloat="3.17891427E-05, 0" Font="Calibri, 7pt" BackColor="Transparent" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="9" ControlType="XRTableRow" Name="tableRow4" Weight="1">
+              <Cells>
+                <Item1 Ref="10" ControlType="XRTableCell" Name="tableCell26" Weight="1.1114142059909509" TextFormatString="{0:0.0000}" Multiline="true" Text="Program No.">
+                  <ExpressionBindings>
+                    <Item1 Ref="11" EventName="BeforePrint" PropertyName="Text" Expression="[SET_NO]" />
+                  </ExpressionBindings>
+                </Item1>
+                <Item2 Ref="12" ControlType="XRTableCell" Name="tableCell27" Weight="0.995598917163431" TextFormatString="{0:0.0000}" Multiline="true" Text="Acetic Acid">
+                  <ExpressionBindings>
+                    <Item1 Ref="13" EventName="BeforePrint" PropertyName="Text" Expression="Iif([B_SIZE_120]&#xA;=0,'' ,[B_SIZE_120]&#xA; )" />
+                  </ExpressionBindings>
+                </Item2>
+                <Item3 Ref="14" ControlType="XRTableCell" Name="tableCell28" Weight="0.89298687684561839" TextFormatString="{0:0.0000}" Multiline="true" Text="Asutol LB">
+                  <ExpressionBindings>
+                    <Item1 Ref="15" EventName="BeforePrint" PropertyName="Text" Expression="Iif([B_SIZE_55]&#xA;=0,'' ,[B_SIZE_55]&#xA; )" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="16" ControlType="XRTableCell" Name="tableCell29" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Belfasin GT">
+                  <ExpressionBindings>
+                    <Item1 Ref="17" EventName="BeforePrint" PropertyName="Text" Expression="Iif([B_SIZE_850]&#xA;=0,'' ,[B_SIZE_850]&#xA; )" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="18" ControlType="XRTableCell" Name="tableCell30" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Caustic Soda">
+                  <ExpressionBindings>
+                    <Item1 Ref="19" EventName="BeforePrint" PropertyName="Text" Expression="Iif([B_SIZE_110]&#xA;=0,'' ,[B_SIZE_110]&#xA; )" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="20" ControlType="XRTableCell" Name="tableCell31" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="COLORCONTIN SAN">
+                  <ExpressionBindings>
+                    <Item1 Ref="21" EventName="BeforePrint" PropertyName="Text" Expression="Iif([Hydrotreat]&#xA;=0,'' ,[Hydrotreat]&#xA; )" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="22" ControlType="XRTableCell" Name="tableCell32" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D. Blue 30%">
+                  <ExpressionBindings>
+                    <Item1 Ref="23" EventName="BeforePrint" PropertyName="Text" Expression="Iif([J_Size_974]&#xA;=0,'' ,[J_Size_974]&#xA; )" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="24" ControlType="XRTableCell" Name="tableCell33" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Den. Indigo 30%">
+                  <ExpressionBindings>
+                    <Item1 Ref="25" EventName="BeforePrint" PropertyName="Text" Expression="Iif([Kollotex]&#xA;=0,'' ,[Kollotex]&#xA; )" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="26" ControlType="XRTableCell" Name="tableCell34" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D.Black RDT D-BA">
+                  <ExpressionBindings>
+                    <Item1 Ref="27" EventName="BeforePrint" PropertyName="Text" Expression="Iif([Refnol]&#xA;=0,'' ,[Refnol]&#xA; )" />
+                  </ExpressionBindings>
+                </Item9>
+                <Item10 Ref="28" ControlType="XRTableCell" Name="tableCell35" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D.Black RDT D-BD">
+                  <ExpressionBindings>
+                    <Item1 Ref="29" EventName="BeforePrint" PropertyName="Text" Expression="Iif([SizeTex]&#xA;=0,'' ,[SizeTex]&#xA; )" />
+                  </ExpressionBindings>
+                </Item10>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="30" UseFont="false" UseBackColor="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item3>
+    <Item4 Ref="31" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="46.4375">
+      <Controls>
+        <Item1 Ref="32" ControlType="XRRichText" Name="richText1" SerializableRtfString="ewBcAHIAdABmADEAXABkAGUAZgBmADAAewBcAGYAbwBuAHQAdABiAGwAewBcAGYAMAAgAEMAYQBsAGkAYgByAGkAOwB9AHsAXABmADEAIABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgA7AH0AewBcAGYAMgAgAGMAYQBsAGkAYgByAGkAOwB9AHsAXABmADMAIABBAHIAaQBhAGwAOwB9AH0AewBcAGMAbwBsAG8AcgB0AGIAbAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADAAXABiAGwAdQBlADAAIAA7AFwAcgBlAGQAMABcAGcAcgBlAGUAbgAwAFwAYgBsAHUAZQAyADUANQAgADsAfQB7AFwAKgBcAGQAZQBmAGMAaABwACAAXABmADEAXABmAHMAMgA0AH0AewBcAHMAdAB5AGwAZQBzAGgAZQBlAHQAIAB7AFwAcQBsAFwAZgAxAFwAZgBzADIANAAgAE4AbwByAG0AYQBsADsAfQB7AFwAKgBcAGMAcwAxAFwAZgAxAFwAZgBzADIANABcAGMAZgAxACAARABlAGYAYQB1AGwAdAAgAFAAYQByAGEAZwByAGEAcABoACAARgBvAG4AdAA7AH0AewBcACoAXABjAHMAMgBcAHMAYgBhAHMAZQBkAG8AbgAxAFwAZgAxAFwAZgBzADIANABcAGMAZgAxACAATABpAG4AZQAgAE4AdQBtAGIAZQByADsAfQB7AFwAKgBcAGMAcwAzAFwAZgAxAFwAZgBzADIANABcAHUAbABcAGMAZgAyACAASAB5AHAAZQByAGwAaQBuAGsAOwB9AHsAXAAqAFwAdABzADQAXAB0AHMAcgBvAHcAZABcAGYAMQBcAGYAcwAyADQAXABxAGwAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAbAAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABsADEAMAA4AFwAdABzAGMAZQBsAGwAcABhAGQAZABmAGIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgByADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAHIAMQAwADgAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAdAAzAFwAdABzAHYAZQByAHQAYQBsAHQAXABjAGwAdAB4AGwAcgB0AGIAIABOAG8AcgBtAGEAbAAgAFQAYQBiAGwAZQA7AH0AewBcACoAXAB0AHMANQBcAHQAcwByAG8AdwBkAFwAcwBiAGEAcwBlAGQAbwBuADQAXABmADEAXABmAHMAMgA0AFwAcQBsAFwAdAByAGIAcgBkAHIAdABcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgBsAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGIAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAcgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgBoAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAHYAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdABzAGMAZQBsAGwAcABhAGQAZABmAGwAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAbAAxADAAOABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgByADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAHIAMQAwADgAXAB0AHMAdgBlAHIAdABhAGwAdABcAGMAbAB0AHgAbAByAHQAYgAgAFQAYQBiAGwAZQAgAFMAaQBtAHAAbABlACAAMQA7AH0AfQB7AFwAKgBcAGwAaQBzAHQAbwB2AGUAcgByAGkAZABlAHQAYQBiAGwAZQB9AFwAbgBvAHUAaQBjAG8AbQBwAGEAdABcAHMAcABsAHkAdAB3AG4AaQBuAGUAXABoAHQAbQBhAHUAdABzAHAAXABhAGwAbgB0AGIAbABpAG4AZABcAGUAeABwAHMAaAByAHQAbgBcAHMAcABsAHQAcABnAHAAYQByAFwAbgBvAGcAcgBvAHcAYQB1AHQAbwBmAGkAdABcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGMAewBcAGwAYQBuAGcAMQAwADMAMwBcAGwAYQBuAGcAZgBlADEAMAAzADMAXABmADIAXABmAHMAMwA2AFwAYgBcAGMAZgAxACAAQgBPAE0AIAB2AHMAIABQAHIAbwBkAHUAYwB0AGkAbwBuACAAVgBhAHIAaQBhAG4AYwBlACAAQQBuAGEAbAB5AHMAaQBzAH0AewBcAGwAYQBuAGcAMQAwADMAMwBcAGwAYQBuAGcAZgBlADEAMAAzADMAXABmADIAXABmAHMAMwA2AFwAYgBcAGMAZgAxACAAIAAoAFMAaQB6AGkAbgBnACkAfQBcAGYAMwBcAGYAcwAyADAAXABjAGYAMQBcAHAAYQByAH0A" SizeF="1059,46.4375" LocationFloat="0, 0" Font="Arial, 9.75pt" Padding="2,2,0,0,100" />
+      </Controls>
+    </Item4>
+    <Item5 Ref="33" ControlType="PageHeaderBand" Name="PageHeader" HeightF="70.0000153">
+      <Controls>
+        <Item1 Ref="34" ControlType="XRTable" Name="table3" TextAlignment="MiddleCenter" SizeF="1049,20" LocationFloat="3.17891427E-05, 50.0000153" Font="Calibri, 7pt" ForeColor="Maroon" BackColor="Transparent" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="35" ControlType="XRTableRow" Name="tableRow3" Weight="1">
+              <Cells>
+                <Item1 Ref="36" ControlType="XRTableCell" Name="tableCell16" Weight="1.1114142059909509" Multiline="true" Text="Program No.">
+                  <ExpressionBindings>
+                    <Item1 Ref="37" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[PROG_NO]" />
+                  </ExpressionBindings>
+                </Item1>
+                <Item2 Ref="38" ControlType="XRTableCell" Name="tableCell17" Weight="0.995598917163431" TextFormatString="{0:0.0000}" Multiline="true" Text="Acetic Acid">
+                  <ExpressionBindings>
+                    <Item1 Ref="39" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[B_SIZE_120]" />
+                  </ExpressionBindings>
+                </Item2>
+                <Item3 Ref="40" ControlType="XRTableCell" Name="tableCell18" Weight="0.89298687684561839" TextFormatString="{0:0.0000}" Multiline="true" Text="Asutol LB">
+                  <ExpressionBindings>
+                    <Item1 Ref="41" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[B_SIZE_55]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="42" ControlType="XRTableCell" Name="tableCell19" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Belfasin GT">
+                  <ExpressionBindings>
+                    <Item1 Ref="43" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[B_SIZE_850]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="44" ControlType="XRTableCell" Name="tableCell20" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Caustic Soda">
+                  <ExpressionBindings>
+                    <Item1 Ref="45" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[B_SIZE_110]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="46" ControlType="XRTableCell" Name="tableCell21" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="COLORCONTIN SAN">
+                  <ExpressionBindings>
+                    <Item1 Ref="47" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[Hydrotreat]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="48" ControlType="XRTableCell" Name="tableCell22" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D. Blue 30%">
+                  <ExpressionBindings>
+                    <Item1 Ref="49" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[J_Size_974]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="50" ControlType="XRTableCell" Name="tableCell23" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Den. Indigo 30%">
+                  <ExpressionBindings>
+                    <Item1 Ref="51" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[Kollotex]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="52" ControlType="XRTableCell" Name="tableCell24" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D.Black RDT D-BA">
+                  <ExpressionBindings>
+                    <Item1 Ref="53" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[Refnol]" />
+                  </ExpressionBindings>
+                </Item9>
+                <Item10 Ref="54" ControlType="XRTableCell" Name="tableCell25" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D.Black RDT D-BD">
+                  <ExpressionBindings>
+                    <Item1 Ref="55" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[SizeTex]" />
+                  </ExpressionBindings>
+                </Item10>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="56" UseFont="false" UseForeColor="false" UseBackColor="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="57" ControlType="XRTable" Name="table2" TextAlignment="MiddleCenter" SizeF="1049,25" LocationFloat="0, 25.0000153" Font="Calibri, 7pt, style=Bold" BackColor="WhiteSmoke" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="58" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="59" ControlType="XRTableCell" Name="tableCell98" Weight="1.1114142059909509" Multiline="true" Text="Program No." />
+                <Item2 Ref="60" ControlType="XRTableCell" Name="tableCell5" Weight="0.995598917163431" Multiline="true" Text="Bensize B- 120" />
+                <Item3 Ref="61" ControlType="XRTableCell" Name="tableCell6" Weight="0.89298687684561839" Multiline="true" Text="Bensize B- 55 ( Starch)" />
+                <Item4 Ref="62" ControlType="XRTableCell" Name="tableCell7" Weight="1" Multiline="true" Text="Bensize E-850 ( Binder )" />
+                <Item5 Ref="63" ControlType="XRTableCell" Name="tableCell8" Weight="1" Multiline="true" Text="Bensize P-110 ( Wax )" />
+                <Item6 Ref="64" ControlType="XRTableCell" Name="tableCell9" Weight="1" Multiline="true" Text="Hydrotreat B-120" />
+                <Item7 Ref="65" ControlType="XRTableCell" Name="tableCell12" Weight="1" Multiline="true" Text="J-Size 974 (Binder)" />
+                <Item8 Ref="66" ControlType="XRTableCell" Name="tableCell13" Weight="1" Multiline="true" Text="Kollotex T5" />
+                <Item9 Ref="67" ControlType="XRTableCell" Name="tableCell14" Weight="1" Multiline="true" Text="Refnol SP" />
+                <Item10 Ref="68" ControlType="XRTableCell" Name="tableCell15" Weight="1" Multiline="true" Text="Size Tex - 5" />
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="69" UseFont="false" UseBackColor="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="70" ControlType="XRTable" Name="table1" TextAlignment="MiddleCenter" SizeF="836.899841,25" LocationFloat="0, 0" Font="Calibri, 9pt, style=Bold" BackColor="LightCyan" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="71" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="72" ControlType="XRTableCell" Name="tableCell11" Weight="1.1658735656738282" Multiline="true" Text="Program No." />
+                <Item2 Ref="73" ControlType="XRTableCell" Name="tableCell10" Weight="1" Multiline="true" Text="tableCell10">
+                  <ExpressionBindings>
+                    <Item1 Ref="74" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[PROG_NO]" />
+                  </ExpressionBindings>
+                </Item2>
+                <Item3 Ref="75" ControlType="XRTableCell" Name="tableCell1" Weight="1" Multiline="true" Text="Style" />
+                <Item4 Ref="76" ControlType="XRTableCell" Name="tableCell2" Weight="2.6666665649414063" Multiline="true" Text="tableCell2">
+                  <ExpressionBindings>
+                    <Item1 Ref="77" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[STYLE_NAME]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="78" ControlType="XRTableCell" Name="tableCell3" Weight="1.3072918701171874" Multiline="true" Text="Color" />
+                <Item6 Ref="79" ControlType="XRTableCell" Name="tableCell4" Weight="1.2291665649414063" Multiline="true" Text="tableCell4">
+                  <ExpressionBindings>
+                    <Item1 Ref="80" EventName="BeforePrint" PropertyName="Text" Expression="[rptBOMvsProductionAnalysis_Sizing].[COLOR]" />
+                  </ExpressionBindings>
+                </Item6>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="81" UseFont="false" UseBackColor="false" UseTextAlignment="false" />
+        </Item3>
+      </Controls>
+    </Item5>
+    <Item6 Ref="82" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="20">
+      <Controls>
+        <Item1 Ref="83" ControlType="XRTable" Name="table5" TextAlignment="MiddleCenter" SizeF="1049,20" LocationFloat="3.17891427E-05, 0" Font="Calibri, 7pt" BackColor="Transparent" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="84" ControlType="XRTableRow" Name="tableRow5" Weight="1">
+              <Cells>
+                <Item1 Ref="85" ControlType="XRTableCell" Name="tableCell36" Weight="1.1114142059909509" TextFormatString="{0:0.0000}" Multiline="true" Text="Average" />
+                <Item2 Ref="86" ControlType="XRTableCell" Name="tableCell37" Weight="0.995598917163431" TextFormatString="{0:0.0000}" Multiline="true" Text="Acetic Acid">
+                  <Summary Ref="87" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="88" EventName="BeforePrint" PropertyName="Text" Expression="[][[B_SIZE_120]!=0].Avg([B_SIZE_120])" />
+                  </ExpressionBindings>
+                </Item2>
+                <Item3 Ref="89" ControlType="XRTableCell" Name="tableCell38" Weight="0.89298687684561839" TextFormatString="{0:0.0000}" Multiline="true" Text="Asutol LB">
+                  <Summary Ref="90" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="91" EventName="BeforePrint" PropertyName="Text" Expression="[][[B_SIZE_55]!=0].Avg([B_SIZE_55])&#xA;" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="92" ControlType="XRTableCell" Name="tableCell39" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Belfasin GT">
+                  <Summary Ref="93" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="94" EventName="BeforePrint" PropertyName="Text" Expression="[][[B_SIZE_850]!=0].Avg([B_SIZE_850])&#xA;" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="95" ControlType="XRTableCell" Name="tableCell40" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Caustic Soda">
+                  <Summary Ref="96" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="97" EventName="BeforePrint" PropertyName="Text" Expression="[][[B_SIZE_110]!=0].Avg([B_SIZE_110])&#xA;" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="98" ControlType="XRTableCell" Name="tableCell41" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="COLORCONTIN SAN">
+                  <Summary Ref="99" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="100" EventName="BeforePrint" PropertyName="Text" Expression="[][[Hydrotreat]!=0].Avg([Hydrotreat])&#xA;" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="101" ControlType="XRTableCell" Name="tableCell42" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D. Blue 30%">
+                  <Summary Ref="102" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="103" EventName="BeforePrint" PropertyName="Text" Expression="[][[J_Size_974]!=0].Avg([J_Size_974])&#xA;" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="104" ControlType="XRTableCell" Name="tableCell43" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="Den. Indigo 30%">
+                  <Summary Ref="105" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="106" EventName="BeforePrint" PropertyName="Text" Expression="[][[Kollotex]!=0].Avg([Kollotex])&#xA;" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="107" ControlType="XRTableCell" Name="tableCell44" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D.Black RDT D-BA">
+                  <Summary Ref="108" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="109" EventName="BeforePrint" PropertyName="Text" Expression="[][[Refnol]!=0].Avg([Refnol])&#xA;" />
+                  </ExpressionBindings>
+                </Item9>
+                <Item10 Ref="110" ControlType="XRTableCell" Name="tableCell45" Weight="1" TextFormatString="{0:0.0000}" Multiline="true" Text="D.Black RDT D-BD">
+                  <Summary Ref="111" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="112" EventName="BeforePrint" PropertyName="Text" Expression="[][[SizeTex]!=0].Avg([SizeTex])&#xA;" />
+                  </ExpressionBindings>
+                </Item10>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="113" UseFont="false" UseBackColor="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item6>
+    <Item7 Ref="114" ControlType="PageFooterBand" Name="PageFooter" HeightF="0" />
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v19.2" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IlBETEVSUENvbm5lY3Rpb24iIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IlN0b3JlZFByb2NRdWVyeSIgTmFtZT0icnB0Qk9NdnNQcm9kdWN0aW9uQW5hbHlzaXNfU2l6aW5nIj48UGFyYW1ldGVyIE5hbWU9IkBTVFlMRU5BTUUiIFR5cGU9IkRldkV4cHJlc3MuRGF0YUFjY2Vzcy5FeHByZXNzaW9uIj4oU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5KSg/U1RZTEVOQU1FKTwvUGFyYW1ldGVyPjxQcm9jTmFtZT5ycHRCT012c1Byb2R1Y3Rpb25BbmFseXNpc19TaXppbmc8L1Byb2NOYW1lPjxNZXRhIFg9IjIwIiBZPSIyMCIgV2lkdGg9IjMwMCIgSGVpZ2h0PSI0NjkiIC8+PC9RdWVyeT48UXVlcnkgVHlwZT0iU3RvcmVkUHJvY1F1ZXJ5IiBOYW1lPSJycHRCT012c1Byb2R1Y3Rpb25fU2l6aW5nX0NvbnN1bXAiPjxQYXJhbWV0ZXIgTmFtZT0iQFNUWUxFTkFNRSIgVHlwZT0iRGV2RXhwcmVzcy5EYXRhQWNjZXNzLkV4cHJlc3Npb24iPihTeXN0ZW0uU3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkpKD9TVFlMRU5BTUUpPC9QYXJhbWV0ZXI+PFByb2NOYW1lPnJwdEJPTXZzUHJvZHVjdGlvbl9TaXppbmdfQ29uc3VtcDwvUHJvY05hbWU+PE1ldGEgWD0iMzQwIiBZPSIyMCIgV2lkdGg9IjMwMCIgSGVpZ2h0PSI0MzYiIC8+PC9RdWVyeT48UXVlcnkgVHlwZT0iQ3VzdG9tU3FsUXVlcnkiIE5hbWU9IlF1ZXJ5Ij48U3FsPnNlbGVjdCBkaXN0aW5jdCBiLlNUWUxFX05BTUUgZnJvbSBSTkRfQk9NIGEgbGVmdCBqb2luDQpSTkRfRkFCUklDSU5GTyBiIG9uIGEuRkFCQ09ERT1iLkZBQkNPREUgb3JkZXIgYnkgYi5TVFlMRV9OQU1FDQo8L1NxbD48TWV0YSBYPSI2NjAiIFk9IjIwIiBXaWR0aD0iMTg4IiBIZWlnaHQ9IjEwNiIgLz48L1F1ZXJ5PjxSZWxhdGlvbiBNYXN0ZXI9InJwdEJPTXZzUHJvZHVjdGlvbkFuYWx5c2lzX1NpemluZyIgRGV0YWlsPSJycHRCT012c1Byb2R1Y3Rpb25fU2l6aW5nX0NvbnN1bXAiPjxLZXlDb2x1bW4gTWFzdGVyPSJTVFlMRV9OQU1FIiBEZXRhaWw9IlNUWUxFX05BTUUiIC8+PC9SZWxhdGlvbj48UmVzdWx0U2NoZW1hPjxEYXRhU2V0IE5hbWU9InNxbERhdGFTb3VyY2UxIj48VmlldyBOYW1lPSJycHRCT012c1Byb2R1Y3Rpb25BbmFseXNpc19TaXppbmciPjxGaWVsZCBOYW1lPSJQUk9HX05PIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlNUWUxFX05BTUUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQl9TSVpFXzEyMCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJCX1NJWkVfNTUiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iQl9TSVpFXzg1MCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJCX1NJWkVfMTEwIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9Ikh5ZHJvdHJlYXQiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iSl9TaXplXzk3NCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJLb2xsb3RleCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJSZWZub2wiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iU2l6ZVRleCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJDT0xPUiIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48VmlldyBOYW1lPSJycHRCT012c1Byb2R1Y3Rpb25fU2l6aW5nX0NvbnN1bXAiPjxGaWVsZCBOYW1lPSJTVFlMRV9OQU1FIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlNFVF9OTyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJCX1NJWkVfMTIwIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IkJfU0laRV81NSIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJCX1NJWkVfODUwIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IkJfU0laRV8xMTAiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iSHlkcm90cmVhdCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJKX1NpemVfOTc0IiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IktvbGxvdGV4IiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IlJlZm5vbCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJTaXplVGV4IiBUeXBlPSJEb3VibGUiIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iU1RZTEVfTkFNRSIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48UmVsYXRpb24gTWFzdGVyPSJycHRCT012c1Byb2R1Y3Rpb25BbmFseXNpc19TaXppbmciIERldGFpbD0icnB0Qk9NdnNQcm9kdWN0aW9uX1NpemluZ19Db25zdW1wIj48S2V5Q29sdW1uIE1hc3Rlcj0iU1RZTEVfTkFNRSIgRGV0YWlsPSJTVFlMRV9OQU1FIiAvPjwvUmVsYXRpb24+PC9EYXRhU2V0PjwvUmVzdWx0U2NoZW1hPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 Ref="2" ObjectType="DevExpress.XtraReports.Parameters.DynamicListLookUpSettings, DevExpress.Printing.v19.2.Core" DataSource="#Ref-0" DataMember="Query" ValueMember="STYLE_NAME" DisplayMember="STYLE_NAME" SortMember="STYLE_NAME" SortOrder="Ascending" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

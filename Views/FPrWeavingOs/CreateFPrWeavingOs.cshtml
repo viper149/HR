@@ -1,0 +1,117 @@
+﻿@model FPrWeavingOsViewModel
+
+@{
+    ViewData["Title"] = "Weaving Opening Stock";
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <div class="col-lg-12 col-md-12 col-sm">
+
+        <form id="form" role="form" asp-action="CreateFPrWeavingOs">
+            <div class="row">
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_PR_WEAVING_OS.OSDATE" class="control-label"></label>
+                        <input asp-for="f_PR_WEAVING_OS.OSDATE" class="form-control" />
+                        <span asp-validation-for="f_PR_WEAVING_OS.OSDATE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_PR_WEAVING_OS.POID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.f_PR_WEAVING_OS.POID, new SelectList(Model.PosoViewModels, "Poid", "SO_NO"),
+                            "Select Order No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="f_PR_WEAVING_OS.POID" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div id="fab" class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <strong>
+                            <label class="control-label">Style Name</label>
+                        </strong>
+                        <span class="custom-form-control-bg form-control bg-e9ecef">
+                            <label id="fabcode"></label>
+                        </span>
+                    </div>
+                </div>
+
+                <div id="buyerName" class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <strong>
+                            <label class="control-label">Buyer Name</label>
+                        </strong>
+                        <span class="custom-form-control-bg form-control bg-e9ecef">
+                            <label id="buyer"></label>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_PR_WEAVING_OS.SETID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.f_PR_WEAVING_OS.SETID, new SelectList(Model.PlProductionSetDistributions, "ID", "Name"),
+                            "Select Set/Prog. No", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="f_PR_WEAVING_OS.SETID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_PR_WEAVING_OS.COUNTID" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.f_PR_WEAVING_OS.COUNTID,
+                        new SelectList(Model.CountList, "COUNTID", "RND_COUNTNAME"), "Select Count",
+                        new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="f_PR_WEAVING_OS.COUNTID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_PR_WEAVING_OS.LOTID" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.f_PR_WEAVING_OS.LOTID,
+                        new SelectList(Model.LotList, "LOTID", "LOTNO"), "Select Lot",
+                        new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="f_PR_WEAVING_OS.LOTID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_PR_WEAVING_OS.OS" class="control-label"></label>
+                        <input asp-for="f_PR_WEAVING_OS.OS" type="text" class="form-control" id="" />
+                        <span asp-validation-for="f_PR_WEAVING_OS.OS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_PR_WEAVING_OS.REMARKS" class="control-label"></label>
+                        <input asp-for="f_PR_WEAVING_OS.REMARKS" type="text" class="form-control" id="" />
+                        <span asp-validation-for="f_PR_WEAVING_OS.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="AttachTo">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button id="btnCreateLoan" class="btn btn-success nextBtn pull-right" type="submit">Create</button>
+                    <a asp-action="GetFPrWeavingOs" class="btn btn-dark pull-right">Back to List</a>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/FPrWeavingOs/CreateFPrWeavingOs.js"></script>
+}

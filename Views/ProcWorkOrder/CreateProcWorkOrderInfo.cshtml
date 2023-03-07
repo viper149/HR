@@ -1,0 +1,237 @@
+﻿@model ProcWorkOrderViewModel
+
+@{
+    ViewData["Title"] = "Procurement Work Order Information";
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateProcWorkOrderInfo">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="ProcWorkOrderMaster.WODATE" class="control-label"></label>
+                            <input asp-for="ProcWorkOrderMaster.WODATE" type="date" class="form-control" id="datePick" />
+                            <span asp-validation-for="ProcWorkOrderMaster.WODATE" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="ProcWorkOrderMaster.SUPPID" class="control-label"></label>
+                            @Html.DropDownListFor(c => c.ProcWorkOrderMaster.SUPPID, new SelectList(Model.SupplierList, "SUPPID", "SUPPNAME"), "Select Party Name", new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="ProcWorkOrderMaster.SUPPID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="ProcWorkOrderMaster.PAYMODE" class="control-label"></label>
+                            <select asp-for="ProcWorkOrderMaster.PAYMODE" class="form-control js-example-basic-single">
+                                <option value="" selected="selected">Selec a Paymode</option>
+                                <option value="Credit">Credit</option>
+                                <option value="Cash">Cash</option>
+                            </select>
+                            <span asp-validation-for="ProcWorkOrderMaster.PAYMODE" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="ProcWorkOrderMaster.UNIT" class="control-label"></label>
+                            <select asp-for="ProcWorkOrderMaster.UNIT" class="form-control js-example-basic-single">
+                                <option value="" selected="selected">Select Unit</option>
+                                <option value="PDLF">PDLF</option>
+                                <option value="Head Office">Head Office</option>
+                                <option value="Chemical Store">Chemical Store</option>
+                            </select>
+                            <span asp-validation-for="ProcWorkOrderMaster.UNIT" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="ProcWorkOrderMaster.CURRENCY" class="control-label"></label>
+                            <select asp-for="ProcWorkOrderMaster.CURRENCY" class="form-control js-example-basic-single">
+                                <option value="" selected="selected">Select Currency</option>
+                                <option value="BDT">BDT</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                            </select>
+                            <span asp-validation-for="ProcWorkOrderMaster.CURRENCY" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Work Order Details</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.INDENTNO" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.ProcWorkOrderDetails.INDENTNO, new SelectList(Model.IndentList, "INDID", "INDSL.INDSLNO"),
+                            "Select Indent No.", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="ProcWorkOrderDetails.INDENTNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.PRODID" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderDetails.PRODID" class="form-control" readonly="" />
+                        <span asp-validation-for="ProcWorkOrderDetails.PRODID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.PRODNAME" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderDetails.PRODNAME" class="form-control" readonly="" />
+                        <span asp-validation-for="ProcWorkOrderDetails.PRODNAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.UNIT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderDetails.UNIT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderDetails.UNIT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.QTY" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderDetails.QTY" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderDetails.QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.RATE" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderDetails.RATE" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderDetails.RATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.AMOUNT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderDetails.AMOUNT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderDetails.AMOUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.BSUNIT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderDetails.BSUNIT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderDetails.BSUNIT" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Amount Details</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.CARRING_AMT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.CARRING_AMT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.CARRING_AMT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.DISC_AMT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.DISC_AMT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.DISC_AMT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.LESS_AMT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.LESS_AMT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.LESS_AMT" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.SPC_DISC_AMT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.SPC_DISC_AMT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.SPC_DISC_AMT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.DISC_RATE" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.DISC_RATE" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.DISC_RATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.PAY_AMT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.PAY_AMT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.PAY_AMT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.ADD_AMT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.ADD_AMT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.ADD_AMT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.VAT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.VAT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.VAT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.FREIGHT_COST" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.FREIGHT_COST" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.FREIGHT_COST" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderMaster.FREIGHT" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderMaster.FREIGHT" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderMaster.FREIGHT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ProcWorkOrderDetails.REMARKS" class="control-label"></label>
+                        <input asp-for="ProcWorkOrderDetails.REMARKS" class="form-control" />
+                        <span asp-validation-for="ProcWorkOrderDetails.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="AttachTo">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button asp-action="CreateProcWorkOrderInfo" id="btnCreateLoan" class="btn btn-success nextBtn pull-right" type="submit">Create</button>
+                <button id="addToList" class="btn btn-info pull-right mr-2" type="button">Add to List</button>
+                <a asp-action="GetProcWorkOrderList" class="btn btn-dark pull-right">Back to List</a>
+
+            </div>
+        </div>
+
+        @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="prodDetails">
+                @await Html.PartialAsync($"~/Views/FPrWeavingProduction/AddProductionList.cshtml", Model)
+            </div>*@<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="prodDetails"></div>
+    </form>
+</div>
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/ProcWorkOrder/CreateProcWorkOrder.js"></script>
+}

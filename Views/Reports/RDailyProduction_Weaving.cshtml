@@ -1,0 +1,21 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Weaving
+@using rptDailyProduction_Weaving = DenimERP.Reports.Weaving.rptDailyProduction_Weaving
+
+@{
+    ViewData["Title"] = "Fabric Transfer Report(Weaving)";
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptDailyProduction_Weaving())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

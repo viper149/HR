@@ -1,0 +1,86 @@
+﻿
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = $"~/Views/Shared/_Register.cshtml";
+}
+
+<div class="animate form login_form">
+    <section class="login_content">
+        <form asp-action="Register" asp-controller="Account" enctype="multipart/form-data" method="post">
+            <h1>Create Account</h1>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <input asp-for="PhoneNumber" class="form-control">
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="custom-file mb-2">
+                <input asp-for="PhotoPath" class="form-control custom-file-input" />
+                <label class="custom-file-label">Choose a profile photo...</label>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+                <p class="change_link">
+                    Already a member ?
+                    <a asp-controller="Account" asp-action="Login"> Log in </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                    <h1><i class="fa fa-paw"></i> Pioneer Denim Limited</h1>
+                    <p>©2020 All Rights Reserved. Pioneer Denim Limited!</p>
+                    <a asp-controller="Home" asp-action="Privacy">Privacy and Terms</a>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+<div id="register" class="animate form registration_form">
+    <section class="login_content"></section>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptsPartial");}
+    <script asp-append-version="true" src="~/js/custom-file-input.js"></script>
+    <script asp-append-version="true" src="~/js/country-code/js/intlTelInput.js"></script>
+    <script>
+        var input = document.querySelector("#PhoneNumber");
+        window.intlTelInput(input, {
+            allowDropdown: true,
+            nationalMode: false,
+            separateDialCode: false,
+            utilsScript: "/js/country-code/js/utils.js"
+        });
+    </script>
+}
+
+@section Styles {
+
+    <link asp-append-version="true" href="~/js/country-code/css/intlTelInput.css" rel="stylesheet" />
+    <link asp-append-version="true" href="~/js/country-code/css/demo.css" rel="stylesheet" />
+}

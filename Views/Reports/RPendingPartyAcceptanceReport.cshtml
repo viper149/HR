@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExInvoiceMaster.Reports
+@using rptPendingPartyAcceptance = DenimERP.Views.ComExInvoiceMaster.Reports.rptPendingPartyAcceptance
+
+
+@{
+    ViewData["Title"] = "Pending Party Acceptance";
+    Layout = Layout;
+}
+<h2>Pending Party Acceptance</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptPendingPartyAcceptance())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

@@ -1,0 +1,46 @@
+﻿@model YarnCountUpdateViewModel
+
+@{
+    ViewData["Title"] = "Yarn Count Update";
+    Layout = Layout;
+}
+
+<h4><i class="fa fa-flask fa-lg text-success" aria-hidden="true"></i> Yarn Count Update</h4>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" asp-action="UpdateCountNameByRnd">
+        <div class="panel panel-default">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="panel-body row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="Old_Count" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.Old_Count, new SelectList(Model.BasYarnCountInfosWithoutRnd, "COUNTID", "COUNTNAME"), "Select Old Count Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="Old_Count" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="New_Count" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.New_Count, new SelectList(Model.BasYarnCountInfosJustRnd, "COUNTID", "COUNTNAME"), "Select New Count Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="New_Count" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3 mt-4">
+                    <button class="btn btn-warning" type="submit">Update Count</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @*@{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}*@
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+}

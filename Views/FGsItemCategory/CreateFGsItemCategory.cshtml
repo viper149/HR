@@ -1,0 +1,46 @@
+﻿@model FGsItemCategoryViewModel
+
+@{
+    ViewData["Title"] = "General Store Item Category Information";
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i>Create @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateFGsItemCategory">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FGsItemcategory.CATNAME" class="control-label"></label>
+                        <input asp-for="FGsItemcategory.CATNAME" class="form-control" />
+                        <span asp-validation-for="FGsItemcategory.CATNAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FGsItemcategory.DESCRIPTION" class="control-label"></label>
+                        <input asp-for="FGsItemcategory.DESCRIPTION" class="form-control" />
+                        <span asp-validation-for="FGsItemcategory.DESCRIPTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FGsItemcategory.REMARKS" class="control-label"></label>
+                        <input asp-for="FGsItemcategory.REMARKS" class="form-control" />
+                        <span asp-validation-for="FGsItemcategory.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit">Create</button>
+                    <a asp-action="GetFGsItemCategory" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+        @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    }

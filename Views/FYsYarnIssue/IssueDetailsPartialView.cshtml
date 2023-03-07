@@ -1,0 +1,116 @@
+﻿@model FYsYarnIssueViewModel
+
+@if (Model.YarnIssueDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.MAIN_COUNTID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.BasYarnCountinfo.COUNTNAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.LOTID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.FBasUnits.UNAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.TRANS.REQ_QTY)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.RCVDID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.BAG)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.ISSUE_QTY)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.SO_NO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YarnIssueDetails.REMARKS)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.YarnIssueDetailsList.Count(); i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].MAIN_COUNTID)
+                        @Model.YarnIssueDetailsList[i].RefBasYarnCountinfo?.RND_COUNTNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].YISSUEID)
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].REQ_DET_ID)
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].TRNSDATE)
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].TRANSID)
+                        @*@Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].TRANS.ORDERNO)
+                            @Model.YarnIssueDetailsList[i].TRANS?.PO?.SO?.SO_NO*@
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].COUNTID)
+                        @Model.YarnIssueDetailsList[i].BasYarnCountinfo?.RND_COUNTNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].LOTID)
+                        @Model.YarnIssueDetailsList[i].RCVD?.BasYarnLotinfo?.LOTNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].UNIT)
+                        @Model.YarnIssueDetailsList[i].FBasUnits?.UNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].TRANS.REQ_QTY)
+                        @Model.YarnIssueDetailsList[i].TRANS?.REQ_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].RCVDID)
+                        @Model.YarnIssueDetailsList[i].RCVD?.YRCV?.IND?.INDSL?.INDSLNO
+                    </td>
+                    <td>
+                        @*@Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].ISSUE_QTY)
+                            @Model.YarnIssueDetailsList[i].ISSUE_QTY*@
+
+                        <input class="form-control" asp-for="YarnIssueDetailsList[i].BAG" />
+                    </td>
+                    <td>
+                        @*@Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].BAG)
+                            @Model.YarnIssueDetailsList[i].BAG*@
+
+                        <input class="form-control" asp-for="YarnIssueDetailsList[i].ISSUE_QTY" />
+                    </td>
+                    <td>
+                        @Model.YarnIssueDetailsList[i].TRANS?.PO?.SO?.SO_NO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.YarnIssueDetailsList[i].REMARKS)
+                        @Model.YarnIssueDetailsList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="removeIndent(@i)" aria-hidden="false"></i>
+                    </td>
+                </tr>
+            }
+        <tr class="bg-info text-white">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-right"><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Sum Of Total :")</td>
+            <td class="">@($"{Model.YarnIssueDetailsList.Sum(e => e.ISSUE_QTY)}")</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+}

@@ -1,0 +1,24 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Inspection
+@using rptRollDespatchSheet_scan = DenimERP.Reports.Inspection.rptRollDespatchSheet_scan
+
+@model int
+
+@{
+    ViewData["Title"] = "Dispatch Sheet Scan Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptRollDespatchSheet_scan())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

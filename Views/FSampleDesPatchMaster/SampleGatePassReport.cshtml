@@ -1,0 +1,29 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Reports.Sample.Bay
+@using rptSampleGatePass = DenimERP.Reports.Sample.Bay.rptSampleGatePass
+@model int
+
+@{
+    ViewData["Title"] = "Sample Gate Pass Report";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Reports</li>
+        <li class="breadcrumb-item active" aria-current="page"><a asp-action="SampleGatePassReport" asp-controller="FSampleDesPatchMaster"></a>@ViewData["Title"]</li>
+    </ol>
+</nav>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptSampleGatePass(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

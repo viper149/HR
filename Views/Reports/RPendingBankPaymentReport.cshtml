@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExInvoiceMaster.Reports
+@using rptPendingBankPayment = DenimERP.Views.ComExInvoiceMaster.Reports.rptPendingBankPayment
+
+
+@{
+    ViewData["Title"] = "PendingBankPayment";
+    Layout = Layout;
+}
+<h2>Pending Bank Payment</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptPendingBankPayment())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

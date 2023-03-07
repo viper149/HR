@@ -1,0 +1,22 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.FPrWeavingProcessBulk.Reports
+@using rpt_weaving_delivery_shiftWise = DenimERP.Views.FPrWeavingProcessBulk.Reports.rpt_weaving_delivery_shiftWise
+
+@{
+    ViewData["Title"] = "Shift Wise Weaving Delivery Report";
+    Layout = Layout;
+}
+<h2>Shift Wise Weaving Delivery Report</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rpt_weaving_delivery_shiftWise())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

@@ -1,0 +1,53 @@
+﻿
+@model FYarnReqSViewModel
+
+@if (Model.FYarnRequirementDetailsSList.Any())
+{
+    <div class="col-12 p-0">
+        <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Details</h2>
+        <hr />
+    </div>
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.TRNSDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.ORDERNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.SETID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.COUNTID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.UNIT)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.REQ_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetailsS.REMARKS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FYarnRequirementDetailsSList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.DisplayFor(item => Model.FYarnRequirementDetailsSList[i].TRNSDATE)
+                    </td>
+                    <td>
+                        @Model.FYarnRequirementDetailsSList[i].ORDERNONavigation?.SO?.SO_NO
+                    </td>
+                    <td>
+                        @Model.FYarnRequirementDetailsSList[i].SET?.PROG_?.PROG_NO
+                    </td>
+                    <td>
+                        @Model.FYarnRequirementDetailsSList[i].COUNT?.COUNT?.COUNTNAME
+                    </td>
+                    <td>
+                        @Model.FYarnRequirementDetailsSList[i].UNITNavigation?.UNAME
+                    </td>
+                    <td>
+                        @Model.FYarnRequirementDetailsSList[i].REQ_QTY
+                    </td>
+                    <td>
+                        @Model.FYarnRequirementDetailsSList[i].REMARKS
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,454 @@
+﻿
+@model FDyeingProcessSlasherViewModel
+
+@{
+    ViewData["Title"] = "Edit Dyeing Process (Slasher)";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Edit Dyeing Process (Slasher)</h2>
+
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Step 1</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p><small>Finish</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" role="form" asp-action="EditDyeingProcessSlasher">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                @Html.HiddenFor(c => c.FPrSlasherDyeingMaster.EncryptedId)
+                @Html.HiddenFor(c => c.FPrSlasherDyeingMaster.SLID)
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingMaster.TRNSDATE" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingMaster.TRNSDATE" class="form-control" />
+                        <span asp-validation-for="FPrSlasherDyeingMaster.TRNSDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingMaster.SETID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrSlasherDyeingMaster.SETID, new SelectList(Model.PlProductionSetDistributions, "SETID", "PROG_.PROG_NO"), "Select Program/Set No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrSlasherDyeingMaster.SETID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Program/Set Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="setLength">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingMaster.BEAM_SPACE" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingMaster.BEAM_SPACE" class="form-control" />
+                        <span asp-validation-for="FPrSlasherDyeingMaster.BEAM_SPACE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingMaster.PICK_UP" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingMaster.PICK_UP" class="form-control" />
+                        <span asp-validation-for="FPrSlasherDyeingMaster.PICK_UP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingMaster.TOTAL_ENDS" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingMaster.TOTAL_ENDS" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="FPrSlasherDyeingMaster.TOTAL_ENDS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingMaster.ACTUAL_ENDS" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingMaster.ACTUAL_ENDS" class="form-control" />
+                        <span asp-validation-for="FPrSlasherDyeingMaster.ACTUAL_ENDS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Style Name</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="style">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Buyer</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="buyer">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Color</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="color">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Loom Type</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="loomType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Order No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="orderNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Ratio</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="ratio">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">PO No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="poNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingMaster.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingMaster.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrSlasherDyeingMaster.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingMaster.CLOSE_STATUS" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FPrSlasherDyeingMaster.CLOSE_STATUS" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="FPrSlasherDyeingMaster.CLOSE_STATUS" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-end">
+                    <div class="form-group mb-0 pr-2 border-dark border-right">
+                        <strong><label class="control-label mb-0">Production</label></strong>
+                        <span class="custom-form-control form-control bg-e9ecef">
+                            <strong id="production"><span id="prod">00.00</span></strong> <strong> M</strong>
+                        </span>
+                    </div>
+                    <div class="form-group mb-0 pl-2">
+                        <strong><label class="control-label mb-0">Pending</label></strong>
+                        <span class="custom-form-control form-control bg-e9ecef">
+                            <strong id="pending"><span id="pend">00.00</span></strong><strong> M</strong>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Weaving Beam Consumption</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.SL_MID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrSlasherDyeingDetails.SL_MID, new SelectList(Model.FPrSlasherMachineInfos, "SL_MID", "SL_MNO"), "Select Machine No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrSlasherDyeingDetails.SL_MID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.W_BEAMID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrSlasherDyeingDetails.W_BEAMID, new SelectList(Model.FWeavingBeams, "ID", "BEAM_NO"), "Select Can No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrSlasherDyeingDetails.W_BEAMID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.BEAM_TYPE" class="control-label"></label>
+                        <select asp-for="FPrSlasherDyeingDetails.BEAM_TYPE" class="form-control js-example-basic-single">
+                            <option value="">Select Process No</option>
+                            <option value="Airjet">Airjet</option>
+                            <option value="Rapier">Rapier</option>
+                            <option value="Stop Mark">Stop Mark</option>
+                        </select>
+                        <span asp-validation-for="FPrSlasherDyeingDetails.BEAM_TYPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.LENGTH_PER_BEAM" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingDetails.LENGTH_PER_BEAM" class="form-control" />
+                        <span asp-validation-for="FPrSlasherDyeingDetails.LENGTH_PER_BEAM" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.BREAK_PER_BEAM" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingDetails.BREAK_PER_BEAM" class="form-control" />
+                        <span asp-validation-for="FPrSlasherDyeingDetails.BREAK_PER_BEAM" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.OFFICERID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrSlasherDyeingDetails.OFFICERID, new SelectList(Model.FHrEmployees, "EMPID", "FIRST_NAME"), "Select Responsible Officer", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrSlasherDyeingDetails.OFFICERID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.EMPID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrSlasherDyeingDetails.EMPID, new SelectList(Model.FHrEmployees, "EMPID", "FIRST_NAME"), "Select Employee", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrSlasherDyeingDetails.EMPID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.SHIFT" class="control-label"></label>
+                        <select asp-for="FPrSlasherDyeingDetails.SHIFT" class="form-control js-example-basic-single">
+                            <option value="">Select Shift</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="A+B">A+B</option>
+                            <option value="B+C">B+C</option>
+                            <option value="C+A">C+A</option>
+                        </select>
+                        <span asp-validation-for="FPrSlasherDyeingDetails.SHIFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrSlasherDyeingDetails.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrSlasherDyeingDetails.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherDyeingDetails.IS_DELIVERABLE" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FPrSlasherDyeingDetails.IS_DELIVERABLE" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="FPrSlasherDyeingDetails.IS_DELIVERABLE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <button id="btnAddBeam" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                    <a asp-action="GetDyeingProcessSlasher" class="btn btn-dark pull-right mr-2">Back to List</a>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="beamDetails">
+                    @await Html.PartialAsync($"~/Views/FDyeingProcessSlasherMaster/AddBeamList.cshtml", Model)
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Chemical Consumption</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherChemConsm.CHEM_PRODID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrSlasherChemConsm.CHEM_PRODID, new SelectList(Model.FChemStoreProductInfos, "PRODUCTID", "PRODUCTNAME"), "Select Product", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrSlasherChemConsm.CHEM_PRODID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherChemConsm.QTY" class="control-label"></label>
+                        <input asp-for="FPrSlasherChemConsm.QTY" class="form-control" />
+                        <span asp-validation-for="FPrSlasherChemConsm.QTY" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherChemConsm.UNIT" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrSlasherChemConsm.UNIT, new SelectList(Model.Units, "UID", "UNAME"), "Select Unit", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrSlasherChemConsm.UNIT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherChemConsm.FOR_" class="control-label"></label>
+                        <select class="form-control js-example-basic-single" asp-for="FPrSlasherChemConsm.FOR_">
+                            <option value="">Select Dyeing For</option>
+                            <option value="Dyeing">Dyeing</option>
+                            <option value="Sizing">Sizing</option>
+                        </select>
+                        <span asp-validation-for="FPrSlasherChemConsm.FOR_" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrSlasherChemConsm.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrSlasherChemConsm.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrSlasherChemConsm.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning pull-right" type="submit" id="btn_submit">Update</button>
+                    <button id="btnAddChem" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetDyeingProcessSlasher" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="ChemDetails">
+                    @await Html.PartialAsync($"~/Views/FDyeingProcessSlasherMaster/AddChemList.cshtml", Model)
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script type="text/javascript" asp-append-version="true">
+        $(function () {
+            getSetDetails($("#FPrSlasherDyeingMaster_SETID").val());
+
+            setQtyInfo();
+
+            $("#btnAddChem").on('click',
+                function () {
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: $('#form').serialize(),
+                        type: "POST",
+                        url: "/FDyeingProcessSlasherMaster/AddChemList",
+                        success: function (partialView, status, xhr) {
+                            //console.log(partialView);
+                            $('#ChemDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                });
+
+            $("#btnAddBeam").on('click',
+                function () {
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: $('#form').serialize(),
+                        type: "POST",
+                        url: "/FDyeingProcessSlasherMaster/AddBeamList",
+                        success: function (partialView, status, xhr) {
+                            //console.log(partialView);
+                            setQty(xhr);
+                            $('#beamDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                });
+
+            $("#FPrSlasherDyeingMaster_SETID").on('change',
+                function () {
+                    var selectedVal = $(this).val();
+                    getSetDetails(selectedVal);
+                });
+        });
+
+        function setQtyInfo() {
+            $.ajax({
+                async: true,
+                cache: false,
+                data: $('#form').serialize(),
+                type: "POST",
+                url: "/FDyeingProcessSlasherMaster/AddBeamList",
+                success: function (partialView, status, xhr) {
+                    //console.log(partialView);
+                    setQty(xhr);
+                    $('#beamDetails').html(partialView);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+        function getSetDetails(selectedVal) {
+            $.ajax({
+                async: true,
+                cache: false,
+                data: { "setId": selectedVal },
+                type: "GET",
+                url: "/FDyeingProcessSlasherMaster/GetSetDetails",
+                success: function (data, status, xhr) {
+                    console.log(data);
+
+                    $("#style").text(data.styleName);
+                    $("#buyer").text(data.buyer);
+                    $("#color").text(data.color);
+                    $("#loomType").text(data.loomtype);
+                    $("#orderNo").text(data.orderNo);
+                    $("#ratio").text(data.ratio);
+                    $("#FPrSlasherDyeingMaster_TOTAL_ENDS").val(data.totalEnds);
+                    $("#poNo").text(data.piNo);
+                    $("#setLength").text(data.setLength);
+                    //$("#pend").text(data.setLength);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+        function setQty(xhr) {
+            var pending = xhr.getResponseHeader("Pending");
+            var production = xhr.getResponseHeader("Production");
+            $('#pend').text(pending);
+            $('#prod').text(production);
+            if ($('#pend').text() < -50000) {
+                $('#pending').addClass('text-danger');
+                $('#btn_submit').prop('disabled', true);
+            } else {
+                $('#pending').removeClass('text-danger');
+                $('#btn_submit').prop('disabled', false);
+            }
+        }
+
+    </script>
+}

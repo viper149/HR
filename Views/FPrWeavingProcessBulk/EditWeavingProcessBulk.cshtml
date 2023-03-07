@@ -1,0 +1,670 @@
+﻿@model PrWeavingProcessBulkViewModel
+@{
+    ViewData["Title"] = "Weaving Process(Bulk)";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-edit fa-lg text-warning" aria-hidden="true"></i> Weaving Process(Bulk)</h2>
+<hr />
+
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Step 1</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p><small>Finish</small></p>
+            </div>
+        </div>
+    </div>
+    <form id="form" role="form" asp-action="EditWeavingProcessBulk">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                @Html.HiddenFor(c => c.FPrWeavingProcessMasterB.EncryptedId)
+                @Html.HiddenFor(c => c.FPrWeavingProcessMasterB.WV_PROCESSID)
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessMasterB.WV_PROCESS_DATE" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessMasterB.WV_PROCESS_DATE" class="form-control" />
+                        <span asp-validation-for="FPrWeavingProcessMasterB.WV_PROCESS_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessMasterB.SETID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWeavingProcessMasterB.SETID, new SelectList(Model.PlProductionSetDistributions, "SETID", "PROG_.PROG_NO"), "Select Program/Set No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWeavingProcessMasterB.SETID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Style Name</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="style">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Buyer</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="buyer">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Set Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="setLength">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Sizing/Slasher Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="sizingLength">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Aprox. Grey Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="greyLength">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Act. Grey Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="actGreyLength">
+                            @Model.FPrWeavingProcessBeamDetailsBList.Sum(c => c.FPrWeavingProcessDetailsBList.Sum(d => d.LENGTH_BULK))
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Act. Crimp(%)</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="actCrimp">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Total Ends</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="totalEnds">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Color</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="color">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Loom Type</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="loomType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Order No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="orderNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">PO No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="poNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessMasterB.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessMasterB.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrWeavingProcessMasterB.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessMasterB.STATUS" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FPrWeavingProcessMasterB.STATUS" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="FPrWeavingProcessMasterB.STATUS" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="d-none">
+                    @Html.HiddenFor(c => c.FPrWeavingWeftYarnConsumDetails.COUNTID)
+                    @Html.HiddenFor(c => c.FPrWeavingWeftYarnConsumDetails.LOTID)
+                    @Html.HiddenFor(c => c.FPrWeavingWeftYarnConsumDetails.SUPPID)
+                    @Html.HiddenFor(c => c.FPrWeavingWeftYarnConsumDetails.RATIO)
+                    @Html.HiddenFor(c => c.FPrWeavingWeftYarnConsumDetails.SET_BGT)
+                    @Html.HiddenFor(c => c.FPrWeavingWeftYarnConsumDetails.ACT_BGT)
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Yarn Count</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="count">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Lot No.</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="lot">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Supplier Name</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="supplier">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Ratio</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="ratioYarn">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Set Budget</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="budget">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Actual Budget</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef" id="actBudget">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FPrWeavingWeftYarnConsumDetails.YARN_RECEIVE" class="control-label"></label>
+                            <input asp-for="FPrWeavingWeftYarnConsumDetails.YARN_RECEIVE" class="form-control" />
+                            <span asp-validation-for="FPrWeavingWeftYarnConsumDetails.YARN_RECEIVE" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FPrWeavingWeftYarnConsumDetails.YARN_RETURN" class="control-label"></label>
+                            <input asp-for="FPrWeavingWeftYarnConsumDetails.YARN_RETURN" class="form-control" />
+                            <span asp-validation-for="FPrWeavingWeftYarnConsumDetails.YARN_RETURN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FPrWeavingWeftYarnConsumDetails.WASTE" class="control-label"></label>
+                            <input asp-for="FPrWeavingWeftYarnConsumDetails.WASTE" class="form-control" />
+                            <span asp-validation-for="FPrWeavingWeftYarnConsumDetails.WASTE" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FPrWeavingWeftYarnConsumDetails.WASTE_PERCENTAGE" class="control-label"></label>
+                            <input asp-for="FPrWeavingWeftYarnConsumDetails.WASTE_PERCENTAGE" class="form-control" readonly="readonly" />
+                            <span asp-validation-for="FPrWeavingWeftYarnConsumDetails.WASTE_PERCENTAGE" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FPrWeavingWeftYarnConsumDetails.CONSUMP" class="control-label"></label>
+                            <input asp-for="FPrWeavingWeftYarnConsumDetails.CONSUMP" class="form-control" readonly="readonly" />
+                            <span asp-validation-for="FPrWeavingWeftYarnConsumDetails.CONSUMP" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FPrWeavingWeftYarnConsumDetails.REMARKS" class="control-label"></label>
+                            <input asp-for="FPrWeavingWeftYarnConsumDetails.REMARKS" class="form-control" />
+                            <span asp-validation-for="FPrWeavingWeftYarnConsumDetails.REMARKS" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="yarnDetails" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">@await Html.PartialAsync("~/Views/FPrWeavingProcessBulk/YarnBudgetList.cshtml", Model)</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    @*<button id="btnAddYarn" class="btn btn-success pull-right mr-2" type="button">Add Consumption</button>*@
+                    <a asp-action="GetWeavingProcessBulkList" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Beam Details</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="beam">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessBeamDetailsB.BEAMID" class="control-label"></label>
+                        <select asp-for="FPrWeavingProcessBeamDetailsB.BEAMID" class="form-control js-example-basic-single">
+                            <option value="">Select Beam</option>
+                        </select>
+                        <span asp-validation-for="FPrWeavingProcessBeamDetailsB.BEAMID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none" id="sbeam">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessBeamDetailsB.SBEAMID" class="control-label"></label>
+                        <select asp-for="FPrWeavingProcessBeamDetailsB.SBEAMID" class="form-control js-example-basic-single">
+                            <option value="">Select Beam</option>
+                        </select>
+                        <span asp-validation-for="FPrWeavingProcessBeamDetailsB.SBEAMID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessBeamDetailsB.BEAM_LENGTH" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessBeamDetailsB.BEAM_LENGTH" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="FPrWeavingProcessBeamDetailsB.BEAM_LENGTH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessBeamDetailsB.LOOM_ID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWeavingProcessBeamDetailsB.LOOM_ID, new SelectList(Model.FLoomMachineNo, "ID", "LOOM_NO"), "Select Loom No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWeavingProcessBeamDetailsB.LOOM_ID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessBeamDetailsB.MOUNT_TIME" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessBeamDetailsB.MOUNT_TIME" class="form-control" />
+                        <span asp-validation-for="FPrWeavingProcessBeamDetailsB.MOUNT_TIME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessBeamDetailsB.CRIMP" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessBeamDetailsB.CRIMP" class="form-control" />
+                        <span asp-validation-for="FPrWeavingProcessBeamDetailsB.CRIMP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessBeamDetailsB.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessBeamDetailsB.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrWeavingProcessBeamDetailsB.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessBeamDetailsB.STATUS" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FPrWeavingProcessBeamDetailsB.STATUS" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="FPrWeavingProcessBeamDetailsB.STATUS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Loom & Doffing Details</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.LOOM_TYPE" class="control-label font-weight-bold"></label>
+                        <div class="form-check radio_toggle p-0">
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.FPrWeavingProcessDetailsB.LOOM_TYPE, "1", new { @class = "loom" }) <span class="label-text">Airjet</span>
+                            </label>
+                            <label class="toggle_r mr-4">
+                                @Html.RadioButtonFor(model => model.FPrWeavingProcessDetailsB.LOOM_TYPE, "2", new { @class = "loom" }) <span class="label-text">Rapier</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.LOOM_TYPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.LOOM_NO" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWeavingProcessDetailsB.LOOM_NO, new SelectList(Model.FLoomMachineNo, "ID", "LOOM_NO"), "Select Loom No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.LOOM_NO" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.LENGTH_BULK" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessDetailsB.LENGTH_BULK" class="form-control" />
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.LENGTH_BULK" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.OTHERS_DOFF" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWeavingProcessDetailsB.OTHERS_DOFF, new SelectList(Model.OtherDoffs, "ID", "NAME"), "Select Others Doff.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.OTHERS_DOFF" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.SAMPLE_FABCODE" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWeavingProcessDetailsB.SAMPLE_FABCODE, new SelectList(Model.Weavings, "WVID", "FABCODE"), "Select Sample Style", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.SAMPLE_FABCODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.DOFF_TIME" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessDetailsB.DOFF_TIME" class="form-control" />
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.DOFF_TIME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.SHIFT" class="control-label"></label>
+                        <select asp-for="FPrWeavingProcessDetailsB.SHIFT" class="form-control js-example-basic-single">
+                            <option value="">Select Shift</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.SHIFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.DOFFER_NAME" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWeavingProcessDetailsB.DOFFER_NAME, new SelectList(Model.FHrEmployees, "EMPID", "FIRST_NAME"), "Select Doffer Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.DOFFER_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrWeavingProcessDetailsB.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWeavingProcessDetailsB.IS_DELIVERABLE" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FPrWeavingProcessDetailsB.IS_DELIVERABLE" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="FPrWeavingProcessDetailsB.IS_DELIVERABLE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning pull-right" type="submit" id="btn_submit">Update</button>
+                    <button id="btnAddBeam" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetWeavingProcessBulkList" class="btn btn-dark pull-right mr-2">Back to List</a>
+                </div>
+
+                <div class="cal-12 table-responsive" id="beamDetails">
+                    @await Html.PartialAsync($"~/Views/FPrWeavingProcessBulk/AddBeamList.cshtml", Model)
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script type="text/javascript" asp-append-version="true">
+        $(function () {
+            var selectedVal = $("#FPrWeavingProcessMasterB_SETID").val();
+            GetSetDetails(selectedVal);
+
+            $("#btnAddBeam").on('click',
+                function() {
+                    if ($("#FPrWeavingProcessDetailsB_DOFF_TIME").val() === "" && $("#FPrWeavingProcessDetailsB_LENGTH_BULK").val() !== "") {
+
+                        toastrNotification("You must enter doffing time.", 'error');
+                        return false;
+                    }
+                    if (parseFloat($("#FPrWeavingProcessBeamDetailsB_BEAM_LENGTH").val()) < parseFloat($("#FPrWeavingProcessDetailsB_LENGTH_BULK").val())) {
+                        toastrNotification("Bulk Length must be less then Beam Length", 'error');
+                        return false;
+                    }
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: $('#form').serialize(),
+                        type: "POST",
+                        url: "/FPrWeavingProcessBulk/AddBeamList",
+                        success: function(partialView, status, xhr) {
+                            if (xhr.getResponseHeader("Status") === "Success") {
+                                toastrNotification("Beam/Doff. Added Successfully", "success");
+                            } else if (xhr.getResponseHeader("Status") === "Failed") {
+                                toastrNotification("Beam/Doff. Add Failed", "error");
+                            }
+                            $('#beamDetails').html(partialView);
+                            $("#FPrWeavingProcessDetailsB_LENGTH_BULK").val("");
+                            $("#FPrWeavingProcessDetailsB_OTHERS_DOFF").val("").trigger("change");
+                            $("#FPrWeavingProcessDetailsB_SAMPLE_FABCODE").val("").trigger("change");
+                            $("#FPrWeavingProcessDetailsB_DOFF_TIME").val("");
+                            $('#actCrimp').text(((($("#sizingLength").text() - $('#actGreyLength').text()) / $('#actGreyLength').text())*100).toFixed(2));
+                        },
+                        error: function(e) {
+                            console.log(e);
+                        }
+                    });
+                });
+
+            $('.loom').change(function() {
+                var selectedItem = $(this).val();
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("GetLoomMachine", "FPrWeavingProcessBulk")",
+                    data: { "loomid": selectedItem },
+                    success: function(data) {
+                        if (data != null) {
+                            //console.log(data);
+                            $("#FPrWeavingProcessDetailsB_LOOM_NO").html('');
+                            $("#FPrWeavingProcessDetailsB_LOOM_NO").append('<option value="" selected>Select Loom No.</option>');
+
+                            $.each(data,
+                                function(id, option) {
+                                    $("#FPrWeavingProcessDetailsB_LOOM_NO").append($('<option></option>').val(option.id).html(option.looM_NO));
+                                });
+                        } else {
+                            toastrNotification("Sorry! No Loom No.", "error");
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        toastrNotification("Error: Failed To Retrieve Loom No.", "error");
+
+                    }
+                });
+            });
+
+            $("#FPrWeavingProcessMasterB_SETID").on('change',
+                function() {
+                    var selectedVal = $(this).val();
+                    GetSetDetails(selectedVal);
+                    //$.ajax({
+                    //    async: true,
+                    //    cache: false,
+                    //    data: $('#form').serialize(),
+                    //    type: "POST",
+                    //    url: "/FPrWeavingProcessBulk/YarnBudgetList",
+                    //    success: function (partialView, status, xhr) {
+                    //        $("#greyLength").text(xhr.getResponseHeader("GreyLength"));
+                    //        $("#sizingLength").text(xhr.getResponseHeader("SizingLength"));
+                    //        $('#yarnDetails').html(partialView);
+                    //        $('#actCrimp').text(((($("#sizingLength").text() - $('#actGreyLength').text()) / $('#actGreyLength').text())*100).toFixed(2));
+                    //    },
+                    //    error: function(e) {
+                    //        console.log(e);
+                    //    }
+                    //});
+
+                });
+
+
+            $("#FPrWeavingProcessBeamDetailsB_BEAMID").on('change',
+                function() {
+                    var selectedVal = $(this).val();
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: { "sdId": selectedVal },
+                        type: "GET",
+                        url: "/FPrWeavingProcessBulk/GetBeamDetails",
+                        success: function(data, status, xhr) {
+                            //console.log(data);
+                            $("#FPrWeavingProcessBeamDetailsB_BEAM_LENGTH").val(data);
+
+                        },
+                        error: function(e) {
+                            console.log(e);
+                        }
+                    });
+                });
+
+
+            $("#FPrWeavingProcessBeamDetailsB_SBEAMID").on('change',
+                function() {
+                    var selectedVal = $(this).val();
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: { "sdId": selectedVal },
+                        type: "GET",
+                        url: "/FPrWeavingProcessBulk/GetBeamDetails",
+                        success: function(data, status, xhr) {
+                            //console.log(data);
+                            $("#FPrWeavingProcessBeamDetailsB_BEAM_LENGTH").val(data);
+
+                        },
+                        error: function(e) {
+                            console.log(e);
+                        }
+                    });
+                });
+        });
+
+        function GetSetDetails(selectedVal) {
+
+            $.ajax({
+                        async: true,
+                        cache: false,
+                        data: { "setId": selectedVal },
+                        type: "GET",
+                        url: "/FPrWeavingProcessBulk/GetSetDetails",
+                        success: function(data, status, xhr) {
+
+                            $("#style").text(data.stylE_NAME);
+                            $("#buyer").text(data.buyeR_NAME);
+                            $("#color").text(data.color);
+                            $("#loomType").text(data.loomtype);
+                            $("#orderNo").text(data.orderno);
+                            $("#ratio").text(data.ratio);
+                            $("#totalEnds").text(data.totalends);
+                            $("#setLength").text(data.setlength);
+                            $("#poNo").text(data.pono);
+                            $('input[name="FPrWeavingProcessDetailsB.LOOM_TYPE"][value="' + data.loomid + '"]').prop('checked', true).trigger('change');
+
+                            $("#FPrWeavingProcessBeamDetailsB_BEAMID").html('');
+                            $("#FPrWeavingProcessBeamDetailsB_BEAMID").append('<option value="" selected>Select Beam</option>');
+
+                            $("#FPrWeavingProcessBeamDetailsB_SBEAMID").html('');
+                            $("#FPrWeavingProcessBeamDetailsB_SBEAMID").append('<option value="" selected>Select Beam</option>');
+                            console.log(data);
+
+                            if (data.dyeinG_TYPE === 'Rope' || data.dyeinG_TYPE === 'Sizing' || data.dyeinG_TYPE === 'Sectional') {
+                                $.each(data.sizinG_BEAM,
+                                    function (id, option) {
+                                        $.each(option.f_PR_SIZING_PROCESS_ROPE_DETAILS,
+                                            function (i, opt) {
+                                                if (opt.iS_DELIVERABLE) {
+                                                    $("#FPrWeavingProcessBeamDetailsB_BEAMID").append($('<option></option>').val(opt.sdid).html(opt.w_BEAM.beaM_NO));
+                                                }
+                                            });
+                                    });
+                                $("#beam").removeClass("d-none");
+                                $("#sbeam").addClass("d-none");
+                            } else if (data.dyeinG_TYPE === 'Slasher') {
+                                $.each(data.slasheR_BEAM,
+                                    function(id, option) {
+                                        $.each(option.f_PR_SLASHER_DYEING_DETAILS,
+                                            function(i, opt) {
+                                                if (opt.iS_DELIVERABLE) {
+                                                    $("#FPrWeavingProcessBeamDetailsB_SBEAMID").append($('<option></option>').val(opt.sldid).html(opt.w_BEAM.beaM_NO));
+                                                }
+                                            });
+                                    });
+                                $("#beam").addClass("d-none");
+                                $("#sbeam").removeClass("d-none");
+                            }
+
+                            $("#greyLength").text(xhr.getResponseHeader("GreyLength"));
+                            $("#sizingLength").text(xhr.getResponseHeader("SizingLength"));
+
+                            $('#actCrimp').text(((($("#sizingLength").text() - $('#actGreyLength').text()) / $('#actGreyLength').text())*100).toFixed(2));
+
+                        },
+                        error: function(e) {
+                            console.log(e);
+                        }
+                    }).done(function() {
+                $.ajax({
+                    async: true,
+                    cache: false,
+                    data: $('#form').serialize(),
+                    type: "POST",
+                    url: "/FPrWeavingProcessBulk/YarnBudgetList",
+                    success: function (partialView, status, xhr) {
+                        $("#greyLength").text(xhr.getResponseHeader("GreyLength"));
+                        $("#sizingLength").text(xhr.getResponseHeader("SizingLength"));
+                        $('#yarnDetails').html(partialView);
+                        $('#actCrimp').text(((($("#sizingLength").text() - $('#actGreyLength').text()) / $('#actGreyLength').text())*100).toFixed(2));
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+            });;
+        }
+
+
+    </script>
+}

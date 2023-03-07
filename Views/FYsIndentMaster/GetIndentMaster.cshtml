@@ -1,0 +1,53 @@
+﻿@model F_YS_INDENT_MASTER
+
+@{
+    ViewData["Title"] = "Yarn Indent";
+    Layout = Layout;
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2><i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> @ViewData["Title"] List</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li class="mr-2">
+                <p>
+                    <a asp-action="CreateIndentMaster" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                </p>
+            </li>
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content table-responsive">
+        <table class="table" id="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.INDNO)</th>
+                    <th>@Html.DisplayNameFor(model => model.INDDATE)</th>
+                    <th>@Html.DisplayNameFor(model => model.INDSL.INDSLNO)</th>
+                    <th>@Html.DisplayNameFor(model => model.INDSLID)</th>
+                    <th>@Html.DisplayNameFor(model => model.INDSL.INDENT_SL_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.OPT1)</th>
+                    <th>@Html.DisplayNameFor(model => model.OPT2)</th>
+                    <th>@Html.DisplayName("Req Notes")</th>
+                    <th>@Html.DisplayNameFor(model => model.REMARKS)</th>
+                    <th>@Html.DisplayNameFor(model => model.IsRevised)</th>
+                    <th>@Html.DisplayName("Actions")</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true" src="~/js/YarnStore/FYsIndentMaster/GetFYsIndentMaster.js"></script>
+}

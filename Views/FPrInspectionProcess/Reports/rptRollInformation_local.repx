@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="rptRollInformation" Margins="0, 14, 0, 11" PaperKind="Custom" PageWidth="402" PageHeight="400" Version="19.2" RequestParameters="false" DataMember="rptRollInformation" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="4" Description="Select One or More Roll" ValueSourceSettings="#Ref-2" Name="RollNo" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="5" ControlType="TopMarginBand" Name="TopMargin" HeightF="0" />
+    <Item2 Ref="6" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="11" />
+    <Item3 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="292">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRLabel" Name="label3" Multiline="true" Angle="-270" Text="PDL/INS/01/04 Version-01 Auth. Dt: 01-07-18" TextAlignment="MiddleCenter" SizeF="19.5781364,282.375061" LocationFloat="10.0000067, 0" Font="Calibri, 8pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="9" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="10" ControlType="XRBarCode" Name="barCode1" AutoModule="true" ShowText="false" SizeF="73.74489,74.9999847" LocationFloat="269.135345, 205.6667" Padding="5,5,5,5,100">
+          <Symbology Ref="11" Name="QRCode" CompactionMode="Byte" />
+          <ExpressionBindings>
+            <Item1 Ref="12" EventName="BeforePrint" PropertyName="Text" Expression="[ROLLNO]" />
+          </ExpressionBindings>
+          <StylePriority Ref="13" UsePadding="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="14" ControlType="XRTable" Name="table4" TextAlignment="MiddleCenter" SizeF="344.958374,80" LocationFloat="29.1666546, 205.666672" Font="Calibri, 9pt" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="15" ControlType="XRTableRow" Name="tableRow9" Weight="1">
+              <Cells>
+                <Item1 Ref="16" ControlType="XRTableCell" Name="tableCell27" Weight="1.208333444301867" Multiline="true" Text="White/1" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="17" UseFont="false" />
+                </Item1>
+                <Item2 Ref="18" ControlType="XRTableCell" Name="tableCell28" Weight="0.66010412615495739" Multiline="true" Text="tableCell28" Font="Calibri, 9pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="19" EventName="BeforePrint" PropertyName="Text" Expression="[p1]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="20" UseFont="false" />
+                </Item2>
+                <Item3 Ref="21" ControlType="XRTableCell" Name="tableCell29" Weight="1.5811462465336648" RowSpan="4" Multiline="true" />
+              </Cells>
+            </Item1>
+            <Item2 Ref="22" ControlType="XRTableRow" Name="tableRow10" Weight="1">
+              <Cells>
+                <Item1 Ref="23" ControlType="XRTableCell" Name="tableCell30" Weight="1.208333444301867" Multiline="true" Text="Yellow/2" Font="Calibri, 9pt, style=Bold" BackColor="Yellow">
+                  <StylePriority Ref="24" UseFont="false" UseBackColor="false" />
+                </Item1>
+                <Item2 Ref="25" ControlType="XRTableCell" Name="tableCell31" Weight="0.66010412615495739" Multiline="true" Text="tableCell31" Font="Calibri, 9pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="26" EventName="BeforePrint" PropertyName="Text" Expression="[p2]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="27" UseFont="false" />
+                </Item2>
+                <Item3 Ref="28" ControlType="XRTableCell" Name="tableCell32" Weight="1.5811462465336648" Multiline="true" Text="tableCell32" />
+              </Cells>
+            </Item2>
+            <Item3 Ref="29" ControlType="XRTableRow" Name="tableRow11" Weight="1">
+              <Cells>
+                <Item1 Ref="30" ControlType="XRTableCell" Name="tableCell33" Weight="1.208333444301867" Multiline="true" Text="Green/3" Font="Calibri, 9pt, style=Bold" ForeColor="White" BackColor="Green">
+                  <StylePriority Ref="31" UseFont="false" UseForeColor="false" UseBackColor="false" />
+                </Item1>
+                <Item2 Ref="32" ControlType="XRTableCell" Name="tableCell34" Weight="0.66010412615495739" Multiline="true" Text="tableCell34" Font="Calibri, 9pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="33" EventName="BeforePrint" PropertyName="Text" Expression="[p3]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="34" UseFont="false" />
+                </Item2>
+                <Item3 Ref="35" ControlType="XRTableCell" Name="tableCell35" Weight="1.5811462465336648" Multiline="true" Text="tableCell35" />
+              </Cells>
+            </Item3>
+            <Item4 Ref="36" ControlType="XRTableRow" Name="tableRow12" Weight="1">
+              <Cells>
+                <Item1 Ref="37" ControlType="XRTableCell" Name="tableCell36" Weight="1.208333444301867" Multiline="true" Text="Red/4" Font="Calibri, 9pt, style=Bold" ForeColor="White" BackColor="Red">
+                  <StylePriority Ref="38" UseFont="false" UseForeColor="false" UseBackColor="false" />
+                </Item1>
+                <Item2 Ref="39" ControlType="XRTableCell" Name="tableCell37" Weight="0.66010412615495739" Multiline="true" Text="tableCell37" Font="Calibri, 9pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="40" EventName="BeforePrint" PropertyName="Text" Expression="[p4]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="41" UseFont="false" />
+                </Item2>
+                <Item3 Ref="42" ControlType="XRTableCell" Name="tableCell38" Weight="1.5811462465336648" Multiline="true" Text="tableCell38" />
+              </Cells>
+            </Item4>
+          </Rows>
+          <StylePriority Ref="43" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="44" ControlType="XRTable" Name="table3" SizeF="344.958374,150.000015" LocationFloat="29.1666355, 53.2916679" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="45" ControlType="XRTableRow" Name="tableRow3" Weight="1">
+              <Cells>
+                <Item1 Ref="46" ControlType="XRTableCell" Name="tableCell3" Weight="0.35028390522803537" Multiline="true" Text="Total Defect Point" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold" Borders="All" BorderWidth="0.5">
+                  <StylePriority Ref="47" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="48" ControlType="XRTableCell" Name="tableCell4" Weight="0.19135759982929329" Multiline="true" Text="tableCell4" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="49" EventName="BeforePrint" PropertyName="Text" Expression="IIF([p1] is NULL,0,[p1])*1+IIF([p2] is NULL,0,[p2])*2+IIF([p3] is NULL,0,[p3])*3+IIF([p4] is NULL,0,[p4])*4" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="50" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="51" ControlType="XRTableCell" Name="tableCell5" Weight="0.3092008950072172" Multiline="true" Text="No. Of Pcs" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="52" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="53" ControlType="XRTableCell" Name="tableCell6" Weight="0.14915759993545419" Multiline="true" Text="tableCell6" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="54" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[PICES]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="55" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+              </Cells>
+            </Item1>
+            <Item2 Ref="56" ControlType="XRTableRow" Name="tableRow4" Weight="1">
+              <Cells>
+                <Item1 Ref="57" ControlType="XRTableCell" Name="tableCell7" Weight="0.35028390522803537" Multiline="true" Text="Point/100sq (Yds)" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="58" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="59" ControlType="XRTableCell" Name="tableCell8" Weight="0.19135759982929329" TextFormatString="{0:n}" Multiline="true" Text="tableCell8" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="60" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[POINT_100SQ]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="61" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="62" ControlType="XRTableCell" Name="tableCell9" Weight="0.3092008950072172" Multiline="true" Text="Roll Length(Yds)" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="63" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="64" ControlType="XRTableCell" Name="tableCell10" Weight="0.14915759993545419" Multiline="true" Text="tableCell10" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="65" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[LENGTH_YDS]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="66" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+              </Cells>
+            </Item2>
+            <Item3 Ref="67" ControlType="XRTableRow" Name="tableRow5" Weight="1">
+              <Cells>
+                <Item1 Ref="68" ControlType="XRTableCell" Name="tableCell11" Weight="0.35028390522803537" Multiline="true" Text="Grade" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="69" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="70" ControlType="XRTableCell" Name="tableCell12" Weight="0.19135759982929329" Multiline="true" Text="tableCell12" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="71" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[FAB_GRADE]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="72" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="73" ControlType="XRTableCell" Name="tableCell13" Weight="0.3092008950072172" Multiline="true" Text="Roll Length(Mtr)" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="74" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="75" ControlType="XRTableCell" Name="tableCell14" Weight="0.14915759993545419" Multiline="true" Text="tableCell14" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="76" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[LENGTH_MTR]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="77" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+              </Cells>
+            </Item3>
+            <Item4 Ref="78" ControlType="XRTableRow" Name="tableRow6" Weight="1">
+              <Cells>
+                <Item1 Ref="79" ControlType="XRTableCell" Name="tableCell15" Weight="0.35028390522803537" Multiline="true" Text="Color" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="80" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="81" ControlType="XRTableCell" Name="tableCell16" Weight="0.19135759982929329" Multiline="true" TextAlignment="MiddleCenter" Font="Calibri, 8pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="82" EventName="BeforePrint" PropertyName="Text" Expression="[COLOR]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="83" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="84" ControlType="XRTableCell" Name="tableCell17" Weight="0.3092008950072172" Multiline="true" Text="Req. Weight oz/yd2" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="85" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="86" ControlType="XRTableCell" Name="tableCell18" Weight="0.14915759993545419" Multiline="true" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="87" EventName="BeforePrint" PropertyName="Text" Expression="[WEIGHT_DEC]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="88" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+              </Cells>
+            </Item4>
+            <Item5 Ref="89" ControlType="XRTableRow" Name="tableRow7" Weight="1">
+              <Cells>
+                <Item1 Ref="90" ControlType="XRTableCell" Name="tableCell19" Weight="0.35028390522803537" Multiline="true" Text="Overall Width(inch)" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="91" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="92" ControlType="XRTableCell" Name="tableCell20" Weight="0.19135759982929329" Multiline="true" Text="tableCell20" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="93" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[ACT_WIDTH_INCH]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="94" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="95" ControlType="XRTableCell" Name="tableCell21" Weight="0.3092008950072172" Multiline="true" Text="Gross Weight(KG)" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="96" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="97" ControlType="XRTableCell" Name="tableCell22" Weight="0.14915759993545419" Multiline="true" Text="tableCell22" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="98" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[GR_WEIGHT_KG]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="99" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+              </Cells>
+            </Item5>
+            <Item6 Ref="100" ControlType="XRTableRow" Name="tableRow8" Weight="1">
+              <Cells>
+                <Item1 Ref="101" ControlType="XRTableCell" Name="tableCell23" Weight="0.35028390522803537" Multiline="true" Text="Cutable Width (Inch)" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="102" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="103" ControlType="XRTableCell" Name="tableCell24" Weight="0.19135759982929329" Multiline="true" Text="tableCell24" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="104" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[CUT_WIDTH_INCH]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="105" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="106" ControlType="XRTableCell" Name="tableCell25" Weight="0.3092008950072172" Multiline="true" Text="Net Weight(KG)" TextAlignment="MiddleRight" Font="Calibri, 9pt, style=Bold">
+                  <StylePriority Ref="107" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="108" ControlType="XRTableCell" Name="tableCell26" Weight="0.14915759993545419" TextFormatString="{0:n}" Multiline="true" Text="tableCell26" TextAlignment="MiddleCenter" Font="Calibri, 9pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="109" EventName="BeforePrint" PropertyName="Text" Expression="[rptRollInformation].[NET_WEIGHT_KG]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="110" UseFont="false" UseTextAlignment="false" />
+                </Item4>
+              </Cells>
+            </Item6>
+          </Rows>
+          <StylePriority Ref="111" UseBorders="false" UseBorderWidth="false" />
+        </Item4>
+        <Item5 Ref="112" ControlType="XRTable" Name="table2" SizeF="344.958374,25.0000019" LocationFloat="29.1666355, 28.2916679" Padding="2,2,0,0,96" Borders="All">
+          <Rows>
+            <Item1 Ref="113" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="114" ControlType="XRTableCell" Name="tableCell2" Weight="0.66306315264629068" Multiline="true" Text="tableCell1" TextAlignment="MiddleCenter" Font="Calibri, 12pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="115" EventName="BeforePrint" PropertyName="Text" Expression="[STYLE_NAME]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="116" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="117" ControlType="XRTableCell" Name="tableCell40" Weight="0.33693684735370938" Multiline="true" TextAlignment="MiddleCenter" Font="Calibri, 12pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="118" EventName="BeforePrint" PropertyName="Text" Expression="[ORDER_NO]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="119" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="120" UseBorders="false" />
+        </Item5>
+        <Item6 Ref="121" ControlType="XRTable" Name="table1" SizeF="344.958374,25.0000019" LocationFloat="29.166666, 3.29166651" Padding="2,2,0,0,96" Borders="All" BorderWidth="1.5">
+          <Rows>
+            <Item1 Ref="122" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="123" ControlType="XRTableCell" Name="tableCell1" Weight="0.66306315264629068" Multiline="true" Text="tableCell1" TextAlignment="MiddleCenter" Font="Calibri, 12pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="124" EventName="BeforePrint" PropertyName="Text" Expression="'Roll No- '+[rptRollInformation].[ROLLNO]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="125" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="126" ControlType="XRTableCell" Name="tableCell39" Weight="0.33693684735370938" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Text="tableCell39" TextAlignment="MiddleCenter" Font="Calibri, 12pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="127" EventName="BeforePrint" PropertyName="Text" Expression="[CREATED_AT]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="128" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="129" UseBorders="false" UseBorderWidth="false" />
+        </Item6>
+      </Controls>
+    </Item3>
+    <Item4 Ref="130" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="23.958334" />
+    <Item5 Ref="131" ControlType="PageHeaderBand" Name="PageHeader" HeightF="61.1249924">
+      <Controls>
+        <Item1 Ref="132" ControlType="XRTable" Name="table5" TextAlignment="MiddleCenter" SizeF="344.9584,20" LocationFloat="29.1666355, 31.1249924" Font="Calibri, 8pt" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="133" ControlType="XRTableRow" Name="tableRow13" Weight="1">
+              <Cells>
+                <Item1 Ref="134" ControlType="XRTableCell" Name="tableCell41" Weight="0.47107146512742804" Multiline="true" Text="Operator:" TextAlignment="MiddleRight" Font="Calibri, 10pt, style=Bold">
+                  <StylePriority Ref="135" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="136" ControlType="XRTableCell" Name="tableCell42" Weight="1.5289285348725721" Multiline="true" Text="tableCell42" Font="Calibri, 9pt, style=Bold">
+                  <ExpressionBindings>
+                    <Item1 Ref="137" EventName="BeforePrint" PropertyName="Text" Expression="[FIRST_NAME]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="138" UseFont="false" />
+                </Item2>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="139" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item5>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v19.2" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IlBETEVSUENvbm5lY3Rpb24iIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IlN0b3JlZFByb2NRdWVyeSIgTmFtZT0icnB0Um9sbEluZm9ybWF0aW9uIj48UGFyYW1ldGVyIE5hbWU9IkBST0xMTk8iIFR5cGU9IkRldkV4cHJlc3MuRGF0YUFjY2Vzcy5FeHByZXNzaW9uIj4oU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5KSg/Um9sbE5vKTwvUGFyYW1ldGVyPjxQcm9jTmFtZT5ycHRSb2xsSW5mb3JtYXRpb248L1Byb2NOYW1lPjwvUXVlcnk+PFF1ZXJ5IFR5cGU9IlNlbGVjdFF1ZXJ5IiBOYW1lPSJDT01QQU5ZX0lORk8iPjxUYWJsZXM+PFRhYmxlIE5hbWU9IkNPTVBBTllfSU5GTyIgLz48L1RhYmxlcz48Q29sdW1ucz48Q29sdW1uIFRhYmxlPSJDT01QQU5ZX0lORk8iIE5hbWU9IklEIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iQ09NUEFOWV9OQU1FIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iVEFHTElORSIgLz48Q29sdW1uIFRhYmxlPSJDT01QQU5ZX0lORk8iIE5hbWU9IkxPR08iIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJGQUNUT1JZX0FERFJFU1MiIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJIRUFET0ZGSUNFX0FERFJFU1MiIC8+PENvbHVtbiBUYWJsZT0iQ09NUEFOWV9JTkZPIiBOYW1lPSJXRUJfQUREUkVTUyIgLz48Q29sdW1uIFRhYmxlPSJDT01QQU5ZX0lORk8iIE5hbWU9IkVNQUlMIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iUEhPTkUxIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iUEhPTkUyIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iUEhPTkUzIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iQklOX05PIiAvPjxDb2x1bW4gVGFibGU9IkNPTVBBTllfSU5GTyIgTmFtZT0iRVRJTl9OTyIgLz48L0NvbHVtbnM+PC9RdWVyeT48UXVlcnkgVHlwZT0iQ3VzdG9tU3FsUXVlcnkiIE5hbWU9IlF1ZXJ5Ij48U3FsPnNlbGVjdCBST0xMTk8gZnJvbSBmX3ByX2luc3BlY3Rpb25fcHJvY2Vzc19kZXRhaWxzIG9yZGVyIGJ5IFJPTExOTyBkZXNjPC9TcWw+PC9RdWVyeT48UmVzdWx0U2NoZW1hPjxEYXRhU2V0IE5hbWU9InNxbERhdGFTb3VyY2UxIj48VmlldyBOYW1lPSJycHRSb2xsSW5mb3JtYXRpb24iPjxGaWVsZCBOYW1lPSJGSVJTVF9OQU1FIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IklOU1BEQVRFIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iUk9MTE5PIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlRPVEFMX0RFRkVDVCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IlBJQ0VTIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iUE9JTlRfMTAwU1EiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iTEVOR1RIX1lEUyIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJMRU5HVEhfTVRSIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IkZBQl9HUkFERSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJHUl9XRUlHSFRfS0ciIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iTkVUX1dFSUdIVF9LRyIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJBQ1RfV0lEVEhfSU5DSCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJDVVRfV0lEVEhfSU5DSCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJwMSIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJwMiIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJwMyIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJwNCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJDUkVBVEVEX0FUIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iQUNUX09aX1lEUyIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJST0xMX0lOU1BEQVRFIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iQ1VUUENTX1lEUyIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJERUZfUENTIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlJPTExfSUQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJPUkRFUl9OTyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJTVFlMRV9OQU1FIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IldFSUdIVF9ERUMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUkVFRF9TUEFDRSIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJDT0xPUiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJTRVRfTk8iIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iUXVlcnkiPjxGaWVsZCBOYW1lPSJST0xMTk8iIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iQ09NUEFOWV9JTkZPIj48RmllbGQgTmFtZT0iSUQiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IkNPTVBBTllfTkFNRSIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iVEFHTElORSIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iTE9HTyIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iRkFDVE9SWV9BRERSRVNTIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJIRUFET0ZGSUNFX0FERFJFU1MiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IldFQl9BRERSRVNTIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJFTUFJTCIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iUEhPTkUxIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJQSE9ORTIiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IlBIT05FMyIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iQklOX05PIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJFVElOX05PIiBUeXBlPSJVbmtub3duIiAvPjwvVmlldz48L0RhdGFTZXQ+PC9SZXN1bHRTY2hlbWE+PENvbm5lY3Rpb25PcHRpb25zIENsb3NlQ29ubmVjdGlvbj0idHJ1ZSIgLz48L1NxbERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 Ref="2" ObjectType="DevExpress.XtraReports.Parameters.DynamicListLookUpSettings, DevExpress.Printing.v19.2.Core" DataSource="#Ref-0" DataMember="Query" ValueMember="ROLLNO" DisplayMember="ROLLNO" SortMember="ROLLNO" SortOrder="Descending" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

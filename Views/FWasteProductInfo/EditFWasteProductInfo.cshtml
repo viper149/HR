@@ -1,0 +1,67 @@
+﻿@model FWasteProductInfoViewModel
+
+@{
+    ViewData["Title"] = "Waste Production Info";
+}
+
+<h2><i class="fa fa-edit fa-lg text-warning" aria-hidden="true"></i> Edit @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <div class="col-lg-12 col-md-12 col-sm">
+
+        <form id="form" role="form" asp-action="EditFWasteProductInfo">
+            <div class="row">
+                @Html.HiddenFor(c=>c.F_WASTE_PRODUCTINFO.WPID)
+                @Html.HiddenFor(c=>c.F_WASTE_PRODUCTINFO.EncryptedId)
+                @Html.HiddenFor(c=>c.F_WASTE_PRODUCTINFO.PRODUCT_NAME)
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="F_WASTE_PRODUCTINFO.PRODUCT_NAME" class="control-label"></label>
+                        <input asp-for="F_WASTE_PRODUCTINFO.PRODUCT_NAME" type="text" class="form-control"  disabled="disabled"/>
+                        <span asp-validation-for="F_WASTE_PRODUCTINFO.PRODUCT_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="F_WASTE_PRODUCTINFO.UID" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.F_WASTE_PRODUCTINFO.UID,
+                        new SelectList(Model.FBasUnitList, "UID", "UNAME"), "Select Unit",
+                        new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="F_WASTE_PRODUCTINFO.UID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="F_WASTE_PRODUCTINFO.WPTYPE" class="control-label"></label>
+                        <select asp-for="F_WASTE_PRODUCTINFO.WPTYPE" class="form-select form-control">
+                            <option selected>Select Type</option>
+                            <option value="FABRIC">FABRIC</option>
+                            <option value="GS">GS</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="F_WASTE_PRODUCTINFO.REMARKS" class="control-label"></label>
+                        <input asp-for="F_WASTE_PRODUCTINFO.REMARKS" type="text" class="form-control" id="" />
+                        <span asp-validation-for="F_WASTE_PRODUCTINFO.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="AttachTo">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning nextBtn pull-right" type="submit">Update</button>
+                    <a asp-action="GetFWasteProductInfo" class="btn btn-dark pull-right">Back to List</a>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

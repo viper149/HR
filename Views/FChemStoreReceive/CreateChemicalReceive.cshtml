@@ -1,0 +1,265 @@
+﻿
+@model FChemStoreReceiveViewModel
+
+@{
+    ViewData["Title"] = "Chemical Receive";
+}
+
+<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form asp-action="CreateChemicalReceive" enctype="multipart/form-data" id="form" role="form">
+        <div class="panel-body row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Receive Information</h2>
+                <hr />
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.RCVDATE" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.RCVDATE" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.RCVDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.RCVTID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.RCVTID, new SelectList(Model.FBasReceiveTypesList, "RCVTID", "RCVTYPE"),
+                        "Select Receive Type", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.RCVTID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.RcvEmployee.FIRST_NAME" class="control-label">Received By</label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.RCVBY, new SelectList(Model.RcvEmployees, "EMPID", "FIRST_NAME", Model.RcvEmployees.Select(e => e.EMPID).FirstOrDefault()),
+                        "Select Received By", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.RCVBY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.CheckEmployee.FIRST_NAME" class="control-label">Checked By</label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.CHECKBY, new SelectList(Model.CheckEmployees, "EMPID", "FIRST_NAME", Model.RcvEmployees.Select(e => e.EMPID).FirstOrDefault()),
+                        "Select Checked By", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.CHECKBY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.ComImpInvoiceinfo.INVNO" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.INVID, new SelectList(Model.ComImpInvoiceInfoList, "INVID", "INVNO"),
+                        "Select Invoice", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.INVID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.ComImpInvoiceinfo.LC.LCNO" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.LC_ID, new SelectList(Model.ComImpLcinformations, "LC_ID", "LCNO"),
+                        "Select LC Number", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.LC_ID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.BasSupplierinfo.SUPPNAME" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.SUPPID, new SelectList(Model.BasSupplierinfos, "SUPPID", "SUPPNAME"),
+                        "Select Supplier", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.SUPPID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.Countries.COUNTRY_NAME" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.ORIGIN, new SelectList(Model.Countrieses, "ID", "COUNTRY_NAME"),
+                        "Select Country of Origin", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.ORIGIN" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.CHALLAN_NO" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.CHALLAN_NO" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.CHALLAN_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.CHALLAN_DATE" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.CHALLAN_DATE" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.CHALLAN_DATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.CNFID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.CNFID, new SelectList(Model.ComImpCnfinfosList, "CNFID", "CNFNAME"),
+                        "Select CNF NO.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.CNFID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.CNF_CHALLAN_NO" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.CNF_CHALLAN_NO" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.CNF_CHALLAN_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.CNF_CHALLAN_DATE" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.CNF_CHALLAN_DATE" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.CNF_CHALLAN_DATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.BasTransportinfo.TRNSPNAME" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveMaster.TRANSPID, new SelectList(Model.BasTransportinfos, "TRNSPID", "TRNSPNAME"),
+                        "Select Transport Agent", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveMaster.TRANSPID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.VEHICAL_NO" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.VEHICAL_NO" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.VEHICAL_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.GE_ID" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.GE_ID" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.GE_ID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.GEDATE" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.GEDATE" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.GEDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveMaster.REMARKS" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveMaster.REMARKS" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveMaster.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="ComImpInvoice"></div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Receive Details</h2>
+                <hr />
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.PRODUCTID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveDetails.PRODUCTID, new SelectList(Model.FChemStoreProductinfosList, "PRODUCTID", "PRODUCTNAME"),
+                        "Select Count Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveDetails.PRODUCTID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.UNIT" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveDetails.UNIT" class="form-control" type="hidden" />
+                    <input asp-for="FChemStoreReceiveDetails.FBasUnits.UNAME" class="form-control" disabled />
+                    <span asp-validation-for="FChemStoreReceiveDetails.UNIT" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.CINDID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveDetails.CINDID, new SelectList(Model.FChemStoreIndentmastersList, "CINDID", "CINDNO"),
+                        "Select Indent Number", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveDetails.CINDID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.CINDDATE" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveDetails.CINDDATE" class="form-control " readonly />
+                    <span asp-validation-for="FChemStoreReceiveDetails.CINDDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.BATCHNO" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveDetails.BATCHNO" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveDetails.BATCHNO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.MNGDATE" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveDetails.MNGDATE" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveDetails.MNGDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.EXDATE" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveDetails.EXDATE" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveDetails.EXDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.FRESH_QTY" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveDetails.FRESH_QTY" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveDetails.FRESH_QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.REJ_QTY" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveDetails.REJ_QTY" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveDetails.REJ_QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.ADJUSTED_WITH" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FChemStoreReceiveDetails.ADJUSTED_WITH, new SelectList(Model.FChemStoreProductinfosList, "PRODUCTID", "PRODUCTNAME"),
+                        "Select Count Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FChemStoreReceiveDetails.ADJUSTED_WITH" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FChemStoreReceiveDetails.REMARKS" class="control-label"></label>
+                    <input asp-for="FChemStoreReceiveDetails.REMARKS" class="form-control " />
+                    <span asp-validation-for="FChemStoreReceiveDetails.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button class="btn btn-info pull-right" type="submit">Create</button>
+                <button id="addToList" class="btn btn-success pull-right" type="button">Add</button>
+                <a asp-action="GetChemicalReceiveMaster" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive table-hover" id="chemicalReceiveDetailsTable"></div>
+
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+    <script asp-append-version="true" src="~/js/ChemicalStore/Receive/CreateChemicalRecive.js"></script>
+}

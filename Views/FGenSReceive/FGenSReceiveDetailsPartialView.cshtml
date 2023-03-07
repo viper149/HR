@@ -1,0 +1,78 @@
+﻿
+@model FGenSReceiveViewModel
+
+@if (Model.FGenSReceiveDetailsesList.Any())
+{
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSReceiveDetails.PRODUCTID)</th>
+                <th scope="col">@Html.DisplayName("Unit")</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSReceiveDetails.GINDID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSReceiveDetails.BATCHNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSReceiveDetails.MNGDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSReceiveDetails.EXDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSReceiveDetails.FRESH_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSReceiveDetails.REJ_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSReceiveDetails.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FGenSReceiveDetailsesList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].GRCVID)
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].TRNSID)
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].ADJUSTED_WITH)
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].INVQTY)
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].RATE)
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].CURRENCY)
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].AMOUNT)
+
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].PRODUCTID)
+                        @Model.FGenSReceiveDetailsesList[i].PRODUCT?.PRODNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].PRODUCTID)
+                        @Model.FGenSReceiveDetailsesList[i].PRODUCT?.UNITNavigation?.UNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].GINDID)
+                        @Model.FGenSReceiveDetailsesList[i].GIND?.GINDNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].BATCHNO)
+                        @Model.FGenSReceiveDetailsesList[i].BATCHNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].MNGDATE)
+                        @Html.DisplayFor(modelItem => Model.FGenSReceiveDetailsesList[i].MNGDATE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].EXDATE)
+                        @Html.DisplayFor(modelItem => Model.FGenSReceiveDetailsesList[i].EXDATE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].FRESH_QTY)
+                        @Model.FGenSReceiveDetailsesList[i].FRESH_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].REJ_QTY)
+                        @Model.FGenSReceiveDetailsesList[i].REJ_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSReceiveDetailsesList[i].REMARKS)
+                        @Model.FGenSReceiveDetailsesList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveIndent(@i)" aria-hidden="false"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

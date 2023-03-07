@@ -1,0 +1,511 @@
+﻿
+@model AccExRealizationViewModel
+
+@{
+    ViewData["Title"] = "Account Export Realization";
+}
+
+<h2><i class="fa fa-edit text-warning" aria-hidden="true"></i> Edit @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Invoice Information</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle border-1" disabled="disabled">2</a>
+                <p><small>Realization</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" role="form" asp-action="EditAccExRealization">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                <div class="pl-3 col-12">
+                    <h2 class="panel-title text-success">Invoice Information</h2>
+                    <hr />
+                </div>
+                @Html.HiddenFor(c => c.AccExportRealization.EncryptedId)
+                @Html.HiddenFor(c => c.AccExportRealization.TRNSID)
+                @Html.HiddenFor(c => c.AccExportRealization.TRNSDATE)
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.INVOICE.INVNO" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.AccExportRealization.INVID, new SelectList(Model.ComExInvoiceMasters, "INVID", "INVNO"), "Select Invoice", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "invNo" })
+                        <span asp-validation-for="AccExportRealization.INVID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">File No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="fileNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Date</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="invoiceDate">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Duration</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="duration">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">L/C No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="lcNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Party</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="party">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Partial Doc. No.</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="docNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Doc. Notes</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="notes">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Party Bank</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="partyBank">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Nego. Bank</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="negoBank">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Doc Neg. Date</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="docNegDate">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Status</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="status">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Bank Ref.</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="bankRef">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">Mature Date</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="matuDate">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="control-label">B. Accept</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="bAcceptDate">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-12 d-none styleDetails">
+                    <hr />
+                    <h2 class="panel-title text-success">Style Details</h2>
+                    <hr class="d-none styleDetails" />
+                    <h3 class="text-center text-info d-none" id="noTable">No Style Information</h3>
+
+                    <table class="table table-striped d-none" id="table">
+                        <thead>
+                            <tr>
+                                <th>STYLE NAME</th>
+                                <th>ROLL</th>
+                                <th>QTY</th>
+                                <th>RATE</th>
+                                <th>AMOUNT</th>
+                                <th>REMARKS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="styleDetails"></tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button" accesskey="n">Next</button>
+                    <a asp-action="GetAccExRealizationWithPaged" class="btn btn-dark pull-right" accesskey="b">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body row">
+                <div class="col-12 d-flex justify-content-end">
+                    <div class="form-group mb-0">
+                        <strong><label class="control-label mb-0">Difference</label></strong>
+                        <span class="custom-form-control form-control bg-e9ecef">
+                            <strong id="difference">$<span id="diff">00.00</span></strong>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.REZDATE" class="control-label"></label>
+                        <input asp-for="AccExportRealization.REZDATE" class="form-control" disabled />
+                        <span asp-validation-for="AccExportRealization.REZDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.PRC_USD" class="control-label"></label>
+                        <input asp-for="AccExportRealization.PRC_USD" class="form-control" id="AccExportRealization_PRC_USD" readonly />
+                        <span asp-validation-for="AccExportRealization.PRC_USD" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.PRC_EURO" class="control-label"></label>
+                        <input asp-for="AccExportRealization.PRC_EURO" class="form-control" id="AccExportRealization_PRC_EURO" readonly />
+                        <span asp-validation-for="AccExportRealization.PRC_EURO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.ERQ" class="control-label"></label>
+                        <input asp-for="AccExportRealization.ERQ" class="form-control sum" />
+                        <span asp-validation-for="AccExportRealization.ERQ" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.ORQ" class="control-label"></label>
+                        <input asp-for="AccExportRealization.ORQ" class="form-control sum" />
+                        <span asp-validation-for="AccExportRealization.ORQ" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.CD" class="control-label"></label>
+                        <input asp-for="AccExportRealization.CD" class="form-control sum" />
+                        <span asp-validation-for="AccExportRealization.CD" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.OD" class="control-label"></label>
+                        <input asp-for="AccExportRealization.OD" class="form-control sum" />
+                        <span asp-validation-for="AccExportRealization.OD" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.AIT" class="control-label"></label>
+                        <input asp-for="AccExportRealization.AIT" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.AIT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.BINTEREST" class="control-label"></label>
+                        <input asp-for="AccExportRealization.BINTEREST" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.BINTEREST" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.BCHARGE" class="control-label"></label>
+                        <input asp-for="AccExportRealization.BCHARGE" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.BCHARGE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.BCOMM" class="control-label"></label>
+                        <input asp-for="AccExportRealization.BCOMM" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.BCOMM" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.RATE" class="control-label"></label>
+                        <input asp-for="AccExportRealization.RATE" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.RATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.AITTK" class="control-label"></label>
+                        <input asp-for="AccExportRealization.AITTK" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.AITTK" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.DISVOU" class="control-label"></label>
+                        <input asp-for="AccExportRealization.DISVOU" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.DISVOU" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.REALVOU" class="control-label"></label>
+                        <input asp-for="AccExportRealization.REALVOU" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.REALVOU" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.NOTES" class="control-label"></label>
+                        <input asp-for="AccExportRealization.NOTES" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.NOTES" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="AccExportRealization.REMARKS" class="control-label"></label>
+                        <input asp-for="AccExportRealization.REMARKS" class="form-control" />
+                        <span asp-validation-for="AccExportRealization.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-warning pull-right" type="submit" accesskey="u">Update</button>
+                    <a asp-action="GetAccExRealizationWithPaged" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script type="text/javascript" asp-append-version="true">
+
+        
+        $(function() {
+
+            $('#form').submit(function() {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        });
+
+        $(function () {
+
+            //On load Data Retrive
+            $.ajax({
+                type: "GET",
+                url: "/AccExportRealization/GetInvoiceInfo",
+                data: { "invId": '@Model.AccExportRealization.INVID' },
+                success: function(data) {
+                    if (data != null) {
+
+                        var invDate = data.comExInvoiceMaster.invdate != null ? data.comExInvoiceMaster.invdate.substring(0, data.comExInvoiceMaster.invdate.indexOf('T')) : null;
+                        var negoDate = data.comExInvoiceMaster.negodate != null ? data.comExInvoiceMaster.negodate.substring(0, data.comExInvoiceMaster.negodate.indexOf('T')) : null;
+                        var matuDate = data.comExInvoiceMaster.matudate != null ? data.comExInvoiceMaster.matudate.substring(0, data.comExInvoiceMaster.matudate.indexOf('T')) : null;
+                        var baDate = data.comExInvoiceMaster.bnK_ACC_DATE != null ? data.comExInvoiceMaster.bnK_ACC_DATE.substring(0, data.comExInvoiceMaster.bnK_ACC_DATE.indexOf('T')) : null;
+
+                        $('#fileNo').html(data.comExInvoiceMaster.lc.fileno);
+                        $('#invoiceDate').html(invDate);
+                        $('#duration').html(data.comExInvoiceMaster.invduration);
+                        $('#lcNo').html(data.comExInvoiceMaster.lc.lcno);
+                        $('#party').html(data.comExInvoiceMaster.buyer.buyeR_NAME);
+                        $('#docNo').html(data.comExInvoiceMaster.pdocno);
+                        $('#notes').html(data.comExInvoiceMaster.doC_NOTES);
+                        $('#partyBank').html(data.comExInvoiceMaster.lc.banK_.partY_BANK);
+                        $('#negoBank').html(data.comExInvoiceMaster.lc.bank.beN_BANK);
+                        $('#docNegDate').html(negoDate);
+                        $('#bankRef').html(data.comExInvoiceMaster.banK_REF);
+                        $('#matuDate').html(matuDate);
+                        $('#bAcceptDate').html(baDate);
+                        $('#status').html(data.comExInvoiceMaster.isactive ? "Active" : "Inactive");
+
+
+                        if (data.comExInvoiceMaster.lc.currency === "US$" || data.comExInvoiceMaster.lc.currency === "$" || data.comExInvoiceMaster.lc.currency === "USD") {
+                            $("#AccExportRealization_PRC_USD").val(data.comExInvoiceMaster.prcamount);
+                            $("#AccExportRealization_PRC_USD").prop('readonly', true);
+                            $("#AccExportRealization_PRC_EURO").val("");
+                        } else if (data.comExInvoiceMaster.lc.currency === "EUR€" || data.comExInvoiceMaster.lc.currency === "€" || data.comExInvoiceMaster.lc.currency === "EURO") {
+                            $("#AccExportRealization_PRC_EURO").val(data.comExInvoiceMaster.prcamount);
+                            $("#AccExportRealization_PRC_USD").prop('readonly', false);
+                        }
+
+                        // Erase All Data from Table
+                        $('#styleDetails').empty();
+
+                        $.each(data.comExInvoiceMaster.comExInvdetailses,
+                            function(i, item) {
+                                // alert(item.invno);
+                                $('#styleDetails').append('<tr>' + '<td>' + item.comExFabstyle.stylename + '</td>' +
+                                    '<td>' + item.roll + '</td>' +
+                                    '<td>' + item.qty + '</td>' +
+                                    '<td>' + item.rate + '</td>' +
+                                    '<td>' + item.amount + '</td>' +
+                                    '<td>' + item.remarks + '</td>' +
+                                    '</tr>');
+                            });
+
+                        if (data.comExInvoiceMaster.comExInvdetailses.length !== 0) {
+                            $(".styleDetails").removeClass('d-none');
+                            $("#table").removeClass('d-none');
+                            $("#noTable").addClass('d-none');
+                        }
+                        if (data.comExInvoiceMaster.comExInvdetailses.length === 0) {
+                            $("#table").addClass("d-none");
+                            $("#noTable").removeClass("d-none");
+                        }
+                        getDiff();
+
+                    } else {
+                        toastrNotification("Sorry! No Invoice Information.", "error");
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    toastrNotification("Error: Failed To Retrieve Invoice Information.", "error");
+                }
+            });
+
+            $(".sum").on("input",
+                function() {
+                    getDiff();
+                });
+
+            $("#AccExportRealization_PRC_USD").on("input",
+                function() {
+                    getDiff();
+                });
+
+            $("#invNo").change(function () {
+
+                var selectedItem = $(this).val();
+
+                if (selectedItem !== "") {
+                    $.ajax({
+                        type: "GET",
+                        url: "/AccExportRealization/GetInvoiceInfo",
+                        data: { "invId": selectedItem },
+                        success: function(data) {
+                            if (data != null) {
+
+                                var invDate = data.comExInvoiceMaster.invdate != null ? data.comExInvoiceMaster.invdate.substring(0, data.comExInvoiceMaster.invdate.indexOf('T')) : null;
+                                var negoDate = data.comExInvoiceMaster.negodate != null ? data.comExInvoiceMaster.negodate.substring(0, data.comExInvoiceMaster.negodate.indexOf('T')) : null;
+                                var matuDate = data.comExInvoiceMaster.matudate != null ? data.comExInvoiceMaster.matudate.substring(0, data.comExInvoiceMaster.matudate.indexOf('T')) : null;
+                                var baDate = data.comExInvoiceMaster.bnK_ACC_DATE != null ? data.comExInvoiceMaster.bnK_ACC_DATE.substring(0, data.comExInvoiceMaster.bnK_ACC_DATE.indexOf('T')) : null;
+
+                                $('#fileNo').html(data.comExInvoiceMaster.lc.fileno);
+                                $('#invoiceDate').html(invDate);
+                                $('#duration').html(data.comExInvoiceMaster.invduration);
+                                $('#lcNo').html(data.comExInvoiceMaster.lc.lcno);
+                                $('#party').html(data.comExInvoiceMaster.buyer.buyeR_NAME);
+                                $('#docNo').html(data.comExInvoiceMaster.pdocno);
+                                $('#notes').html(data.comExInvoiceMaster.doC_NOTES);
+                                $('#partyBank').html(data.comExInvoiceMaster.lc.banK_.partY_BANK);
+
+                                if (data.comExInvoiceMaster.lc.bank != null) {
+                                    $('#negoBank').html(data.comExInvoiceMaster.lc.bank.beN_BANK);
+                                }
+
+                                $('#docNegDate').html(negoDate);
+                                $('#bankRef').html(data.comExInvoiceMaster.banK_REF);
+                                $('#matuDate').html(matuDate);
+                                $('#bAcceptDate').html(baDate);
+                                $('#status').html(data.comExInvoiceMaster.isactive ? "Active" : "Inactive");
+
+
+                                if (data.comExInvoiceMaster.lc.currency === "US$" || data.comExInvoiceMaster.lc.currency === "$" || data.comExInvoiceMaster.lc.currency === "USD") {
+                                    $("#AccExportRealization_PRC_USD").val(data.comExInvoiceMaster.prcamount);
+                                    $("#AccExportRealization_PRC_USD").prop('readonly', true);
+                                    $("#AccExportRealization_PRC_EURO").val("");
+                                } else if (data.comExInvoiceMaster.lc.currency === "EUR€" || data.comExInvoiceMaster.lc.currency === "€" || data.comExInvoiceMaster.lc.currency === "EURO") {
+                                    $("#AccExportRealization_PRC_EURO").val(data.comExInvoiceMaster.prcamount);
+                                    $("#AccExportRealization_PRC_USD").prop('readonly', false);
+                                }
+
+                                // Erase All Data from Table
+                                $('#styleDetails').empty();
+
+                                $.each(data.comExInvoiceMaster.comExInvdetailses,
+                                    function(i, item) {
+                                        // alert(item.invno);
+                                        $('#styleDetails').append('<tr>' + '<td>' + item.comExFabstyle.stylename + '</td>' +
+                                            '<td>' + item.roll + '</td>' +
+                                            '<td>' + item.qty + '</td>' +
+                                            '<td>' + item.rate + '</td>' +
+                                            '<td>' + item.amount + '</td>' +
+                                            '<td>' + item.remarks + '</td>' +
+                                            '</tr>');
+                                    });
+
+                                if (data.comExInvoiceMaster.comExInvdetailses.length !== 0) {
+                                    $(".styleDetails").removeClass('d-none');
+                                    $("#table").removeClass('d-none');
+                                    $("#noTable").addClass('d-none');
+                                }
+                                if (data.comExInvoiceMaster.comExInvdetailses.length === 0) {
+                                    $("#table").addClass("d-none");
+                                    $("#noTable").removeClass("d-none");
+                                }
+                                getDiff();
+
+                            } else {
+                                toastrNotification("Sorry! No Invoice Information.", "error");
+                            }
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            toastrNotification("Error: Failed To Retrieve Invoice Information.", "error");
+                        }
+                    });
+                }
+            });
+        });
+
+        function getDiff() {
+            var sum = 0;
+            $('.sum').each(function() {
+                sum += Number($(this).val());
+            });
+
+            if ($("#AccExportRealization_PRC_USD").val() !== "") {
+                var diff = $("#AccExportRealization_PRC_USD").val() - sum;
+                $("#diff").html(diff.toFixed(2));
+            }
+            if ($('#diff').text() < 0) {
+                $('#difference').addClass('text-danger');
+            } else {
+                $('#difference').removeClass('text-danger');
+            }
+        }
+    </script>
+}

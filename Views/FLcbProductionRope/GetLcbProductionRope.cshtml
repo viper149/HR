@@ -1,0 +1,123 @@
+﻿
+@model F_LCB_PRODUCTION_ROPE_MASTER
+
+@{
+    ViewData["Title"] = "LCB Production (Rope)";
+}
+
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2><i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> Get @ViewData["Title"]</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li class="mr-2">
+                <p>
+                    <a asp-action="CreateLcbProductionRope" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                </p>
+            </li>
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content table-responsive table-hover">
+        <table class="table" id="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.TRANSDATE)</th>
+                <th>@Html.DisplayNameFor(model => model.SUBGROUPID)</th>
+                <th>@Html.DisplayNameFor(model => model.PER_SET_LENGTH)</th>
+                <th>@Html.DisplayNameFor(model => model.LCB_LENGTH)</th>
+                <th>@Html.DisplayNameFor(model => model.REMARKS)</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table').dataTable({
+                "searchPanes": true,
+                "processing": true,
+                "serverSide": true,
+                "filter": true,
+                "order": [[0, 'desc']],
+                "pageLength": 25,
+                "lengthMenu": [10, 25, 50, 100, 200, 500, 1000],
+                "autoWidth": false,
+                "ajax": {
+                    "async": "true",
+                    "url": '/FLcbProductionRope/GetTableData',
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columnDefs": [
+                    {
+                        "targets": [5],
+                        "orderable": false,
+                        "searchable": false
+                    }
+                ],
+                "language": {
+                    "searchPlaceholder": "Search for your desire results",
+                    "search": '<i class="fa fa-2x fa-search" aria-hidden="true"></i>',
+                    "emptyTable": '<h3>No data available</h3>',
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                    "infoFiltered": "(filtered from _MAX_ total entries)",
+                    "thousands": ",",
+                    "processing": "<i class='fa fa-4x fa-spinner' aria-hidden='true'></i>",
+                    "zeroRecords": "<h3>No matching records found</h3>",
+                    "paginate": {
+                        "first": "<i class='fa fa-angle-double-left' aria-hidden='true'></i>",
+                        "last": "<i class='fa fa-angle-double-right' aria-hidden='true'></i>",
+                        "next": "<i class='fa fa-angle-right' aria-hidden='true'></i>",
+                        "previous": "<i class='fa fa-angle-left' aria-hidden='true'></i>"
+                    },
+                    "aria": {
+                        "sortAscending": ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    }
+                },
+                "columns": [
+                    {
+                        "data": "transdate", "name": "TRANSDATE", "autoWidth": true,
+                        "render": function (data, type, row) {
+                            return data !== null ? moment(data).format(row.dateFormat) : "N/A";
+                        }
+                    },
+                    {
+                        //"data": "set.proG_.proG_NO",
+                        "name": "SUBGROUPID",
+                        "autoWidth": true,
+                        "render": function (data, type, row) {
+                            
+                            return row.subgroup.subgroupno + " - " + row.subgroup.pL_PRODUCTION_SETDISTRIBUTION[0].proG_.proG_NO;
+                        }
+                    },
+                    { "data": "peR_SET_LENGTH", "name": "PER_SET_LENGTH", "autoWidth": true },
+                    { "data": "lcB_LENGTH", "name": "LCB_LENGTH", "autoWidth": true },
+                    { "data": "remarks", "name": "REMARKS", "autoWidth": true },
+                    {
+                        "render": function (data, type, row) {
+                            return "<a target='_blank' title='Print LCB Delivery Report' href='/FLcbProductionRope/RLCBDeliveryReport?subGroupNo=" + row.subgroup.subgroupno + "' class='fa fa-print fa-2x-custom text-primary mr-2'></a>" + "<a href='/FLcbProductionRope/DetailsLcbProductionRope?id=" + row.encryptedId + "' class='fa fa-info-circle fa-2x-custom text-info mr-2'></a> <a href='/FLcbProductionRope/EditLcbProductionRope?id=" + row.encryptedId + "' class='fa fa-edit fa-2x-custom text-warning mr-2'></a>" + "<a href='/FLcbProductionRope/DeleteLcbProductionRope?id=" + row.encryptedId + "' class='fa fa-trash fa-2x-custom text-danger mr-2'></a>";
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

@@ -1,0 +1,22 @@
+﻿
+@using DevExpress.AspNetCore
+@using RGetComImpLcInformation = DenimERP.Views.ComImpLcInformation.Reports.RGetComImpLcInformation
+
+<h2>Commercial Import LC Information</h2>
+
+@{
+    ViewData["Title"] = "Com. Import LC Information";
+    Layout = Layout;
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@{
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RGetComImpLcInformation())
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

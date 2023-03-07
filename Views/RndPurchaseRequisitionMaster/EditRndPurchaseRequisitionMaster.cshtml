@@ -1,0 +1,368 @@
+﻿
+@model RndYarnRequisitionViewModel
+
+@{
+    ViewData["Title"] = "Store Purchase Requisition";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-edit fa-lg text-warning" aria-hidden="true"></i> Edit @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form asp-action="PostEditRndPurchaseRequisitionMaster" enctype="multipart/form-data" id="form" role="form">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(e => e.RndPurchaseRequisitionMaster.INDSLID)
+        @Html.HiddenFor(e => e.RndPurchaseRequisitionMaster.EncryptedId)
+        @*@Html.HiddenFor(e => e.RndPurchaseRequisitionMaster.ORDER_NO)*@
+        @Html.HiddenFor(e => e.RndPurchaseRequisitionMaster.ORDERNO_S)
+    <div class="panel-body row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-book fa-fw"></i> Basic Yarn Information</h2>
+                <hr />
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.INDSLDATE" class="control-label"></label>
+                    <input asp-for="RndPurchaseRequisitionMaster.INDSLDATE" class="form-control" />
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.INDSLDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label"> &nbsp;&emsp; <input asp-for="RndPurchaseRequisitionMaster.IS_REVISED" class="form-check-input" id="rev" type="checkbox"> Requisition No</label>
+                    <input asp-for="RndPurchaseRequisitionMaster.INDSLNO" class="form-control" readonly="readonly"/>
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.INDSLNO" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.INDENT_SL_NO" class="control-label"></label>
+                    <input asp-for="RndPurchaseRequisitionMaster.INDENT_SL_NO" class="form-control" />
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.INDENT_SL_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.RESEMPID" class="control-label">Responsible </label>
+                    @Html.DropDownListFor(dt => dt.RndPurchaseRequisitionMaster.RESEMPID, new SelectList(Model.FHrEmployeeList, "EMPID", "FIRST_NAME"), "Select Responsibe Employee", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.RESEMPID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.EMPID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.RndPurchaseRequisitionMaster.EMPID, new SelectList(Model.FHrEmployeeListRef, "EMPID", "FIRST_NAME"), "Select Employee", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.EMPID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.YARN_FOR" class="control-label"></label>
+                    <select asp-for="RndPurchaseRequisitionMaster.YARN_FOR" asp-items="Model.YarnFor" class="form-control js-example-basic-single">
+                        <option>Select A Yarn Type</option>
+                    </select>
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.YARN_FOR" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="fabcode" class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.RndFabricinfo.STYLE_NAME" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.RndPurchaseRequisitionMaster.FABCODE, new SelectList(Model.RndFabricinfos, "FABCODE", "STYLE_NAME"), "Select A Style", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.FABCODE" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="buyerName" class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.BUYERID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.RndPurchaseRequisitionMaster.BUYERID, new SelectList(Model.BasBuyerinfos, "BUYERID", "BUYER_NAME"), "Select A Buyer", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.BUYERID" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="orderNoSampleDiv" class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.ORDERNO_S" class="control-label"></label>
+                    <select asp-for="RndPurchaseRequisitionMaster.ORDERNO_S" class="form-control js-example-basic-single">
+                        <option value="">Select SDRF No.</option>
+                    </select>
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.ORDERNO_S" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="sampleLDiv" class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.SAMPLE_L" class="control-label"></label>
+                    <input asp-for="RndPurchaseRequisitionMaster.SAMPLE_L" class="form-control" />
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.SAMPLE_L" class="text-danger"></span>
+                </div>
+            </div>
+            @*@if (!Model.RndPurchaseRequisitionMaster.FLAG)
+                {*@
+            <div id="orderNoDiv" class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.ORDER_NO" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.RndPurchaseRequisitionMaster.ORDER_NO, new SelectList(Model.PoList, "POID", "OPT1"), "Select Order No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.ORDER_NO" class="text-danger"></span>
+                </div>
+            </div>
+            @* } *@
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.COSTREF.CSID" class="control-label">Cost Ref.</label>
+                    @Html.DropDownListFor(dt => dt.RndPurchaseRequisitionMaster.COSTREFID, new SelectList(Model.CosPrecostingMasters, "CSID", "STYLENAME"), "Select Cost Ref.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.COSTREFID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.REMARKS" class="control-label"></label>
+                    <input asp-for="RndPurchaseRequisitionMaster.REMARKS" class="form-control" />
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            @{
+                if (Model.RndPurchaseRequisitionMaster.ORDERNO_S != null && Model.RndPurchaseRequisitionMaster.BUYERID == null)
+                {
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.YARN_FOR)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.YARN_FOR)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.ORDERNO_SNavigation.SDRF_NO)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.ORDERNO_SNavigation.SDRF_NO)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.COSTREF.CSID)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.COSTREF.CSID)
+                            </span>
+                        </div>
+                    </div>
+
+                }
+
+                if (Model.RndPurchaseRequisitionMaster.ORDER_NO != null)
+                {
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.YARN_FOR)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.YARN_FOR)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.ORDER_NONavigation.SO.SO_NO)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.ORDER_NONavigation.SO.SO_NO)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.COSTREF.CSID)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.COSTREF.CSID)
+                            </span>
+                        </div>
+                    </div>
+                }
+
+                if (Model.RndPurchaseRequisitionMaster.BUYERID != null && Model.RndPurchaseRequisitionMaster.ORDERNO_S != null)
+                {
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.YARN_FOR)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.YARN_FOR)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.BasBuyerinfo.BUYER_NAME)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.BasBuyerinfo.BUYER_NAME)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">@Html.DisplayNameFor(modelItem => Model.RndPurchaseRequisitionMaster.COSTREF.CSID)</label>
+                            <span class="custom-form-control-bg form-control bg-e9ecef">
+                                @Html.DisplayFor(modelItem => Model.RndPurchaseRequisitionMaster.COSTREF.CSID)
+                            </span>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.REVISE_NO" class="control-label"></label>
+                    <input asp-for="RndPurchaseRequisitionMaster.REVISE_NO" class="form-control" />
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.REVISE_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="RndPurchaseRequisitionMaster.REVISE_DATE" class="control-label"></label>
+                    <input asp-for="RndPurchaseRequisitionMaster.REVISE_DATE" class="form-control" />
+                    <span asp-validation-for="RndPurchaseRequisitionMaster.REVISE_DATE" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-eye fa-fw"></i> Yarn Details</h2>
+                    <hr />
+                </div>
+                @Html.HiddenFor(d => d.FysIndentDetails.TRNSID)
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.TRNSDATE" class="control-label"></label>
+                        <input asp-for="FysIndentDetails.TRNSDATE" class="form-control" />
+                        <span asp-validation-for="FysIndentDetails.TRNSDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.BASCOUNTINFO.COUNTNAME" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FysIndentDetails.PRODID, new SelectList(Model.BasYarnCountInfos, "COUNTID", "RND_COUNTNAME"), "Select Materials", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentDetails.PRODID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.UNIT" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FysIndentDetails.UNIT, new SelectList(Model.BasUnits, "UID", "UNAME", Model.BasUnits.FirstOrDefault()?.UID), "Select Unit", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentDetails.UNIT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.YARN_FORNavigation.YARNNAME" class="control-label">Yarn Type</label>
+                        @Html.DropDownListFor(dt => dt.FysIndentDetails.YARN_FOR, new SelectList(Model.YarnforList, "YARNID", "YARNNAME"), "Select Yarn Type", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentDetails.YARN_FOR" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.YARN_FROMNavigation.TYPENAME" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FysIndentDetails.YARN_FROM, new SelectList(Model.Yarnfroms, "YFID", "TYPENAME"), "Select Yarn From", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentDetails.YARN_FROM" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.ETR" class="control-label"></label>
+                        <input asp-for="FysIndentDetails.ETR" class="form-control" />
+                        <span asp-validation-for="FysIndentDetails.ETR" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.ORDER_QTY" class="control-label"></label>
+                        <input asp-for="FysIndentDetails.ORDER_QTY" class="form-control" />
+                        <span asp-validation-for="FysIndentDetails.ORDER_QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.NO_OF_CONE" class="control-label"></label>
+                        <input asp-for="FysIndentDetails.NO_OF_CONE" class="form-control" />
+                        <span asp-validation-for="FysIndentDetails.NO_OF_CONE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.SLUB_CODE" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FysIndentDetails.SLUB_CODE, new SelectList(Model.SlubList, "ID", "NAME"), "Select Slub Code", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentDetails.SLUB_CODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.RAW" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FysIndentDetails.RAW, new SelectList(Model.RawList, "RAWID", "RAWPER"), "Select Raw", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentDetails.RAW" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.PREV_LOTID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FysIndentDetails.PREV_LOTID, new SelectList(Model.LotList, "LOTID", "LOTNO"), "Select Lot", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FysIndentDetails.PREV_LOTID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.STOCK_AMOUNT" class="control-label"></label>
+                        <input asp-for="FysIndentDetails.STOCK_AMOUNT" class="form-control" />
+                        <span asp-validation-for="FysIndentDetails.STOCK_AMOUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.LAST_INDENT_DATE" class="control-label"></label>
+                        <input asp-for="FysIndentDetails.LAST_INDENT_DATE" class="form-control" />
+                        <span asp-validation-for="FysIndentDetails.LAST_INDENT_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.LAST_INDENT_NO" class="control-label"></label>
+                        <input asp-for="FysIndentDetails.LAST_INDENT_NO" class="form-control" />
+                        <span asp-validation-for="FysIndentDetails.LAST_INDENT_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FysIndentDetails.REMARKS" class="control-label"></label>
+                        <input asp-for="FysIndentDetails.REMARKS" class="form-control" />
+                        <span asp-validation-for="FysIndentDetails.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button id="btnCreateYarnRequisition" class="btn btn-warning nextBtn pull-right" type="submit">Update</button>
+                    <button id="btnAdd" class="btn btn-info pull-right" type="button">Add</button>
+                    <a asp-action="GetPurchaseRequisition" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="yarnDetailsTable">
+                    @await Html.PartialAsync($"~/Views/RndPurchaseRequisitionMaster/IndentDetailsPartialView.cshtml", Model)
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+    <script asp-append-version="true" src="~/js/RndPurchaseRequisitionMaster/EditRndPurchaseRequisitionMaster.js"></script>
+}

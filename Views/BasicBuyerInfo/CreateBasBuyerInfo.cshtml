@@ -1,0 +1,59 @@
+﻿@model BAS_BUYERINFO
+
+@{
+    ViewData["Title"] = "AddBasicBuyerInfo";
+    Layout = Layout;
+}
+
+<h2>Add Buyer Info</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateBasBuyerInfo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BUYER_NAME" class="control-label"></label>
+                <input asp-for="BUYER_NAME" class="form-control" />
+                <span asp-validation-for="BUYER_NAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ADDRESS" class="control-label"></label>
+                <input asp-for="ADDRESS" class="form-control" />
+                <span asp-validation-for="ADDRESS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DEL_ADDRESS" class="control-label"></label>
+                <input asp-for="DEL_ADDRESS" class="form-control" />
+                <span asp-validation-for="DEL_ADDRESS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BIN_NO" class="control-label"></label>
+                <input asp-for="BIN_NO" class="form-control" />
+                <span asp-validation-for="BIN_NO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="REMARKS" class="control-label"></label>
+                <input asp-for="REMARKS" class="form-control" />
+                <span asp-validation-for="REMARKS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="GetBasBuyerInfoWithPaged" class="btn btn-dark" accesskey="b">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+    <script>
+        $(function () {
+
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}
+
+

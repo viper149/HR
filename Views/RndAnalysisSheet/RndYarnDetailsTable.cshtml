@@ -1,0 +1,101 @@
+﻿@model RndAnalysisSheetInfoViewModel
+
+@if (Model.RndAnalysisSheetDetailsList.Any())
+{
+    <table class="table table-hover" id="partialView">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndAnalysisSheetDetailsList.FirstOrDefault().BasYarnCountinfo.COUNTNAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndAnalysisSheetDetailsList.FirstOrDefault().NO_OF_YARN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndAnalysisSheetDetailsList.FirstOrDefault().YARN_LENGTH)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndAnalysisSheetDetailsList.FirstOrDefault().YARN_WEIGHT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndAnalysisSheetDetailsList.FirstOrDefault().YARN_FOR)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.RndAnalysisSheetDetailsList.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        @if (Model.RndAnalysisSheetDetailsList[i].ADID > 0)
+                        {
+                            @Html.HiddenFor(clc => clc.RndAnalysisSheetDetailsList[i].ADID)
+                            @Html.HiddenFor(clc => clc.RndAnalysisSheetDetailsList[i].AID)
+                            <i class="fa fa-database text-danger" aria-hidden="true" title="From database."></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-plus-circle text-info" aria-hidden="true" title="New data."></i>
+                        }
+                        @Html.HiddenFor(clc => clc.RndAnalysisSheetDetailsList[i].COUNTID)
+                        @Model.RndAnalysisSheetDetailsList[i].BasYarnCountinfo?.COUNTNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndAnalysisSheetDetailsList[i].NO_OF_YARN)
+                        @Model.RndAnalysisSheetDetailsList[i].NO_OF_YARN
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndAnalysisSheetDetailsList[i].YARN_LENGTH)
+                        @Model.RndAnalysisSheetDetailsList[i].YARN_LENGTH
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndAnalysisSheetDetailsList[i].YARN_WEIGHT)
+                        @Model.RndAnalysisSheetDetailsList[i].YARN_WEIGHT
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndAnalysisSheetDetailsList[i].YARN_FOR)
+                        @Model.RndAnalysisSheetDetailsList[i].YARN_FOR
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x text-danger" onclick="RemoveYarnDetails(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveYarnDetails(removeIndexValue) {
+        swal({
+            title: "Please Confirm",
+            text: "You won't able to revert, Are you sure to remove?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, sir",
+            cancelButtonText: "Not at all"
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    const data = $('#form').serializeArray();
+                    data.push({ name: "removeIndexValue", value: removeIndexValue });
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: data,
+                        type: "POST",
+                        url: '/RndAnalysisSheet/RemoveYarnFromList',
+                        success: function (partialView) {
+                            $('#yarnDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                }
+            });
+    }
+</script>

@@ -1,0 +1,97 @@
+﻿
+@model PDL_EMAIL_SENDER
+
+@{
+    ViewData["Title"] = "Setup Email Sender";
+    Layout = Layout;
+}
+
+<form asp-action="EmailSetup">
+    <div class="card border-primary rounded-0">
+        <div class="card-header p-0">
+            <div class="bg-info text-white text-center py-2">
+                <h3><i class="fa fa-envelope"></i> Setup Email Sender</h3>
+                <p class="m-0 text-warning">Please fill-up the form carefully</p>
+            </div>
+        </div>
+        <div class="card-body col-12">
+            @Html.HiddenFor(e => e.ID)
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                    </div>
+                    <input asp-for="FROM_EMAIL" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                    </div>
+                    <input asp-for="SMTP_CLIENT" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-map-marker text-info pr-2"></i></div>
+                    </div>
+                    <input asp-for="PORT_NO" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                    </div>
+                    <input asp-for="NETWORK_CREDENTIAL_USERNAME" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fa fa-eye-slash text-info"></i></div>
+                    </div>
+                    <input asp-for="NETWORK_CREDENTIAL_PASSWORD" class="form-control" />
+                </div>
+            </div>
+            <div class="d-inline-flex">
+                <div class="form-group pr-4">
+                    <div class="pt-2">
+                        <label class="switch">
+                            <input asp-for="USE_DEFAULT_CREDENTIALS" />
+                            <span class="slider round"></span>
+                            <span class="absolute-no">NO</span>
+                        </label>
+                    </div>
+                    <label asp-for="USE_DEFAULT_CREDENTIALS"></label>
+                </div>
+                <div class="form-group">
+                    <div class="pt-2">
+                        <label class="switch">
+                            <input asp-for="ENABLE_SSL" />
+                            <span class="slider round"></span>
+                            <span class="absolute-no">NO</span>
+                        </label>
+                    </div>
+                    <label asp-for="ENABLE_SSL"></label>
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Save & Reload" class="btn btn-info btn-block rounded-0 py-2">
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <script>
+        $(function () {
+
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}

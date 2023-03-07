@@ -1,0 +1,41 @@
+﻿@model FBasHrdLocationViewModel
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i>Create @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateFBasHrdLocation">
+        <div class="panel panel-default setup-content">
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdLocation.LOC_NAME" class="control-label"></label>
+                        <input asp-for="FBasHrdLocation.LOC_NAME" class="form-control" />
+                        <span asp-validation-for="FBasHrdLocation.LOC_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdLocation.DESCRIPTION" class="control-label"></label>
+                        <input asp-for="FBasHrdLocation.DESCRIPTION" class="form-control" />
+                        <span asp-validation-for="FBasHrdLocation.DESCRIPTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdLocation.REMARKS" class="control-label"></label>
+                        <input asp-for="FBasHrdLocation.REMARKS" class="form-control" />
+                        <span asp-validation-for="FBasHrdLocation.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit">Create</button>
+                    <a asp-action="GetFBasHrdLocation" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+}

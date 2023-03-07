@@ -1,0 +1,244 @@
+﻿
+@model PlBulkProgSetupViewModel
+
+@if (Model.PlBulkProgSetupDList.Any())
+{
+    <table class="table table-hover" id="partialView">
+        <thead class="thead-dark">
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlBulkProgSetupDList.FirstOrDefault().PROG_NO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlBulkProgSetupDList.FirstOrDefault().SET_QTY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlBulkProgSetupDList.FirstOrDefault().YARN_TYPE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlBulkProgSetupDList.FirstOrDefault().PROCESS_TYPE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlBulkProgSetupDList.FirstOrDefault().WARP_TYPE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlBulkProgSetupDList.FirstOrDefault().PROGRAM_TYPE)
+            </th>
+            <th>
+                @Html.DisplayName("Actions")
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.PlBulkProgSetupDList.Count; i++)
+            {
+                <tr data-toggle="collapse" data-target="#demo_@i" class="accordion-toggle">
+                    <td>
+                        @if (Model.PlBulkProgSetupDList[i].PROG_ID > 0)
+                        {
+                            <i class="fa fa-database text-danger" aria-hidden="true" title="From database."></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-plus-circle text-info" aria-hidden="true" title="New data."></i>
+                        }
+                        @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PROG_ID)
+                    </td>
+                    <td>
+                        <input asp-for="PlBulkProgSetupDList[i].PROG_NO" class="form-control"/>
+                    </td>
+                    <td>
+                        @*@Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].SET_QTY)
+                        @Model.PlBulkProgSetupDList[i].SET_QTY*@
+                        <input asp-for="PlBulkProgSetupDList[i].SET_QTY" class="form-control"/>
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].YARN_TYPE)
+                        @Model.PlBulkProgSetupDList[i].YARNFOR?.YARNNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PROCESS_TYPE)
+                        @Model.PlBulkProgSetupDList[i].PROCESS_TYPE
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].WARP_TYPE)
+                        @Model.PlBulkProgSetupDList[i].WARP_TYPE
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PROGRAM_TYPE)
+                        @Model.PlBulkProgSetupDList[i].PROGRAM_TYPE
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x-custom text-danger mr-2" onclick="RemoveProgramSetNoFromList(@i)" aria-hidden="true"></i>
+                        <i class="fa fa-exchange fa-2x-custom" data-toggle="modal" data-target="#exampleModal" data-whatever="PlBulkProgSetupDList[i].PROG_ID" aria-hidden="true"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="hiddenRow">
+                        <div class="accordian-body collapse show show" id="demo_@i">
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PlBulkProgSetupDList[i].PlBulkProgYarnDList.FirstOrDefault().COUNTID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("Yarn For")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("Supplier")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("Ref. Lot")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("Ref. Supplier")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PlBulkProgSetupDList[i].PlBulkProgYarnDList.FirstOrDefault().LOTID)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var j = 0; j < Model.PlBulkProgSetupDList[i].PlBulkProgYarnDList.Count; j++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PlBulkProgYarnDList[j].YARN_ID)
+                                                @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PlBulkProgYarnDList[j].COUNTID)
+                                                @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PlBulkProgYarnDList[j].SCOUNTID)
+                                                @Model.PlBulkProgSetupDList[i]?.PlBulkProgYarnDList[j].COUNT?.COUNT?.COUNTNAME
+                                                @Model.PlBulkProgSetupDList[i]?.PlBulkProgYarnDList[j].SCOUNT?.COUNT?.COUNTNAME
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PlBulkProgYarnDList[j].OPT1)
+                                                @Model.PlBulkProgSetupDList[i]?.PlBulkProgYarnDList[j].OPT1
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PlBulkProgYarnDList[j].OPT2)
+                                                @Model.PlBulkProgSetupDList[i]?.PlBulkProgYarnDList[j].OPT2
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <div class="form-group">
+                                                    @Html.DropDownListFor(dt => dt.PlBulkProgSetupDList[i].PlBulkProgYarnDList[j].LOTID, new SelectList(Model.BasYarnLotInfos, "LOTID", "LOTNO"), "Select Lot", htmlAttributes: new { @class = "form-control js-example-basic-single1" })
+                                                    <span asp-validation-for="PlBulkProgYarnD.LOTID" class="text-danger"></span>
+                                                </div>
+                                                @*@Html.HiddenFor(clc => clc.PlBulkProgSetupDList[i].PlBulkProgYarnDList[j].LOTID)
+                                                    @Model.PlBulkProgSetupDList[i]?.PlBulkProgYarnDList[j].LOT?.LOTNO*@
+                                            </td>
+                                            <td>
+                                                <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveProgramSetNoYarnDetails(@i, @j)" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Set Exhange</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="" role="form">
+                        abcd
+                        @*@Html.HiddenFor(c => c.)
+                        <div class="form-group">
+                            <label asp-for="SERIAL_NO" class="col-form-label">Serial No</label>
+                            <input type="text" class="form-control" asp-for="SERIAL_NO">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="REMARKS" class="col-form-label">Remarks</label>
+                            <input class="form-control" asp-for="REMARKS">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                            <button type="submit" class="btn btn-warning">Update</button>
+                        </div>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<link asp-append-version="true" href="~/lib/select2/css/select2.min.css" rel="stylesheet" />
+
+<script asp-append-version="true" src="~/lib/jquery/dist/jquery.js"></script>
+<script asp-append-version="true" src="~/lib/select2/js/select2.js"></script>
+
+<script type="text/javascript" asp-append-version="true">
+
+    $(document).ready(function () {
+        $(".js-example-basic-single1").select2();
+
+        
+        $("#exampleModal").on('show.bs.modal',
+            function (event) {
+                const button = $(event.relatedTarget); // Button that triggered the modal
+                const groupId = button.data('whatever'); // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                const modal = $(this);
+                //modal.find('.modal-title').text(`Group No: ${groupId}`);
+                modal.find('.modal-body #GROUPID').val(groupId);
+            });
+
+    });
+
+    function RemoveProgramSetNoFromList(removeIndexValue) {
+        const data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/PlBulkProgSetup/RemoveProgramSetNoFromList',
+            success: function (partialView, status, xhr) {
+                setQty(xhr);
+                $('#ProgramSetDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    function RemoveProgramSetNoYarnDetails(removeIndexValue, rateRemoveIndex) {
+        const data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        data.push({ name: "rateRemoveIndex", value: rateRemoveIndex });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/PlBulkProgSetup/RemoveProgramSetNoYarnDetails',
+            success: function (partialView) {
+                $('#ProgramSetDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+</script>

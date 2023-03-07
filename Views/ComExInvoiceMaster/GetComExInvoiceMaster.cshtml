@@ -1,0 +1,81 @@
+﻿
+@model COM_EX_INVOICEMASTER
+
+@{
+    ViewData["Title"] = "Commercial Invoice";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2><i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> Get @ViewData["Title"] <i class="fa fa-at text-info">Export</i></h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li class="mr-2">
+                <p>
+                    <a asp-action="CreateComExInvoiceMaster" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add </a>
+                </p>
+            </li>
+            <li class="mr-2">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reports">
+                    <i class="fa fa-print"></i> Reports
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="reports" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-list-ul"></i> List of reports</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @await Html.PartialAsync($"~/Views/ComExInvoiceMaster/InvokeUserChoiceOptions.cshtml", Model)
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" accesskey="x">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content table-hover table-responsive">
+        <table class="table" id="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.INVNO)</th>
+                    <th>@Html.DisplayNameFor(model => model.INVDATE)</th>
+                    <th>@Html.DisplayNameFor(model => model.LC.LCNO)</th>
+                    <th>@Html.DisplayNameFor(model => model.LC.FILENO)</th>
+                    <th>@Html.DisplayNameFor(model => model.INV_QTY)</th>
+                    <th>@Html.DisplayNameFor(model => model.INV_AMOUNT)</th>
+                    <th>@Html.DisplayNameFor(model => model.BUYER.BUYER_NAME)</th>
+                    <th>@Html.DisplayName("Brand")</th>
+                    <th>@Html.DisplayNameFor(model => model.BANK_REF)</th>
+                    <th>@Html.DisplayNameFor(model => model.STATUS)</th>
+                    <th>@Html.DisplayNameFor(model => model.IS_FINAL)</th>
+                    <th>@Html.DisplayName("Actions")</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true" src="~/js/comEx/GetComExInvoiceMaster.js"></script>
+}

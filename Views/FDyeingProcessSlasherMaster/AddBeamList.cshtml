@@ -1,0 +1,215 @@
+﻿@model FDyeingProcessSlasherViewModel
+
+@if (Model.FPrSlasherDyeingDetailsList.Any())
+{
+    <table class="table mt-2 table-condensed" style="border-collapse: collapse;" id="partialView">
+        <thead id="thead">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().SL_MID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().W_BEAMID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().BEAM_TYPE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().LENGTH_PER_BEAM)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().BREAK_PER_BEAM)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().SHIFT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().OFFICERID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().EMPID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().REMARKS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrSlasherDyeingDetailsList.FirstOrDefault().IS_DELIVERABLE)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FPrSlasherDyeingDetailsList.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @if (Model.FPrSlasherDyeingDetailsList[i].SLDID > 0)
+                        {
+                            <i class="fa fa-database text-danger" aria-hidden="true" title="From database."></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-plus-circle text-info" aria-hidden="true" title="New data."></i>
+                        }
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].SL_MID)
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].SLDID)
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].SLID)
+                        @Model.FPrSlasherDyeingDetailsList[i].SL_M?.SL_MNO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].W_BEAMID)
+                        @Model.FPrSlasherDyeingDetailsList[i].W_BEAM?.BEAM_NO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].BEAM_TYPE)
+                        @Model.FPrSlasherDyeingDetailsList[i].BEAM_TYPE
+                    </td>
+                    <td onclick='updateRow(this);'>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].LENGTH_PER_BEAM)
+                        @Model.FPrSlasherDyeingDetailsList[i].LENGTH_PER_BEAM
+                    </td>
+                    <td onclick='updateRow(this);'>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].BREAK_PER_BEAM)
+                        @Model.FPrSlasherDyeingDetailsList[i].BREAK_PER_BEAM
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].SHIFT)
+                        @Model.FPrSlasherDyeingDetailsList[i].SHIFT
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].OFFICERID)
+                        @Model.FPrSlasherDyeingDetailsList[i].OFFICER?.FIRST_NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].EMPID)
+                        @Model.FPrSlasherDyeingDetailsList[i].EMP?.FIRST_NAME
+                    </td>
+                    <td onclick='updateRow(this);'>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].REMARKS)
+                        @Model.FPrSlasherDyeingDetailsList[i].REMARKS
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrSlasherDyeingDetailsList[i].IS_DELIVERABLE)
+                        @*@if (Model.FPrSlasherDyeingDetailsList[i].IS_DELIVERABLE)
+                            {
+                                <span class="text-success">Yes</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">No</span>
+                            }*@
+
+
+                        @if (Model.FPrSlasherDyeingDetailsList[i].IS_DELIVERABLE)
+                        {
+                            <div class="round_gol"><input type="checkbox" name="@Model.FPrSlasherDyeingDetailsList[i].W_BEAMID" id="@Model.FPrSlasherDyeingDetailsList[i].W_BEAMID" checked disabled /><label for="@Model.FPrSlasherDyeingDetailsList[i].W_BEAMID"></label></div>;
+                        }
+                        else
+                        {
+                            <div class="round_gol"><input onclick="doApprove(@i,@Model.FPrSlasherDyeingDetailsList[i].SLDID,@Model.FPrSlasherDyeingDetailsList[i].W_BEAMID)" type="checkbox" name="@Model.FPrSlasherDyeingDetailsList[i].W_BEAMID" id="@Model.FPrSlasherDyeingDetailsList[i].W_BEAMID" /><label for="@Model.FPrSlasherDyeingDetailsList[i].W_BEAMID"></label></div>;
+                        }
+
+                    </td>
+                    <td>
+                        @if (Model.FPrSlasherDyeingDetailsList[i].IS_DELIVERABLE)
+                        {
+                            <a target='_blank' title='Print Slasher Sticker Report' href='/FDyeingProcessSlasherMaster/RSlasherStickerReport?PROG_NO=@Model.FPrSlasherDyeingDetailsList[i].SLDID' class='fa fa-print fa-2x-custom text-primary mr-2'></a>
+                        }
+                        <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveBeamFromList(@i)" aria-hidden="true"></i>
+
+                    </td>
+                </tr>
+            }
+
+            <tr class="bg-info text-white">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right"><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Sum Of Total :")</td>
+                <td class="">@($"{Model.FPrSlasherDyeingDetailsList.Sum(e => e.LENGTH_PER_BEAM)}")</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+        </tbody>
+    </table>
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveBeamFromList(removeIndexValue) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/FDyeingProcessSlasherMaster/RemoveBeamFromList',
+            success: function (partialView, status, xhr) {
+                setQty(xhr);
+                $('#beamDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+    var updateRow = function (selector) {
+        $("[type='hidden']", selector).prop("type", "text");
+    };
+
+    function doApprove(i, sdId, index) {
+        var id = $("#" + "FPrSlasherDyeingDetailsList_" + i + "__IS_DELIVERABLE");
+        var ind = $("#" + index);
+        if (id.val() === "False") {
+            id.val("True");
+            //ind.prop('disabled', true);
+        } else {
+            id.val("False");
+        }
+        if (sdId !== 0) {
+            swal({
+                title: "Please Confirm",
+                text: "Data Will Directly Updated to Database",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonText: "OK",
+                cancelButtonText: "Cancel"
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        var data = $('#form').serializeArray();
+                        data.push({ name: "sdId", value: sdId });
+                        $.ajax({
+                            async: true,
+                            cache: false,
+                            data: data,
+                            type: "POST",
+                            url: '/FDyeingProcessSlasherMaster/UpdateDeliverable',
+                            success: function (partialView, status, xhr) {
+                                setQty(xhr);
+                                $('#beamDetails').html(partialView);
+                            },
+                            error: function (e) {
+                                console.log(e);
+                            }
+                        });
+                    }
+                });
+
+
+        }
+
+    }
+</script>

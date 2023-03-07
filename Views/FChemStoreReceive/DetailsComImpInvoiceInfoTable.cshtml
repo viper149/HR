@@ -1,0 +1,41 @@
+﻿
+@model COM_IMP_INVOICEINFO
+
+@{
+    foreach (var item in Model.ComImpInvdetailses.Select((value, i) => new { i, value }))
+    {
+        <div class="col-3 bg-white rounded box-shadow">
+            <h6 class="border-bottom text-primary">@Html.DisplayNameFor(modelitem => item.value.BasProductinfo.PRODNAME) : @Html.DisplayFor(modelitem => item.value.BasProductinfo.PRODNAME)</h6>
+            <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-dark">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <strong class="text-dark">@Html.DisplayFor(modelitem => item.value.RATE)</strong>
+                    </div>
+                    <span class="d-block">@Html.DisplayNameFor(modelitem => item.value.RATE)</span>
+                </div>
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-dark">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <strong class="text-dark">@Html.DisplayFor(modelitem => item.value.QTY)</strong>
+                    </div>
+                    <span class="d-block">@Html.DisplayNameFor(modelitem => item.value.QTY)</span>
+                </div>
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-dark">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <strong class="text-dark">@Html.DisplayFor(modelitem => item.value.AMOUNT)</strong>
+                    </div>
+                    <span class="d-block">@Html.DisplayNameFor(modelitem => item.value.AMOUNT)</span>
+                </div>
+            </div>
+            <small class="d-block text-right mt-3">
+                <a aria-controls="collapseExample_@item.i" aria-expanded="false" data-toggle="collapse" href="#collapseExample_@item.i" role="button">
+                    All suggestions
+                </a>
+            </small>
+            <div class="collapse" id="collapseExample_@item.i">
+                <div class="card card-body">
+                    <code data-language="csharp">public double CalAmount(double @Html.DisplayNameFor(modelitem => item.value.RATE), double @Html.DisplayNameFor(modelitem => item.value.QTY)) <br />{ return @Html.DisplayNameFor(modelitem => item.value.RATE) * @Html.DisplayNameFor(modelitem => item.value.QTY); }<br />@Html.DisplayNameFor(modelitem => item.value.AMOUNT) = CalAmount(@Html.DisplayFor(modelitem => item.value.RATE), @Html.DisplayFor(modelitem => item.value.QTY));</code>
+                </div>
+            </div>
+        </div>
+    }
+}

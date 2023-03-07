@@ -1,0 +1,128 @@
+﻿@model FPrInspectionFabricDispatchViewModel
+<br />
+<br />
+@if (Model.FPrInspectionFabricDDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionFabricDDetails.FABCODENavigation.STYLE_NAME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionFabricDDetails.SO_NONavigation.SO_NO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionFabricDDetails.PO_NONavigation.PINO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionFabricDDetails.ROLL_.ROLLNO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrInspectionFabricDDetails.ROLL_.SHIFT)
+                </th>
+                <th>@Html.DisplayNameFor(model => model.FPrInspectionFabricDDetails.QTY_YARDS)</th>
+                <th>@Html.DisplayName("Fabric Grade")</th>
+                @*<th>
+            @Html.DisplayName("Process Type")
+        </th>*@
+                @*<th>
+            @Html.DisplayNameFor(model => model.FPrInspectionFabricDDetails.LOCATION)
+        </th>*@
+                <th>@Html.DisplayNameFor(model => model.FPrInspectionFabricDDetails.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @for (var i = 0; i < Model.FPrInspectionFabricDDetailsList.Count; i++)
+            {
+            <tr>
+                <td>
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].TRNSID)
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].DID)
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].FABCODE)
+                    @Model.FPrInspectionFabricDDetailsList[i].FABCODENavigation?.STYLE_NAME
+                </td>
+                <td>
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].SO_NO)
+                    @Model.FPrInspectionFabricDDetailsList[i].SO_NONavigation?.SO_NO
+                </td>
+                <td>
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].PO_NO)
+                    @Model.FPrInspectionFabricDDetailsList[i].SO_NONavigation?.PIMASTER?.PINO
+                </td>
+                <td>
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].ROLL_ID)
+                    @Model.FPrInspectionFabricDDetailsList[i].ROLL_?.ROLLNO
+                </td>
+                <td>
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].ROLL_ID)
+                    @Model.FPrInspectionFabricDDetailsList[i].ROLL_?.SHIFT
+                </td>
+                <td>
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].QTY_YARDS)
+                    @Model.FPrInspectionFabricDDetailsList[i].ROLL_?.LENGTH_YDS
+                </td>
+                <td>
+                    @Model.FPrInspectionFabricDDetailsList[i].ROLL_?.FAB_GRADE
+                </td>
+                @*<td>
+            @Model.FPrInspectionFabricDDetailsList[i].ROLL_?.OPT1
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].LOCATION)
+            @Model.FPrInspectionFabricDDetailsList[i].LOCATIONNavigation?.LOCATION
+        </td>*@
+                <td>
+                    @Html.HiddenFor(clc => clc.FPrInspectionFabricDDetailsList[i].REMARKS)
+                    @Model.FPrInspectionFabricDDetailsList[i].ROLL_?.REMARKS
+                </td>
+                @*<td>
+            <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveFabricFromList(@i)" aria-hidden="true"></i>
+        </td>*@
+                <td>
+                    <i class="fa fa-trash fa-lg text-danger" onclick="RemoveDispatch(@i)" aria-hidden="false"></i>
+                </td>
+                
+
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
+            @*<script type="text/javascript" asp-append-version="true">
+                //function RemoveFabricFromList(removeIndexValue) {
+                //    swal({
+                //            title: "Please Confirm",
+                //            text: "You won't able to revert, Are you sure to remove?",
+                //            type: "warning",
+                //            showCancelButton: true,
+                //            confirmButtonText: "Yes, sir",
+                //            cancelButtonText: "Not at all"
+                //        },
+                //        function (isConfirm) {
+                //            if (isConfirm) {
+                //                var data = $('#form').serializeArray();
+                //                data.push({ name: "removeIndexValue", value: removeIndexValue });
+                //                $.ajax({
+                //                    async: true,
+                //                    cache: false,
+                //                    data: data,
+                //                    type: "POST",
+                //                    url: '/FPrFinishingProcess/RemoveFabricFromList',
+                //                    success: function (partialView, status, xhr) {
+                //                        $('#fabricDetails').html(partialView);
+                //                    },
+                //                    error: function (e) {
+                //                        console.log(e);
+                //                    }
+                //                });
+                //            }
+                //        });
+                //}
+
+
+            </script>*@

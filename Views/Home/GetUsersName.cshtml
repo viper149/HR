@@ -1,0 +1,12 @@
+﻿
+@model IEnumerable<DenimERP.Models.ApplicationUser>
+
+@{
+    if (Model.Any())
+    {
+        @foreach (var user in Model)
+        {
+            <li class="list-group-item" onclick="chooseSpecificUser('@user.Id');">@user.UserName</li>
+        }
+    }
+}

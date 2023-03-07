@@ -1,0 +1,50 @@
+﻿
+@model RndYarnRequisitionViewModel
+
+<table class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.BASCOUNTINFO.COUNTNAME)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.SEC.SECNAME)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.RAW)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.FBasUnits.UNAME)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.SLUB_CODE)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.STOCK_AMOUNT)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.ORDER_QTY)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.CNSMP_AMOUNT)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.LAST_INDENT_NO)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.LAST_INDENT_DATE)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.PREV_LOTID)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.TRNSDATE)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.ETR)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.YARN_FORNavigation.YARNNAME)</th>
+            <th>@Html.DisplayNameFor(e => e.FysIndentDetails.REMARKS)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            for (var i = 0; i < Model.FysIndentDetailList.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Model.FysIndentDetailList[i].BASCOUNTINFO.COUNTNAME</td>
+                    <td>@Model.FysIndentDetailList[i].SEC.SECNAME</td>
+                    <td>@Model.FysIndentDetailList[i].RAW</td>
+                    <td>@Model.FysIndentDetailList[i].FBasUnits.UNAME</td>
+                    <td>@Model.FysIndentDetailList[i].SLUB_CODE</td>
+                    <td>@Model.FysIndentDetailList[i].STOCK_AMOUNT</td>
+                    <td>@Model.FysIndentDetailList[i].ORDER_QTY</td>
+                    <td>@Model.FysIndentDetailList[i].CREATED_AT</td>
+                    <td>@Model.FysIndentDetailList[i].LAST_INDENT_NO</td>
+                    <td>@Model.FysIndentDetailList[i].LAST_INDENT_DATE</td>
+                    <td>@Model.FysIndentDetailList[i].LOT?.LOTNO</td>
+                    <td>@Html.DisplayFor(modelItem => Model.FysIndentDetailList[i].TRNSDATE)</td>
+                    <td>@Model.FysIndentDetailList[i].ETR</td>
+                    <td>@Model.FysIndentDetailList[i].YARN_FORNavigation.YARNNAME</td>
+                    <td>@Model.FysIndentDetailList[i].REMARKS</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

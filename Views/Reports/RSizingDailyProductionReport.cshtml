@@ -1,0 +1,22 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Sizing
+@using prt_Sizing_DailyProduction = DenimERP.Reports.Sizing.prt_Sizing_DailyProduction
+
+@{
+    ViewData["Title"] = "Sizing Daily Production";
+    Layout = Layout;
+}
+<h2>Sizing Daily Production</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new prt_Sizing_DailyProduction())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

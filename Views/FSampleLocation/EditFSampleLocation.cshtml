@@ -1,0 +1,66 @@
+﻿@model F_SAMPLE_LOCATION
+
+@{
+    ViewData["Title"] = "Edit Factory Sample Location";
+    Layout = Layout;
+}
+
+<h2>
+    <i class="fa fa-edit fa-lg text-success" aria-hidden="true"></i> Factory Sample <i class="fa fa-at text-info">Location </i>
+</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="EditFSampleLocation" enctype="multipart/form-data">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                @Html.HiddenFor(e => e.LOCID)
+                @Html.HiddenFor(e => e.EncryptedId)
+                
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="NAME" class="control-label"></label>
+                            <input asp-for="NAME" class="form-control" />
+                            <span asp-validation-for="NAME" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="DESCRIPTION" class="control-label"></label>
+                            <input asp-for="DESCRIPTION" class="form-control" />
+                            <span asp-validation-for="DESCRIPTION" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="REMARKS" class="control-label"></label>
+                            <input asp-for="REMARKS" class="form-control" />
+                            <span asp-validation-for="REMARKS" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <a class="btn btn-dark pull-left" asp-action="GetFSampleLocation">Back to List</a>
+                    <button class="btn btn-warning pull-left" type="submit">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+}

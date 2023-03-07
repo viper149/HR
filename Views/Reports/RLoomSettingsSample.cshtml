@@ -1,0 +1,22 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.RND
+@using DenimERP.Reports.Weaving
+@using rptWeavingInformation = DenimERP.Reports.RND.rptWeavingInformation
+
+@{
+    ViewData["Title"] = "Loom Settings Sample Report";
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptWeavingInformation())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

@@ -1,0 +1,112 @@
+﻿@model RndBomViewModel
+
+@if (Model.RndBomMaterialsDetailsList.Any())
+{
+    <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+        <thead id="thead">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndBomMaterialsDetails.SECTION)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndBomMaterialsDetails.CHEM_PROD_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndBomMaterialsDetails.DOSING)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeYarnConsumDetailsList.FirstOrDefault().BGT_KG_PER_SET)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.RndBomMaterialsDetails.CONC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndBomMaterialsDetails.SPEED)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndBomMaterialsDetails.NO_OF_SETS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndBomMaterialsDetails.REQ_QTY)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RndBomMaterialsDetails.ADD_10_FOR_BOX)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.RndBomMaterialsDetailsList.Count; i++)
+            {
+                <tr>
+                    <td><span class="expand-button"></span></td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].SECTION)
+                        @Model.RndBomMaterialsDetailsList[i].SECTIONNavigation?.SECNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].BOM_D_ID)
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].BOMID)
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].CHEM_PROD_ID)
+                        @Model.RndBomMaterialsDetailsList[i].CHEM_PROD_?.PRODUCTNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].DOSING)
+                        @Model.RndBomMaterialsDetailsList[i].DOSING
+                    </td>
+                    @*<td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwYarnConsumDetailsList[i].BGT_KG_PER_SET)
+                            @Model.FPrWarpingProcessSwYarnConsumDetailsList[i].BGT_KG_PER_SET
+                        </td>*@
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].CONC)
+                        @Model.RndBomMaterialsDetailsList[i].CONC
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].SPEED)
+                        @Model.RndBomMaterialsDetailsList[i].SPEED
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].NO_OF_SETS)
+                        @Model.RndBomMaterialsDetailsList[i].NO_OF_SETS
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].REQ_QTY)
+                        @Model.RndBomMaterialsDetailsList[i].REQ_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.RndBomMaterialsDetailsList[i].ADD_10_FOR_BOX)
+                        @Model.RndBomMaterialsDetailsList[i].ADD_10_FOR_BOX
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveMaterialFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveMaterialFromList(removeIndexValue) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/RndBOM/RemoveMaterialFromList',
+            success: function (partialView, status, xhr) {
+                $('#materialPartialView').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>

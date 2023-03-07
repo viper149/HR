@@ -1,0 +1,24 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Inspection
+@using RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE = DenimERP.Reports.Inspection.RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE
+
+@model int
+
+@{
+    ViewData["Title"] = "Inspection Cut Pcs Roll Dispatch Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

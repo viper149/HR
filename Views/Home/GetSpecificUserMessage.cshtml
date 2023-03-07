@@ -1,0 +1,46 @@
+﻿
+@model ChatUsersMesaages<DenimERP.Models.MESSAGE_INDIVIDUAL, DenimERP.Models.ApplicationUser>
+
+@foreach (var message in Model.Messages)
+{
+    @if (message.SenderId != Model.CurrentUser.Id)
+    {
+        <div class="incoming_msg">
+            <div class="incoming_msg_img">
+                @*@if (message.Receiver.PhotoPath != null)
+                {
+                    <img alt="@message.ReceiverName" class="img-thumbnail rounded-circle" src=@($"/Files/ProfilePhotos/?fileName ={@message.Receiver.PhotoPath}")>
+                }
+                else
+                {
+                    <img alt="@message.ReceiverName" class="img-thumbnail rounded-circle" src="/images/img.jpg">
+                }*@
+            </div>
+
+            <div class="received_msg">
+                <div class="received_withd_msg">
+                    <p>
+                        @message.Text
+                    </p>
+                    <span class="time_date"> @Html.DisplayFor(modelItem => message.SendAt)</span>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="outgoing_msg">
+            <div class="sent_msg">
+                <p>
+                    @message.Text
+                </p>
+                <span class="time_date"> @Html.DisplayFor(modelItem => message.SendAt)</span>
+            </div>
+        </div>
+    }
+}
+
+
+<div class="col-12 bg-warning p-3 rounded">
+    <span>We are working... Please wait until this text gone. :)</span>
+</div>

@@ -1,0 +1,1030 @@
+﻿
+@using DenimERP.Models
+@model RndFabricInfoCountAndYarnConsumptionViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "RnD Fabric Info";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-info-circle fa-lg text-success" aria-hidden="true"></i> Fabric / Style Information</h2>
+
+@{
+    if (Model != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="m-b-md">
+                            <h2 class="text-danger">@Html.DisplayNameFor(e => e.rND_FABRICINFO.STYLE_NAME) : [ @Model.rND_FABRICINFO.STYLE_NAME ]</h2>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div class="row details">
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.DEVID" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.DEVID)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.PROGNO" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.PROGNO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.D.DTYPE" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.D.DTYPE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.DYCODE" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.DYCODE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.REED_COUNT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.REED_COUNT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.REED_SPACE" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.REED_SPACE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.DENT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.DENT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.COLORCODENavigation.COLOR" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.COLORCODENavigation.COLOR)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.LOOM.LOOM_TYPE_NAME" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.LOOM.LOOM_TYPE_NAME)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.LOOMSPEED" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.LOOMSPEED)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.EFFICIENCY" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.EFFICIENCY)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WID" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.RND_WEAVE.NAME)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.DOBBY" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.DOBBY)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.TOTALENDS" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.TOTALENDS)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.TOTALWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.TOTALWEFT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.TOTALROPE" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.TOTALROPE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.PICKLENGHT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.PICKLENGHT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.FABRICTYPE" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.FABRICTYPE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.COMPOSITION" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.COMPOSITION)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.FINISH_ROUTE" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.FINISH_ROUTE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.FINID" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.RND_FINISHTYPE.TYPENAME)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.MCID" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.RND_FINISHMC.NAME)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.MEETING" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.MEETING)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.BUYER.BUYER_NAME" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.BUYER.BUYER_NAME)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pl-3 col-12">
+                        <h2 class="panel-title text-success">EPI X PPI</h2>
+                        <hr />
+                    </div>
+
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.GREPI" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.GREPI)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.GRPPI" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.GRPPI)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.FNEPI" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.FNEPI)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.FNPPI" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.FNPPI)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.AWEPI" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.AWEPI)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.AWPPI" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.AWPPI)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pl-3 col-12">
+                        <h2 class="panel-title text-success">Weight</h2>
+                        <hr />
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WGGRBW" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WGGRBW)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WGGRAW" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WGGRAW)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WGFNBW" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WGFNBW)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WGFNAW" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WGFNAW)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WGDEC" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WGDEC)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pl-3 col-12">
+                        <h2 class="panel-title text-success">Width</h2>
+                        <hr />
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WIGRBW" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WIGRBW)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WIGRAW" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WIGRAW)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WIFNBW" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WIFNBW)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WIFNCUT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WIFNCUT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WIFNAW" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WIFNAW)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.WIDEC" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.WIDEC)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pl-3 col-12">
+                        <h2 class="panel-title text-success">Shrinkage</h2>
+                        <hr />
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SRGRWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SRGRWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SRGRWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SRGRWEFT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SRFNWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SRFNWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SRFNWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SRFNWEFT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SRDECWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SRDECWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SRDECWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SRDECWEFT)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pl-3 col-12">
+                        <h2 class="panel-title text-success">Stretch(%)</h2>
+                        <hr />
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.STGRWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.STGRWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.STGRWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.STGRWEFT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.STFNWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.STFNWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.STFNWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.STFNWEFT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.STDECWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.STDECWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.STDECWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.STDECWEFT)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pl-3 col-12">
+                        <h2 class="panel-title text-success">Growth(%)</h2>
+                        <hr />
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.GRFNWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.GRFNWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.GRFNWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.GRFNWEFT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.GRDECWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.GRDECWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.GRDECWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.GRDECWEFT)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pl-3 col-12">
+                        <h2 class="panel-title text-success">Others</h2>
+                        <hr />
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.MASTERROLL" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.MASTERROLL)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.BUYERREF" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.BUYERREF)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.REVISENO" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.REVISENO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.LSBTESTNO" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.LSBTESTNO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.CRIMP_PERCENTAGE" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.CRIMP_PERCENTAGE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SKEWMOVE" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SKEWMOVE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SLPWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SLPWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.SLPWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.SLPWEFT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.TNWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.TNWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.TRWARP" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.TRWARP)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.TRWEFT" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.TRWEFT)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.CFATDRY" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.CFATDRY)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.CFATWET" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.CFATWET)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.PH" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.PH)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.REMARKS" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.rND_FABRICINFO.REMARKS)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="rND_FABRICINFO.USRID" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @{
+                                    if (Model.rND_FABRICINFO.USRID != null)
+                                    {
+                                        @SignInManager.UserManager.FindByIdAsync(Model.rND_FABRICINFO.USRID).Result.UserName
+                                    }
+                                    else
+                                    {
+                                        @Html.DisplayName("N/A")
+                                    }
+                                }
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                @if (Model.RndFabricCountInfoViewModels.Any())
+                {
+                    <h2 class="panel-title text-success">Yarn Details</h2>
+                    <table class="table">
+                        <thead id="thead">
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.RndFabricCountInfoViewModels.FirstOrDefault().RndFabricCountinfo.COUNTID)</th>
+                                <th>@Html.DisplayNameFor(model => model.RndFabricCountInfoViewModels.FirstOrDefault().RndFabricCountinfo.YARNTYPE)</th>
+                                <th>@Html.DisplayNameFor(model => model.RndFabricCountInfoViewModels.FirstOrDefault().RndFabricCountinfo.LOTID)</th>
+                                <th>@Html.DisplayNameFor(model => model.RndFabricCountInfoViewModels.FirstOrDefault().RndFabricCountinfo.SUPPID)</th>
+                                <th>@Html.DisplayNameFor(model => model.RndFabricCountInfoViewModels.FirstOrDefault().RndFabricCountinfo.RATIO)</th>
+                                <th>@Html.DisplayNameFor(model => model.RndFabricCountInfoViewModels.FirstOrDefault().RndFabricCountinfo.NE)</th>
+                                <th>@Html.DisplayNameFor(model => model.RndFabricCountInfoViewModels.FirstOrDefault().YARNFOR)</th>
+                                <th>@Html.DisplayNameFor(model => model.RndFabricCountInfoViewModels.FirstOrDefault().AMOUNT)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+                                foreach (var item in Model.RndFabricCountInfoViewModels)
+                                {
+                                    <tr>
+                                        <td>@item.RndFabricCountinfo.COUNT.COUNTNAME</td>
+                                        <td>@item.RndFabricCountinfo.YARNTYPE</td>
+                                        <td>@item.RndFabricCountinfo.LOT.LOTNO</td>
+                                        <td>@item.RndFabricCountinfo.SUPP.SUPPNAME</td>
+                                        <td>@item.RndFabricCountinfo.RATIO</td>
+                                        <td>@item.RndFabricCountinfo.NE</td>
+                                        <td>@item.YARNFOR</td>
+                                        <td>@item.AMOUNT</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+
+            <div class="col-12 row">
+                <div class="col-6">
+                    <h2 class="panel-title text-success"><i class="fa fa-bullseye" aria-hidden="true"></i> Target</h2>
+                    <hr/>
+                    <div class="col-6 d-inline-flex p-2">
+                        <div class="card col-8 p-2 m-1">
+                            <div class="card-header">
+                                <h2>Age Group</h2>
+                            </div>
+                            <div class="card-body">
+                                @for (var i = 0; i < Model.AgeGroupViewModels.Count; i++)
+                                {
+                                    if (Model.AgeGroupViewModels[i].IsSelected)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input asp-for="@Model.AgeGroupViewModels[i].IsSelected" class="form-check-input"/>
+                                            <label class="form-check-label" asp-for="@Model.AgeGroupViewModels[i].IsSelected">
+                                                @Model.AgeGroupViewModels[i].AgeGroupName
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="card col-8 p-2 m-1">
+                            <div class="card-header">
+                                <h2>Gender</h2>
+                            </div>
+                            <div class="card-body">
+                                @for (var i = 0; i < Model.TargetGenderViewModels.Count; i++)
+                                {
+                                    if (Model.TargetGenderViewModels[i].IsSelected)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input asp-for="@Model.TargetGenderViewModels[i].IsSelected" class="form-check-input"/>
+                                            <label class="form-check-label" asp-for="@Model.TargetGenderViewModels[i].IsSelected">
+                                                @Model.TargetGenderViewModels[i].GenderName
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="card col-8 p-2 m-1">
+                            <div class="card-header">
+                                <h2>Character</h2>
+                            </div>
+                            <div class="card-body">
+                                @for (var i = 0; i < Model.TargetCharacterViewModels.Count; i++)
+                                {
+                                    if (Model.TargetCharacterViewModels[i].IsSelected)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input asp-for="@Model.TargetCharacterViewModels[i].IsSelected" class="form-check-input"/>
+                                            <label class="form-check-label" asp-for="@Model.TargetCharacterViewModels[i].IsSelected">
+                                                @Model.TargetCharacterViewModels[i].CharacterName
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 d-inline-flex p-2">
+                        <div class="card col-12 mt-2 p-2 m-1">
+                            <div class="card-header">
+                                <h2>Price Segment</h2>
+                            </div>
+                            <div class="card-body">
+                                @for (var i = 0; i < Model.TargetPriceSegmentViewModels.Count; i++)
+                                {
+                                    if (Model.TargetPriceSegmentViewModels[i].IsSelected)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input asp-for="@Model.TargetPriceSegmentViewModels[i].IsSelected" class="form-check-input"/>
+                                            <label class="form-check-label" asp-for="@Model.TargetPriceSegmentViewModels[i].IsSelected">
+                                                @Model.TargetPriceSegmentViewModels[i].PriceSegmentType
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="card col-12 mt-2 p-2 m-1">
+                            <div class="card-header">
+                                <h2>Fit Style</h2>
+                            </div>
+                            <div class="card-body">
+                                @for (var i = 0; i < Model.TargetFitStyleViewModels.Count; i++)
+                                {
+                                    if (Model.TargetFitStyleViewModels[i].IsSelected)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input asp-for="@Model.TargetFitStyleViewModels[i].IsSelected" class="form-check-input"/>
+                                            <label class="form-check-label" asp-for="@Model.TargetFitStyleViewModels[i].IsSelected">
+                                                @Model.TargetFitStyleViewModels[i].FitStyleName
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h2 class="panel-title text-success"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Segment</h2>
+                    <hr />
+                    <div class="col-6 d-inline-flex">
+                        <div class="card col-12 mr-4">
+                            <div class="card-header">
+                                <h2>Season</h2>
+                            </div>
+                            <div class="card-body">
+                                @for (var i = 0; i < Model.SegmentSeasonViewModels.Count; i++)
+                                {
+                                    if (Model.SegmentSeasonViewModels[i].IsSelected)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input asp-for="@Model.SegmentSeasonViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.SegmentSeasonViewModels[i].IsSelected">
+                                                @Model.SegmentSeasonViewModels[i].SeasonName
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="card col-12 mr-2">
+                            <div class="card-header">
+                                <h2>Com. Segment</h2>
+                            </div>
+                            <div class="card-body">
+                                @for (var i = 0; i < Model.ComSegmentViewModels.Count; i++)
+                                {
+                                    if (Model.ComSegmentViewModels[i].IsSelected)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input asp-for="@Model.ComSegmentViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.ComSegmentViewModels[i].IsSelected">
+                                                @Model.ComSegmentViewModels[i].ComSegmentName
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-inline-flex">
+                        <div class="d-inline-flex mt-4 col-12 p-0">
+                            <label class="control-label">Geo. Location : </label>
+                            <input disabled type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-12 d-inline-flex mb-2">
+                        <div class="card col-12 mr-2">
+                            <div class="card-header">
+                                <h2>Other Similar</h2>
+                            </div>
+                            <div class="card-body">
+                                @for (var i = 0; i < Model.OtherSimilarViewModels.Count; i++)
+                                {
+                                    if (Model.OtherSimilarViewModels[i].IsSelected)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input asp-for="@Model.OtherSimilarViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.OtherSimilarViewModels[i].IsSelected">
+                                                @Model.OtherSimilarViewModels[i].OtherSimilarName
+                                            </label>
+                                            <input asp-for="@Model.OtherSimilarViewModels[i].Input" class="form-control" disabled />
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                @if (Model.rND_FABRICINFO.APPROVED == false)
+                {
+                    @Html.ActionLink("Edit", $"EditRndFabricInfo", new { rndFabricInfoId = Model.rND_FABRICINFO.EncryptedId }, new { @class = "btn btn-warning pull-right mt-2" })
+                }
+                <a class="btn btn-dark pull-right mt-2" asp-action="GetRndFabricInfo" asp-controller="RndFabricInfo">Back to List</a>
+            </div>
+        </div>
+    }
+}

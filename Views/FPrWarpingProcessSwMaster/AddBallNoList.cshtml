@@ -1,0 +1,124 @@
+﻿@model FPrWarpingProcessSwMasterViewModel
+
+@if (Model.FPrWarpingProcessSwDetailsList.Any())
+{
+    <div class="table-responsive">
+        <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+            <thead id="thead">
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().BALL_NO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().BALL_LENGTH)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().LINK_BALL_NO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().LINK_BALL_LENGTH)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().SHIFTNAME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().COUNTID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().MACHINE_ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().BREAKS_ENDS)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().ENDS_ROPE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessSwDetailsList.FirstOrDefault().REMARKS)
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.FPrWarpingProcessSwDetailsList.Count; i++)
+                {
+                    <tr>
+                        <td><span class="expand-button"></span></td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].SW_D_ID)
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].SW_ID)
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].BALL_NO)
+                            @Model.FPrWarpingProcessSwDetailsList[i].BALL_NONavigation?.BALL_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].BALL_LENGTH)
+                            @Model.FPrWarpingProcessSwDetailsList[i].BALL_LENGTH
+                        </td>
+                        @*<td>
+                                @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].BGT_KG_PER_SET)
+                                @Model.FPrWarpingProcessSwDetailsList[i].BGT_KG_PER_SET
+                            </td>*@
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].LINK_BALL_NO)
+                            @Model.FPrWarpingProcessSwDetailsList[i].LINK_BALL_NONavigation?.BALL_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].LINK_BALL_LENGTH)
+                            @Model.FPrWarpingProcessSwDetailsList[i].LINK_BALL_LENGTH
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].SHIFTNAME)
+                            @Model.FPrWarpingProcessSwDetailsList[i].SHIFTNAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].COUNTID)
+                            @Model.FPrWarpingProcessSwDetailsList[i].COUNT?.COUNT?.COUNTNAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].MACHINE_ID)
+                            @Model.FPrWarpingProcessSwDetailsList[i].MACHINE_?.MACHINE_NAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].BREAKS_ENDS)
+                            @Model.FPrWarpingProcessSwDetailsList[i].BREAKS_ENDS
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].ENDS_ROPE)
+                            @Model.FPrWarpingProcessSwDetailsList[i].ENDS_ROPE
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessSwDetailsList[i].REMARKS)
+                            @Model.FPrWarpingProcessSwDetailsList[i].REMARKS
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveCountFromList(@i)" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+            function RemoveCountFromList(removeIndexValue) {
+                var data = $('#form').serializeArray();
+                data.push({ name: "removeIndexValue", value: removeIndexValue });
+                $.ajax({
+                    async: true,
+                    cache: false,
+                    data: data,
+                    type: "POST",
+                    url: '/FPrWarpingProcessSwMaster/RemoveBallNoList',
+                    success: function (partialView, status, xhr) {
+                        $('#BallDetails').html(partialView);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            }
+</script>

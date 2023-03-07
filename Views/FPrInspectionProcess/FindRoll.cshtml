@@ -1,0 +1,35 @@
+﻿@model FPrInspectionProcessViewModel
+@{
+    //ViewData["Title"] = "Inspection Process";
+    //Layout = Layout;
+}
+@{
+    <div class="x_panel bg-dark">
+        <div class="x_content table-responsive">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.ROLLNO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FPrInspectionProcessDetails.ROLL_INSPDATE)
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+}
+
+@section Styles
+{
+    <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables/css/customerDatatable.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+}

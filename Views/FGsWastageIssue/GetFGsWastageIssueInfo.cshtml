@@ -1,0 +1,55 @@
+﻿@model F_GS_WASTAGE_ISSUE_M
+
+@{
+    ViewData["Title"] = "General Store Wastage Issue Information";
+}
+
+@{
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list fa-lg text-info" aria-hidden="true"> @ViewData["Title"]</i>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li class="mr-2">
+                    <p>
+                        <a asp-action="CreateFGsWastageIssueInfo" class="btn btn-primary" accesskey="a"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                    </p>
+                </li>
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content table-responsive table-hover">
+            <table class="table" id="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.WIDATE)</th>
+                        <th>@Html.DisplayNameFor(model => model.FGsWastageParty.PNAME)</th>
+                        <th>@Html.DisplayNameFor(model => model.GPNO)</th>
+                        <th>@Html.DisplayNameFor(model => model.GPDATE)</th>
+                        <th>@Html.DisplayNameFor(model => model.VEHICLENO)</th>
+                        <th>@Html.DisplayNameFor(model => model.THROUGH)</th>
+                        <th>@Html.DisplayNameFor(model => model.REMARKS)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+}
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true" src="~/js/FGsWastageIssue/FGsWastageIssueInfo.js"></script>
+
+}

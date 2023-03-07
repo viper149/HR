@@ -1,0 +1,62 @@
+﻿@model PlProductionGroupViewModel
+
+@if (Model.PlProductionSoDetailsList.Any())
+{
+    <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+        <thead id="thead" class="bg-secondary text-light">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlProductionSoDetailsList.FirstOrDefault().POID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlProductionSoDetailsList.FirstOrDefault().REMARKS)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.PlProductionSoDetailsList.Count; i++)
+            {
+                <tr>
+                    <td><span class="expand-button"></span></td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlProductionSoDetailsList[i].PP_SO_ID)
+                        @Html.HiddenFor(clc => clc.PlProductionSoDetailsList[i].POID)
+                        @Model.PlProductionSoDetailsList[i].PO?.OPT1
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.PlProductionSoDetailsList[i].REMARKS)
+                        @Model.PlProductionSoDetailsList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveSoFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveSoFromList(removeIndexValue) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/PlProductionPlanGroupMaster/RemoveSoFromList',
+            success: function (partialView, status, xhr) {
+                $('#PoNoDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>

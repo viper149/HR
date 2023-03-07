@@ -1,0 +1,165 @@
+﻿@model FabDeliveryChallanViewModel
+
+@if (Model.FFsDeliverychallanPackDetailsList.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-hover" id="partialView">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sl.</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.PACKING_LIST_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.ROLL_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.ROLL.FABCODE)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.ROLL.PO_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.ROLL.SO_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.LENGTH1)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.LENGTH2)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.ROLL.ROLL_.FAB_GRADE)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.ROLL.ROLL_.OPT1)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.ROLL.ROLL_.OPT2)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.ROLL.LOCATION)</th>
+                    <th>@Html.DisplayNameFor(model => model.FFsDeliverychallanPackDetails.REMARKS)</th>
+                    <th>@Html.DisplayName("Actions")</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr class="bg-info text-white">
+                <td colspan="2" class="text-right h5"><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Sub Total :")</td>
+                <td class="h5">@($"{Model.FFsDeliverychallanPackDetailsList.Count} Roll")</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="h5">@($"{Model.FFsDeliverychallanPackDetailsList.Sum(e => e.LENGTH1)}")</td>
+                <td class="h5">@($"{Model.FFsDeliverychallanPackDetailsList.Sum(e => e.LENGTH2)}")</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="bg-info text-white">
+                <td colspan="2" class="text-right h4"><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Total :")</td>
+                <td class="h4">@($"{Model.FFsDeliverychallanPackDetailsList.Count} Roll")</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class=""></td>
+                <td class="h4">@($"{Model.FFsDeliverychallanPackDetailsList.Sum(e => e.LENGTH1)+Model.FFsDeliverychallanPackDetailsList.Sum(e => e.LENGTH2)}")</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+                @for (var i = 0; i < Model.FFsDeliverychallanPackDetailsList.Count; i++)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@Html.HiddenFor(clc => clc.FFsDeliverychallanPackDetailsList[i].PACKING_LIST_ID)
+                            @Model.FFsDeliverychallanPackDetailsList[i].PACKING_LIST_ID
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FFsDeliverychallanPackDetailsList[i].D_CHALLAN_D_ID)
+                            @Html.HiddenFor(clc => clc.FFsDeliverychallanPackDetailsList[i].D_CHALLANID)
+                            @Html.HiddenFor(clc => clc.FFsDeliverychallanPackDetailsList[i].ROLL_NO)
+                            @Model.FFsDeliverychallanPackDetailsList[i].ROLL?.ROLL_?.ROLLNO
+                        </td>
+                        <td>
+                            @Model.FFsDeliverychallanPackDetailsList[i].ROLL?.FABCODENavigation?.STYLE_NAME
+                        </td>
+                        <td>
+                            @Model.FFsDeliverychallanPackDetailsList[i].ROLL?.SO_NONavigation?.PIMASTER?.PINO
+                        </td>
+                        <td>
+                            @Model.FFsDeliverychallanPackDetailsList[i].ROLL?.SO_NONavigation?.SO_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FFsDeliverychallanPackDetailsList[i].LENGTH1)
+                            @Model.FFsDeliverychallanPackDetailsList[i].LENGTH1
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FFsDeliverychallanPackDetailsList[i].LENGTH2)
+                            @Model.FFsDeliverychallanPackDetailsList[i].LENGTH2
+                        </td>
+                        <td>
+                            @Model.FFsDeliverychallanPackDetailsList[i].ROLL?.ROLL_?.FAB_GRADE
+                        </td>
+                        <td>
+                            @Model.FFsDeliverychallanPackDetailsList[i].ROLL?.ROLL_?.OPT1
+                        </td>
+                        <td>
+                            @Model.FFsDeliverychallanPackDetailsList[i].ROLL?.ROLL_?.OPT2
+                        </td>
+                        <td>
+                            @Model.FFsDeliverychallanPackDetailsList[i].ROLL?.LOCATIONNavigation?.LOCATION
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FFsDeliverychallanPackDetailsList[i].REMARKS)
+                            @Model.FFsDeliverychallanPackDetailsList[i].REMARKS
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveRollFromList(@i)" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                }
+                <tr class="bg-info text-white">
+                    <td colspan="2" class="text-right h5"><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Sub Total :")</td>
+                    <td class="h5">@($"{Model.FFsDeliverychallanPackDetailsList.Count} Roll")</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="h5">@($"{Model.FFsDeliverychallanPackDetailsList.Sum(e => e.LENGTH1)}")</td>
+                    <td class="h5">@($"{Model.FFsDeliverychallanPackDetailsList.Sum(e => e.LENGTH2)}")</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="bg-info text-white">
+                    <td colspan="2" class="text-right h4"><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Total :")</td>
+                    <td class="h4">@($"{Model.FFsDeliverychallanPackDetailsList.Count} Roll")</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class=""></td>
+                    <td class="h4">@($"{Model.FFsDeliverychallanPackDetailsList.Sum(e => e.LENGTH1)+Model.FFsDeliverychallanPackDetailsList.Sum(e => e.LENGTH2)}")</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveRollFromList(removeIndexValue) {
+
+        var data = $('#form').serializeArray();
+                    data.push({ name: "removeIndexValue", value: removeIndexValue });
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: data,
+                        type: "POST",
+                        url: '/FFsPackingList/RemoveRollFromList',
+                        success: function (partialView, status, xhr) {
+                            $('#rollDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+    }
+</script>

@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showBanner)
+{
+    <div id="cookieConsent" class="card p-3 border border-info mb-1">
+        <div class="d-inline">
+            <span>
+                <text class="text-gradient">We use cookies <img width="15" asp-append-version="true" src="~/images/icons/cookies.svg" alt="cookie" /> to ensure you get the best experience on our website.</text>
+                <a asp-controller="Home" asp-action="Privacy" target="_blank"> Learn more<i class="fa fa-angle-right ml-2"></i></a>
+            </span>
+            <button class="btn btn-info btn-sm" data-cookie-string="@cookieString" type="button">Allow cookies</button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            document.querySelector("#cookieConsent button[data-cookie-string]").addEventListener("click", function (el) {
+                document.cookie = el.target.dataset.cookieString;
+                document.querySelector("#cookieConsent").classList.add("d-none");
+            }, false);
+        })();
+    </script>
+}

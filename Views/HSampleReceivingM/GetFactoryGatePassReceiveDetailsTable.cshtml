@@ -1,0 +1,91 @@
+﻿
+@model CreateHSampleReceivingMViewModel
+
+@{
+    if (Model != null)
+    {
+        <div class="col-2">
+            <div class="form-group">
+                <strong>
+                    <label asp-for="FSampleDespatchMaster.GPDATE" class="control-label"></label>
+                </strong>
+                <span class="custom-form-control form-control bg-e9ecef">
+                    @Html.DisplayFor(model => model.FSampleDespatchMaster.GPDATE)
+                </span>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <strong>
+                    <label asp-for="FSampleDespatchMaster.GPTYPE.GPTYPENAME" class="control-label"></label>
+                </strong>
+                <span class="custom-form-control form-control bg-e9ecef">
+                    @Html.DisplayFor(model => model.FSampleDespatchMaster.GPTYPE.GPTYPENAME)
+                </span>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <strong>
+                    <label asp-for="FSampleDespatchMaster.DR.DRIVER_NAME" class="control-label"></label>
+                </strong>
+                <span class="custom-form-control form-control bg-e9ecef">
+                    @Html.DisplayFor(model => model.FSampleDespatchMaster.DR.DRIVER_NAME)
+                </span>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <strong>
+                    <label asp-for="FSampleDespatchMaster.V.VNUMBER" class="control-label"></label>
+                </strong>
+                <span class="custom-form-control form-control bg-e9ecef">
+                    @Html.DisplayFor(model => model.FSampleDespatchMaster.V.VNUMBER)
+                </span>
+            </div>
+        </div>
+
+        <div class="col-12">
+            @if (Model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.Any())
+            {
+                <div class="table-responsive">
+                    <h2 class="panel-title text-success"><i class="fa fa-get-pocket"></i> Receive Details</h2>
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>@Html.DisplayNameFor(model => model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.FirstOrDefault().TRNS.SITEM.NAME)</th>
+                                <th>@Html.DisplayNameFor(model => model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.FirstOrDefault().BYER.BUYER_NAME)</th>
+                                <th>@Html.DisplayNameFor(model => model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.FirstOrDefault().ISSUE_PERSON)</th>
+                                <th>@Html.DisplayNameFor(model => model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.FirstOrDefault().U.UNAME)</th>
+                                <th>@Html.DisplayNameFor(model => model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.FirstOrDefault().REQ_QTY)</th>
+                                <th>@Html.DisplayNameFor(model => model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.FirstOrDefault().DEL_QTY)</th>
+                                <th>@Html.DisplayNameFor(model => model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.FirstOrDefault().REMARKS)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+                                var fSampleDespatchDetailses = Model.FSampleDespatchMaster.F_SAMPLE_DESPATCH_DETAILS.ToList();
+
+                                for (var i = 0; i < fSampleDespatchDetailses.Count; i++)
+                                {
+                                    <tr>
+                                        <td>@(i + 1)</td>
+                                        <td>@fSampleDespatchDetailses[i].TRNS.SITEM.NAME</td>
+                                        <td>@fSampleDespatchDetailses[i].BYER.BUYER_NAME</td>
+                                        <td>@fSampleDespatchDetailses[i].ISSUE_PERSON</td>
+                                        <td>@fSampleDespatchDetailses[i].U.UNAME</td>
+                                        <td>@fSampleDespatchDetailses[i].REQ_QTY</td>
+                                        <td>@fSampleDespatchDetailses[i].DEL_QTY</td>
+                                        <td>@fSampleDespatchDetailses[i].REMARKS</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    }
+}

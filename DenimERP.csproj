@@ -1,0 +1,2745 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.1</TargetFramework>
+		<UserSecretsId>7eec8021-d30f-4b8b-b0c2-96a28ab915ae</UserSecretsId>
+		<AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+		<LangVersion>default</LangVersion>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<Optimize>false</Optimize>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="Reports\Chemical Store\**" />
+		<Compile Remove="Reports\HOPROC\**" />
+		<Compile Remove="Reports\Yarn Store\**" />
+		<Compile Remove="Views\FChemStoreIndent\CosPreCostingMaster\**" />
+		<Compile Remove="Views\FGenSPurchaseRequisition\Reports\**" />
+		<Compile Remove="Views\FGsIssue\**" />
+		<Compile Remove="Views\FYarnReport\**" />
+		<Compile Remove="Views\FYsYarnIssue\Report\**" />
+		<Content Remove="Reports\Chemical Store\**" />
+		<Content Remove="Reports\HOPROC\**" />
+		<Content Remove="Reports\Yarn Store\**" />
+		<Content Remove="Views\FChemStoreIndent\CosPreCostingMaster\**" />
+		<Content Remove="Views\FGenSPurchaseRequisition\Reports\**" />
+		<Content Remove="Views\FGsIssue\**" />
+		<Content Remove="Views\FYarnReport\**" />
+		<Content Remove="Views\FYsYarnIssue\Report\**" />
+		<EmbeddedResource Remove="Reports\Chemical Store\**" />
+		<EmbeddedResource Remove="Reports\HOPROC\**" />
+		<EmbeddedResource Remove="Reports\Yarn Store\**" />
+		<EmbeddedResource Remove="Views\FChemStoreIndent\CosPreCostingMaster\**" />
+		<EmbeddedResource Remove="Views\FGenSPurchaseRequisition\Reports\**" />
+		<EmbeddedResource Remove="Views\FGsIssue\**" />
+		<EmbeddedResource Remove="Views\FYarnReport\**" />
+		<EmbeddedResource Remove="Views\FYsYarnIssue\Report\**" />
+		<None Remove="Reports\Chemical Store\**" />
+		<None Remove="Reports\HOPROC\**" />
+		<None Remove="Reports\Yarn Store\**" />
+		<None Remove="Views\FChemStoreIndent\CosPreCostingMaster\**" />
+		<None Remove="Views\FGenSPurchaseRequisition\Reports\**" />
+		<None Remove="Views\FGsIssue\**" />
+		<None Remove="Views\FYarnReport\**" />
+		<None Remove="Views\FYsYarnIssue\Report\**" />
+		<TypeScriptCompile Remove="node_modules\**" />
+		<TypeScriptCompile Remove="Reports\Chemical Store\**" />
+		<TypeScriptCompile Remove="Reports\HOPROC\**" />
+		<TypeScriptCompile Remove="Reports\Yarn Store\**" />
+		<TypeScriptCompile Remove="Views\FChemStoreIndent\CosPreCostingMaster\**" />
+		<TypeScriptCompile Remove="Views\FGenSPurchaseRequisition\Reports\**" />
+		<TypeScriptCompile Remove="Views\FGsIssue\**" />
+		<TypeScriptCompile Remove="Views\FYarnReport\**" />
+		<TypeScriptCompile Remove="Views\FYsYarnIssue\Report\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Data\Migrations\20201022041545_test.cs" />
+		<Compile Remove="Data\Migrations\20201022041545_test.Designer.cs" />
+		<Compile Remove="Data\Migrations\20201028093913_test.cs" />
+		<Compile Remove="Data\Migrations\20201028093913_test.Designer.cs" />
+		<Compile Remove="Data\Migrations\20201230091854_test.cs" />
+		<Compile Remove="Data\Migrations\20201230091854_test.Designer.cs" />
+		<Compile Remove="Data\Migrations\20201230092011_ExtendIdentityUser.cs" />
+		<Compile Remove="Data\Migrations\20201230092011_ExtendIdentityUser.Designer.cs" />
+		<Compile Remove="Data\Migrations\20210209042927_test.cs" />
+		<Compile Remove="Data\Migrations\20210209042927_test.Designer.cs" />
+		<Compile Remove="Data\Migrations\20210303081549_test.cs" />
+		<Compile Remove="Data\Migrations\20210303081549_test.Designer.cs" />
+		<Compile Remove="Data\Migrations\20210303082456_test.cs" />
+		<Compile Remove="Data\Migrations\20210303082456_test.Designer.cs" />
+		<Compile Remove="Data\Migrations\20210303084241_test.cs" />
+		<Compile Remove="Data\Migrations\20210303084241_test.Designer.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Remove="Resources\Models\MenuMaster.bn-BD.resx" />
+		<EmbeddedResource Remove="Resources\Models\MenuMaster.en.resx" />
+		<EmbeddedResource Remove="Resources\Models\MenuMaster.ja-JP.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Controllers\rptSetWiseSizingConsumption.repx" />
+		<None Remove="Reports\Accounts\rptFabricPhysicalInventory.repx" />
+		<None Remove="Reports\Accounts\rptImportRegister.repx" />
+		<None Remove="Reports\APCD\rptProgramStatus.repx" />
+		<None Remove="Reports\Chemical_Store\rpt_CHEMICAL_MRR_REPORT.repx" />
+		<None Remove="Reports\Clearance\rptClearancePending.repx" />
+		<None Remove="Reports\Clearance\rptFabricRollClearance.repx" />
+		<None Remove="Reports\Clearance\rptMasterRollSelecttionSheet.repx" />
+		<None Remove="Reports\Clearance\rptPIWiseSOList.repx" />
+		<None Remove="Reports\Clearance\rptSecondBeamQuality.repx" />
+		<None Remove="Reports\Clearance\rptWashCodeWiseRollReport.repx" />
+		<None Remove="Reports\Clearance\rptWashCodeWiseRollReport_shade.repx" />
+		<None Remove="Reports\Clearance\rptWastageTransferClearance.repx" />
+		<None Remove="Reports\Clearance\rpt_Clearance_Datewise_data.repx" />
+		<None Remove="Reports\Clearance\rpt_Clearance_Datewise_data_shade.repx" />
+		<None Remove="Reports\Clearance\rpt_Clearance_Fabric_DataEntry.repx" />
+		<None Remove="Reports\Clearance\rpt_Clearance_SHAD_SUMMERY.repx" />
+		<None Remove="Reports\Clearance\rpt_CLEARANCE_sHEED_GROUP_PENDING.repx" />
+		<None Remove="Reports\COM_EX\rptAdvanceDeliverySchedule.repx" />
+		<None Remove="Reports\COM_EX\rptChallanWiseSearching.repx" />
+		<None Remove="Reports\COM_EX\rptDailyDocumentsRcvSubList.repx" />
+		<None Remove="Reports\COM_EX\rptDocumentsRegister.repx" />
+		<None Remove="Reports\COM_EX\rptInvoiceWisePrcChecking.repx" />
+		<None Remove="Reports\COM_EX\rptShipmentFollowUp.repx" />
+		<None Remove="Reports\COM_EX\rptShortRealizaionStatement.repx" />
+		<None Remove="Reports\COM_IMP\rptBillOfEntry.repx" />
+		<None Remove="Reports\COM_IMP\rptBillSubmit.repx" />
+		<None Remove="Reports\COM_IMP\rptComImpBankWise.repx" />
+		<None Remove="Reports\COM_IMP\rptImportInvoiceDetails.repx" />
+		<None Remove="Reports\COM_IMP\rptLCDetails.repx" />
+		<None Remove="Reports\COM_IMP\rptPartyWiseComImp.repx" />
+		<None Remove="Reports\COM_IMP\rptShipmentPendingComImp.repx" />
+		<None Remove="Reports\COM_IMP\rptYarnCosting.repx" />
+		<None Remove="Reports\COM_IMP\RPT_ACCOUNTS_MUSHAK.repx" />
+		<None Remove="Reports\COM_IMP\RPT_COM_IMP_PO_ORDER.repx" />
+		<None Remove="Reports\COM_IMP\RPT_COM_IMP_WORK_ORDER.repx" />
+		<None Remove="Reports\Customs\rptCustomsInvoiceDetails.repx" />
+		<None Remove="Reports\Customs\rptDateWiseCustomsReport.repx" />
+		<None Remove="Reports\Fabric_Store\Dyeing\rptDateWiseDyeingConsumption.repx" />
+		<None Remove="Reports\Fabric_Store\Dyeing\rpt_RopeDyeing.repx" />
+		<None Remove="Reports\Fabric_Store\Dyeing\rpt_SlasherDyeing.repx" />
+		<None Remove="Reports\Fabric_Store\rptDailySampleFabricStock.repx" />
+		<None Remove="Reports\Fabric_Store\rptDateWiseFabricInternalIssue.repx" />
+		<None Remove="Reports\Fabric_Store\rptFabricDeliveryStatement_Delivery.repx" />
+		<None Remove="Reports\Fabric_Store\rptFabricDeliveryStatement_DO.repx" />
+		<None Remove="Reports\Fabric_Store\rptFabricDeliveryStatement_INVOICE.repx" />
+		<None Remove="Reports\Fabric_Store\rptFabricDeliveryStatement_Oracle.repx" />
+		<None Remove="Reports\Fabric_Store\rptFabricPackingList.repx" />
+		<None Remove="Reports\Fabric_Store\rptFabricReceiveStatementExport.repx" />
+		<None Remove="Reports\Fabric_Store\rptInternal_Delivery_Challan.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_Advanced_FABRIC_DELIVERY.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_DAILY_FABRIC_DELIVERY.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_DAILY_FABRIC_DELIVERY_PostCosting.repx" />
+		<None Remove="Reports\Fabric_Store\rpt_FabricStock.repx" />
+		<None Remove="Reports\Fabric_Store\rpt_FabricStock_A2.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_Fabric_Challan_Wise_Del.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_FABRIC_DO_WISE_BALANCE.repx" />
+		<None Remove="Reports\Fabric_Store\rpt_Fabric_Gate_Pass.repx" />
+		<None Remove="Reports\Fabric_Store\rpt_Fabric_Gate_Pass_Local.repx" />
+		<None Remove="Reports\Fabric_Store\rpt_Fabric_Gate_Pass_Local_2.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_Fabric_Loading_Bill.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_FABRIC_PACKINGLIST_SUMMERY.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_FABRIC_PI_WISE_BALANCE.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_Fabric_Receive_Statement.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_Fabric_Roll_RCV_Pending.repx" />
+		<None Remove="Reports\Fabric_Store\rpt_FabricStock_date_wise.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_FABRIC_ROLL_STOCK.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_FABRIC_ROLL_Stock_WITH_AGE.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_Fabric_Roll_to_roll_RCV.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_Fabric_Store_aging_report.repx" />
+		<None Remove="Reports\Fabric_Store\RPT_Fabric_store_bin_card.repx" />
+		<None Remove="Reports\Fabric_Store\rpt_PROC_Fabric_Packing_list_all.repx" />
+		<None Remove="Reports\Finishing\rptDateWiseFinishingConsumption.repx" />
+		<None Remove="Reports\Finishing\rptDateWiseFinishing_Consumption_All.repx" />
+		<None Remove="Reports\FOR_ALL\rptIndividualRollInfo.repx" />
+		<None Remove="Reports\FOR_ALL\rptIndividualSetRecovery.repx" />
+		<None Remove="Reports\FOR_ALL\rptOrderRecovery.repx" />
+		<None Remove="Reports\FOR_ALL\rptOrderWiseProductionHistory.repx" />
+		<None Remove="Reports\FOR_ALL\rptRequiredRawMaterials.repx" />
+		<None Remove="Reports\FOR_ALL\rptSetRecovery.repx" />
+		<None Remove="Reports\FOR_ALL\rptSetWiseFinishing_Consumption.repx" />
+		<None Remove="Reports\FOR_ALL\rptSetWiseSizing_Consumption.repx" />
+		<None Remove="Reports\FOR_ALL\rptSetWiseWarp_Consumption.repx" />
+		<None Remove="Reports\FOR_ALL\rptSetWiseWeft_Consumption.repx" />
+		<None Remove="Reports\FOR_ALL\rptSetwise_RopeConsumption.repx" />
+		<None Remove="Reports\FOR_ALL\rptSetwise_SlasherConsumption.repx" />
+		<None Remove="Reports\FOR_ALL\subrpt_Finishing_Consumption.repx" />
+		<None Remove="Reports\FOR_ALL\subrpt_RopeConsumption.repx" />
+		<None Remove="Reports\FOR_ALL\subrpt_SizingConsumption.repx" />
+		<None Remove="Reports\FOR_ALL\subrpt_SlasherConsumption.repx" />
+		<None Remove="Reports\FOR_ALL\subrpt_WarpConsumption.repx" />
+		<None Remove="Reports\FOR_ALL\subrpt_WeftConsumption.repx" />
+		<None Remove="Reports\General_store\RPT_GS_DATE_WISE_ISSUE.repx" />
+		<None Remove="Reports\General_store\rpt_gs_indent_balance.repx" />
+		<None Remove="Reports\General_store\RPT_GS_RECEIVING_DATE_WISE.repx" />
+		<None Remove="Reports\GSP\rptBTMA_GSP_Certificate_Register.repx" />
+		<None Remove="Reports\Inspection\DepartmentWiseBulkRejectionSummery.repx" />
+		<None Remove="Reports\Inspection\rptDailyBulkRejectionReport_sum.repx" />
+		<None Remove="Reports\Inspection\rptDailyInspectionReport.repx" />
+		<None Remove="Reports\Inspection\rptDailyInspectionReport_All.repx" />
+		<None Remove="Reports\Inspection\rptDailyStyleWiseProduction.repx" />
+		<None Remove="Reports\Inspection\rptDeptWiseBulkRejectionSummery.repx" />
+		<None Remove="Reports\Inspection\rptInspectionAudit.repx" />
+		<None Remove="Reports\Inspection\rptRollDespatchSheet_scan.repx" />
+		<None Remove="Reports\Inspection\rptSectionWiseCutPcs.repx" />
+		<None Remove="Reports\Inspection\rptSectionWiseCutPcs_sum.repx" />
+		<None Remove="Reports\Inspection\RPT_Inspection_ROLL_Scan_pending.repx" />
+		<None Remove="Reports\Inspection\RPT_INSPECTION_Roll_to_Roll_Scan_Status.repx" />
+		<None Remove="Reports\Inspection\RPT_INSP_DPTtWiseBulkRejectionSummery_sum.repx" />
+		<None Remove="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE.repx" />
+		<None Remove="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.repx" />
+		<None Remove="Reports\Inspection\rpt_Ins_DailyBulkRejiection.repx" />
+		<None Remove="Reports\Inspection\rpt_Ins_DailyWastageTransferReport.repx" />
+		<None Remove="Reports\Inspection\rpt_INS_Operator_wise_prod.repx" />
+		<None Remove="Reports\Inspection\rpt_Ins_StyleWiseAnalysis.repx" />
+		<None Remove="Reports\Inspection\rpt_INS_StyleWiseAnalysis_Shift.repx" />
+		<None Remove="Reports\Inspection\rpt_Ins_StyleWiseProd_shift_scan.repx" />
+		<None Remove="Reports\LCB\rpt_LCB_DailyProduction.repx" />
+		<None Remove="Reports\Planning\rptMktPersonWisePoRcv.repx" />
+		<None Remove="Reports\Planning\rptTeamWiseDelivery.repx" />
+		<None Remove="Reports\Planning\rptYearlyProductionSummery.repx" />
+		<None Remove="Reports\Post_Costing\rptBOMvsProduction_Finishing.repx" />
+		<None Remove="Reports\Post_Costing\rptBOMvsProduction_Rope.repx" />
+		<None Remove="Reports\Post_Costing\rptBOMvsProduction_Rope_Sub.repx" />
+		<None Remove="Reports\Post_Costing\rptBOMvsProduction_Sizing.repx" />
+		<None Remove="Reports\Post_Costing\rptBuyerWiseCostAnalysis.repx" />
+		<None Remove="Reports\Post_Costing\rptFDSvsPostCosting_Variance.repx" />
+		<None Remove="Reports\Post_Costing\rptMonthlyWarpingProduction.repx" />
+		<None Remove="Reports\Post_Costing\rptOrderWiseYarnPrice.repx" />
+		<None Remove="Reports\PreCost\rptFabricDetailsCosting.repx" />
+		<None Remove="Reports\QA\rptFabricTestReport_Bulk.repx" />
+		<None Remove="Reports\QA\rptFabricTestReport_Grey.repx" />
+		<None Remove="Reports\QA\rptFabricTestReport_Sample.repx" />
+		<None Remove="Reports\QA\rptFirstMeterAnalysis.repx" />
+		<None Remove="Reports\QA\rpt_QA_LabTestCotton.repx" />
+		<None Remove="Reports\QA\rpt_QA_LabTestPolyester.repx" />
+		<None Remove="Reports\RND\rptRndFabricInfo.repx" />
+		<None Remove="Reports\RND\rptWeavingInformation.repx" />
+		<None Remove="Reports\RND\rptWeavingProgramSheet.repx" />
+		<None Remove="Reports\RND\RPT_PROG_SHEET_DYEING.repx" />
+		<None Remove="Reports\RND\RPT_RND_STICKER_PRINT.repx" />
+		<None Remove="Reports\Sample.Bay\rptDailySampleFabricStock.repx" />
+		<None Remove="Reports\Sample.Bay\rptSampleFabricGatePass.repx" />
+		<None Remove="Reports\Sample.Bay\rptSampleGatePass.repx" />
+		<None Remove="Reports\Sample.Bay\rptSampleReceiveStatement.repx" />
+		<None Remove="Reports\Sizing\prt_Sizing_DailyProduction.repx" />
+		<None Remove="Reports\Sizing\rptDateWiseSizing_Consumption.repx" />
+		<None Remove="Reports\Sizing\rptMonthlySizingProduction.repx" />
+		<None Remove="Reports\Sizing\rptSetWiseSizingChemicalConsumption.repx" />
+		<None Remove="Reports\Sizing\rptSizingBeamCard.repx" />
+		<None Remove="Reports\Sizing\test.repx" />
+		<None Remove="Reports\Sticker\rptDyeingSticker_Rope.repx" />
+		<None Remove="Reports\Sticker\rptDyeingSticker_Slasher.repx" />
+		<None Remove="Reports\Sticker\rptLCB_Sticker.repx" />
+		<None Remove="Reports\Sticker\rptWarpingSticker.repx" />
+		<None Remove="Reports\Warping\rptDailyProduction_DirectWarping.repx" />
+		<None Remove="Reports\Warping\rptDailyProduction_Ecru.repx" />
+		<None Remove="Reports\Weaving\rptBeamStockReport.repx" />
+		<None Remove="Reports\Weaving\rptDailyLoomProduction.repx" />
+		<None Remove="Reports\Weaving\rptDailyProduction_Weaving.repx" />
+		<None Remove="Reports\Weaving\rptDoffCard.repx" />
+		<None Remove="Reports\Weaving\rptLoomCard - Copy.repx" />
+		<None Remove="Reports\Weaving\rptLoomCard.repx" />
+		<None Remove="Reports\Weaving\rptOrderWiseReq_n_Issue.repx" />
+		<None Remove="Reports\Weaving\rptWeaving_Mounting.repx" />
+		<None Remove="Reports\Weaving\rpt_WeavingLoomSettings.repx" />
+		<None Remove="Reports\Weaving\subrptAirjetWorkLoad.repx" />
+		<None Remove="Reports\Weaving\subrptOverAllWorkLoad.repx" />
+		<None Remove="Reports\Weaving\subrptRapierWorkLoad.repx" />
+		<None Remove="Reports\XtraReport.repx" />
+		<None Remove="Reports\Yarn_Store\rptDespatchQrCode.repx" />
+		<None Remove="Reports\Yarn_Store\rptIndentHistoryIssue.repx" />
+		<None Remove="Reports\Yarn_Store\rptIndentHistoryRCV.repx" />
+		<None Remove="Reports\Yarn_Store\rptIndentHistoryReport.repx" />
+		<None Remove="Reports\Yarn_Store\RPT_BULK_YARN_ORDER_WISE_HISTORY_SR_DETAILS.repx" />
+		<None Remove="Reports\Yarn_Store\RPT_BULK_YARN_ORDER_WISE_HISTORY_YARN_DETAILS.repx" />
+		<None Remove="Reports\Yarn_Store\RPT_YARN_ORDER_WISE_REPORT.repx" />
+		<None Remove="Reports\Yarn_Store\RPT_Yarn_QC_Status.repx" />
+		<None Remove="Reports\Yarn_Store\RPT_YARN_REQ_WISE_ISSUE.repx" />
+		<None Remove="Reports\Yarn_Store\rpt_YS_DayWiseStock.repx" />
+		<None Remove="Reports\Yarn_Store\RPT_YS_YARN_DATE_WISE_ISSUE.repx" />
+		<None Remove="Views\AccExportDoMaster\Report\rptDOInformation.repx" />
+		<None Remove="Views\AccExportDoMaster\Report\rptDOInformation_A.repx" />
+		<None Remove="Views\AccExportDoMaster\Report\rptDOInformation_Local.repx" />
+		<None Remove="Views\AccExportDoMaster\Report\rptDOInformation_S.repx" />
+		<None Remove="Views\AccExportDoMaster\Report\rptDOInformation_Small.repx" />
+		<None Remove="Views\ComExGspInfo\Reports\rptBTMA_GSP.repx" />
+		<None Remove="Views\ComExGspInfo\Reports\rptBTMA_GSP_PendingInvoiceList.repx" />
+		<None Remove="Views\ComExGspInfo\Reports\rptCashBTMA.repx" />
+		<None Remove="Views\ComExGspInfo\Reports\rptCashBTMADeemed.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange1.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange1_FG.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange2.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange2_FG.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\Foreign\RForeignComExInvoice.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\Foreign\RForeignComExInvoiceMasterPackingList.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RBeneficiaryCertificate.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RCertificateOfOrigin.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RComExInvoice.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterDeliveryChallan.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterPackingList.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterTruckReceipt.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RPreShipmentInspectionCertificate.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\rptBankAccPending.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\rptBankAccRCVStatus.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\rptDateWiseDocSUBnRCV.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\rptDocWaitingforSub.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\rptPendingBankPayment.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\rptPendingPartyAcceptance.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RSubmissionOfShipping.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\RWeightMeasurement.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\XXL\rptCommercial_Invoice_xxl.repx" />
+		<None Remove="Views\ComExInvoiceMaster\Reports\XXL\rptPackingList.repx" />
+		<None Remove="Views\ComExLcInfo\Reports\rptDateWiseLCRegister.repx" />
+		<None Remove="Views\ComExLcInfo\Reports\rptDateWisePRCRegister.repx" />
+		<None Remove="Views\ComExPiMaster\Reports\RptAuditSummary.repx" />
+		<None Remove="Views\ComExPiMaster\Reports\rptDateWisePIInformation.repx" />
+		<None Remove="Views\ComExPiMaster\Reports\rptDateWisePOInformation.repx" />
+		<None Remove="Views\ComExPiMaster\Reports\RptPiInformation_con.repx" />
+		<None Remove="Views\ComExPiMaster\Reports\RptPiInformation_Ex.repx" />
+		<None Remove="Views\ComExPiMaster\Reports\rptPIInformation_LC_Status.repx" />
+		<None Remove="Views\ComExPiMaster\Reports\rptSalesCOntactInfo.repx" />
+		<None Remove="Views\ComExPiMaster\Reports\rpt_LC_Searching_IN_PI.repx" />
+		<None Remove="Views\ComImpLcInformation\Reports\rptChemicalLCStatus.repx" />
+		<None Remove="Views\CosPreCostingMaster\Reports\rptFabricDetailsSheet.repx" />
+		<None Remove="Views\CosPreCostingMaster\Reports\rptPostCosting.repx" />
+		<None Remove="Views\CosPreCostingMaster\Reports\rptPreCosting.repx" />
+		<None Remove="Views\CosPreCostingMaster\Reports\RptPreCostSheet.repx" />
+		<None Remove="Views\FChemIssue\Report\RPT_Chem_Date_Wise_issue.repx" />
+		<None Remove="Views\FChemPurchaseRequisition\Report\RPT_CHEM_REQ_INDENT.repx" />
+		<None Remove="Views\FChemReport\Report\RPT_Chemical_date_wise_rcv.repx" />
+		<None Remove="Views\FChemReport\rptChemical_Indent.repx" />
+		<None Remove="Views\FChemReport\rptChemical_Req.repx" />
+		<None Remove="Views\FChemReport\rptChem_Pur_Requisition.repx" />
+		<None Remove="Views\FChemReport\rptSectionWiseChemIssue_Sum.repx" />
+		<None Remove="Views\FChemReport\rptSectionWiseIssue.repx" />
+		<None Remove="Views\FChemStoreIndent\Report\RPT_CHEM_STORE_INDENT.repx" />
+		<None Remove="Views\FDyeingProcessRopeMaster\Reports\rptRopeDyeing_Delivery.repx" />
+		<None Remove="Views\FDyeingProcessSlasherMaster\Reports\rptSlasher_Delivery.repx" />
+		<None Remove="Views\FFabricStore\NewFolder\rpyDeliveryChallan.repx" />
+		<None Remove="Views\FGenSIndent\Report\rpt_gs_indent.repx" />
+		<None Remove="Views\FGenSIndent\Report\rpt_gs_indent_balance.repx" />
+		<None Remove="Views\FGenSIssue\Report\RPT_GS_DATE_WISE_ISSUE.repx" />
+		<None Remove="Views\FGenSReceive\Report\RPT_GS_RECEIVING_DATE_WISE.repx" />
+		<None Remove="Views\FGenSRequirement\Reports\RPT_GS_REQUSITINO_SR.repx" />
+		<None Remove="Views\FGenSRequirement\Reports\rpt_gs_requsition.repx" />
+		<None Remove="Views\FLcbProductionRope\Reports\rptLCB_Delivery.repx" />
+		<None Remove="Views\FPrFinishingProcess\Reports\rptFinishingProduction.repx" />
+		<None Remove="Views\FPrFinishingProcess\Reports\rptFnChemicalConsumtion.repx" />
+		<None Remove="Views\FPrInspectionProcess\QRCodeTest.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptCumulative_Prod_Ins.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptDaily_Prod_Insp.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptDateWiseProduction_Insp.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptInspectionProduction_Sum.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptOrderWiseProduction_Insp.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptRollDespatchSheet.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptRollInformation.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptRollInformation_dummy.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptRollInformation_local.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rptShiftWise_Prod_Ins.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production_shift.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\RPT_INS_Style_wise_production.repx" />
+		<None Remove="Views\FPrInspectionProcess\Reports\rpt_StyleWiseProductionReport.repx" />
+		<None Remove="Views\FPrSizingProductionRope\Reports\rptSizing_Delivery.repx" />
+		<None Remove="Views\FPrWarpingProcessRopeMaster\Reports\rptDateWiseProduction_Warp.repx" />
+		<None Remove="Views\FPrWarpingProcessSlasher\Reports\rptDirectWarping_Delivery.repx" />
+		<None Remove="Views\FPrWeavingProcessBulk\Reports\rpt_weaving_delivery.repx" />
+		<None Remove="Views\FPrWeavingProcessBulk\Reports\rpt_weaving_delivery_shiftWise.repx" />
+		<None Remove="Views\FSampleFabricIssue\Reports\RSampleFabricIssue.repx" />
+		<None Remove="Views\FSampleGarmentRcvM\Reports\rptSampleHandTag.repx" />
+		<None Remove="Views\FSampleGarmentRcvM\Reports\rptSampleSticker.repx" />
+		<None Remove="Views\FYarnRequirement\Report\rpt_YS_DateWise_YarnRCV.repx" />
+		<None Remove="Views\FYarnRequirement\Report\rpt_YS_YarnRequirement.repx" />
+		<None Remove="Views\FYarnRequirement\Report\rpt_YS_YarnRequisition_SR.repx" />
+		<None Remove="Views\FYsIndentMaster\Report\rpt_YS_Indent_Details.repx" />
+		<None Remove="Views\PlProductionPlanGroupMaster\Reports\rptProductionPlan.repx" />
+		<None Remove="Views\PlProductionPlanGroupMaster\Reports\test.repx" />
+		<None Remove="Views\RndFabricInfo\Reports\rpt_FDR.repx" />
+		<None Remove="Views\RndFabricInfo\Reports\rpt_FDR_Marketing.repx" />
+		<None Remove="Views\RndFabricInfo\Reports\rpt_PO_sheet.repx" />
+		<None Remove="Views\RndProductionOrder\Reports\rptFabricDetailsSheet_lab.repx" />
+		<None Remove="Views\RndProductionOrder\Reports\rptFabricDetailsSheet_mkt.repx" />
+		<None Remove="Views\RndProductionOrder\Reports\rptGIS.repx" />
+		<None Remove="Views\RndProductionOrder\Reports\rptProductionOrder.repx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="wwwroot\FLEXERP\bower_components\animate.css\css\animate.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\bootstrap-daterangepicker\css\daterangepicker.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\bootstrap-multiselect\css\bootstrap-multiselect.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\bootstrap-tagsinput\css\bootstrap-tagsinput.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\bootstrap\css\bootstrap.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\c3\css\c3.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\chartist\css\chartist.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\cropper\css\cropper.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\datedropper\css\datedropper.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\datedropper\css\dd-icon\dd-icon.ttf" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\datedropper\css\dd-icon\dd-icon.woff" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\ekko-lightbox\css\ekko-lightbox.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\font-awesome\css\font-awesome.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\font-awesome\fonts\fontawesome-webfont.ttf" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\font-awesome\fonts\fontawesome-webfont.woff" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\fullcalendar\css\fullcalendar.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\fullcalendar\css\fullcalendar.print.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\handsontable\css\handsontable.full.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\intro.js\css\introjs.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\bars-1to10.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\bars-horizontal.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\bars-movie.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\bars-pill.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\bars-reversed.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\bars-square.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\css-stars.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\fontawesome-stars-o.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\css\fontawesome-stars.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-minicolors\css\jquery.minicolors.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery-minicolors\images\jquery.minicolors.png" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jquery.steps\css\jquery.steps.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\jstree\css\style.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightbox2\css\lightbox.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightbox2\css\lightbox.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightbox2\images\close.png" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightbox2\images\loading.gif" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightbox2\images\next.png" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightbox2\images\prev.png" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightgallery\css\lightgallery.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightgallery\fonts\lg.ttf" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightgallery\fonts\lg.woff" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\lightgallery\img\loading.gif" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\long-press\css\app.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\long-press\css\main.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\multiselect\css\multi-select.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\multiselect\img\switch.png" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\nvd3\css\nv.d3.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\offline\css\offline-language-english.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\offline\css\offline-theme-slide.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\owl.carousel\css\owl.carousel.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\owl.carousel\css\owl.theme.default.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\pnotify\css\pnotify.brighttheme.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\pnotify\css\pnotify.buttons.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\pnotify\css\pnotify.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\pnotify\css\pnotify.history.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\pnotify\css\pnotify.mobile.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\seiyria-bootstrap-slider\css\bootstrap-slider.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\select2\css\select2.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\slick-carousel\css\slick-theme.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\slick-carousel\css\slick.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\spectrum\css\spectrum.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\stroll\css\stroll.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\sweetalert\css\sweetalert.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\swiper\css\swiper.min.css" />
+	  <Content Include="wwwroot\FLEXERP\bower_components\switchery\css\switchery.min.css" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Controllers\rptSetWiseSizingConsumption.repx" />
+		<EmbeddedResource Include="Reports\Accounts\rptFabricPhysicalInventory.repx" />
+		<EmbeddedResource Include="Reports\Accounts\rptImportRegister.repx" />
+		<EmbeddedResource Include="Reports\APCD\rptProgramStatus.repx" />
+		<EmbeddedResource Include="Reports\Chemical_Store\rpt_CHEMICAL_MRR_REPORT.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rptClearancePending.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rptFabricRollClearance.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rptMasterRollSelecttionSheet.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rptPIWiseSOList.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rptSecondBeamQuality.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rptWashCodeWiseRollReport.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rptWashCodeWiseRollReport_shade.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rptWastageTransferClearance.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rpt_Clearance_Datewise_data.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rpt_Clearance_Datewise_data_shade.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rpt_Clearance_Fabric_DataEntry.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rpt_Clearance_SHAD_SUMMERY.repx" />
+		<EmbeddedResource Include="Reports\Clearance\rpt_CLEARANCE_sHEED_GROUP_PENDING.repx" />
+		<EmbeddedResource Include="Reports\COM_EX\rptAdvanceDeliverySchedule.repx" />
+		<EmbeddedResource Include="Reports\COM_EX\rptChallanWiseSearching.repx" />
+		<EmbeddedResource Include="Reports\COM_EX\rptDailyDocumentsRcvSubList.repx" />
+		<EmbeddedResource Include="Reports\COM_EX\rptDocumentsRegister.repx" />
+		<EmbeddedResource Include="Reports\COM_EX\rptInvoiceWisePrcChecking.repx" />
+		<EmbeddedResource Include="Reports\COM_EX\rptShipmentFollowUp.repx" />
+		<EmbeddedResource Include="Reports\COM_EX\rptShortRealizaionStatement.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\rptBillOfEntry.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\rptBillSubmit.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\rptComImpBankWise.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\rptImportInvoiceDetails.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\rptLCDetails.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\rptPartyWiseComImp.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\rptShipmentPendingComImp.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\rptYarnCosting.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\RPT_ACCOUNTS_MUSHAK.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\RPT_COM_IMP_PO_ORDER.repx" />
+		<EmbeddedResource Include="Reports\COM_IMP\RPT_COM_IMP_WORK_ORDER.repx" />
+		<EmbeddedResource Include="Reports\Customs\rptCustomsInvoiceDetails.repx" />
+		<EmbeddedResource Include="Reports\Customs\rptDateWiseCustomsReport.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\Dyeing\rptDateWiseDyeingConsumption.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\Dyeing\rpt_RopeDyeing.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\Dyeing\rpt_SlasherDyeing.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptDailySampleFabricStock.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptDateWiseFabricInternalIssue.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptFabricDeliveryStatement_Delivery.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptFabricDeliveryStatement_DO.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptFabricDeliveryStatement_INVOICE.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptFabricDeliveryStatement_Oracle.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptFabricPackingList.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptFabricReceiveStatementExport.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptInternal_Delivery_Challan.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_Advanced_FABRIC_DELIVERY.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_DAILY_FABRIC_DELIVERY_PostCosting.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_DAILY_FABRIC_DELIVERY.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rpt_FabricStock_A2.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rpt_FabricStock.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_Fabric_Challan_Wise_Del.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_FABRIC_DO_WISE_BALANCE.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rpt_Fabric_Gate_Pass_Local_2.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rpt_Fabric_Gate_Pass_Local.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rpt_Fabric_Gate_Pass.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_Fabric_Loading_Bill.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_FABRIC_PACKINGLIST_SUMMERY.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_FABRIC_PI_WISE_BALANCE.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_Fabric_Receive_Statement.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_Fabric_Roll_RCV_Pending.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rpt_FabricStock_date_wise.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_FABRIC_ROLL_STOCK.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_FABRIC_ROLL_Stock_WITH_AGE.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_Fabric_Roll_to_roll_RCV.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_Fabric_Store_aging_report.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\RPT_Fabric_store_bin_card.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rpt_PROC_Fabric_Packing_list_all.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\subreport_ShadeGroup.repx" />
+		<EmbeddedResource Include="Reports\Finishing\rptDateWiseFinishingConsumption.repx" />
+		<EmbeddedResource Include="Reports\Finishing\rptDateWiseFinishing_Consumption_All.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptIndividualRollInfo.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptIndividualSetRecovery.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptOrderRecovery.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptOrderWiseProductionHistory.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptRequiredRawMaterials.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptSetRecovery.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptSetWiseFinishing_Consumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptSetWiseSizing_Consumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptSetWiseWeft_Consumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptSetWiseWarp_Consumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptSetwise_SlasherConsumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\subrpt_Finishing_Consumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\rptSetwise_RopeConsumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\subrpt_SizingConsumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\subrpt_SlasherConsumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\subrpt_RopeConsumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\subrpt_WeftConsumption.repx" />
+		<EmbeddedResource Include="Reports\FOR_ALL\subrpt_WarpConsumption.repx" />
+		<EmbeddedResource Include="Reports\General_store\RPT_GS_DATE_WISE_ISSUE.repx" />
+		<EmbeddedResource Include="Reports\General_store\rpt_gs_indent_balance.repx" />
+		<EmbeddedResource Include="Reports\General_store\RPT_GS_RECEIVING_DATE_WISE.repx" />
+		<EmbeddedResource Include="Reports\GSP\rptBTMA_GSP_Certificate_Register.repx" />
+		<EmbeddedResource Include="Reports\Inspection\DepartmentWiseBulkRejectionSummery.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptDailyBulkRejectionReport_sum.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptDailyInspectionReport_All.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptDailyInspectionReport.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptDailyStyleWiseProduction.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptDeptWiseBulkRejectionSummery.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptInspectionAudit.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptRollDespatchSheet_scan.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptSectionWiseCutPcs.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rptSectionWiseCutPcs_sum.repx" />
+		<EmbeddedResource Include="Reports\Inspection\RPT_Inspection_ROLL_Scan_pending.repx" />
+		<EmbeddedResource Include="Reports\Inspection\RPT_INSPECTION_Roll_to_Roll_Scan_Status.repx" />
+		<EmbeddedResource Include="Reports\Inspection\RPT_INSP_DPTtWiseBulkRejectionSummery_sum.repx" />
+		<EmbeddedResource Include="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE.repx" />
+		<EmbeddedResource Include="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rpt_Ins_DailyBulkRejiection.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rpt_Ins_DailyWastageTransferReport.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rpt_INS_Operator_wise_prod.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rpt_Ins_StyleWiseAnalysis.repx" />
+		<EmbeddedResource Include="Reports\Inspection\rpt_Ins_StyleWiseProd_shift_scan.repx" />
+		<EmbeddedResource Include="Reports\Planning\rptMktPersonWisePoRcv.repx" />
+		<EmbeddedResource Include="Reports\Planning\rptTeamWiseDelivery.repx" />
+		<EmbeddedResource Include="Reports\Planning\rptYearlyProductionSummery.repx" />
+		<EmbeddedResource Include="Reports\Post_Costing\rptBOMvsProduction_Finishing.repx" />
+		<EmbeddedResource Include="Reports\Post_Costing\rptBOMvsProduction_Rope.repx" />
+		<EmbeddedResource Include="Reports\Post_Costing\rptBOMvsProduction_Rope_Sub.repx" />
+		<EmbeddedResource Include="Reports\Post_Costing\rptBOMvsProduction_Sizing.repx" />
+		<EmbeddedResource Include="Reports\Post_Costing\rptBuyerWiseCostAnalysis.repx" />
+		<EmbeddedResource Include="Reports\Post_Costing\rptFDSvsPostCosting_Variance.repx" />
+		<EmbeddedResource Include="Reports\Post_Costing\rptMonthlyWarpingProduction.repx" />
+		<EmbeddedResource Include="Reports\Post_Costing\rptOrderWiseYarnPrice.repx" />
+		<EmbeddedResource Include="Reports\PreCost\rptFabricDetailsCosting.repx" />
+		<EmbeddedResource Include="Reports\QA\rptFabricTestReport_Bulk.repx" />
+		<EmbeddedResource Include="Reports\QA\rptFabricTestReport_Grey.repx" />
+		<EmbeddedResource Include="Reports\QA\rptFabricTestReport_Sample.repx" />
+		<EmbeddedResource Include="Reports\QA\rptFirstMeterAnalysis.repx" />
+		<EmbeddedResource Include="Reports\RND\rptWeavingProgramSheet.repx" />
+		<EmbeddedResource Include="Reports\RND\RPT_PROG_SHEET_DYEING.repx" />
+		<EmbeddedResource Include="Reports\RND\RPT_RND_STICKER_PRINT.repx" />
+		<EmbeddedResource Include="Reports\Sample.Bay\rptDailySampleFabricStock.repx" />
+		<EmbeddedResource Include="Reports\Sample.Bay\rptSampleGatePass.repx" />
+		<EmbeddedResource Include="Reports\Sample.Bay\rptSampleFabricGatePass.repx" />
+		<EmbeddedResource Include="Reports\Sample.Bay\rptSampleReceiveStatement.repx" />
+		<EmbeddedResource Include="Reports\Sizing\rptDateWiseSizing_Consumption.repx" />
+		<EmbeddedResource Include="Reports\Sizing\rptSetWiseSizingChemicalConsumption.repx" />
+		<EmbeddedResource Include="Reports\Sizing\test.repx" />
+		<EmbeddedResource Include="Reports\Warping\rptDailyProduction_Ecru.repx" />
+		<EmbeddedResource Include="Reports\Weaving\rptBeamStockReport.repx" />
+		<EmbeddedResource Include="Reports\Weaving\rptDailyLoomProduction.repx" />
+		<EmbeddedResource Include="Reports\Weaving\rptOrderWiseReq_n_Issue.repx" />
+		<EmbeddedResource Include="Reports\Weaving\rpt_WeavingLoomSettings.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rptDespatchQrCode.repx" />
+		<EmbeddedResource Include="Reports\Weaving\subrptOverAllWorkLoad.repx" />
+		<EmbeddedResource Include="Reports\Weaving\subrptRapierWorkLoad.repx" />
+		<EmbeddedResource Include="Reports\Weaving\subrptAirjetWorkLoad.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\rptIndentHistoryIssue.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\rptIndentHistoryRCV.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\rptIndentHistoryReport.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\RPT_BULK_YARN_ORDER_WISE_HISTORY_SR_DETAILS.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\RPT_BULK_YARN_ORDER_WISE_HISTORY_YARN_DETAILS.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\RPT_YARN_ORDER_WISE_REPORT.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\RPT_Yarn_QC_Status.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\RPT_YARN_REQ_WISE_ISSUE.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\RPT_YS_YARN_DATE_WISE_ISSUE.repx" />
+		<EmbeddedResource Include="Views\AccExportDoMaster\Report\rptDOInformation_Local.repx" />
+		<EmbeddedResource Include="Views\ComExGspInfo\Reports\rptBTMA_GSP_PendingInvoiceList.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RWeightMeasurement.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\RptPiInformation_con.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\rptSalesCOntactInfo.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\rpt_LC_Searching_IN_PI.repx" />
+		<EmbeddedResource Include="Views\CosPreCostingMaster\Reports\rptPostCosting.repx" />
+		<EmbeddedResource Include="Views\CosPreCostingMaster\Reports\RptPreCostSheet.repx" />
+		<EmbeddedResource Include="Views\FChemIssue\Report\RPT_Chem_Date_Wise_issue.repx" />
+		<EmbeddedResource Include="Views\FChemStoreIndent\Report\RPT_CHEM_STORE_INDENT.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptRollInformation_dummy.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rpt_INS_StyleWiseAnalysis_Shift.repx" />
+		<EmbeddedResource Include="Reports\LCB\rpt_LCB_DailyProduction.repx" />
+		<EmbeddedResource Include="Reports\QA\rpt_QA_LabTestCotton.repx" />
+		<EmbeddedResource Include="Reports\QA\rpt_QA_LabTestPolyester.repx" />
+		<EmbeddedResource Include="Reports\RND\rptRndFabricInfo.repx" />
+		<EmbeddedResource Include="Reports\RND\rptWeavingInformation.repx" />
+		<EmbeddedResource Include="Reports\Sizing\prt_Sizing_DailyProduction.repx" />
+		<EmbeddedResource Include="Reports\Sizing\rptSizingBeamCard.repx" />
+		<EmbeddedResource Include="Reports\Sizing\rptMonthlySizingProduction.repx" />
+		<EmbeddedResource Include="Reports\Sticker\rptDyeingSticker_Rope.repx" />
+		<EmbeddedResource Include="Reports\Sticker\rptDyeingSticker_Slasher.repx" />
+		<EmbeddedResource Include="Reports\Sticker\rptLCB_Sticker.repx" />
+		<EmbeddedResource Include="Reports\Sticker\rptWarpingSticker.repx" />
+		<EmbeddedResource Include="Reports\Warping\rptDailyProduction_DirectWarping.repx" />
+		<EmbeddedResource Include="Reports\Weaving\rptDailyProduction_Weaving.repx" />
+		<EmbeddedResource Include="Reports\Weaving\rptDoffCard.repx" />
+		<EmbeddedResource Include="Reports\Weaving\rptLoomCard.repx" />
+		<EmbeddedResource Include="Reports\Weaving\rptWeaving_Mounting.repx" />
+		<EmbeddedResource Include="RequestFiles\XtraReport.repx" />
+		<EmbeddedResource Include="Reports\Yarn_Store\rpt_YS_DayWiseStock.repx" />
+		<EmbeddedResource Include="Views\AccExportDoMaster\Report\rptDOInformation.repx" />
+		<EmbeddedResource Include="Views\AccExportDoMaster\Report\rptDOInformation_Small.repx" />
+		<EmbeddedResource Include="Views\AccExportDoMaster\Report\rptDOInformation_S.repx" />
+		<EmbeddedResource Include="Views\AccExportDoMaster\Report\rptDOInformation_A.repx" />
+		<EmbeddedResource Include="Views\ComExGspInfo\Reports\rptBTMA_GSP.repx" />
+		<EmbeddedResource Include="Views\ComExGspInfo\Reports\rptCashBTMADeemed.repx" />
+		<EmbeddedResource Include="Views\ComExGspInfo\Reports\rptCashBTMA.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange2_FG.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange1_FG.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange2.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange1.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\Foreign\RForeignComExInvoice.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\Foreign\RForeignComExInvoiceMasterPackingList.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RBeneficiaryCertificate.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RCertificateOfOrigin.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RComExInvoice.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterDeliveryChallan.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterPackingList.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterTruckReceipt.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RPreShipmentInspectionCertificate.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\rptPendingBankPayment.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\rptBankAccPending.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\rptBankAccRCVStatus.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\rptDateWiseDocSUBnRCV.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\rptPendingPartyAcceptance.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\rptDocWaitingforSub.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\RSubmissionOfShipping.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\XXL\rptPackingList.repx" />
+		<EmbeddedResource Include="Views\ComExInvoiceMaster\Reports\XXL\rptCommercial_Invoice_xxl.repx" />
+		<EmbeddedResource Include="Views\ComExLcInfo\Reports\rptDateWiseLCRegister.repx" />
+		<EmbeddedResource Include="Views\ComExLcInfo\Reports\rptDateWisePRCRegister.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\RptAuditSummary.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\rptDateWisePOInformation.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\rptDateWisePIInformation.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\RptPiInformation_Ex.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\rptPIInformation.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\rptPIInformation_LC_Status.repx" />
+		<EmbeddedResource Include="Views\ComExPiMaster\Reports\RptPoInformation.repx" />
+		<EmbeddedResource Include="Views\ComImpLcInformation\Reports\RGetComImpLcInformation.repx" />
+		<EmbeddedResource Include="Views\ComImpLcInformation\Reports\rptChemicalLCStatus.repx" />
+		<EmbeddedResource Include="Views\ComTenor\Reports\ComTenorData.repx" />
+		<EmbeddedResource Include="Views\CosFixedCost\Reports\rptCostSheet.repx" />
+		<EmbeddedResource Include="Views\CosPreCostingMaster\Reports\rptFabricDetailsSheet.repx" />
+		<EmbeddedResource Include="Views\CosPreCostingMaster\Reports\rptPreCosting.repx" />
+		<EmbeddedResource Include="Views\FChemPurchaseRequisition\Report\RPT_CHEM_REQ_INDENT.repx" />
+		<EmbeddedResource Include="Reports\Chemical_Store\RPT_Chemical_date_wise_rcv.repx" />
+		<EmbeddedResource Include="Reports\Chemical_Store\rptChemical_Indent.repx" />
+		<EmbeddedResource Include="Reports\Chemical_Store\rptChemical_Req.repx" />
+		<EmbeddedResource Include="Reports\Chemical_Store\rptChem_Pur_Requisition.repx" />
+		<EmbeddedResource Include="Reports\Chemical_Store\rptDateWiseChemicalStock.repx" />
+		<EmbeddedResource Include="Reports\Chemical_Store\rptSectionWiseChemIssue_Sum.repx" />
+		<EmbeddedResource Include="Reports\Chemical_Store\rptSectionWiseIssue.repx" />
+		<EmbeddedResource Include="Views\FDyeingProcessRopeMaster\Reports\rptRopeDyeing_Delivery.repx" />
+		<EmbeddedResource Include="Views\FDyeingProcessSlasherMaster\Reports\rptSlasher_Delivery.repx" />
+		<EmbeddedResource Include="Reports\Fabric_Store\rpyDeliveryChallan.repx" />
+		<EmbeddedResource Include="Views\FGenSIndent\Report\rpt_gs_indent.repx" />
+		<EmbeddedResource Include="Views\FGenSRequirement\Reports\RPT_GS_REQUSITINO_SR.repx" />
+		<EmbeddedResource Include="Views\FGenSRequirement\Reports\rpt_gs_requsition.repx" />
+		<EmbeddedResource Include="Views\FLcbProductionRope\Reports\rptLCB_Delivery.repx" />
+		<EmbeddedResource Include="Views\FPrFinishingProcess\Reports\rptFinishingProduction.repx" />
+		<EmbeddedResource Include="Views\FPrFinishingProcess\Reports\rptFnChemicalConsumtion.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\QRCodeTest.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptCumulative_Prod_Ins.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptDaily_Prod_Insp.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptDateWiseProduction_Insp.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptInspectionProduction_Sum.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptOrderWiseProduction_Insp.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptRollDespatchSheet.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptRollInformation_local.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptRollInformation.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rptShiftWise_Prod_Ins.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production_shift.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\RPT_INS_Style_wise_production.repx" />
+		<EmbeddedResource Include="Views\FPrInspectionProcess\Reports\rpt_StyleWiseProductionReport.repx" />
+		<EmbeddedResource Include="Views\FPrSizingProductionRope\Reports\rptSizing_Delivery.repx" />
+		<EmbeddedResource Include="Views\FPrWarpingProcessRopeMaster\Reports\rptDateWiseProduction_Warp.repx" />
+		<EmbeddedResource Include="Views\FPrWarpingProcessRopeMaster\Reports\rptWarpDelivery_Rope.repx" />
+		<EmbeddedResource Include="Views\FPrWarpingProcessSlasher\Reports\rptDirectWarping_Delivery.repx" />
+		<EmbeddedResource Include="Views\FPrWeavingProcessBulk\Reports\rpt_weaving_delivery_shiftWise.repx" />
+		<EmbeddedResource Include="Views\FPrWeavingProcessBulk\Reports\rpt_weaving_delivery.repx" />
+		<EmbeddedResource Include="Views\FSampleFabricIssue\Reports\RSampleFabricIssue.repx" />
+		<EmbeddedResource Include="Views\FSampleGarmentRcvM\Reports\rptSampleHandTag.repx" />
+		<EmbeddedResource Include="Views\FSampleGarmentRcvM\Reports\rptSampleSticker.repx" />
+		<EmbeddedResource Include="Views\FYarnRequirement\Report\rpt_YS_DateWise_YarnRCV.repx" />
+		<EmbeddedResource Include="Views\FYarnRequirement\Report\rpt_YS_YarnRequirement.repx" />
+		<EmbeddedResource Include="Views\FYarnRequirement\Report\rpt_YS_YarnRequisition_SR.repx" />
+		<EmbeddedResource Include="Views\FYsIndentMaster\Report\rpt_YS_Indent_Details.repx" />
+		<EmbeddedResource Include="Views\PlProductionPlanGroupMaster\Reports\rptProductionPlan.repx" />
+		<EmbeddedResource Include="Views\PlProductionPlanGroupMaster\Reports\test.repx" />
+		<EmbeddedResource Include="Views\RndFabricInfo\Reports\rpt_FDR_Marketing.repx" />
+		<EmbeddedResource Include="Views\RndFabricInfo\Reports\rpt_FDR.repx" />
+		<EmbeddedResource Include="Views\RndFabricInfo\Reports\rpt_PO_sheet.repx" />
+		<EmbeddedResource Include="Views\RndProductionOrder\Reports\rptFabricDetailsSheet_lab.repx" />
+		<EmbeddedResource Include="Views\RndProductionOrder\Reports\rptFabricDetailsSheet_mkt.repx" />
+		<EmbeddedResource Include="Views\RndProductionOrder\Reports\rptGIS.repx" />
+		<EmbeddedResource Include="Views\RndProductionOrder\Reports\rptProductionOrder.repx" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="cldrjs" Version="0.5.1" />
+		<PackageReference Include="cloudscribe.Web.Pagination" Version="2.1.1" />
+		<PackageReference Include="DevExpress.AspNetCore.Reporting" Version="19.2.3" />
+		<PackageReference Include="DevExpress.Dashboard.Core" Version="19.2.3" />
+		<PackageReference Include="DevExpress.Reporting.Core" Version="19.2.3" />
+		<PackageReference Include="IdentityModel" Version="5.1.0" />
+		<PackageReference Include="Microsoft.AspNetCore" Version="2.1.7" />
+		<PackageReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.0.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+		<PackageReference Include="NETCore.MailKit" Version="2.0.2" />
+		<PackageReference Include="NLog.Web.AspNetCore" Version="4.9.3" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="AutoMapper\" />
+		<Folder Include="Commands\" />
+		<Folder Include="Pages\" />
+		<Folder Include="RequestFiles\hr_assets\employees_files\driving_license\" />
+		<Folder Include="RequestFiles\hr_assets\employees_files\passport\" />
+		<Folder Include="RequestFiles\hr_assets\employees_files\nid\" />
+		<Folder Include="RequestFiles\lc_files\pi_files\" />
+		<Folder Include="RequestFiles\profile_photos\" />
+		<Folder Include="RequestFiles\unhandled_files\" />
+		<Folder Include="ServiceInterfaces\Security\" />
+		<Folder Include="Views\FChemReport\Report\" />
+		<Folder Include="Views\FFabricStore\NewFolder\" />
+		<Folder Include="Views\FGenSIssue\Report\" />
+		<Folder Include="Views\FGenSReceive\Report\" />
+		<Folder Include="Views\FysYarnReceiveMaster\Report\" />
+		<Folder Include="wwwroot\images\cfooterimage\" />
+		<Folder Include="wwwroot\images\icons\" />
+		<Folder Include="wwwroot\images\hanger\" />
+		<Folder Include="wwwroot\lib\datatables.net-select\css\" />
+    <Folder Include="wwwroot\FLEX\" />
+    <Folder Include="wwwroot\FLEXERP\" />
+    <Folder Include="RequestFiles\com_ex_invoice_files\" />
+		<Folder Include="RequestFiles\imp_invoice_files\" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Resources\Models\MenuMaster.en.resx" />
+		<None Include="Resources\Models\MenuMaster.bn-BD.resx" />
+		<None Include="Resources\Models\MenuMaster.ja-JP.resx" />
+		<None Include="Views\Shared\EditorTemplates\ComExPIMasterAndDetailsViewModel.cshtml" />
+		<None Include="Views\Shared\Error.cshtml" />
+		<None Include="Views\Shared\NotFound.cshtml" />
+		<None Include="Views\Shared\_CookieConsentPartial.cshtml" />
+		<None Include="Views\Shared\_Culture.cshtml" />
+		<None Include="Views\Shared\_Layout.cshtml" />
+		<None Include="Views\Shared\_LayoutReport.cshtml" />
+		<None Include="Views\Shared\_Login.cshtml" />
+		<None Include="Views\Shared\_LoginPartial.cshtml" />
+		<None Include="Views\Shared\_PaginationPartial.cshtml" />
+		<None Include="Views\Shared\_Register.cshtml" />
+		<None Include="Views\Shared\_ValidationScriptPartial_Except_jQuery.cshtml" />
+		<None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+		<None Include="wwwroot\FLEXERP\bower_components\autosize\js\autosize.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\bootstrap-daterangepicker\js\daterangepicker.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\bootstrap-maxlength\js\bootstrap-maxlength.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\bootstrap-multiselect\js\bootstrap-multiselect.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\bootstrap-tagsinput\js\bootstrap-tagsinput.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\bootstrap\js\bootstrap.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\c3\js\c3.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\chart.js\js\Chart.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\chartist\js\chartist.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\clndr\js\clndr.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\countdown\js\jquery.countdown.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\cropper\js\cropper.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\d3\js\d3.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\d3\js\d3.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\datatables.net-buttons\js\buttons.html5.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\datatables.net-buttons\js\buttons.print.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\datatables.net-buttons\js\dataTables.buttons.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\datatables.net-responsive\js\dataTables.responsive.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\datatables.net\js\jquery.dataTables.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\datedropper\css\dd-icon\dd-icon-1.hxd" />
+		<None Include="wwwroot\FLEXERP\bower_components\datedropper\css\dd-icon\dd-icon.hxd" />
+		<None Include="wwwroot\FLEXERP\bower_components\datedropper\css\dd-icon\dd-icon.svg" />
+		<None Include="wwwroot\FLEXERP\bower_components\datedropper\js\datedropper.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\ekko-lightbox\js\ekko-lightbox.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\font-awesome\fonts\fontawesome-webfont-1.hxd" />
+		<None Include="wwwroot\FLEXERP\bower_components\font-awesome\fonts\fontawesome-webfont.hxd" />
+		<None Include="wwwroot\FLEXERP\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
+		<None Include="wwwroot\FLEXERP\bower_components\font-awesome\fonts\fontawesome-webfont.woff2" />
+		<None Include="wwwroot\FLEXERP\bower_components\fullcalendar\js\fullcalendar.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\handsontable\js\de.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\handsontable\js\handsontable.full.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\i18next-browser-languagedetector\js\i18nextBrowserLanguageDetector.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\i18next-xhr-backend\js\i18nextXHRBackend.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\i18next\js\i18next.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\intro.js\js\intro.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\js\jquery.barrating.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery-bar-rating\js\jquery.barrating.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery-i18next\js\jquery-i18next.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery-minicolors\js\jquery.minicolors.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery-slimscroll\js\jquery.slimscroll.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery-sparkline\js\jquery.sparkline.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery-ui\js\jquery-ui.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery-validation\js\jquery.validate.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery.cookie\js\jquery.cookie.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery.steps\js\jquery.steps.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jquery\js\jquery.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jscolor\js\jscolor.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\jstree\js\jstree.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightbox2\js\lightbox.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightbox2\js\lightbox.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\fonts\lg-1.hxd" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\fonts\lg.hxd" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\js\lg-autoplay.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\js\lg-fullscreen.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\js\lg-hash.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\js\lg-pager.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\js\lg-thumbnail.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\js\lg-video.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\js\lg-zoom.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\lightgallery\js\lightgallery.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\long-press\js\app.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\long-press\js\jquery.longpress.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\long-press\js\jquery.mousewheel.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\long-press\js\plugins.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\modernizr\js\css-scrollbars.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\modernizr\js\modernizr.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\moment\js\moment.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\moment\js\moment.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\morris.js\js\morris.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\multiselect\js\jquery.multi-select.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\nvd3\js\nv.d3.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\offline\js\offline.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\owl.carousel\js\owl.carousel.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\peity\js\jquery.peity.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.animate.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.buttons.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.callbacks.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.confirm.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.desktop.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.history.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.mobile.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\pnotify\js\pnotify.nonblock.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\popper.js\js\popper.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\raphael\js\raphael.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\rickshaw\js\rickshaw.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\seiyria-bootstrap-slider\js\bootstrap-slider.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\select2\js\select2.full.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\slick-carousel\js\slick.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\Sortable\js\Sortable.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\spectrum\js\spectrum.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\stroll\js\stroll.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\sweetalert\js\sweetalert.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\swiper\js\swiper.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\switchery\js\switchery.min.js" />
+		<None Include="wwwroot\FLEXERP\bower_components\underscore\js\underscore-min.js" />
+		<None Include="wwwroot\js\country-code\js\data.js" />
+		<None Include="wwwroot\js\country-code\js\data.min.js" />
+		<None Include="wwwroot\js\country-code\js\intlTelInput-jquery.js" />
+		<None Include="wwwroot\js\country-code\js\intlTelInput-jquery.min.js" />
+		<None Include="wwwroot\js\country-code\js\intlTelInput.js" />
+		<None Include="wwwroot\js\country-code\js\intlTelInput.min.js" />
+		<None Include="wwwroot\js\country-code\js\utils.js" />
+		<None Include="wwwroot\js\FWasteProductInfo\GetFWasteProductInfo.js" />
+		<None Include="wwwroot\signalr\signalr.js" />
+		<None Include="wwwroot\signalr\signalr.js.map" />
+		<None Include="wwwroot\signalr\signalr.min.js" />
+		<None Include="wwwroot\signalr\signalr.min.js.map" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="Controllers\rptSetWiseSizingConsumption.cs">
+		  <DependentUpon>rptSetWiseSizingConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Controllers\rptSetWiseSizingConsumption.Designer.cs">
+		  <DependentUpon>rptSetWiseSizingConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Accounts\rptFabricPhysicalInventory.cs">
+		  <DependentUpon>rptFabricPhysicalInventory.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Accounts\rptFabricPhysicalInventory.Designer.cs">
+		  <DependentUpon>rptFabricPhysicalInventory.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Accounts\rptImportRegister.cs">
+			<DependentUpon>rptImportRegister.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Accounts\rptImportRegister.Designer.cs">
+			<DependentUpon>rptImportRegister.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\APCD\rptProgramStatus.cs">
+			<DependentUpon>rptProgramStatus.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\APCD\rptProgramStatus.Designer.cs">
+			<DependentUpon>rptProgramStatus.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptClearancePending.cs">
+		  <DependentUpon>rptClearancePending.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptClearancePending.Designer.cs">
+		  <DependentUpon>rptClearancePending.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptFabricRollClearance.cs">
+			<DependentUpon>rptFabricRollClearance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptFabricRollClearance.Designer.cs">
+			<DependentUpon>rptFabricRollClearance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptMasterRollSelecttionSheet.cs">
+		  <DependentUpon>rptMasterRollSelecttionSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptMasterRollSelecttionSheet.Designer.cs">
+		  <DependentUpon>rptMasterRollSelecttionSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptPIWiseSOList.cs">
+		  <DependentUpon>rptPIWiseSOList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptPIWiseSOList.Designer.cs">
+		  <DependentUpon>rptPIWiseSOList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptSecondBeamQuality.cs">
+			<DependentUpon>rptSecondBeamQuality.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptSecondBeamQuality.Designer.cs">
+			<DependentUpon>rptSecondBeamQuality.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptWashCodeWiseRollReport.cs">
+			<DependentUpon>rptWashCodeWiseRollReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptWashCodeWiseRollReport.Designer.cs">
+			<DependentUpon>rptWashCodeWiseRollReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptWashCodeWiseRollReport_shade.cs">
+			<DependentUpon>rptWashCodeWiseRollReport_shade.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptWashCodeWiseRollReport_shade.Designer.cs">
+			<DependentUpon>rptWashCodeWiseRollReport_shade.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptWastageTransferClearance.cs">
+			<DependentUpon>rptWastageTransferClearance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rptWastageTransferClearance.Designer.cs">
+			<DependentUpon>rptWastageTransferClearance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rpt_Clearance_Datewise_data.cs">
+			<DependentUpon>rpt_Clearance_Datewise_data.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rpt_Clearance_Datewise_data.Designer.cs">
+			<DependentUpon>rpt_Clearance_Datewise_data.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rpt_Clearance_Datewise_data_shade.cs">
+			<DependentUpon>rpt_Clearance_Datewise_data_shade.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rpt_Clearance_Datewise_data_shade.Designer.cs">
+			<DependentUpon>rpt_Clearance_Datewise_data_shade.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rpt_Clearance_Fabric_DataEntry.cs">
+			<DependentUpon>rpt_Clearance_Fabric_DataEntry.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rpt_Clearance_Fabric_DataEntry.Designer.cs">
+			<DependentUpon>rpt_Clearance_Fabric_DataEntry.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rpt_Clearance_SHAD_SUMMERY.cs">
+			<DependentUpon>rpt_Clearance_SHAD_SUMMERY.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Clearance\rpt_Clearance_SHAD_SUMMERY.Designer.cs">
+			<DependentUpon>rpt_Clearance_SHAD_SUMMERY.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptAdvanceDeliverySchedule.cs">
+		  <DependentUpon>rptAdvanceDeliverySchedule.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptAdvanceDeliverySchedule.Designer.cs">
+		  <DependentUpon>rptAdvanceDeliverySchedule.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptChallanWiseSearching.cs">
+		  <DependentUpon>rptChallanWiseSearching.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptChallanWiseSearching.Designer.cs">
+		  <DependentUpon>rptChallanWiseSearching.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptDailyDocumentsRcvSubList.cs">
+		  <DependentUpon>rptDailyDocumentsRcvSubList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptDailyDocumentsRcvSubList.Designer.cs">
+		  <DependentUpon>rptDailyDocumentsRcvSubList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptDocumentsRegister.cs">
+		  <DependentUpon>rptDocumentsRegister.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptDocumentsRegister.Designer.cs">
+		  <DependentUpon>rptDocumentsRegister.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptInvoiceWisePrcChecking.cs">
+		  <DependentUpon>rptInvoiceWisePrcChecking.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptInvoiceWisePrcChecking.Designer.cs">
+		  <DependentUpon>rptInvoiceWisePrcChecking.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptShipmentFollowUp.cs">
+		  <DependentUpon>rptShipmentFollowUp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptShipmentFollowUp.Designer.cs">
+		  <DependentUpon>rptShipmentFollowUp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptShortRealizaionStatement.cs">
+		  <DependentUpon>rptShortRealizaionStatement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_EX\rptShortRealizaionStatement.Designer.cs">
+		  <DependentUpon>rptShortRealizaionStatement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptBillOfEntry.cs">
+		  <DependentUpon>rptBillOfEntry.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptBillOfEntry.Designer.cs">
+		  <DependentUpon>rptBillOfEntry.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptBillSubmit.cs">
+		  <DependentUpon>rptBillSubmit.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptBillSubmit.Designer.cs">
+		  <DependentUpon>rptBillSubmit.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptComImpBankWise.cs">
+		  <DependentUpon>rptComImpBankWise.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptComImpBankWise.Designer.cs">
+		  <DependentUpon>rptComImpBankWise.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptImportInvoiceDetails.cs">
+		  <DependentUpon>rptImportInvoiceDetails.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptImportInvoiceDetails.Designer.cs">
+		  <DependentUpon>rptImportInvoiceDetails.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptLCDetails.cs">
+			<DependentUpon>rptLCDetails.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptLCDetails.Designer.cs">
+			<DependentUpon>rptLCDetails.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptPartyWiseComImp.cs">
+		  <DependentUpon>rptPartyWiseComImp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptPartyWiseComImp.Designer.cs">
+		  <DependentUpon>rptPartyWiseComImp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptShipmentPendingComImp.cs">
+		  <DependentUpon>rptShipmentPendingComImp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptShipmentPendingComImp.Designer.cs">
+		  <DependentUpon>rptShipmentPendingComImp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptYarnCosting.cs">
+		  <DependentUpon>rptYarnCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\rptYarnCosting.Designer.cs">
+		  <DependentUpon>rptYarnCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\RPT_ACCOUNTS_MUSHAK.cs">
+		  <DependentUpon>RPT_ACCOUNTS_MUSHAK.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\RPT_ACCOUNTS_MUSHAK.Designer.cs">
+		  <DependentUpon>RPT_ACCOUNTS_MUSHAK.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\RPT_COM_IMP_PO_ORDER.cs">
+			<DependentUpon>RPT_COM_IMP_PO_ORDER.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\RPT_COM_IMP_PO_ORDER.Designer.cs">
+			<DependentUpon>RPT_COM_IMP_PO_ORDER.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\RPT_COM_IMP_WORK_ORDER.cs">
+			<DependentUpon>RPT_COM_IMP_WORK_ORDER.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\COM_IMP\RPT_COM_IMP_WORK_ORDER.Designer.cs">
+			<DependentUpon>RPT_COM_IMP_WORK_ORDER.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Customs\rptCustomsInvoiceDetails.cs">
+			<DependentUpon>rptCustomsInvoiceDetails.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Customs\rptCustomsInvoiceDetails.Designer.cs">
+			<DependentUpon>rptCustomsInvoiceDetails.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Customs\rptDateWiseCustomsReport.cs">
+			<DependentUpon>rptDateWiseCustomsReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Customs\rptDateWiseCustomsReport.Designer.cs">
+			<DependentUpon>rptDateWiseCustomsReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\Dyeing\rptDateWiseDyeingConsumption.cs">
+		  <DependentUpon>rptDateWiseDyeingConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\Dyeing\rptDateWiseDyeingConsumption.Designer.cs">
+		  <DependentUpon>rptDateWiseDyeingConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\Dyeing\rpt_RopeDyeing.cs">
+		  <DependentUpon>rpt_RopeDyeing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\Dyeing\rpt_RopeDyeing.Designer.cs">
+		  <DependentUpon>rpt_RopeDyeing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\Dyeing\rpt_SlasherDyeing.cs">
+		  <DependentUpon>rpt_SlasherDyeing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\Dyeing\rpt_SlasherDyeing.Designer.cs">
+		  <DependentUpon>rpt_SlasherDyeing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptDailySampleFabricStock.cs">
+		  <DependentUpon>rptDailySampleFabricStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptDailySampleFabricStock.Designer.cs">
+		  <DependentUpon>rptDailySampleFabricStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptDateWiseFabricInternalIssue.cs">
+		  <DependentUpon>rptDateWiseFabricInternalIssue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptDateWiseFabricInternalIssue.Designer.cs">
+		  <DependentUpon>rptDateWiseFabricInternalIssue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricDeliveryStatement_Delivery.cs">
+		  <DependentUpon>rptFabricDeliveryStatement_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricDeliveryStatement_Delivery.Designer.cs">
+		  <DependentUpon>rptFabricDeliveryStatement_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricDeliveryStatement_DO.cs">
+		  <DependentUpon>rptFabricDeliveryStatement_DO.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricDeliveryStatement_DO.Designer.cs">
+		  <DependentUpon>rptFabricDeliveryStatement_DO.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricDeliveryStatement_INVOICE.cs">
+		  <DependentUpon>rptFabricDeliveryStatement_INVOICE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricDeliveryStatement_INVOICE.Designer.cs">
+		  <DependentUpon>rptFabricDeliveryStatement_INVOICE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricDeliveryStatement_Oracle.cs">
+		  <DependentUpon>rptFabricDeliveryStatement_Oracle.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricDeliveryStatement_Oracle.Designer.cs">
+		  <DependentUpon>rptFabricDeliveryStatement_Oracle.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricPackingList.cs">
+			<DependentUpon>rptFabricPackingList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricPackingList.Designer.cs">
+			<DependentUpon>rptFabricPackingList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricReceiveStatementExport.cs">
+		  <DependentUpon>rptFabricReceiveStatementExport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptFabricReceiveStatementExport.Designer.cs">
+		  <DependentUpon>rptFabricReceiveStatementExport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptInternal_Delivery_Challan.cs">
+			<DependentUpon>rptInternal_Delivery_Challan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptInternal_Delivery_Challan.Designer.cs">
+			<DependentUpon>rptInternal_Delivery_Challan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Advanced_FABRIC_DELIVERY.cs">
+		  <DependentUpon>RPT_Advanced_FABRIC_DELIVERY.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Advanced_FABRIC_DELIVERY.Designer.cs">
+		  <DependentUpon>RPT_Advanced_FABRIC_DELIVERY.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_DAILY_FABRIC_DELIVERY.cs">
+			<DependentUpon>RPT_DAILY_FABRIC_DELIVERY.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_DAILY_FABRIC_DELIVERY.Designer.cs">
+			<DependentUpon>RPT_DAILY_FABRIC_DELIVERY.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_DAILY_FABRIC_DELIVERY_PostCosting.cs">
+		  <DependentUpon>RPT_DAILY_FABRIC_DELIVERY_PostCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_DAILY_FABRIC_DELIVERY_PostCosting.Designer.cs">
+		  <DependentUpon>RPT_DAILY_FABRIC_DELIVERY_PostCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_FabricStock.cs">
+			<DependentUpon>rpt_FabricStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_FabricStock.Designer.cs">
+			<DependentUpon>rpt_FabricStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_FabricStock_A2.cs">
+		  <DependentUpon>rpt_FabricStock_A2.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_FabricStock_A2.Designer.cs">
+		  <DependentUpon>rpt_FabricStock_A2.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_Challan_Wise_Del.cs">
+			<DependentUpon>RPT_Fabric_Challan_Wise_Del.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_Challan_Wise_Del.Designer.cs">
+			<DependentUpon>RPT_Fabric_Challan_Wise_Del.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_DO_WISE_BALANCE.cs">
+			<DependentUpon>RPT_FABRIC_DO_WISE_BALANCE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_DO_WISE_BALANCE.Designer.cs">
+			<DependentUpon>RPT_FABRIC_DO_WISE_BALANCE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_Fabric_Gate_Pass.cs">
+			<DependentUpon>rpt_Fabric_Gate_Pass.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_Fabric_Gate_Pass.Designer.cs">
+			<DependentUpon>rpt_Fabric_Gate_Pass.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_Fabric_Gate_Pass_Local.cs">
+		  <DependentUpon>rpt_Fabric_Gate_Pass_Local.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_Fabric_Gate_Pass_Local.Designer.cs">
+		  <DependentUpon>rpt_Fabric_Gate_Pass_Local.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_Fabric_Gate_Pass_Local_2.cs">
+		  <DependentUpon>rpt_Fabric_Gate_Pass_Local_2.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_Fabric_Gate_Pass_Local_2.Designer.cs">
+		  <DependentUpon>rpt_Fabric_Gate_Pass_Local_2.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_PACKINGLIST_SUMMERY.cs">
+			<DependentUpon>RPT_FABRIC_PACKINGLIST_SUMMERY.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_PACKINGLIST_SUMMERY.Designer.cs">
+			<DependentUpon>RPT_FABRIC_PACKINGLIST_SUMMERY.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_PI_WISE_BALANCE.cs">
+			<DependentUpon>RPT_FABRIC_PI_WISE_BALANCE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_PI_WISE_BALANCE.Designer.cs">
+			<DependentUpon>RPT_FABRIC_PI_WISE_BALANCE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_Receive_Statement.cs">
+			<DependentUpon>RPT_Fabric_Receive_Statement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_Receive_Statement.Designer.cs">
+			<DependentUpon>RPT_Fabric_Receive_Statement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_Roll_RCV_Pending.cs">
+			<DependentUpon>RPT_Fabric_Roll_RCV_Pending.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_Roll_RCV_Pending.Designer.cs">
+			<DependentUpon>RPT_Fabric_Roll_RCV_Pending.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_FabricStock_date_wise.cs">
+			<DependentUpon>rpt_FabricStock_date_wise.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_FabricStock_date_wise.Designer.cs">
+			<DependentUpon>rpt_FabricStock_date_wise.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_ROLL_STOCK.cs">
+		  <DependentUpon>RPT_FABRIC_ROLL_STOCK.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_ROLL_STOCK.Designer.cs">
+		  <DependentUpon>RPT_FABRIC_ROLL_STOCK.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_ROLL_Stock_WITH_AGE.cs">
+		  <DependentUpon>RPT_FABRIC_ROLL_Stock_WITH_AGE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_FABRIC_ROLL_Stock_WITH_AGE.Designer.cs">
+		  <DependentUpon>RPT_FABRIC_ROLL_Stock_WITH_AGE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_store_bin_card.cs">
+		  <DependentUpon>RPT_Fabric_store_bin_card.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_store_bin_card.Designer.cs">
+		  <DependentUpon>RPT_Fabric_store_bin_card.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_PROC_Fabric_Packing_list_all.cs">
+			<DependentUpon>rpt_PROC_Fabric_Packing_list_all.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpt_PROC_Fabric_Packing_list_all.Designer.cs">
+			<DependentUpon>rpt_PROC_Fabric_Packing_list_all.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\subreport_ShadeGroup.cs">
+			<DependentUpon>subreport_ShadeGroup.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\subreport_ShadeGroup.Designer.cs">
+			<DependentUpon>subreport_ShadeGroup.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Finishing\rptDateWiseFinishingConsumption.cs">
+			<DependentUpon>rptDateWiseFinishingConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Finishing\rptDateWiseFinishingConsumption.Designer.cs">
+			<DependentUpon>rptDateWiseFinishingConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Finishing\rptDateWiseFinishing_Consumption_All.cs">
+		  <DependentUpon>rptDateWiseFinishing_Consumption_All.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Finishing\rptDateWiseFinishing_Consumption_All.Designer.cs">
+		  <DependentUpon>rptDateWiseFinishing_Consumption_All.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptIndividualRollInfo.cs">
+		  <DependentUpon>rptIndividualRollInfo.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptIndividualRollInfo.Designer.cs">
+		  <DependentUpon>rptIndividualRollInfo.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptIndividualSetRecovery.cs">
+		  <DependentUpon>rptIndividualSetRecovery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptIndividualSetRecovery.Designer.cs">
+		  <DependentUpon>rptIndividualSetRecovery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptOrderRecovery.cs">
+		  <DependentUpon>rptOrderRecovery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptOrderRecovery.Designer.cs">
+		  <DependentUpon>rptOrderRecovery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptRequiredRawMaterials.cs">
+		  <DependentUpon>rptRequiredRawMaterials.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptRequiredRawMaterials.Designer.cs">
+		  <DependentUpon>rptRequiredRawMaterials.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetRecovery.cs">
+			<DependentUpon>rptSetRecovery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetRecovery.Designer.cs">
+			<DependentUpon>rptSetRecovery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetWiseFinishing_Consumption.cs">
+		  <DependentUpon>rptSetWiseFinishing_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetWiseFinishing_Consumption.Designer.cs">
+		  <DependentUpon>rptSetWiseFinishing_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetWiseSizing_Consumption.cs">
+		  <DependentUpon>rptSetWiseSizing_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetWiseSizing_Consumption.Designer.cs">
+		  <DependentUpon>rptSetWiseSizing_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetWiseWarp_Consumption.cs">
+		  <DependentUpon>rptSetWiseWarp_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetWiseWarp_Consumption.Designer.cs">
+		  <DependentUpon>rptSetWiseWarp_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetWiseWeft_Consumption.cs">
+		  <DependentUpon>rptSetWiseWeft_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetWiseWeft_Consumption.Designer.cs">
+		  <DependentUpon>rptSetWiseWeft_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetwise_RopeConsumption.cs">
+		  <DependentUpon>rptSetwise_RopeConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetwise_RopeConsumption.Designer.cs">
+		  <DependentUpon>rptSetwise_RopeConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetwise_SlasherConsumption.cs">
+		  <DependentUpon>rptSetwise_SlasherConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\rptSetwise_SlasherConsumption.Designer.cs">
+		  <DependentUpon>rptSetwise_SlasherConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_Finishing_Consumption.cs">
+			<DependentUpon>subrpt_Finishing_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_Finishing_Consumption.Designer.cs">
+			<DependentUpon>subrpt_Finishing_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_RopeConsumption.cs">
+			<DependentUpon>subrpt_RopeConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_RopeConsumption.Designer.cs">
+			<DependentUpon>subrpt_RopeConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_SizingConsumption.cs">
+			<DependentUpon>subrpt_SizingConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_SizingConsumption.Designer.cs">
+			<DependentUpon>subrpt_SizingConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_SlasherConsumption.cs">
+			<DependentUpon>subrpt_SlasherConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_SlasherConsumption.Designer.cs">
+			<DependentUpon>subrpt_SlasherConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_WarpConsumption.cs">
+			<DependentUpon>subrpt_WarpConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_WarpConsumption.Designer.cs">
+			<DependentUpon>subrpt_WarpConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_WeftConsumption.cs">
+			<DependentUpon>subrpt_WeftConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\FOR_ALL\subrpt_WeftConsumption.Designer.cs">
+			<DependentUpon>subrpt_WeftConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\General_store\rpt_gs_indent_balance.cs">
+			<DependentUpon>rpt_gs_indent_balance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\General_store\rpt_gs_indent_balance.Designer.cs">
+			<DependentUpon>rpt_gs_indent_balance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\GSP\rptBTMA_GSP_Certificate_Register.cs">
+		  <DependentUpon>rptBTMA_GSP_Certificate_Register.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\GSP\rptBTMA_GSP_Certificate_Register.Designer.cs">
+		  <DependentUpon>rptBTMA_GSP_Certificate_Register.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\DepartmentWiseBulkRejectionSummery.cs">
+		  <DependentUpon>DepartmentWiseBulkRejectionSummery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\DepartmentWiseBulkRejectionSummery.Designer.cs">
+		  <DependentUpon>DepartmentWiseBulkRejectionSummery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyBulkRejectionReport_sum.cs">
+			<DependentUpon>rptDailyBulkRejectionReport_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyBulkRejectionReport_sum.Designer.cs">
+			<DependentUpon>rptDailyBulkRejectionReport_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyInspectionReport.cs">
+			<DependentUpon>rptDailyInspectionReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyInspectionReport.Designer.cs">
+			<DependentUpon>rptDailyInspectionReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyBulkRejectionReport_sum.cs">
+			<DependentUpon>rptDailyBulkRejectionReport_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyBulkRejectionReport_sum.Designer.cs">
+			<DependentUpon>rptDailyBulkRejectionReport_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyInspectionReport_All.cs">
+			<DependentUpon>rptDailyInspectionReport_All.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyInspectionReport_All.Designer.cs">
+			<DependentUpon>rptDailyInspectionReport_All.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyStyleWiseProduction.cs">
+		  <DependentUpon>rptDailyStyleWiseProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDailyStyleWiseProduction.Designer.cs">
+		  <DependentUpon>rptDailyStyleWiseProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDeptWiseBulkRejectionSummery.cs">
+		  <DependentUpon>rptDeptWiseBulkRejectionSummery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptDeptWiseBulkRejectionSummery.Designer.cs">
+		  <DependentUpon>rptDeptWiseBulkRejectionSummery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptInspectionAudit.cs">
+		  <DependentUpon>rptInspectionAudit.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptInspectionAudit.Designer.cs">
+		  <DependentUpon>rptInspectionAudit.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptSectionWiseCutPcs.cs">
+		  <DependentUpon>rptSectionWiseCutPcs.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptSectionWiseCutPcs.Designer.cs">
+		  <DependentUpon>rptSectionWiseCutPcs.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptSectionWiseCutPcs_sum.cs">
+		  <DependentUpon>rptSectionWiseCutPcs_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rptSectionWiseCutPcs_sum.Designer.cs">
+		  <DependentUpon>rptSectionWiseCutPcs_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\RPT_Inspection_ROLL_Scan_pending.Designer.cs">
+		  <DependentUpon>RPT_Inspection_ROLL_Scan_pending.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\RPT_INSPECTION_Roll_to_Roll_Scan_Status.Designer.cs">
+		  <DependentUpon>RPT_INSPECTION_Roll_to_Roll_Scan_Status.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\RPT_INSP_DPTtWiseBulkRejectionSummery_sum.cs">
+		  <DependentUpon>RPT_INSP_DPTtWiseBulkRejectionSummery_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\RPT_INSP_DPTtWiseBulkRejectionSummery_sum.Designer.cs">
+		  <DependentUpon>RPT_INSP_DPTtWiseBulkRejectionSummery_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.cs">
+		  <DependentUpon>RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.Designer.cs">
+		  <DependentUpon>RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_Ins_DailyBulkRejiection.cs">
+			<DependentUpon>rpt_Ins_DailyBulkRejiection.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_Ins_DailyBulkRejiection.Designer.cs">
+			<DependentUpon>rpt_Ins_DailyBulkRejiection.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_Ins_DailyWastageTransferReport.cs">
+			<DependentUpon>rpt_Ins_DailyWastageTransferReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_Ins_DailyWastageTransferReport.Designer.cs">
+			<DependentUpon>rpt_Ins_DailyWastageTransferReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_INS_Operator_wise_prod.cs">
+			<DependentUpon>rpt_INS_Operator_wise_prod.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_INS_Operator_wise_prod.Designer.cs">
+			<DependentUpon>rpt_INS_Operator_wise_prod.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_Ins_StyleWiseAnalysis.cs">
+			<DependentUpon>rpt_Ins_StyleWiseAnalysis.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_Ins_StyleWiseAnalysis.Designer.cs">
+			<DependentUpon>rpt_Ins_StyleWiseAnalysis.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_Ins_StyleWiseProd_shift_scan.cs">
+		  <DependentUpon>rpt_Ins_StyleWiseProd_shift_scan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Inspection\rpt_Ins_StyleWiseProd_shift_scan.Designer.cs">
+		  <DependentUpon>rpt_Ins_StyleWiseProd_shift_scan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Planning\rptMktPersonWisePoRcv.cs">
+		  <DependentUpon>rptMktPersonWisePoRcv.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Planning\rptMktPersonWisePoRcv.Designer.cs">
+		  <DependentUpon>rptMktPersonWisePoRcv.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Planning\rptYearlyProductionSummery.cs">
+		  <DependentUpon>rptYearlyProductionSummery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Planning\rptYearlyProductionSummery.Designer.cs">
+		  <DependentUpon>rptYearlyProductionSummery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBOMvsProduction_Finishing.cs">
+		  <DependentUpon>rptBOMvsProduction_Finishing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBOMvsProduction_Finishing.Designer.cs">
+		  <DependentUpon>rptBOMvsProduction_Finishing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBOMvsProduction_Rope.cs">
+		  <DependentUpon>rptBOMvsProduction_Rope.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBOMvsProduction_Rope.Designer.cs">
+		  <DependentUpon>rptBOMvsProduction_Rope.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBOMvsProduction_Rope_Sub.cs">
+		  <DependentUpon>rptBOMvsProduction_Rope_Sub.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBOMvsProduction_Rope_Sub.Designer.cs">
+		  <DependentUpon>rptBOMvsProduction_Rope_Sub.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBOMvsProduction_Sizing.cs">
+		  <DependentUpon>rptBOMvsProduction_Sizing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBOMvsProduction_Sizing.Designer.cs">
+		  <DependentUpon>rptBOMvsProduction_Sizing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBuyerWiseCostAnalysis.cs">
+		  <DependentUpon>rptBuyerWiseCostAnalysis.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptBuyerWiseCostAnalysis.Designer.cs">
+		  <DependentUpon>rptBuyerWiseCostAnalysis.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptFDSvsPostCosting_Variance.cs">
+		  <DependentUpon>rptFDSvsPostCosting_Variance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptFDSvsPostCosting_Variance.Designer.cs">
+		  <DependentUpon>rptFDSvsPostCosting_Variance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptMonthlyWarpingProduction.cs">
+		  <DependentUpon>rptMonthlyWarpingProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Post_Costing\rptMonthlyWarpingProduction.Designer.cs">
+		  <DependentUpon>rptMonthlyWarpingProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\PreCost\rptFabricDetailsCosting.cs">
+		  <DependentUpon>rptFabricDetailsCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\PreCost\rptFabricDetailsCosting.Designer.cs">
+		  <DependentUpon>rptFabricDetailsCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rptFabricTestReport_Bulk.cs">
+			<DependentUpon>rptFabricTestReport_Bulk.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rptFabricTestReport_Bulk.Designer.cs">
+			<DependentUpon>rptFabricTestReport_Bulk.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rptFabricTestReport_Grey.cs">
+			<DependentUpon>rptFabricTestReport_Grey.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rptFabricTestReport_Grey.Designer.cs">
+			<DependentUpon>rptFabricTestReport_Grey.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rptFabricTestReport_Sample.cs">
+			<DependentUpon>rptFabricTestReport_Sample.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rptFabricTestReport_Sample.Designer.cs">
+			<DependentUpon>rptFabricTestReport_Sample.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rptFirstMeterAnalysis.cs">
+		  <DependentUpon>rptFirstMeterAnalysis.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rptFirstMeterAnalysis.Designer.cs">
+		  <DependentUpon>rptFirstMeterAnalysis.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\rptWeavingProgramSheet.cs">
+			<DependentUpon>rptWeavingProgramSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\rptWeavingProgramSheet.Designer.cs">
+			<DependentUpon>rptWeavingProgramSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\RPT_PROG_SHEET_DYEING.cs">
+		  <DependentUpon>RPT_PROG_SHEET_DYEING.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\RPT_PROG_SHEET_DYEING.Designer.cs">
+		  <DependentUpon>RPT_PROG_SHEET_DYEING.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\RPT_RND_STICKER_PRINT.cs">
+		  <DependentUpon>RPT_RND_STICKER_PRINT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\RPT_RND_STICKER_PRINT.Designer.cs">
+		  <DependentUpon>RPT_RND_STICKER_PRINT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sample.Bay\rptDailySampleFabricStock.cs">
+		  <DependentUpon>rptDailySampleFabricStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sample.Bay\rptDailySampleFabricStock.Designer.cs">
+		  <DependentUpon>rptDailySampleFabricStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sample.Bay\rptSampleFabricGatePass.cs">
+		  <DependentUpon>rptSampleFabricGatePass.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sample.Bay\rptSampleFabricGatePass.Designer.cs">
+		  <DependentUpon>rptSampleFabricGatePass.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sample.Bay\rptSampleGatePass.cs">
+		  <DependentUpon>rptSampleGatePass.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sample.Bay\rptSampleGatePass.Designer.cs">
+		  <DependentUpon>rptSampleGatePass.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sample.Bay\rptSampleReceiveStatement.cs">
+		  <DependentUpon>rptSampleReceiveStatement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sample.Bay\rptSampleReceiveStatement.Designer.cs">
+		  <DependentUpon>rptSampleReceiveStatement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\rptDateWiseSizing_Consumption.cs">
+		  <DependentUpon>rptDateWiseSizing_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\rptDateWiseSizing_Consumption.Designer.cs">
+		  <DependentUpon>rptDateWiseSizing_Consumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\rptSetWiseSizingChemicalConsumption.cs">
+		  <DependentUpon>rptSetWiseSizingChemicalConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\rptSetWiseSizingChemicalConsumption.Designer.cs">
+		  <DependentUpon>rptSetWiseSizingChemicalConsumption.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\test.cs">
+			<DependentUpon>test.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\test.Designer.cs">
+			<DependentUpon>test.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Warping\rptDailyProduction_Ecru.cs">
+			<DependentUpon>rptDailyProduction_Ecru.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Warping\rptDailyProduction_Ecru.Designer.cs">
+			<DependentUpon>rptDailyProduction_Ecru.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptBeamStockReport.cs">
+			<DependentUpon>rptBeamStockReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptBeamStockReport.Designer.cs">
+			<DependentUpon>rptBeamStockReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptDailyLoomProduction.cs">
+			<DependentUpon>rptDailyLoomProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptDailyLoomProduction.Designer.cs">
+			<DependentUpon>rptDailyLoomProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptOrderWiseReq_n_Issue.cs">
+			<DependentUpon>rptOrderWiseReq_n_Issue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptOrderWiseReq_n_Issue.Designer.cs">
+			<DependentUpon>rptOrderWiseReq_n_Issue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rpt_WeavingLoomSettings.cs">
+			<DependentUpon>rpt_WeavingLoomSettings.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rpt_WeavingLoomSettings.Designer.cs">
+			<DependentUpon>rpt_WeavingLoomSettings.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptDespatchQrCode.cs">
+			<DependentUpon>rptDespatchQrCode.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rptDespatchQrCode.Designer.cs">
+			<DependentUpon>rptDespatchQrCode.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\subrptAirjetWorkLoad.cs">
+			<DependentUpon>subrptAirjetWorkLoad.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\subrptAirjetWorkLoad.Designer.cs">
+			<DependentUpon>subrptAirjetWorkLoad.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\subrptOverAllWorkLoad.cs">
+			<DependentUpon>subrptOverAllWorkLoad.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\subrptOverAllWorkLoad.Designer.cs">
+			<DependentUpon>subrptOverAllWorkLoad.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\subrptRapierWorkLoad.cs">
+			<DependentUpon>subrptRapierWorkLoad.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\subrptRapierWorkLoad.Designer.cs">
+			<DependentUpon>subrptRapierWorkLoad.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\rptIndentHistoryIssue.cs">
+		  <DependentUpon>rptIndentHistoryIssue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\rptIndentHistoryIssue.Designer.cs">
+		  <DependentUpon>rptIndentHistoryIssue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\rptIndentHistoryRCV.cs">
+		  <DependentUpon>rptIndentHistoryRCV.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\rptIndentHistoryRCV.Designer.cs">
+		  <DependentUpon>rptIndentHistoryRCV.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\rptIndentHistoryReport.cs">
+		  <DependentUpon>rptIndentHistoryReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\rptIndentHistoryReport.Designer.cs">
+		  <DependentUpon>rptIndentHistoryReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_BULK_YARN_ORDER_WISE_HISTORY_SR_DETAILS.cs">
+		  <DependentUpon>RPT_BULK_YARN_ORDER_WISE_HISTORY_SR_DETAILS.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_BULK_YARN_ORDER_WISE_HISTORY_SR_DETAILS.Designer.cs">
+		  <DependentUpon>RPT_BULK_YARN_ORDER_WISE_HISTORY_SR_DETAILS.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_BULK_YARN_ORDER_WISE_HISTORY_YARN_DETAILS.cs">
+		  <DependentUpon>RPT_BULK_YARN_ORDER_WISE_HISTORY_YARN_DETAILS.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_BULK_YARN_ORDER_WISE_HISTORY_YARN_DETAILS.Designer.cs">
+		  <DependentUpon>RPT_BULK_YARN_ORDER_WISE_HISTORY_YARN_DETAILS.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_YARN_ORDER_WISE_REPORT.cs">
+		  <DependentUpon>RPT_YARN_ORDER_WISE_REPORT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_YARN_ORDER_WISE_REPORT.Designer.cs">
+		  <DependentUpon>RPT_YARN_ORDER_WISE_REPORT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_Yarn_QC_Status.cs">
+		  <DependentUpon>RPT_Yarn_QC_Status.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_Yarn_QC_Status.Designer.cs">
+		  <DependentUpon>RPT_Yarn_QC_Status.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_YARN_REQ_WISE_ISSUE.cs">
+		  <DependentUpon>RPT_YARN_REQ_WISE_ISSUE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_YARN_REQ_WISE_ISSUE.Designer.cs">
+		  <DependentUpon>RPT_YARN_REQ_WISE_ISSUE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_YS_YARN_DATE_WISE_ISSUE.cs">
+			<DependentUpon>RPT_YS_YARN_DATE_WISE_ISSUE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_YS_YARN_DATE_WISE_ISSUE.Designer.cs">
+			<DependentUpon>RPT_YS_YARN_DATE_WISE_ISSUE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation_Local.cs">
+		  <DependentUpon>rptDOInformation_Local.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation_Local.Designer.cs">
+		  <DependentUpon>rptDOInformation_Local.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExGspInfo\Reports\rptBTMA_GSP_PendingInvoiceList.cs">
+		  <DependentUpon>rptBTMA_GSP_PendingInvoiceList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExGspInfo\Reports\rptBTMA_GSP_PendingInvoiceList.Designer.cs">
+		  <DependentUpon>rptBTMA_GSP_PendingInvoiceList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RWeightMeasurement.cs">
+		  <DependentUpon>RWeightMeasurement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RWeightMeasurement.Designer.cs">
+		  <DependentUpon>RWeightMeasurement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptPiInformation_con.cs">
+		  <DependentUpon>RptPiInformation_con.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptPiInformation_con.Designer.cs">
+		  <DependentUpon>RptPiInformation_con.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptSalesCOntactInfo.cs">
+		  <DependentUpon>rptSalesCOntactInfo.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptSalesCOntactInfo.Designer.cs">
+		  <DependentUpon>rptSalesCOntactInfo.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rpt_LC_Searching_IN_PI.cs">
+		  <DependentUpon>rpt_LC_Searching_IN_PI.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rpt_LC_Searching_IN_PI.Designer.cs">
+		  <DependentUpon>rpt_LC_Searching_IN_PI.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosPreCostingMaster\Reports\rptPostCosting.cs">
+		  <DependentUpon>rptPostCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosPreCostingMaster\Reports\rptPostCosting.Designer.cs">
+		  <DependentUpon>rptPostCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosPreCostingMaster\Reports\RptPreCostSheet.cs">
+			<DependentUpon>RptPreCostSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosPreCostingMaster\Reports\RptPreCostSheet.Designer.cs">
+			<DependentUpon>RptPreCostSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FChemIssue\Report\RPT_Chem_Date_Wise_issue.cs">
+			<DependentUpon>RPT_Chem_Date_Wise_issue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FChemIssue\Report\RPT_Chem_Date_Wise_issue.Designer.cs">
+			<DependentUpon>RPT_Chem_Date_Wise_issue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FChemStoreIndent\Report\RPT_CHEM_STORE_INDENT.cs">
+			<DependentUpon>RPT_CHEM_STORE_INDENT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FChemStoreIndent\Report\RPT_CHEM_STORE_INDENT.Designer.cs">
+			<DependentUpon>RPT_CHEM_STORE_INDENT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptRollInformation_dummy.cs">
+		  <DependentUpon>rptRollInformation_dummy.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptRollInformation_dummy.Designer.cs">
+		  <DependentUpon>rptRollInformation_dummy.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production_shift.cs">
+			<DependentUpon>RPT_INS_Others_production_shift.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production_shift.Designer.cs">
+			<DependentUpon>RPT_INS_Others_production_shift.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rpt_INS_StyleWiseAnalysis_Shift.cs">
+			<DependentUpon>rpt_INS_StyleWiseAnalysis_Shift.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rpt_INS_StyleWiseAnalysis_Shift.Designer.cs">
+			<DependentUpon>rpt_INS_StyleWiseAnalysis_Shift.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\LCB\rpt_LCB_DailyProduction.cs">
+			<DependentUpon>rpt_LCB_DailyProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\LCB\rpt_LCB_DailyProduction.Designer.cs">
+			<DependentUpon>rpt_LCB_DailyProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rpt_QA_LabTestCotton.cs">
+			<DependentUpon>rpt_QA_LabTestCotton.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rpt_QA_LabTestCotton.Designer.cs">
+			<DependentUpon>rpt_QA_LabTestCotton.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rpt_QA_LabTestPolyester.cs">
+			<DependentUpon>rpt_QA_LabTestPolyester.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\QA\rpt_QA_LabTestPolyester.Designer.cs">
+			<DependentUpon>rpt_QA_LabTestPolyester.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\rptRndFabricInfo.cs">
+			<DependentUpon>rptRndFabricInfo.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\rptRndFabricInfo.Designer.cs">
+			<DependentUpon>rptRndFabricInfo.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\rptWeavingInformation.cs">
+			<DependentUpon>rptWeavingInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\RND\rptWeavingInformation.Designer.cs">
+			<DependentUpon>rptWeavingInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\prt_Sizing_DailyProduction.cs">
+			<DependentUpon>prt_Sizing_DailyProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\prt_Sizing_DailyProduction.Designer.cs">
+			<DependentUpon>prt_Sizing_DailyProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\rptSizingBeamCard.cs">
+			<DependentUpon>rptSizingBeamCard.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\rptSizingBeamCard.Designer.cs">
+			<DependentUpon>rptSizingBeamCard.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\rptMonthlySizingProduction.cs">
+			<DependentUpon>rptMonthlySizingProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sizing\rptMonthlySizingProduction.Designer.cs">
+			<DependentUpon>rptMonthlySizingProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sticker\rptDyeingSticker_Rope.cs">
+			<DependentUpon>rptDyeingSticker_Rope.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sticker\rptDyeingSticker_Rope.Designer.cs">
+			<DependentUpon>rptDyeingSticker_Rope.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sticker\rptDyeingSticker_Slasher.cs">
+			<DependentUpon>rptDyeingSticker_Slasher.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sticker\rptDyeingSticker_Slasher.Designer.cs">
+			<DependentUpon>rptDyeingSticker_Slasher.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sticker\rptLCB_Sticker.cs">
+			<DependentUpon>rptLCB_Sticker.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sticker\rptLCB_Sticker.Designer.cs">
+			<DependentUpon>rptLCB_Sticker.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sticker\rptWarpingSticker.cs">
+			<DependentUpon>rptWarpingSticker.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Sticker\rptWarpingSticker.Designer.cs">
+			<DependentUpon>rptWarpingSticker.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Warping\rptDailyProduction_DirectWarping.cs">
+			<DependentUpon>rptDailyProduction_DirectWarping.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Warping\rptDailyProduction_DirectWarping.Designer.cs">
+			<DependentUpon>rptDailyProduction_DirectWarping.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptDailyProduction_Weaving.cs">
+			<DependentUpon>rptDailyProduction_Weaving.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptDailyProduction_Weaving.Designer.cs">
+			<DependentUpon>rptDailyProduction_Weaving.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptDoffCard.cs">
+			<DependentUpon>rptDoffCard.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptDoffCard.Designer.cs">
+			<DependentUpon>rptDoffCard.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptLoomCard.cs">
+			<DependentUpon>rptLoomCard.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptLoomCard.Designer.cs">
+			<DependentUpon>rptLoomCard.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptWeaving_Mounting.cs">
+			<DependentUpon>rptWeaving_Mounting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Weaving\rptWeaving_Mounting.Designer.cs">
+			<DependentUpon>rptWeaving_Mounting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="RequestFiles\XtraReport.cs">
+			<DependentUpon>XtraReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="RequestFiles\XtraReport.Designer.cs">
+			<DependentUpon>XtraReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\rpt_YS_DayWiseStock.cs">
+			<DependentUpon>rpt_YS_DayWiseStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\rpt_YS_DayWiseStock.Designer.cs">
+			<DependentUpon>rpt_YS_DayWiseStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation.cs">
+			<DependentUpon>rptDOInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation.Designer.cs">
+			<DependentUpon>rptDOInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation_A.cs">
+			<DependentUpon>rptDOInformation_A.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation_A.Designer.cs">
+			<DependentUpon>rptDOInformation_A.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation_S.cs">
+			<DependentUpon>rptDOInformation_S.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation_S.Designer.cs">
+			<DependentUpon>rptDOInformation_S.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation_Small.cs">
+			<DependentUpon>rptDOInformation_Small.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AccExportDoMaster\Report\rptDOInformation_Small.Designer.cs">
+			<DependentUpon>rptDOInformation_Small.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExGspInfo\Reports\rptBTMA_GSP.cs">
+			<DependentUpon>rptBTMA_GSP.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExGspInfo\Reports\rptBTMA_GSP.Designer.cs">
+			<DependentUpon>rptBTMA_GSP.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExGspInfo\Reports\rptCashBTMADeemed.cs">
+			<DependentUpon>rptCashBTMADeemed.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExGspInfo\Reports\rptCashBTMADeemed.Designer.cs">
+			<DependentUpon>rptCashBTMADeemed.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExGspInfo\Reports\rptCashBTMA.cs">
+			<DependentUpon>rptCashBTMA.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExGspInfo\Reports\rptCashBTMA.Designer.cs">
+			<DependentUpon>rptCashBTMA.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange1.cs">
+			<DependentUpon>RBillOfExchange1.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange1.Designer.cs">
+			<DependentUpon>RBillOfExchange1.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange1_FG.cs">
+			<DependentUpon>RBillOfExchange1_FG.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange1_FG.Designer.cs">
+			<DependentUpon>RBillOfExchange1_FG.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange2.cs">
+			<DependentUpon>RBillOfExchange2.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange2.Designer.cs">
+			<DependentUpon>RBillOfExchange2.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange2_FG.cs">
+			<DependentUpon>RBillOfExchange2_FG.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RBillOfExchange2_FG.Designer.cs">
+			<DependentUpon>RBillOfExchange2_FG.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RForeignComExInvoice.cs">
+			<DependentUpon>RForeignComExInvoice.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RForeignComExInvoice.Designer.cs">
+			<DependentUpon>RForeignComExInvoice.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RForeignComExInvoiceMasterPackingList.cs">
+			<DependentUpon>RForeignComExInvoiceMasterPackingList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\Foreign\RForeignComExInvoiceMasterPackingList.Designer.cs">
+			<DependentUpon>RForeignComExInvoiceMasterPackingList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RBeneficiaryCertificate.cs">
+			<DependentUpon>RBeneficiaryCertificate.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RBeneficiaryCertificate.Designer.cs">
+			<DependentUpon>RBeneficiaryCertificate.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RCertificateOfOrigin.cs">
+			<DependentUpon>RCertificateOfOrigin.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RCertificateOfOrigin.Designer.cs">
+			<DependentUpon>RCertificateOfOrigin.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RComExInvoice.cs">
+			<DependentUpon>RComExInvoice.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RComExInvoice.Designer.cs">
+			<DependentUpon>RComExInvoice.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterDeliveryChallan.cs">
+			<DependentUpon>RComExInvoiceMasterDeliveryChallan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterDeliveryChallan.Designer.cs">
+			<DependentUpon>RComExInvoiceMasterDeliveryChallan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterPackingList.cs">
+			<DependentUpon>RComExInvoiceMasterPackingList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterPackingList.Designer.cs">
+			<DependentUpon>RComExInvoiceMasterPackingList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterTruckReceipt.cs">
+			<DependentUpon>RComExInvoiceMasterTruckReceipt.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RComExInvoiceMasterTruckReceipt.Designer.cs">
+			<DependentUpon>RComExInvoiceMasterTruckReceipt.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RPreShipmentInspectionCertificate.cs">
+			<DependentUpon>RPreShipmentInspectionCertificate.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RPreShipmentInspectionCertificate.Designer.cs">
+			<DependentUpon>RPreShipmentInspectionCertificate.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptBankAccPending.cs">
+			<DependentUpon>rptBankAccPending.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptBankAccPending.Designer.cs">
+			<DependentUpon>rptBankAccPending.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptBankAccRCVStatus.cs">
+			<DependentUpon>rptBankAccRCVStatus.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptBankAccRCVStatus.Designer.cs">
+			<DependentUpon>rptBankAccRCVStatus.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptDateWiseDocSUBnRCV.cs">
+			<DependentUpon>rptDateWiseDocSUBnRCV.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptDateWiseDocSUBnRCV.Designer.cs">
+			<DependentUpon>rptDateWiseDocSUBnRCV.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptDocWaitingforSub.cs">
+			<DependentUpon>rptDocWaitingforSub.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptDocWaitingforSub.Designer.cs">
+			<DependentUpon>rptDocWaitingforSub.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptPendingBankPayment.cs">
+			<DependentUpon>rptPendingBankPayment.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptPendingBankPayment.Designer.cs">
+			<DependentUpon>rptPendingBankPayment.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptPendingPartyAcceptance.cs">
+			<DependentUpon>rptPendingPartyAcceptance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\rptPendingPartyAcceptance.Designer.cs">
+			<DependentUpon>rptPendingPartyAcceptance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RSubmissionOfShipping.cs">
+			<DependentUpon>RSubmissionOfShipping.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\RSubmissionOfShipping.Designer.cs">
+			<DependentUpon>RSubmissionOfShipping.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\XXL\rptPackingList.cs">
+			<DependentUpon>rptPackingList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\XXL\rptPackingList.Designer.cs">
+			<DependentUpon>rptPackingList.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\XXL\rptCommercial_Invoice_xxl.cs">
+			<DependentUpon>rptCommercial_Invoice_xxl.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExInvoiceMaster\Reports\XXL\rptCommercial_Invoice_xxl.Designer.cs">
+			<DependentUpon>rptCommercial_Invoice_xxl.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExLcInfo\Reports\rptDateWiseLCRegister.cs">
+			<DependentUpon>rptDateWiseLCRegister.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExLcInfo\Reports\rptDateWiseLCRegister.Designer.cs">
+			<DependentUpon>rptDateWiseLCRegister.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExLcInfo\Reports\rptDateWisePRCRegister.cs">
+			<DependentUpon>rptDateWisePRCRegister.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExLcInfo\Reports\rptDateWisePRCRegister.Designer.cs">
+			<DependentUpon>rptDateWisePRCRegister.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptAuditSummary.cs">
+			<DependentUpon>RptAuditSummary.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptAuditSummary.Designer.cs">
+			<DependentUpon>RptAuditSummary.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptDateWisePOInformation.cs">
+			<DependentUpon>rptDateWisePOInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptDateWisePOInformation.Designer.cs">
+			<DependentUpon>rptDateWisePOInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptDateWisePIInformation.cs">
+			<DependentUpon>rptDateWisePIInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptDateWisePIInformation.Designer.cs">
+			<DependentUpon>rptDateWisePIInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptPiInformation.cs">
+			<DependentUpon>rptPIInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptPIInformation.Designer.cs">
+			<DependentUpon>rptPIInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptPiInformation_Ex.cs">
+			<DependentUpon>RptPiInformation_Ex.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptPiInformation_Ex.Designer.cs">
+			<DependentUpon>RptPiInformation_Ex.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptPIInformation_LC_Status.cs">
+			<DependentUpon>rptPIInformation_LC_Status.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\rptPIInformation_LC_Status.Designer.cs">
+			<DependentUpon>rptPIInformation_LC_Status.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptPoInformation.cs">
+			<DependentUpon>RptPoInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComExPiMaster\Reports\RptPoInformation.Designer.cs">
+			<DependentUpon>RptPoInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComImpLcInformation\Reports\RGetComImpLcInformation.cs">
+			<DependentUpon>RGetComImpLcInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComImpLcInformation\Reports\RGetComImpLcInformation.Designer.cs">
+			<DependentUpon>RGetComImpLcInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComImpLcInformation\Reports\rptChemicalLCStatus.cs">
+			<DependentUpon>rptChemicalLCStatus.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComImpLcInformation\Reports\rptChemicalLCStatus.Designer.cs">
+			<DependentUpon>rptChemicalLCStatus.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComTenor\Reports\ComTenorData.cs">
+			<DependentUpon>ComTenorData.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ComTenor\Reports\ComTenorData.Designer.cs">
+			<DependentUpon>ComTenorData.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosFixedCost\Reports\rptCostSheet.cs">
+			<DependentUpon>rptCostSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosFixedCost\Reports\rptCostSheet.Designer.cs">
+			<DependentUpon>rptCostSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosPreCostingMaster\Reports\rptFabricDetailsSheet.cs">
+			<DependentUpon>rptFabricDetailsSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosPreCostingMaster\Reports\rptFabricDetailsSheet.Designer.cs">
+			<DependentUpon>rptFabricDetailsSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosPreCostingMaster\Reports\rptPreCosting.cs">
+			<DependentUpon>rptPreCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\CosPreCostingMaster\Reports\rptPreCosting.Designer.cs">
+			<DependentUpon>rptPreCosting.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FChemPurchaseRequisition\Report\RPT_CHEM_REQ_INDENT.cs">
+			<DependentUpon>RPT_CHEM_REQ_INDENT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FChemPurchaseRequisition\Report\RPT_CHEM_REQ_INDENT.Designer.cs">
+			<DependentUpon>RPT_CHEM_REQ_INDENT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\RPT_Chemical_date_wise_rcv.cs">
+			<DependentUpon>RPT_Chemical_date_wise_rcv.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\RPT_Chemical_date_wise_rcv.Designer.cs">
+			<DependentUpon>RPT_Chemical_date_wise_rcv.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptChemical_Indent.cs">
+			<DependentUpon>rptChemical_Indent.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptChemical_Indent.Designer.cs">
+			<DependentUpon>rptChemical_Indent.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptChemical_Req.cs">
+			<DependentUpon>rptChemical_Req.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptChemical_Req.Designer.cs">
+			<DependentUpon>rptChemical_Req.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptChem_Pur_Requisition.cs">
+			<DependentUpon>rptChem_Pur_Requisition.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptChem_Pur_Requisition.Designer.cs">
+			<DependentUpon>rptChem_Pur_Requisition.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptDateWiseChemicalStock.cs">
+			<DependentUpon>rptDateWiseChemicalStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptDateWiseChemicalStock.Designer.cs">
+			<DependentUpon>rptDateWiseChemicalStock.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptSectionWiseChemIssue_Sum.cs">
+			<DependentUpon>rptSectionWiseChemIssue_Sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptSectionWiseChemIssue_Sum.Designer.cs">
+			<DependentUpon>rptSectionWiseChemIssue_Sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptSectionWiseIssue.cs">
+			<DependentUpon>rptSectionWiseIssue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rptSectionWiseIssue.Designer.cs">
+			<DependentUpon>rptSectionWiseIssue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FDyeingProcessRopeMaster\Reports\rptRopeDyeing_Delivery.cs">
+			<DependentUpon>rptRopeDyeing_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FDyeingProcessRopeMaster\Reports\rptRopeDyeing_Delivery.Designer.cs">
+			<DependentUpon>rptRopeDyeing_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FDyeingProcessSlasherMaster\Reports\rptSlasher_Delivery.cs">
+			<DependentUpon>rptSlasher_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FDyeingProcessSlasherMaster\Reports\rptSlasher_Delivery.Designer.cs">
+			<DependentUpon>rptSlasher_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpyDeliveryChallan.cs">
+			<DependentUpon>rpyDeliveryChallan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\rpyDeliveryChallan.Designer.cs">
+			<DependentUpon>rpyDeliveryChallan.repx</DependentUpon>
+		</Compile>
+		<!--new add-->
+		<Compile Update="Reports\Planning\rptTeamWiseDelivery.cs">
+			<DependentUpon>rptTeamWiseDelivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Planning\rptTeamWiseDelivery.Designer.cs">
+			<DependentUpon>rptTeamWiseDelivery.repx</DependentUpon>
+		</Compile>
+
+    <Compile Update="Reports\Post_Costing\rptBuyerWiseCostAnalysis.cs">
+      <DependentUpon>rptBuyerWiseCostAnalysis.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Post_Costing\rptBuyerWiseCostAnalysis.Designer.cs">
+      <DependentUpon>rptBuyerWiseCostAnalysis.repx</DependentUpon>
+    </Compile>
+
+    
+
+    <Compile Update="Reports\Post_Costing\rptOrderWiseYarnPrice.cs">
+      <DependentUpon>rptOrderWiseYarnPrice.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Post_Costing\rptOrderWiseYarnPrice.Designer.cs">
+      <DependentUpon>rptOrderWiseYarnPrice.repx</DependentUpon>
+    </Compile>
+
+
+    <Compile Update="Reports\Inspection\rpt_Ins_StyleWiseProd_shift_scan.cs">
+      <DependentUpon>rpt_Ins_StyleWiseProd_shift_scan.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Inspection\rpt_Ins_StyleWiseProd_shift_scan.Designer.cs">
+      <DependentUpon>rpt_Ins_StyleWiseProd_shift_scan.repx</DependentUpon>
+    </Compile>
+
+    <Compile Update="Reports\Inspection\rptRollDespatchSheet_scan.cs">
+      <DependentUpon>rptRollDespatchSheet_scan.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Inspection\rptRollDespatchSheet_scan.Designer.cs">
+      <DependentUpon>rptRollDespatchSheet_scan.repx</DependentUpon>
+    </Compile>
+    
+    <Compile Update="Reports\Inspection\RPT_INSPECTION_Roll_to_Roll_Scan_Status.cs">
+      <DependentUpon>RPT_INSPECTION_Roll_to_Roll_Scan_Status.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Inspection\RPT_INSPECTION_Roll_to_Roll_Scan_Status.Designer.cs">
+      <DependentUpon>RPT_INSPECTION_Roll_to_Roll_Scan_Status.repx</DependentUpon>
+    </Compile>
+
+    <Compile Update="Reports\Inspection\RPT_Inspection_ROLL_Scan_pending.cs">
+      <DependentUpon>RPT_Inspection_ROLL_Scan_pending.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Inspection\RPT_Inspection_ROLL_Scan_pending.Designer.cs">
+      <DependentUpon>RPT_Inspection_ROLL_Scan_pending.repx</DependentUpon>
+    </Compile>
+
+		<Compile Update="Reports\Yarn_Store\RPT_YS_YARN_DATE_WISE_ISSUE.cs">
+			<DependentUpon>RPT_YS_YARN_DATE_WISE_ISSUE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_YS_YARN_DATE_WISE_ISSUE.Designer.cs">
+			<DependentUpon>RPT_YS_YARN_DATE_WISE_ISSUE.repx</DependentUpon>
+		</Compile>
+
+    <Compile Update="Reports\Fabric_Store\RPT_Fabric_Loading_Bill.cs">
+      <DependentUpon>RPT_Fabric_Loading_Bill.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Fabric_Store\RPT_Fabric_Loading_Bill.Designer.cs">
+      <DependentUpon>RPT_Fabric_Loading_Bill.repx</DependentUpon>
+    </Compile>
+
+    <Compile Update="Reports\Clearance\rpt_CLEARANCE_sHEED_GROUP_PENDING.cs">
+      <DependentUpon>rpt_CLEARANCE_sHEED_GROUP_PENDING.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Clearance\rpt_CLEARANCE_sHEED_GROUP_PENDING.Designer.cs">
+      <DependentUpon>rpt_CLEARANCE_sHEED_GROUP_PENDING.repx</DependentUpon>
+    </Compile>
+
+    <Compile Update="Reports\Fabric_Store\RPT_Fabric_Store_aging_report.cs">
+      <DependentUpon>RPT_Fabric_Store_aging_report.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Fabric_Store\RPT_Fabric_Store_aging_report.Designer.cs">
+      <DependentUpon>RPT_Fabric_Store_aging_report.repx</DependentUpon>
+    </Compile>
+<!--add-->
+    <Compile Update="Reports\Fabric_Store\RPT_Fabric_Roll_to_roll_RCV.cs">
+      <DependentUpon>RPT_Fabric_Roll_to_roll_RCV.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Fabric_Store\RPT_Fabric_Roll_to_roll_RCV.Designer.cs">
+      <DependentUpon>RPT_Fabric_Roll_to_roll_RCV.repx</DependentUpon>
+    </Compile>
+
+		<Compile Update="Reports\Yarn_Store\RPT_Yarn_QC_Status.cs">
+			<DependentUpon>RPT_Yarn_QC_Status.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Yarn_Store\RPT_Yarn_QC_Status.Designer.cs">
+			<DependentUpon>RPT_Yarn_QC_Status.repx</DependentUpon>
+		</Compile>
+
+		<Compile Update="Reports\Chemical_Store\rpt_CHEMICAL_MRR_REPORT.cs">
+			<DependentUpon>rpt_CHEMICAL_MRR_REPORT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rpt_CHEMICAL_MRR_REPORT.Designer.cs">
+			<DependentUpon>rpt_CHEMICAL_MRR_REPORT.repx</DependentUpon>
+		</Compile>
+
+		<Compile Update="Reports\Chemical_Store\rpt_CHEMICAL_MRR_REPORT.cs">
+			<DependentUpon>rpt_CHEMICAL_MRR_REPORT.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Chemical_Store\rpt_CHEMICAL_MRR_REPORT.Designer.cs">
+			<DependentUpon>rpt_CHEMICAL_MRR_REPORT.repx</DependentUpon>
+		</Compile>
+
+    <Compile Update="Reports\FOR_ALL\rptOrderWiseProductionHistory.cs">
+      <DependentUpon>rptOrderWiseProductionHistory.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\FOR_ALL\rptOrderWiseProductionHistory.Designer.cs">
+      <DependentUpon>rptOrderWiseProductionHistory.repx</DependentUpon>
+    </Compile>
+
+    <Compile Update="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE.cs">
+      <DependentUpon>RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE.Designer.cs">
+      <DependentUpon>RPT_INS_CUTPCS_ROLL_DESPATCH_SHEE.repx</DependentUpon>
+    </Compile>
+
+    <Compile Update="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.cs">
+      <DependentUpon>RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\Inspection\RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.Designer.cs">
+      <DependentUpon>RPT_INS_CUTPCS_ROLL_DESPATCH_SHEET_sum.repx</DependentUpon>
+    </Compile>
+    
+    <!--add-->
+
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_Roll_RCV_Pending.cs">
+			<DependentUpon>RPT_Fabric_Roll_RCV_Pending.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\Fabric_Store\RPT_Fabric_Roll_RCV_Pending.Designer.cs">
+			<DependentUpon>RPT_Fabric_Roll_RCV_Pending.repx</DependentUpon>
+		</Compile>
+
+		<Compile Update="Reports\General_Store\RPT_GS_DATE_WISE_ISSUE.cs">
+			<DependentUpon>RPT_GS_DATE_WISE_ISSUE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\General_Store\RPT_GS_DATE_WISE_ISSUE.Designer.cs">
+			<DependentUpon>RPT_GS_DATE_WISE_ISSUE.repx</DependentUpon>
+		</Compile>
+
+		<Compile Update="Reports\General_Store\RPT_GS_RECEIVING_DATE_WISE.cs">
+			<DependentUpon>RPT_GS_RECEIVING_DATE_WISE.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\General_Store\RPT_GS_RECEIVING_DATE_WISE.Designer.cs">
+			<DependentUpon>RPT_GS_RECEIVING_DATE_WISE.repx</DependentUpon>
+		</Compile>
+
+		<Compile Update="Reports\General_Store\rpt_gs_indent_balance.cs">
+			<DependentUpon>rpt_gs_indent_balance.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Reports\General_Store\rpt_gs_indent_balance.Designer.cs">
+			<DependentUpon>rpt_gs_indent_balance.repx</DependentUpon>
+		</Compile>
+		
+		<Compile Update="Views\FGenSRequirement\Reports\RPT_GS_REQUSITINO_SR.cs">
+			<DependentUpon>RPT_GS_REQUSITINO_SR.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FGenSRequirement\Reports\RPT_GS_REQUSITINO_SR.Designer.cs">
+			<DependentUpon>RPT_GS_REQUSITINO_SR.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FGenSRequirement\Reports\rpt_gs_requsition.cs">
+			<DependentUpon>rpt_gs_requsition.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FGenSRequirement\Reports\rpt_gs_requsition.Designer.cs">
+			<DependentUpon>rpt_gs_requsition.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FGsIndent\Report\rpt_gs_indent.cs">
+			<DependentUpon>rpt_gs_indent.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FGsIndent\Report\rpt_gs_indent.Designer.cs">
+			<DependentUpon>rpt_gs_indent.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FLcbProductionRope\Reports\rptLCB_Delivery.cs">
+			<DependentUpon>rptLCB_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FLcbProductionRope\Reports\rptLCB_Delivery.Designer.cs">
+			<DependentUpon>rptLCB_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrFinishingProcess\Reports\rptFinishingProduction.cs">
+			<DependentUpon>rptFinishingProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrFinishingProcess\Reports\rptFinishingProduction.Designer.cs">
+			<DependentUpon>rptFinishingProduction.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrFinishingProcess\Reports\rptFnChemicalConsumtion.cs">
+			<DependentUpon>rptFnChemicalConsumtion.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrFinishingProcess\Reports\rptFnChemicalConsumtion.Designer.cs">
+			<DependentUpon>rptFnChemicalConsumtion.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\QRCodeTest.cs">
+			<DependentUpon>QRCodeTest.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\QRCodeTest.Designer.cs">
+			<DependentUpon>QRCodeTest.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptCumulative_Prod_Ins.cs">
+			<DependentUpon>rptCumulative_Prod_Ins.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptCumulative_Prod_Ins.Designer.cs">
+			<DependentUpon>rptCumulative_Prod_Ins.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptDaily_Prod_Insp.cs">
+			<DependentUpon>rptDaily_Prod_Insp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptDaily_Prod_Insp.Designer.cs">
+			<DependentUpon>rptDaily_Prod_Insp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptDateWiseProduction_Insp.cs">
+			<DependentUpon>rptDateWiseProduction_Insp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptDateWiseProduction_Insp.Designer.cs">
+			<DependentUpon>rptDateWiseProduction_Insp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptInspectionProduction_Sum.cs">
+			<DependentUpon>rptInspectionProduction_Sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptInspectionProduction_Sum.Designer.cs">
+			<DependentUpon>rptInspectionProduction_Sum.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptOrderWiseProduction_Insp.cs">
+			<DependentUpon>rptOrderWiseProduction_Insp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptOrderWiseProduction_Insp.Designer.cs">
+			<DependentUpon>rptOrderWiseProduction_Insp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptRollDespatchSheet.cs">
+			<DependentUpon>rptRollDespatchSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptRollDespatchSheet.Designer.cs">
+			<DependentUpon>rptRollDespatchSheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptRollInformation.cs">
+			<DependentUpon>rptRollInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptRollInformation.Designer.cs">
+			<DependentUpon>rptRollInformation.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptRollInformation_local.cs">
+			<DependentUpon>rptRollInformation_local.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptRollInformation_local.Designer.cs">
+			<DependentUpon>rptRollInformation_local.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptShiftWise_Prod_Ins.cs">
+			<DependentUpon>rptShiftWise_Prod_Ins.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rptShiftWise_Prod_Ins.Designer.cs">
+			<DependentUpon>rptShiftWise_Prod_Ins.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production.cs">
+			<DependentUpon>RPT_INS_Others_production.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production.Designer.cs">
+			<DependentUpon>RPT_INS_Others_production.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production_shift.cs">
+			<DependentUpon>RPT_INS_Others_production_shift.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\RPT_INS_Others_production_shift.Designer.cs">
+			<DependentUpon>RPT_INS_Others_production_shift.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\RPT_INS_Style_wise_production.cs">
+			<DependentUpon>RPT_INS_Style_wise_production.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\RPT_INS_Style_wise_production.Designer.cs">
+			<DependentUpon>RPT_INS_Style_wise_production.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rpt_StyleWiseProductionReport.cs">
+			<DependentUpon>rpt_StyleWiseProductionReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrInspectionProcess\Reports\rpt_StyleWiseProductionReport.Designer.cs">
+			<DependentUpon>rpt_StyleWiseProductionReport.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrSizingProductionRope\Reports\rptSizing_Delivery.cs">
+			<DependentUpon>rptSizing_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrSizingProductionRope\Reports\rptSizing_Delivery.Designer.cs">
+			<DependentUpon>rptSizing_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWarpingProcessRopeMaster\Reports\rptDateWiseProduction_Warp.cs">
+			<DependentUpon>rptDateWiseProduction_Warp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWarpingProcessRopeMaster\Reports\rptDateWiseProduction_Warp.Designer.cs">
+			<DependentUpon>rptDateWiseProduction_Warp.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWarpingProcessRopeMaster\Reports\rptWarpDelivery_Rope.cs">
+			<DependentUpon>rptWarpDelivery_Rope.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWarpingProcessRopeMaster\Reports\rptWarpDelivery_Rope.Designer.cs">
+			<DependentUpon>rptWarpDelivery_Rope.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWarpingProcessSlasher\Reports\rptDirectWarping_Delivery.cs">
+			<DependentUpon>rptDirectWarping_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWarpingProcessSlasher\Reports\rptDirectWarping_Delivery.Designer.cs">
+			<DependentUpon>rptDirectWarping_Delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWeavingProcessBulk\Reports\rpt_weaving_delivery.cs">
+			<DependentUpon>rpt_weaving_delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWeavingProcessBulk\Reports\rpt_weaving_delivery.Designer.cs">
+			<DependentUpon>rpt_weaving_delivery.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWeavingProcessBulk\Reports\rpt_weaving_delivery_shiftWise.cs">
+			<DependentUpon>rpt_weaving_delivery_shiftWise.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FPrWeavingProcessBulk\Reports\rpt_weaving_delivery_shiftWise.Designer.cs">
+			<DependentUpon>rpt_weaving_delivery_shiftWise.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FSampleFabricIssue\Reports\RSampleFabricIssue.cs">
+			<DependentUpon>RSampleFabricIssue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FSampleFabricIssue\Reports\RSampleFabricIssue.Designer.cs">
+			<DependentUpon>RSampleFabricIssue.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FSampleGarmentRcvM\Reports\rptSampleHandTag.cs">
+			<DependentUpon>rptSampleHandTag.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FSampleGarmentRcvM\Reports\rptSampleHandTag.Designer.cs">
+			<DependentUpon>rptSampleHandTag.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FSampleGarmentRcvM\Reports\rptSampleSticker.cs">
+			<DependentUpon>rptSampleSticker.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FSampleGarmentRcvM\Reports\rptSampleSticker.Designer.cs">
+			<DependentUpon>rptSampleSticker.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FYarnRequirement\Report\rpt_YS_DateWise_YarnRCV.cs">
+			<DependentUpon>rpt_YS_DateWise_YarnRCV.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FYarnRequirement\Report\rpt_YS_DateWise_YarnRCV.Designer.cs">
+			<DependentUpon>rpt_YS_DateWise_YarnRCV.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FYarnRequirement\Report\rpt_YS_YarnRequirement.cs">
+			<DependentUpon>rpt_YS_YarnRequirement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FYarnRequirement\Report\rpt_YS_YarnRequirement.Designer.cs">
+			<DependentUpon>rpt_YS_YarnRequirement.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FYarnRequirement\Report\rpt_YS_YarnRequisition_SR.cs">
+			<DependentUpon>rpt_YS_YarnRequisition_SR.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FYarnRequirement\Report\rpt_YS_YarnRequisition_SR.Designer.cs">
+			<DependentUpon>rpt_YS_YarnRequisition_SR.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FYsIndentMaster\Report\rpt_YS_Indent_Details.cs">
+			<DependentUpon>rpt_YS_Indent_Details.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FYsIndentMaster\Report\rpt_YS_Indent_Details.Designer.cs">
+			<DependentUpon>rpt_YS_Indent_Details.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\PlProductionPlanGroupMaster\Reports\rptProductionPlan.cs">
+			<DependentUpon>rptProductionPlan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\PlProductionPlanGroupMaster\Reports\rptProductionPlan.Designer.cs">
+			<DependentUpon>rptProductionPlan.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\PlProductionPlanGroupMaster\Reports\test.cs">
+			<DependentUpon>test.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\PlProductionPlanGroupMaster\Reports\test.Designer.cs">
+			<DependentUpon>test.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndFabricInfo\Reports\rpt_FDR.cs">
+			<DependentUpon>rpt_FDR.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndFabricInfo\Reports\rpt_FDR.Designer.cs">
+			<DependentUpon>rpt_FDR.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndFabricInfo\Reports\rpt_FDR_Marketing.cs">
+			<DependentUpon>rpt_FDR_Marketing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndFabricInfo\Reports\rpt_FDR_Marketing.Designer.cs">
+			<DependentUpon>rpt_FDR_Marketing.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndFabricInfo\Reports\rpt_PO_sheet.cs">
+			<DependentUpon>rpt_PO_sheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndFabricInfo\Reports\rpt_PO_sheet.Designer.cs">
+			<DependentUpon>rpt_PO_sheet.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndProductionOrder\Reports\rptFabricDetailsSheet_lab.cs">
+		  <DependentUpon>rptFabricDetailsSheet_lab.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndProductionOrder\Reports\rptFabricDetailsSheet_lab.Designer.cs">
+		  <DependentUpon>rptFabricDetailsSheet_lab.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndProductionOrder\Reports\rptFabricDetailsSheet_mkt.cs">
+			<DependentUpon>rptFabricDetailsSheet_mkt.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndProductionOrder\Reports\rptFabricDetailsSheet_mkt.Designer.cs">
+			<DependentUpon>rptFabricDetailsSheet_mkt.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndProductionOrder\Reports\rptGIS.cs">
+			<DependentUpon>rptGIS.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndProductionOrder\Reports\rptGIS.Designer.cs">
+			<DependentUpon>rptGIS.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndProductionOrder\Reports\rptProductionOrder.cs">
+			<DependentUpon>rptProductionOrder.repx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\RndProductionOrder\Reports\rptProductionOrder.Designer.cs">
+			<DependentUpon>rptProductionOrder.repx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Update="nlog.config">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+  
+</Project>

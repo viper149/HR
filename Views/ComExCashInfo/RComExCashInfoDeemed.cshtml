@@ -1,0 +1,29 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExGspInfo.Reports
+@using rptCashBTMADeemed = DenimERP.Views.ComExGspInfo.Reports.rptCashBTMADeemed
+@model int
+
+@{
+    ViewData["Title"] = "Commercial Export Cash Info";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Reports</li>
+        <li class="breadcrumb-item active" aria-current="page"><a asp-action="FabricDOWiseBalance" asp-controller="Reports">@ViewData["Title"]</a></li>
+    </ol>
+</nav>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptCashBTMADeemed(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

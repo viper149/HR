@@ -1,0 +1,312 @@
+﻿@model PrWarpingProcessRopeViewModel
+
+@if (Model.FPrWarpingProcessRopeBallDetailsList.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-hover" style="border-collapse: collapse;" id="partialView">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().BALL_ID_FK)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().BALL_LENGTH)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().LINK_BALL_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().LINK_BALL_LENGTH)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().SHIFT_NAME)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().COUNT_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().MACHINE_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().BREAKS_ENDS)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().ENDS_ROPE)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().OPERATOR)</th>
+                    <th>@Html.DisplayNameFor(model => model.FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().REMARKS)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var j = 0; j < Model.FPrWarpingProcessRopeBallDetailsList.Count; j++)
+                {
+                    <tr>
+                        <td>@Html.Raw(Model.FPrWarpingProcessRopeBallDetailsList[j].BALLID > 0 ? $"<i class=\"fa fa-database text-danger\" aria-hidden=\"true\"></i> {j + 1}" : $"<i class=\"fa fa-plus-circle text-success\" aria-hidden=\"true\"></i> {j + 1}")</td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].BALLID)
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].BALL_ID_FK)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].BALL_ID_FKNavigation?.BALL_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].BALL_LENGTH)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j]?.BALL_LENGTH
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].LINK_BALL_NO)
+                            @if (@Model.FPrWarpingProcessRopeBallDetailsList[j].LINK_BALL_NO != null)
+                            {
+                                @Model.FPrWarpingProcessRopeBallDetailsList[j].BALL_ID_FK_Link?.BALL_NO
+                            }
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].LINK_BALL_LENGTH)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].LINK_BALL_LENGTH
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].SHIFT_NAME)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].SHIFT_NAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].COUNT_ID)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].COUNT_?.COUNTNAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].MACHINE_NO)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].MACHINE_NONavigation?.MACHINE_NAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].BREAKS_ENDS)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].BREAKS_ENDS
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].ENDS_ROPE)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].ENDS_ROPE
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].OPERATOR)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].EMP?.FIRST_NAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeBallDetailsList[j].REMARKS)
+                            @Model.FPrWarpingProcessRopeBallDetailsList[j].REMARKS
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveBallNoFromSetNoList(@j)" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveBallNoFromSetNoList(removeIndexValue) {
+        debugger;
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/FPrWarpingProcessRopeMaster/RemoveBallNoFromSetNoList',
+            success: function (partialView, status, xhr) {
+                var ballCount = xhr.getResponseHeader("BallCount");
+                BallAlerts(ballCount);
+                $('#BallDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>
+
+
+
+
+@*@model PrWarpingProcessRopeViewModel
+
+    @if (Model.FPrWarpingProcessRopeDetailsList.Any())
+    {
+        <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+            <thead id="thead">
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList.FirstOrDefault().SETID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList.FirstOrDefault().BALL_NO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList.FirstOrDefault().WARP_LENGTH_PER_SET)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Remove")
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.FPrWarpingProcessRopeDetailsList.Count; i++)
+                {
+
+                    <tr data-toggle="show" data-target="#demo_@i" class="accordion-toggle collapsed">
+                        <td><span class="expand-button"></span></td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].WARP_PROG_ID)
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].SETID)
+                            @Model.FPrWarpingProcessRopeDetailsList[i].PL_PRODUCTION_SETDISTRIBUTION?.PROG_?.PROG_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].BALL_NO)
+                            @Model.FPrWarpingProcessRopeDetailsList[i].BALL_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].WARP_LENGTH_PER_SET)
+                            @Model.FPrWarpingProcessRopeDetailsList[i].WARP_LENGTH_PER_SET
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveSetNoFromList(@i)" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12" class="hiddenRow">
+                            <div class="accordian-body collapse show" id="demo_@i">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().BALL_ID_FK)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().BALL_LENGTH)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().LINK_BALL_NO)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().LINK_BALL_LENGTH)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().SHIFT_NAME)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().COUNT_ID)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().MACHINE_NO)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().BREAKS_ENDS)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().ENDS_ROPE)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().OPERATOR)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().REMARKS)
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (var j = 0; j < Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.Count; j++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList.FirstOrDefault().BALLID)
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].BALL_ID_FK)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].BALL_ID_FKNavigation?.BALL_NO
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].BALL_LENGTH)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j]?.BALL_LENGTH
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].LINK_BALL_NO)
+                                                    @if (@Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].LINK_BALL_NO != null)
+                                                    {
+                                                        @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].BALL_ID_FK_Link?.BALL_NO
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].LINK_BALL_LENGTH)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].LINK_BALL_LENGTH
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].SHIFT_NAME)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].SHIFT_NAME
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].COUNT_ID)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].COUNT_?.COUNTNAME
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].MACHINE_NO)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].MACHINE_NONavigation?.MACHINE_NAME
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].BREAKS_ENDS)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].BREAKS_ENDS
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].ENDS_ROPE)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].ENDS_ROPE
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].OPERATOR)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].EMP?.FIRST_NAME
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(clc => clc.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].REMARKS)
+                                                    @Model.FPrWarpingProcessRopeDetailsList[i].FPrWarpingProcessRopeBallDetailsList[j].REMARKS
+                                                </td>
+                                                <td>
+                                                    <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveBallNoFromSetNoList(@i, @j)" aria-hidden="true"></i>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    }
+
+
+    <script type="text/javascript" asp-append-version="true">
+        function RemoveSetNoFromList(removeIndexValue) {
+            var data = $('#form').serializeArray();
+            data.push({ name: "removeIndexValue", value: removeIndexValue });
+            $.ajax({
+                async: true,
+                cache: false,
+                data: data,
+                type: "POST",
+                url: '/FPrWarpingProcessRopeMaster/RemoveSetNoFromList',
+                success: function (partialView, status, xhr) {
+                    var ballCount = xhr.getResponseHeader("BallCount");
+                    $('#BallDetails').html(partialView);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+        function RemoveBallNoFromSetNoList(removeIndexValue, setRemoveIndex) {
+            debugger;
+            var data = $('#form').serializeArray();
+            data.push({ name: "removeIndexValue", value: removeIndexValue });
+            data.push({ name: "setRemoveIndex", value: setRemoveIndex });
+            $.ajax({
+                async: true,
+                cache: false,
+                data: data,
+                type: "POST",
+                url: '/FPrWarpingProcessRopeMaster/RemoveBallNoFromSetNoList',
+                success: function (partialView, status, xhr) {
+                    var ballCount = xhr.getResponseHeader("BallCount");
+                    $('#BallDetails').html(partialView);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+    </script>*@

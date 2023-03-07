@@ -1,0 +1,60 @@
+﻿@model BAS_SUPPLIERINFO
+
+@{
+    ViewData["Title"] = "DetailsBasSupplierInfo";
+    Layout = Layout;
+}
+
+    <h2>Supplier Info Details</h2>
+
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SUPPNAME)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SUPPNAME)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SCATID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SCATID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PHONE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CPERSON)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CPERSON)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.REMARKS)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="GetBasSupplierInfoWithPaged" class="btn btn-dark mr-4" accesskey="b">Back to List</a>
+    @Html.ActionLink("Edit", "EditBasSupplierInfo", new { supplierInfoId = Model.EncryptedId }, new { @class = "btn btn-warning" })
+</div>

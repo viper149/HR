@@ -1,0 +1,1046 @@
+﻿@model RndFabricInfoViewModel
+
+@{
+    ViewData["Title"] = "RnD Fabric Information";
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-Fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Basic Information</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p><small>Lab Data</small></p>
+            </div>
+            @*<div class="stepwizard-step">
+                    <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                    <p><small>Step 3</small></p>
+                </div>*@
+            <div class="stepwizard-step">
+                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                <p><small>Target & Segment</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" role="form" asp-action="CreateRndFabricInfo">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.ARCHIVE_NO" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.ARCHIVE_NO" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.ARCHIVE_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.SDRF" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.SDRF" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.SDRF" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.RS" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.RS" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.RS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.BUYERID" class="control-label"></label>
+                        @Html.DropDownListFor(bi => bi.rND_FABRICINFO.BUYERID, new SelectList(Model.bAS_BUYERINFOs, "BUYERID", "BUYER_NAME"), "Selct Brand", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        @Html.ValidationMessageFor(bi => bi.rND_FABRICINFO.BUYERID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.BUYERREF" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.BUYERREF" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.BUYERREF" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label for="colorName" class="control-label">@Html.DisplayName("Color In [Finish]")</label>
+                        <input id="colorFnName" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.DEVID" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.DEVID" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.DEVID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.STYLE_NAME" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.rND_FABRICINFO.SFINID, new SelectList(Model.RndSampleInfoFinishings, "SFINID", "STYLE_NAME"), "Select A Fabric Code", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        @Html.ValidationMessageFor(fi => fi.rND_FABRICINFO.SFINID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.DYCODE" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.DYCODE" class="form-control" readonly />
+                        <span asp-validation-for="rND_FABRICINFO.DYCODE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.DID" class="control-label"></label>
+                        @Html.HiddenFor(e => e.rND_FABRICINFO.DID, new { @id = "hiddenDId" })
+                        <input id="dyeingName" class="form-control" disabled />
+                        @Html.ValidationMessageFor(fi => fi.rND_FABRICINFO.DID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.PROGNO" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.PROGNO" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.PROGNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.COLORCODE" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.rND_FABRICINFO.COLORCODE, new SelectList(Model.BasColors, "COLORCODE", "COLOR"), "Select Color", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        @Html.ValidationMessageFor(fi => fi.rND_FABRICINFO.COLORCODE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.REED_COUNT" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.REED_COUNT" class="form-control" readonly />
+                        <span asp-validation-for="rND_FABRICINFO.REED_COUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.DENT" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.DENT" class="form-control" readonly />
+                        <span asp-validation-for="rND_FABRICINFO.DENT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.HiddenFor(e => e.rND_FABRICINFO.WID, new { @id = "hiddenWeaveId" })
+                        <label asp-for="rND_FABRICINFO.WID" class="control-label"></label>
+                        <input id="weaveName" class="form-control" disabled />
+                        <span asp-validation-for="rND_FABRICINFO.WID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.DOBBY" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.DOBBY" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.DOBBY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TOTAL_ENDS_SAMPLE" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.TOTAL_ENDS_SAMPLE" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.TOTAL_ENDS_SAMPLE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TOTALENDS" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.TOTALENDS" class="form-control" id="rND_FABRICINFO_TOTALENDS" />
+                        <span asp-validation-for="rND_FABRICINFO.TOTALENDS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TOTALROPE" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.TOTALROPE" class="form-control" readonly="readonly" id="rND_FABRICINFO_TOTALROPE" />
+                        <span asp-validation-for="rND_FABRICINFO.TOTALROPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.ENDS" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.ENDS" readonly="readonly" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.ENDS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.REED_SPACE" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.REED_SPACE" class="form-control" id="rND_FABRICINFO_REED_SPACE" readonly />
+                        <span asp-validation-for="rND_FABRICINFO.REED_SPACE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.PICKLENGHT" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.PICKLENGHT" class="form-control" id="rND_FABRICINFO_PICKLENGHT" readonly />
+                        <span asp-validation-for="rND_FABRICINFO.PICKLENGHT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TOTALWEFT" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.TOTALWEFT" class="form-control" id="rND_FABRICINFO_TOTALWEFT" readonly />
+                        <span asp-validation-for="rND_FABRICINFO.TOTALWEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.CRIMP_PERCENTAGE" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.CRIMP_PERCENTAGE" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.CRIMP_PERCENTAGE" class="text-danger"></span>
+                    </div>
+                </div>
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.HiddenFor(e => e.rND_FABRICINFO.LOOMID)
+                            <label asp-for="rND_FABRICINFO.LOOMID" class="control-label"></label>
+                            <input id="loomType" class="form-control" />
+                            <span asp-validation-for="rND_FABRICINFO.LOOMID" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.LOOMID" class="control-label"></label>
+                        @Html.DropDownListFor(bi => bi.rND_FABRICINFO.LOOMID, new SelectList(Model.LoomTypes, "LOOMID", "LOOM_TYPE_NAME"), "Select Loom Type", new { @class = "form-control js-example-basic-single" })
+                        @Html.ValidationMessageFor(bi => bi.rND_FABRICINFO.LOOMID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.LOOMSPEED" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.LOOMSPEED" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.LOOMSPEED" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.EFFICIENCY" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.EFFICIENCY" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.EFFICIENCY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.MASTERROLL" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.MASTERROLL" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.MASTERROLL" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.LTSID" class="control-label"></label>
+
+                        @Html.ValidationMessageFor(fi => fi.rND_FABRICINFO.LTSID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.LSBTESTNO" class="control-label"></label>
+                        <span class="input-group-btn d-flex">
+                            <button type="button" class="btn btn-warning">D</button>
+                            <input asp-for="rND_FABRICINFO.LSBTESTNO" class="form-control" />
+                        </span>
+                        <span asp-validation-for="rND_FABRICINFO.LSBTESTNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label for="colorName" class="control-label">@Html.DisplayName("Color In [SDRF]")</label>
+                        <input id="colorName" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.CONTRACTION" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.CONTRACTION" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.CONTRACTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.FABRICTYPE" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.FABRICTYPE" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.FABRICTYPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.REVISENO" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.REVISENO" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.REVISENO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.UPD_BY" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.rND_FABRICINFO.UPD_BY, new SelectList(Model.FHrEmployeesList, "EMPID", "FIRST_NAME"), "Select An Employee", new { @class = "form-control js-example-basic-single" })
+                        @Html.ValidationMessageFor(fi => fi.rND_FABRICINFO.UPD_BY, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.CONCEPT" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.CONCEPT" class="form-control"></input>
+                        <span asp-validation-for="rND_FABRICINFO.CONCEPT" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <a class="btn btn-dark pull-right" asp-action="GetRndFabricInfo" asp-controller="RndFabricInfo">Back to List</a>
+                </div>
+            </div>
+
+            <div id="secret" class="row"></div>
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-2">
+
+            <div class="input-group mb-0">
+                <input class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Grey Lab No" type="text" disabled>
+
+                <span class="newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 p-0">
+                    @Html.DropDownListFor(dt => dt.rND_FABRICINFO.LSGTESTNO, new SelectList(Model.FabTestGreyList, "LAB_NO", "LAB_NO"), "Select A Lab Test No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                </span>
+            </div>
+            <div class="input-group mb-0">
+                <input class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="EPI X PPI" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weight" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Width" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Shrinkage%" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Stretch%" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Growth%" type="text" disabled>
+
+            </div>
+
+            <div class="input-group mb-0">
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="B/W" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="A/W" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="B/W" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="A/W" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="B/W" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="A/W" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-4 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-4 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-4 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-4 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+            </div>
+            <div class="input-group">
+
+                <span class="col-lg-1 col-md-3 col-sm-6 col-xs-12 p-0">
+                    <input asp-for="rND_FABRICINFO.GREPI" class="form-control  newsletter col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" placeholder="" type="text">
+                    <input asp-for="rND_FABRICINFO.GRPPI" class="form-control  newsletter col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" placeholder="" type="text">
+                </span>
+
+                <span class="col-lg-1 col-md-3 col-sm-6 col-xs-12 p-0">
+                    <input class="form-control  newsletter col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" placeholder="" type="text">
+                    <input class="form-control  newsletter col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" placeholder="" type="text">
+                </span>
+                <input asp-for="rND_FABRICINFO.WGGRBW" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WGGRAW" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WIGRBW" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WIGRAW" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SRGRWARP" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SRGRWEFT" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.STGRWARP" class="form-control  newsletter  col-lg-1 col-md-4 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.STGRWEFT" class="form-control  newsletter  col-lg-1 col-md-4 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-1 col-md-4 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-1 col-md-4 col-sm-6 col-xs-12" placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+                <input class="form-control newsletter col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold " placeholder="Parameter" type="text" disabled>
+                <input class="form-control newsletter col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Finish" type="text" disabled>
+                <input class="form-control newsletter col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Protocol" type="text" disabled>
+                <input class="form-control newsletter col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Declaration" type="text" disabled>
+                <input class="form-control newsletter col-lg-4 col-md-4 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Finish Route" type="text" disabled>
+            </div>
+            <div class="input-group mb-0">
+                <input class="form-control  newsletter col-lg-2 col-md-3 col-sm-6 col-xs-12  text-center font-weight-bold " placeholder="Leb Number/Test Method" type="text" disabled>
+                <span class="newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 p-0">
+                    @Html.DropDownListFor(dt => dt.rND_FABRICINFO.LTSID, new SelectList(Model.FabTestSamples, "LTSID", "LABNO"), "Select A Lab Test No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                </span>
+                <input asp-for="rND_FABRICINFO.FINISH_METHOD" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <span class="newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 p-0">
+                    @Html.DropDownListFor(dt => dt.rND_FABRICINFO.PROTOCOL_NO, new SelectList(Model.FabTestSamples, "LTSID", "LABNO"), "Select A Lab Test No.", htmlAttributes: new { @class = "form-control js-example-basic-single col-lg-2 col-md-4 col-sm-6 col-xs-12" })
+                </span>
+                <input asp-for="rND_FABRICINFO.PROTOCOL_METHOD" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+
+                <span class="newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 p-0">
+                    @Html.DropDownListFor(dt => dt.rND_FABRICINFO.LSBTESTNO, new SelectList(Model.FabTestSamples, "LABNO", "LABNO"), "Select A Lab Test No.", htmlAttributes: new { @class = "form-control js-example-basic-single col-lg-2 col-md-4 col-sm-6 col-xs-12" })
+                </span>
+                <input asp-for="rND_FABRICINFO.METHOD" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.FINISH_ROUTE" class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12" placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold border-bottom-0 padding16" placeholder="EPI X PPI" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="B/W" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.BWEPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.BWPPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.PROBWEPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.PROBWPPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.FNEPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.FNPPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="FinishType" type="text" disabled>
+                <input class="form-control  newsletter  col-lg-2 col-md-4 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Finish M/C" type="text" disabled>
+            </div>
+            <div class="input-group mb-0">
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="A/W" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.AWEPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.AWPPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.PROAWEPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.PROAWPPI" class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text" disabled="disabled">
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text" disabled />
+                <span class="newsletter col-lg-2 col-md-4 col-sm-6 col-xs-12 p-0">
+                    @Html.DropDownListFor(si => si.rND_FABRICINFO.FINID, new SelectList(Model.RndFinishtypes, "FINID", "TYPENAME"), "Select Finish Type", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                </span>
+                <span class="newsletter col-lg-2 col-md-4 col-sm-6 col-xs-12 p-0">
+                    @Html.DropDownListFor(dt => dt.rND_FABRICINFO.MCID, new SelectList(Model.RndFinishmcs, "MCID", "NAME"), "Select Finish MC", htmlAttributes: new { @class = "form-control newsletter  col-lg-2 col-md-4 col-sm-6 col-xs-12 js-example-basic-single" })
+                </span>
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="Weight" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="B/W" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.WGFNBW" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WGBWPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WGDEC" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 text-center text-black-50 font-weight-bold" placeholder="Meeting Remarks" type="text" disabled>
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="A/W" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.WGFNAW" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WGAWPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input disabled="disabled" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.MEETING" class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12" placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="B/W" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.WIFNBW" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WIBWPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WIDEC" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0 border-bottom-0 font-weight-bold" placeholder="Width" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Cutable" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.WIFNCUT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WICUTPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input disabled class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="A/W" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.WIFNAW" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.WIAWPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input disabled="disabled" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" placeholder="" type="text" disabled>
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold  padding16 border-bottom-0" placeholder="Shrinkage%" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.SRFNWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SRWARPPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SRDECWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Remarks" type="text" disabled>
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.SRFNWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SRWEFTPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SRDECWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.REMARKS
+                       " class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12" placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="Stretch%" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.STFNWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.STWARPPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.STDECWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.STFNWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.STWEFTPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.STDECWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="Growth%" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.GRFNWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.GRWARPPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.GRDECWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.GRFNWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.GRWEFTPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.GRDECWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="Spirality" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="A" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.SPR_A_FIN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SPR_A_PRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SPR_A_DEC" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="B" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.SPR_B_FIN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SPR_B_PRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SPR_B_DEC" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+                <input class="form-control  newsletter col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Skew Movement" type="text" disabled>
+
+                <input asp-for="rND_FABRICINFO.SKEW_FN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SKEW_PRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SKEWMOVE" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="Tensile" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.TNWARPFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.TNWARPPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.TNWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.TNWEFTFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.TNWEFTPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.TNWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="Tear" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.TRWARPFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.TEARWARPPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.TRWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.TRWEFTFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.TEARWEFTPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.TRWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="Seam Slippage" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Warp" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.SLPWARPFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SLIWARPPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SLPWARP" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Weft" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.SLPWEFTFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SLIWEFTPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.SLPWEFT" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold padding16 border-bottom-0" placeholder="C/F to Rubbing" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Dry" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.RUBDRYFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.RUBDRYPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.RUBDRYDEC" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-1 col-md-3 col-sm-6 col-xs-12 border-top-0" placeholder="" type="text" disabled>
+
+                <input class="form-control  newsletter  col-lg-1 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Wet" type="text" disabled>
+                <input asp-for="rND_FABRICINFO.RUBWETFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.RUBWETPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.RUBWET" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="PH" type="text" disabled>
+
+                <input asp-for="rND_FABRICINFO.PHFN" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.PHPRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.PH" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input class="form-control  newsletter  col-lg-4 col-md-4 col-sm-6 col-xs-12 inv" disabled placeholder="" type="text">
+            </div>
+            <div class="input-group mb-0">
+
+                <input class="form-control  newsletter col-lg-2 col-md-3 col-sm-6 col-xs-12 text-center font-weight-bold" placeholder="Composition" type="text" disabled>
+
+                <input asp-for="rND_FABRICINFO.COMPOSITION" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.COMPOSITION_PRO" class="form-control  newsletter  col-lg-2 col-md-3 col-sm-6 col-xs-12" placeholder="" type="text">
+                <input asp-for="rND_FABRICINFO.COMPOSITION_DEC" class="form-control  newsletter  col-lg-6 col-md-6 col-sm-6 col-xs-12" placeholder="" type="text">
+
+            </div>
+
+
+        </div>
+        <div class="panel panel-primary setup-content" id="step-3">
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Others</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.SKEWMOVE" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.SKEWMOVE" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.SKEWMOVE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.SLPWARP" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.SLPWARP" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.SLPWARP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.SLPWEFT" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.SLPWEFT" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.SLPWEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TNWARP" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.TNWARP" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.TNWARP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TNWEFT" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.TNWEFT" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.TNWEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TRWARP" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.TRWARP" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.TRWARP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.TRWEFT" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.TRWEFT" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.TRWEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.CFATDRY" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.CFATDRY" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.CFATDRY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.CFATWET" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.CFATWET" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.CFATWET" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.PH" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.PH" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.PH" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.COMPOSITION" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.COMPOSITION" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.COMPOSITION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.COMPOSITION_DEC" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.COMPOSITION_DEC" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.COMPOSITION_DEC" class="text-danger"></span>
+                    </div>
+                </div>
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="rND_FABRICINFO.FINISH_ROUTE" class="control-label"></label>
+                            <input asp-for="rND_FABRICINFO.FINISH_ROUTE" class="form-control" readonly="readonly" />
+                            <span asp-validation-for="rND_FABRICINFO.FINISH_ROUTE" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="rND_FABRICINFO.FINID" class="control-label"></label>
+                            @Html.DropDownListFor(si => si.rND_FABRICINFO.FINID, new SelectList(Model.RndFinishtypes, "FINID", "TYPENAME"), "Select Finish Type", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="rND_FABRICINFO.FINID" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="rND_FABRICINFO.MCID" class="control-label"></label>
+                            @Html.DropDownListFor(dt => dt.rND_FABRICINFO.MCID, new SelectList(Model.RndFinishmcs, "MCID", "NAME"), "Select Finish MC", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="rND_FABRICINFO.MCID" class="text-danger"></span>
+                        </div>
+                    </div>*@
+
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.MEETING" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.MEETING" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.MEETING" class="text-danger"></span>
+                    </div>
+                </div>*@
+
+
+
+
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="rND_FABRICINFO.PROTOCOL_NO" class="control-label"></label>
+                            <span class="input-group-btn d-flex">
+                                <button type="button" class="btn btn-warning">D</button>
+                                <input asp-for="rND_FABRICINFO.PROTOCOL_NO" class="form-control" />
+                            </span>
+                            <span asp-validation-for="rND_FABRICINFO.PROTOCOL_NO" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="rND_FABRICINFO.LSBTESTNO" class="control-label"></label>
+                            <span class="input-group-btn d-flex">
+                                <button type="button" class="btn btn-warning">D</button>
+                                <input asp-for="rND_FABRICINFO.LSBTESTNO" class="form-control" />
+                            </span>
+                            <span asp-validation-for="rND_FABRICINFO.LSBTESTNO" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.LSGTESTNO" class="control-label"></label>
+                        <span class="input-group-btn d-flex">
+                            <button type="button" class="btn btn-warning">G</button>
+                            <input asp-for="rND_FABRICINFO.LSGTESTNO" class="form-control" />
+                        </span>
+                        <span asp-validation-for="rND_FABRICINFO.LSGTESTNO" class="text-danger"></span>
+                    </div>
+                </div>*@
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="rND_FABRICINFO.METHOD" class="control-label"></label>
+                            <input asp-for="rND_FABRICINFO.METHOD" class="form-control" />
+                            <span asp-validation-for="rND_FABRICINFO.METHOD" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rND_FABRICINFO.REMARKS" class="control-label"></label>
+                        <input asp-for="rND_FABRICINFO.REMARKS" class="form-control" />
+                        <span asp-validation-for="rND_FABRICINFO.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>*@
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a class="btn btn-dark pull-right" asp-action="GetRndFabricInfo" asp-controller="RndFabricInfo">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-4">
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="panel-title text-success"><i class="fa fa-bullseye" aria-hidden="true"></i> Target</h2>
+                        <hr />
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  d-inline-flex p-2">
+                            <div class="card col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 m-1">
+                                <div class="card-header">
+                                    <h2>Age Group</h2>
+                                </div>
+                                <div class="card-body">
+                                    @for (var i = 0; i < Model.AgeGroupViewModels.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model.AgeGroupViewModels[i].AgeGroupId" />
+                                            <input type="hidden" asp-for="@Model.AgeGroupViewModels[i].AgeGroupName" />
+                                            <input asp-for="@Model.AgeGroupViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.AgeGroupViewModels[i].IsSelected">
+                                                @Model.AgeGroupViewModels[i].AgeGroupName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="card col-lg-4 col-md-4 col-sm-4 col-xs-12 p-2 m-1">
+                                <div class="card-header">
+                                    <h2>Gender</h2>
+                                </div>
+                                <div class="card-body">
+                                    @for (var i = 0; i < Model.TargetGenderViewModels.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model.TargetGenderViewModels[i].GenderId" />
+                                            <input type="hidden" asp-for="@Model.TargetGenderViewModels[i].GenderName" />
+                                            <input asp-for="@Model.TargetGenderViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.TargetGenderViewModels[i].IsSelected">
+                                                @Model.TargetGenderViewModels[i].GenderName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="card col-lg-4 col-md-4 col-sm-4 col-xs-12 p-2 m-1">
+                                <div class="card-header">
+                                    <h2>Character</h2>
+                                </div>
+                                <div class="card-body">
+                                    @for (var i = 0; i < Model.TargetCharacterViewModels.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model.TargetCharacterViewModels[i].CharacterId" />
+                                            <input type="hidden" asp-for="@Model.TargetCharacterViewModels[i].CharacterName" />
+                                            <input asp-for="@Model.TargetCharacterViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.TargetCharacterViewModels[i].IsSelected">
+                                                @Model.TargetCharacterViewModels[i].CharacterName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-inline-flex p-2">
+                            <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12 mt-2 p-2 m-1">
+                                <div class="card-header">
+                                    <h2>Price Segment</h2>
+                                </div>
+                                <div class="card-body">
+                                    @for (var i = 0; i < Model.TargetPriceSegmentViewModels.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model.TargetPriceSegmentViewModels[i].PriceSegmentId" />
+                                            <input type="hidden" asp-for="@Model.TargetPriceSegmentViewModels[i].PriceSegmentType" />
+                                            <input asp-for="@Model.TargetPriceSegmentViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.TargetPriceSegmentViewModels[i].IsSelected">
+                                                @Model.TargetPriceSegmentViewModels[i].PriceSegmentType
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="card col-lg-4 col-md-4 col-sm-4 col-xs-12 mt-2 p-2 m-1">
+                                <div class="card-header">
+                                    <h2>Fit Style</h2>
+                                </div>
+                                <div class="card-body">
+                                    @for (var i = 0; i < Model.TargetFitStyleViewModels.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model.TargetFitStyleViewModels[i].FitStyleId" />
+                                            <input type="hidden" asp-for="@Model.TargetFitStyleViewModels[i].FitStyleName" />
+                                            <input asp-for="@Model.TargetFitStyleViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.TargetFitStyleViewModels[i].IsSelected">
+                                                @Model.TargetFitStyleViewModels[i].FitStyleName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                        <h2 class="panel-title text-success"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Segment</h2>
+                        <hr />
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-inline-flex">
+                            <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 mr-4">
+                                <div class="card-header">
+                                    <h2>Season</h2>
+                                </div>
+                                <div class="card-body">
+                                    @for (var i = 0; i < Model.SegmentSeasonViewModels.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model.SegmentSeasonViewModels[i].SeasonId" />
+                                            <input type="hidden" asp-for="@Model.SegmentSeasonViewModels[i].SeasonName" />
+                                            <input asp-for="@Model.SegmentSeasonViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.SegmentSeasonViewModels[i].IsSelected">
+                                                @Model.SegmentSeasonViewModels[i].SeasonName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 mr-2">
+                                <div class="card-header">
+                                    <h2>Com. Segment</h2>
+                                </div>
+                                <div class="card-body">
+                                    @for (var i = 0; i < Model.ComSegmentViewModels.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model.ComSegmentViewModels[i].ComSegmentId" />
+                                            <input type="hidden" asp-for="@Model.ComSegmentViewModels[i].ComSegmentName" />
+                                            <input asp-for="@Model.ComSegmentViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.ComSegmentViewModels[i].IsSelected">
+                                                @Model.ComSegmentViewModels[i].ComSegmentName
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-inline-flex">
+                            <div class="d-inline-flex mt-4 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                                <label class="control-label">Geo. Location: </label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-inline-flex mb-2">
+                            <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 mr-2">
+                                <div class="card-header">
+                                    <h2>Other Similar</h2>
+                                </div>
+                                <div class="card-body">
+                                    @for (var i = 0; i < Model.OtherSimilarViewModels.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model.OtherSimilarViewModels[i].OtherSimilarId" />
+                                            <input type="hidden" asp-for="@Model.OtherSimilarViewModels[i].OtherSimilarName" />
+                                            <input asp-for="@Model.OtherSimilarViewModels[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model.OtherSimilarViewModels[i].IsSelected">
+                                                @Model.OtherSimilarViewModels[i].OtherSimilarName
+                                            </label>
+                                            <input asp-for="@Model.OtherSimilarViewModels[i].Input" class="form-control" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit">Create</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a class="btn btn-dark pull-right" asp-action="GetRndFabricInfo" asp-controller="RndFabricInfo">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+    <style type="text/css" asp-append-version="true">
+        .inv {
+            color: transparent;
+            background: transparent !important;
+            border: transparent;
+        }
+
+        .padding16 {
+            padding-top: 1.6rem !important;
+        }
+    </style>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/rndFabric/RndFabricInfo-Common.js"></script>
+    <script asp-append-version="true" src="~/js/rndFabric/CreateRndFabricInfo.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+}

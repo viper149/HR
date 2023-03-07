@@ -1,0 +1,65 @@
+﻿
+@model FYsYarnIssueSViewModel
+
+@{
+    ViewData["Title"] = "Details Yarn Issue (Sample)";
+    Layout = Layout;
+}
+
+@{
+    if (Model.YarnIssueMasterS != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="text-white btn btn-info">@Html.DisplayNameFor(e => e.YarnIssueMasterS.YISSUEDATE) : [ @Html.DisplayFor(e => e.YarnIssueMasterS.YISSUEDATE) ]</h2>
+                        <hr />
+                    </div>
+                </div>
+                <div class="row details">
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="YarnIssueMasterS.YISSUEDATE" class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.YarnIssueMasterS.YISSUEDATE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="YarnIssueMasterS.ISSUE.ISSUTYPE" class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.YarnIssueMasterS.ISSUE.ISSUTYPE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="YarnIssueMasterS.YSR.YSRNO" class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.YarnIssueMasterS.YSR.YSRNO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="YarnIssueMasterS.ISSUETO" class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.YarnIssueMasterS.ISSUETO)
+                            </span>
+                        </div>
+                    </div>
+
+                    @await Html.PartialAsync($"~/Views/FYsYarnIssue/DetailsFYsYarnIssueTable.cshtml", Model)
+
+                </div>
+
+                <div class="col-md-12">
+                    <a asp-action="EditFYsYarnIssueS" asp-route-yIssueId="@Model.YarnIssueMasterS.EncryptedId" class="btn btn-warning pull-right">Edit</a>
+                    <a asp-action="GetFYsYarnIssueS" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    }
+}

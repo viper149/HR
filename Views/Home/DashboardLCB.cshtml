@@ -1,0 +1,248 @@
+﻿
+@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = Layout;
+}
+
+<marquee width="100%" direction="left" height="40px">
+    <h4 class="text-c-blue">Welcome To LCB Dashboard.</h4>
+</marquee>
+
+<div class="row">
+    <!-- statustic-card start -->
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-c-yellow text-white">
+            <div class="card-block">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <p class="m-b-5">LCB Finished Length Today</p>
+                        <h4 class="m-b-0">@ViewBag.LCBProductionData.LcbCompleteLength</h4>
+                    </div>
+                    <div class="col col-auto text-right">
+                        <i class="feather icon-shopping-cart  f-50 text-c-yellow"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-c-green text-white">
+            <div class="card-block">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <p class="m-b-5">Total Complete Sets</p>
+                        <h4 class="m-b-0">@ViewBag.LCBProductionData.CompleteSets</h4>
+                    </div>
+                    <div class="col col-auto text-right">
+                        <i class="feather icon-credit-card f-50 text-c-green"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-c-pink text-white">
+            <div class="card-block">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <p class="m-b-5">Total Pending Sets</p>
+                        <h4 class="m-b-0">@ViewBag.LCBProductionData.PendingSets</h4>
+                    </div>
+                    <div class="col col-auto text-right">
+                        <i class="feather icon-book f-50 text-c-pink"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-c-blue text-white">
+            <div class="card-block">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <p class="m-b-5">Attendance Today</p>
+                        <h4 class="m-b-0">242</h4>
+                    </div>
+                    <div class="col col-auto text-right">
+                        <i class="feather icon-user f-50 text-c-blue"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- statustic-card start -->
+    <!-- statustic-card start -->
+    <div class="col-xl-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-left ">
+                    <h5>Monthly LCB View</h5>
+                    @*<span class="text-muted">For more details about usage, please refer <a href="#">amCharts</a> licences.</span>*@
+                </div>
+            </div>
+            <div class="card-block-big">
+                <div id="lcb" style="height:250px"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-md-12">
+        <div class="card per-task-card">
+            <div class="card-header">
+                <h5>Overview of this Month</h5>
+            </div>
+            <div class="card-block">
+                @*@{ var rmCompletePercent = Math.Round(@ViewBag.MonthlyLCBPendingAndCompleteSets.MonthlyCompletePercent);}*@
+                @*@{ var rmPendingPercent = Math.Round(@ViewBag.MonthlyLCBPendingAndCompleteSets.MonthlyPendingPercent);}*@
+                
+                @{ 
+                    var rmCompletePercent = Math.Round(@ViewBag.MonthlyLCBPendingAndCompleteSets.MonthlyCompletePercent);
+                    var CmplastDigit = rmCompletePercent % 10;
+                    if (CmplastDigit != 0 && CmplastDigit != 5) {
+                        rmCompletePercent = (int)(rmCompletePercent / 10) * 10;
+                        if (CmplastDigit >= 5) {
+                            rmCompletePercent += 5;
+                        }
+                    }
+                }
+
+
+                @{ 
+                    var rmPendingPercent = Math.Round(@ViewBag.MonthlyLCBPendingAndCompleteSets.MonthlyPendingPercent);
+                    var PenlastDigit = rmPendingPercent % 10;
+                    if (PenlastDigit != 0 && PenlastDigit != 5) {
+                        rmPendingPercent = (int)(rmPendingPercent / 10) * 10;
+                        if (PenlastDigit >= 5) {
+                            rmPendingPercent += 5;
+                        }
+                    }
+                }
+
+                <div class="row per-task-block text-center">
+                    <div class="col-6">
+                        <div data-label="@ViewBag.MonthlyLCBPendingAndCompleteSets.MonthlyCompletePercent %" class="radial-bar radial-bar-@rmCompletePercent radial-bar-lg radial-bar-primary"></div> @*@rmCompletePercent*@
+                        <h6 class="text-muted">Finished(Sets)</h6>
+                        <p class="text-muted">@ViewBag.MonthlyLCBPendingAndCompleteSets.MonthlyLCBCompleteSets</p>
+                        <button class="btn btn-primary btn-round btn-sm">Manage</button>
+                    </div>
+                    <div class="col-6">
+                        <div data-label="@ViewBag.MonthlyLCBPendingAndCompleteSets.MonthlyPendingPercent %" class="radial-bar radial-bar-@rmPendingPercent radial-bar-lg radial-bar-primary"></div> @*@rmPendingPercent*@
+                        <h6 class="text-muted">Remaining(Sets)</h6>
+                        <p class="text-muted">@ViewBag.MonthlyLCBPendingAndCompleteSets.MonthlyLCBPendingSets</p>
+                        <button class="btn btn-primary btn-outline-primary btn-round btn-sm">Manage</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- statustic-card start -->
+    <!-- income start -->
+    <div class="col-xl-6 col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>LCB</h5>
+                <div class="card-header-right">
+                    <ul class="list-unstyled card-option">
+                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                        <li><i class="fa fa-minus minimize-card"></i></li>
+                        <li><i class="fa fa-refresh reload-card"></i></li>
+                        <li><i class="fa fa-trash close-card"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-block">
+                @{ var low = Math.Abs(@ViewBag.LCBProductionData.ComparisonMonthlyLCB);}
+                @if (@ViewBag.LCBProductionData.ComparisonMonthlyLCB >= 0)
+                {
+                    <p class="text-c-green f-w-500"><i class="feather icon-chevrons-up m-r-5"></i> @ViewBag.LCBProductionData.LCBProductionData Yds Higher than last month</p>
+                }
+                else
+                {
+                    <p class="text-c-pink f-w-500"><i class="feather icon-chevrons-down m-r-5"></i> @low Yds Lower than last month</p>
+                }
+
+                <div class="row">
+                    <div class="col-4 b-r-default">
+                        <p class="text-muted m-b-5">Overall</p>
+                        <h5>@ViewBag.LCBProductionData.TotalProduction Yds</h5>
+                    </div>
+                    <div class="col-4 b-r-default">
+                        <p class="text-muted m-b-5">Monthly</p>
+                        <h5>@ViewBag.LCBProductionData.MonthlyProduction Yds</h5>
+                    </div>
+                    <div class="col-4">
+                        <p class="text-muted m-b-5">Day</p>
+                        <h5>@ViewBag.LCBProductionData.DailyProduction Yds</h5>
+                    </div>
+                </div>
+            </div>
+            <canvas id="tot-lead" height="150"></canvas>
+        </div>
+    </div>
+
+    <div class="col-xl-12 col-md-12">
+        <div class="card table-card">
+            <div class="card-header">
+                <h5>Last & Pending Sets</h5>
+                <div class="card-header-right">
+                    <ul class="list-unstyled card-option">
+                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                        <li><i class="fa fa-minus minimize-card"></i></li>
+                        <li><i class="fa fa-refresh reload-card"></i></li>
+                        <li><i class="fa fa-trash close-card"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-block">
+                <div class="table-responsive">
+                    <table class="table table-hover table-borderless">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayName("#")</th>
+                                <th>@Html.DisplayName("Set No")</th>
+                                <th>@Html.DisplayName("Type")</th>
+                                <th>@Html.DisplayName("Plan Date")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @for (var i = 0; i < @ViewBag.LcbPendingSetList.Count; i++)
+                                {
+                                <tr>
+                                    <td>@(i+1)</td>
+                                    <td>@ViewBag.LcbPendingSetList[i].PROG_.PROG_NO</td>
+                                    <td>@ViewBag.LcbPendingSetList[i].PROG_.PROGRAM_TYPE</td>
+                                    <td>@ViewBag.LcbPendingSetList[i].TRNSDATE</td>
+                                </tr>
+                            }
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-right m-r-20">
+                            <a href="#!" class=" b-b-primary text-primary">View all Sets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @section Styles {
+        <link asp-append-version="true" href="~/css/CustomCSS/summary.css" rel="stylesheet" />
+        <!-- radial chart.css -->
+        <link asp-append-version="true" rel="stylesheet" href="~/FLEXERP\assets\pages\chart\radial\css\radial.css" type="text/css" media="all">
+    }
+
+    @section Scripts {
+        <script asp-append-version="true" type="text/javascript" src="~/FLEXERP\assets\pages\dashboard\crm-dashboardLCB.js"></script>
+        @*<script asp-append-version="true" type="text/javascript" src="~/FLEXERP\assets\pages\dashboard\analytic-dashboard.min.js"></script>*@
+
+    }

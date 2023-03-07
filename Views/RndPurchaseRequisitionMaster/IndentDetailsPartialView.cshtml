@@ -1,0 +1,129 @@
+﻿@model RndYarnRequisitionViewModel
+
+@if (Model.FysIndentDetailList.Any())
+{
+    <table class="table table-hover" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                @*<th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.TRNSDATE)</th>*@
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.PRODID)</th>
+                @*<th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.SEC.SECNAME)</th>*@
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.YARN_FORNavigation.YARNNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.YARN_FROMNavigation.TYPENAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.ORDER_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.UNIT)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.NO_OF_CONE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.ETR)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.SLUB_CODE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.RAW)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.PREV_LOTID)</th>
+                @*<th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.STOCK_AMOUNT)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.LAST_INDENT_NO)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.LAST_INDENT_DATE)</th>*@
+                <th scope="col">@Html.DisplayNameFor(model => model.FysIndentDetails.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FysIndentDetailList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    @*<td>
+                                       
+                            @Html.DisplayFor(item => Model.FysIndentDetailList[i].TRNSDATE)
+                        </td>*@
+                <td>
+                    @Html.HiddenFor(clc => clc.FysIndentDetailList[i].TRNSDATE)
+                    @Html.HiddenFor(clc => clc.FysIndentDetailList[i].TRNSID)
+                    @Html.HiddenFor(clc => clc.FysIndentDetailList[i].INDSLID)
+                    @Html.HiddenFor(clc => clc.FysIndentDetailList[i].INDID)
+                    @Html.HiddenFor(clc => clc.FysIndentDetailList[i].PRODID)
+                    @Model.FysIndentDetailList[i].BASCOUNTINFO?.RND_COUNTNAME
+                </td>
+                    @*<td>
+                            
+                            @Model.FysIndentDetailList[i].SEC?.SECNAME
+                        </td>*@
+                <td>
+                    @Html.HiddenFor(clc => clc.FysIndentDetailList[i].SECID)
+                                    @Html.HiddenFor(clc => clc.FysIndentDetailList[i].YARN_FOR)
+                                    @Model.FysIndentDetailList[i].YARN_FORNavigation?.YARNNAME
+                                </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].YARN_FROM)
+                        @Model.FysIndentDetailList[i].YARN_FROMNavigation?.TYPENAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].ORDER_QTY)
+                            @Model.FysIndentDetailList[i].ORDER_QTY
+                        @*<input asp-for="FysIndentDetailList[i].ORDER_QTY" class="form-control" />*@
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].UNIT)
+                        @Model.FysIndentDetailList[i].FBasUnits?.UNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].NO_OF_CONE)
+                        @Model.FysIndentDetailList[i].NO_OF_CONE
+                        @*<input asp-for="FysIndentDetailList[i].NO_OF_CONE" class="form-control" />*@
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].ETR)
+                        @Html.DisplayFor(clc => clc.FysIndentDetailList[i].ETR)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].SLUB_CODE)
+                        @Model.FysIndentDetailList[i].SLUB_CODENavigation?.NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].RAW)
+                        @Model.FysIndentDetailList[i].RAWNavigation?.RAWPER
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].PREV_LOTID)
+                        @Model.FysIndentDetailList[i].LOT?.LOTNO
+                    </td>
+                    @*<td>
+                            @Html.HiddenFor(clc => clc.FysIndentDetailList[i].STOCK_AMOUNT)
+                            @Model.FysIndentDetailList[i].STOCK_AMOUNT
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FysIndentDetailList[i].LAST_INDENT_NO)
+                            @Model.FysIndentDetailList[i].LAST_INDENT_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(clc => clc.FysIndentDetailList[i].LAST_INDENT_DATE)
+                            @Html.DisplayFor(modelItem => Model.FysIndentDetailList[i].LAST_INDENT_DATE)
+                        </td>*@
+                    <td>
+                        @Html.HiddenFor(clc => clc.FysIndentDetailList[i].REMARKS)
+                        @Model.FysIndentDetailList[i].REMARKS
+                        @*<input asp-for="FysIndentDetailList[i].REMARKS" class="form-control" />*@
+                    </td>
+
+
+
+
+                    <td>
+
+                        @{
+                            if (Model.FysIndentDetailList[i].TRNSID > 0)
+                            {
+                                <i class="fa fa-edit fa-lg text-warning cursor-pointer" onclick="EditYarnInfo('@Model.FysIndentDetailList[i].TRNSID');" aria-hidden="true"></i>
+                            }
+                        }
+
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveIndent(@i)" aria-hidden="false"></i>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="6" class="text-right text-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> <ins>Total @Html.DisplayNameFor(modelItem => Model.FysIndentDetails.ORDER_QTY)</ins></td>
+                <td>:</td>
+                <td colspan="10" class="text-danger">@Model.FysIndentDetailList.Sum(e => e.ORDER_QTY)</td>
+            </tr>
+        </tbody>
+    </table>
+}

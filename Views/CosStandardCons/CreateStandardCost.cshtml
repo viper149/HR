@@ -1,0 +1,112 @@
+﻿@model COS_STANDARD_CONS
+@{
+    ViewData["Title"] = "CreateStandardCost";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create Standard Cost</h2>
+
+<hr />
+<form id="form" role="form" asp-action="CreateStandardCost">
+    <div class="panel panel-default setup-content">
+        <div class="panel-body row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="MONTHLY_COST" class="control-label"></label>
+                    <input asp-for="MONTHLY_COST" class="form-control" />
+                    <span asp-validation-for="MONTHLY_COST" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="PROD" class="control-label"></label>
+                    <input asp-for="PROD" class="form-control" />
+                    <span asp-validation-for="PROD" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CONTRACTION" class="control-label"></label>
+                    <input asp-for="CONTRACTION" class="form-control" />
+                    <span asp-validation-for="CONTRACTION" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="OVERHEAD_BDT" class="control-label"></label>
+                    <input asp-for="OVERHEAD_BDT" id="OVERHEAD_BDT" class="form-control" readonly="readonly"/>
+                    <span asp-validation-for="OVERHEAD_BDT" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="CONV_RATE" class="control-label"></label>
+                    <input asp-for="CONV_RATE" id="CONV_RATE" class="form-control" />
+                    <span asp-validation-for="CONV_RATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="OVERHEAD_USD" class="control-label"></label>
+                    <input asp-for="OVERHEAD_USD" id="OVERHEAD_USD" class="form-control" readonly />
+                    <span asp-validation-for="OVERHEAD_USD" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="LOOMSPEED" class="control-label"></label>
+                    <input asp-for="LOOMSPEED" class="form-control" />
+                    <span asp-validation-for="LOOMSPEED" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="EFFICIENCY" class="control-label"></label>
+                    <input asp-for="EFFICIENCY" class="form-control" />
+                    <span asp-validation-for="EFFICIENCY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="GRPPI" class="control-label"></label>
+                    <input asp-for="GRPPI" class="form-control" />
+                    <span asp-validation-for="GRPPI" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="REMARKS" class="control-label"></label>
+                    <input asp-for="REMARKS" class="form-control" id="REMARKS" />
+                    <span asp-validation-for="REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button class="btn btn-warning pull-right" type="submit">Update</button>
+                <a class="btn btn-dark pull-right" asp-action="GetCosStandardCons" asp-controller="CosStandardCons">Back to List</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $('#OVERHEAD_BDT').change(function() {
+            var overheadUsd = $('#OVERHEAD_BDT').val() / $('#CONV_RATE').val();
+            $('#OVERHEAD_USD').val(overheadUsd.toFixed(2));
+        });
+        $('#CONV_RATE').change(function () {
+            var overheadUsd = $('#OVERHEAD_BDT').val() / $('#CONV_RATE').val();
+            $('#OVERHEAD_USD').val(overheadUsd.toFixed(2));
+        });
+
+        $('#MONTHLY_COST').change(function() {
+            var overhead = $('#MONTHLY_COST').val() / $('#PROD').val();
+            $('#OVERHEAD_BDT').val(overhead.toFixed(0));
+        });
+        $('#PROD').change(function () {
+            var overhead = $('#MONTHLY_COST').val() / $('#PROD').val();
+            $('#OVERHEAD_BDT').val(overhead.toFixed(0));
+        });
+    </script>
+}

@@ -1,0 +1,21 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.COM_EX
+@using rptAdvanceDeliverySchedule = DenimERP.Reports.COM_EX.rptAdvanceDeliverySchedule
+
+@{
+    ViewData["Title"] = "Advance Delivery Schedule";
+}
+<h2>@ViewData["Title"] Report</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptAdvanceDeliverySchedule())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

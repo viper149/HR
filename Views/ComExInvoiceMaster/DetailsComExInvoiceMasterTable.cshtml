@@ -1,0 +1,47 @@
+﻿
+@model CreateComExInvoiceMasterViewModel
+
+@if (Model.ComExInvdetailses.Any())
+{
+    <h2 class="panel-title text-success"><i class="fa fa-eye"></i> Invoice Details</h2>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExInvdetails.INVNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExInvdetails.PiDetails.STYLE.FABCODENavigation.STYLE_NAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExInvdetails.ROLL)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExInvdetails.QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExInvdetails.RATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExInvdetails.AMOUNT)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComExInvdetails.REMARKS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                for (int i = 0; i < Model.ComExInvdetailses.Count; i++)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@Model.ComExInvdetailses[i].INVNO</td>
+                        <td>@Model.ComExInvdetailses[i].PiDetails?.STYLE?.FABCODENavigation?.STYLE_NAME</td>
+                        <td>@Model.ComExInvdetailses[i].ROLL</td>
+                        <td>@Model.ComExInvdetailses[i].QTY</td>
+                        <td>@Model.ComExInvdetailses[i].RATE</td>
+                        <td>@Model.ComExInvdetailses[i].AMOUNT</td>
+                        <td>@Model.ComExInvdetailses[i].REMARKS</td>
+                    </tr>
+                }
+                <tr>
+                    <td>Total</td>
+                    <td>:</td>
+                    <td colspan="2"></td>
+                    <td>@Model.ComExInvdetailses.Sum(e => e.QTY)</td>
+                    <td></td>
+                    <td colspan="2">@Model.ComExInvdetailses.Sum(e => e.AMOUNT)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

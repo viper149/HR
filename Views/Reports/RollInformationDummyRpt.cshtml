@@ -1,0 +1,21 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.FPrInspectionProcess.Reports
+@using rptRollInformation_dummy = DenimERP.Views.FPrInspectionProcess.Reports.rptRollInformation_dummy
+
+@{
+    ViewData["Title"] = "Roll Information Dummy Report";
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptRollInformation_dummy())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

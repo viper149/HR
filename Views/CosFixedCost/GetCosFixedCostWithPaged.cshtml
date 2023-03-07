@@ -1,0 +1,76 @@
+﻿
+@model COS_FIXEDCOST
+
+@{
+    ViewData["Title"] = "Cos Fixed Cost";
+    Layout = Layout;
+}
+
+@{
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> Fixed Cost
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li class="mr-2">
+                    <p>
+                        <a asp-action="CreateFixedCost" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                    </p>
+                </li>
+                <li class="mr-2">
+                    <p>
+                        <a asp-action="RGetFixedCostList" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i> Reports</a>
+                    </p>
+                </li>
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content table-responsive">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FCID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DYEINGCOST)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SAMPLECOST)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SIZINGCOST)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.STATUS)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.REMARKS)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.USERNAME)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Actions")
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+}
+
+@section Styles {
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true" src="~/js/cosFixedCost/GetCosFixedCostWithPaged.js"></script>
+}

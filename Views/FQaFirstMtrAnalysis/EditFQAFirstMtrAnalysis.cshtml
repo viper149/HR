@@ -1,0 +1,273 @@
+﻿@model FQAFirstMtrAnalysisMViewModel
+
+@{
+    ViewData["Title"] = "First Meter Analysis Information";
+}
+
+<h2><i class="fa fa-edit text-success" aria-hidden="true"></i> Update @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" enctype="multipart/form-data" role="form" asp-action="PostEditFQAFirstMtrAnalysis">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="panel-body row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Basic Information </h2>
+                    <hr />
+                </div>
+                <hr />
+            </div>
+
+            @Html.HiddenFor(e => e.FirstMtrAnalysisM.FMID)
+            @Html.HiddenFor(e => e.FirstMtrAnalysisM.EncryptedId)
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.TRANS_DATE" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.TRANS_DATE" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.TRANS_DATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.RPTNO" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.RPTNO" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="FirstMtrAnalysisM.RPTNO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.LENGTH_TRIAL" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.LENGTH_TRIAL" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.LENGTH_TRIAL" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.EMPID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FirstMtrAnalysisM.EMPID, new SelectList(Model.EmployeeList, "EMPID", "EMPNO"), "Select Employee", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FirstMtrAnalysisM.EMPID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Order Number</label>
+                <input type="text" class="form-control" id="orderNo" class="form-control" readonly="readonly">
+            </div>
+
+            <div class="col-lg-1 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Order Qty</label>
+                <input type="text" class="form-control" id="orderQty" class="form-control" readonly="readonly">
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.SETID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FirstMtrAnalysisM.SETID, new SelectList(Model.SetList, "SETID", "PROG_.PROG_NO"), "Select Set No.", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FirstMtrAnalysisM.SETID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Set Qty</label>
+                <input type="text" class="form-control" id="setQty" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.BEAMID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FirstMtrAnalysisM.BEAMID, new SelectList(Model.BeamList, "WV_BEAMID", "F_PR_SIZING_PROCESS_ROPE_DETAILS.W_BEAM.BEAM_NO"), "Select Beam No.", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FirstMtrAnalysisM.BEAMID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Length Beam</label>
+                <input type="text" class="form-control" id="lengthBeam" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <label for="">Length Trial</label>
+                <input type="text" class="form-control" id="lengthTrial" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Loom No.</label>
+                <input type="text" class="form-control" id="loomNo" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Std. reed</label>
+                <input type="text" class="form-control" id="stdReed" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Std. Dent</label>
+                <input type="text" class="form-control" id="stdDent" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Std. Reed Space</label>
+                <input type="text" class="form-control" id="stdReedSpace" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.ACT_DENT" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.ACT_DENT" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.ACT_DENT" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.ACT_REED" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.ACT_REED" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.ACT_REED" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.ACT_RS" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.ACT_RS" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.ACT_RS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">PI No.</label>
+                <input type="text" class="form-control" id="piNo" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Buyer</label>
+                <input type="text" class="form-control" id="buyer" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Brand</label>
+                <input type="text" class="form-control" id="brand" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Style No.</label>
+                <input type="text" class="form-control" id="style" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Fabric Weave</label>
+                <input type="text" class="form-control" id="fWeave" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Fabric Color</label>
+                <input type="text" class="form-control" id="fColor" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Total Ends</label>
+                <input type="text" class="form-control" id="totalEnds" class="form-control" readonly="readonly">
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Req. Width (On Table)</label>
+                <input type="text" class="form-control" id="reqWidth" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Req. Weight (Grey)</label>
+                <input type="text" class="form-control" id="reqWeight" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.ACT_WIDTH" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.ACT_WIDTH" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.ACT_WIDTH" class="text-danger"></span>
+                </div>
+            </div>
+            @*<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <label for="">Actual Width (On Loom)</label>
+                    <input type="text" class="form-control" id="" class="form-control" readonly="readonly">
+                </div>*@
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Grey EPI</label>
+                <input type="text" class="form-control" id="gEPI" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Grey PPI</label>
+                <input type="text" class="form-control" id="gPPI" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <label for="">Ref. Ratio Weft</label>
+                <input type="text" class="form-control" id="rrWeft" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.ACT_RATIO" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.ACT_RATIO" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.ACT_RATIO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.RPM" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.RPM" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.RPM" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.BYPASS_YARN" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.BYPASS_YARN" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.BYPASS_YARN" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="">Ref. Lot No. Weft</label>
+                <input type="text" class="form-control" id="refLotWeft" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="">Ref. Supplier Weft</label>
+                <input type="text" class="form-control" id="refSuppWeft" class="form-control" readonly="readonly">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="">Const Grey</label>
+                <input type="text" class="form-control" id="constGrey" class="form-control" readonly="readonly">
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-2">
+                <div class="form-group">
+                    <label asp-for="FirstMtrAnalysisM.REMARKS" class="control-label"></label>
+                    <input asp-for="FirstMtrAnalysisM.REMARKS" class="form-control" />
+                    <span asp-validation-for="FirstMtrAnalysisM.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="pl-1 col-12">
+                <div><h2 class="panel-title text-success">Weft Lot & Supplier Information</h2></div>
+                <hr />
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FQaFirstMtrAnalysisD.LOTID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FQaFirstMtrAnalysisD.LOTID, new SelectList(Model.LotList, "LOTID", "LOTNO"), "Select Lot", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FQaFirstMtrAnalysisD.LOTID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FQaFirstMtrAnalysisD.SUPPLIERID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FQaFirstMtrAnalysisD.SUPPLIERID, new SelectList(Model.SupplierList, "SUPPID", "SUPPNAME"), "Select Supplier", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FQaFirstMtrAnalysisD.SUPPLIERID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FQaFirstMtrAnalysisD.REMARKS" class="control-label"></label>
+                    <input asp-for="FQaFirstMtrAnalysisD.REMARKS" class="form-control" />
+                    <span asp-validation-for="FQaFirstMtrAnalysisD.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button id="btn_submit" class="btn btn-warning nextBtn pull-right" type="submit">Update</button>
+                <button class="btn btn-success pull-right" id="btnAdd" type="button">Add to List</button>
+                <a asp-action="GetFirstMtrAnalysisList" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive table-hover" id="fQaFirsstMtrAnalisysTable">
+                @await Html.PartialAsync($"~/Views/FQaFirstMtrAnalysis/FQaFirstMtrAnalysisDetailsPartialView.cshtml", Model)
+            </div>
+
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/FQaFirstMtrAnalysis/EditFQaFirstMtrAnalysis.js"></script>
+}

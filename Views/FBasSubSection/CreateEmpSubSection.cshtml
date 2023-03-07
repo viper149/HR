@@ -1,0 +1,41 @@
+﻿
+@model FBasSubSectionViewModel
+
+@{
+    ViewData["Title"] = $"Create Employee Sub-Section";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create Sub-Section</h2>
+<hr />
+
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <form asp-action="CreateEmpSubSection">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FBasSubSection.SSECNAME" class="control-label"></label>
+                <input asp-for="FBasSubSection.SSECNAME" class="form-control" />
+                <span asp-validation-for="FBasSubSection.SSECNAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FBasSubSection.SECID" class="control-label"></label>
+                @Html.DropDownListFor(c => c.FBasSubSection.SECID, new SelectList(Model.FBasSections, "SECID", "SECNAME"), "Select Section", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                <span asp-validation-for="FBasSubSection.SECID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FBasSubSection.REMARKS" class="control-label"></label>
+                <input asp-for="FBasSubSection.REMARKS" class="form-control" />
+                <span asp-validation-for="FBasSubSection.REMARKS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="GetEmpSubSection" class="btn btn-dark">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+}

@@ -1,0 +1,25 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.APCD
+@using DenimERP.Reports.Clearance
+@using DenimERP.Views.FPrFinishingProcess.Reports
+@using DenimERP.Views.FPrInspectionProcess.Reports
+@using DenimERP.Views.RndFabricInfo.Reports
+@using rptSecondBeamQuality = DenimERP.Reports.Clearance.rptSecondBeamQuality
+
+@{
+    ViewData["Title"] = "Second Beam Report";
+    Layout = Layout;
+}
+<h2>Second Beam Report</h2>
+
+@{
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptSecondBeamQuality())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

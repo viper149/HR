@@ -1,0 +1,23 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Views.FGenSIndent.Report
+@model string
+
+@{
+    ViewData["Title"] = "Indent Information (General Store)";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rpt_gs_indent(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

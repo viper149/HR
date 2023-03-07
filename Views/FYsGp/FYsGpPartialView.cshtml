@@ -1,0 +1,89 @@
+﻿@model FYsGpViewModel
+
+@if (Model.fysgpdetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+               
+                <th scope="col">@Html.DisplayName("Count Name")</th>
+                <th scope="col">@Html.DisplayName("Lot No")</th>
+                <th scope="col">@Html.DisplayName("Indent No")</th>
+                <th scope="col">@Html.DisplayName("Location Name")</th>
+                <th scope="col">@Html.DisplayName("Ledger Name")</th>
+                <th scope="col">@Html.DisplayName("Page No")</th>
+                <th scope="col">@Html.DisplayName("Qty Bags")</th>
+                <th scope="col">@Html.DisplayName("Qty KGS")</th>
+                <th scope="col">@Html.DisplayName("Stock Type")</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @for (var i = 0; i < Model.fysgpdetailsList.Count; i++)
+            {
+                <tr>
+                    <td><span class="expand-button"></span></td>
+
+                        <td>
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].TRNSID)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].COUNTID)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].LEDGER_ID)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].LOCATION_ID)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].LOTID)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].LOTID)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].INDSLID)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].PAGENO)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].QTY_BAGS)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].QTY_KGS)
+                            @Html.HiddenFor(model => model.fysgpdetailsList[i].STOCKID)
+                            @Html.HiddenFor(clc => clc.fysgpdetailsList[i].COUNT)
+                            @Model.fysgpdetailsList[i].COUNT?.COUNTNAME
+                        </td>
+
+                        <td>
+                            @Html.HiddenFor(clc => clc.fysgpdetailsList[i].LOT)
+                            @Model.fysgpdetailsList[i].LOT?.LOTNO
+                        </td>
+                    
+                        <td>
+                            @Html.HiddenFor(clc => clc.fysgpdetailsList[i].RCV)
+                            @Model.fysgpdetailsList[i].RCV?.YRCV.IND.INDSL.INDSLNO
+                        </td>
+
+                        <td>
+                            @Html.HiddenFor(clc => clc.fysgpdetailsList[i].LOCATION_)
+                            @Model.fysgpdetailsList[i].LOCATION_?.LOCNAME
+                        </td>
+
+                        <td>
+                            @Html.HiddenFor(clc => clc.fysgpdetailsList[i].LEDGER_)
+                            @Model.fysgpdetailsList[i].LEDGER_?.LEDNAME
+                        </td>
+
+                        <td>
+                            @Model.fysgpdetailsList[i].PAGENO
+                        </td>
+
+                        <td>
+                            @Model.fysgpdetailsList[i].QTY_BAGS
+                        </td>
+
+                        <td>
+                            @Model.fysgpdetailsList[i].QTY_KGS
+                        </td>
+
+                        <td>
+                            @Html.HiddenFor(clc => clc.fysgpdetailsList[i].STOCK)
+                            @Model.fysgpdetailsList[i].STOCK?.NAME
+                        </td>
+
+                        <td>
+                            <i class="fa fa-trash fa-lg text-danger" onclick="RemoveDS(@i)" aria-hidden="false"></i>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+    </table>
+}

@@ -1,0 +1,281 @@
+﻿@model LcInfoViewModel
+@{
+    ViewData["Title"] = "DetailsGspInfo";
+    Layout = Layout;
+}
+
+
+<h2><i class="fa fa-info-circle fa-lg text-info" aria-hidden="true"></i> GSP Details</h2>
+
+<hr />
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-body row">
+            <div class="pl-3 col-12">
+                <hr />
+                <h2 class="panel-title text-success">L/C Information</h2>
+                <hr />
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExInvoiceMaster.INVNO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExInvoiceMaster.INVNO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExLcInfo.FILENO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExLcInfo.FILENO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExInvoiceMaster.INVDATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExInvoiceMaster.INVDATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExInvoiceMaster.INVDURATION" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExInvoiceMaster.INVDURATION)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExLcInfo.LCNO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExLcInfo.LCNO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExInvoiceMaster.BUYER.BUYER_NAME" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExInvoiceMaster.BUYER.BUYER_NAME)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExInvoiceMaster.PDOCNO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExInvoiceMaster.PDOCNO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExInvoiceMaster.DOC_NOTES" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExInvoiceMaster.DOC_NOTES)
+                    </span>
+                </div>
+            </div>
+            <div class="pl-3 col-12">
+                <hr />
+                <h2 class="panel-title text-success">GSP Information</h2>
+                <hr />
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.GSPNO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.GSPNO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.EXPLCNO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.EXPLCNO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.EXPLCDATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.EXPLCDATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.LCAMDDATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.LCAMDDATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.EXPITEMS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.EXPITEMS)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.VCNO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.VCNO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.VCDATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.VCDATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.FABDESCRIPTION" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.FABDESCRIPTION)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.OTHERS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.OTHERS)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.SUBDATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.SUBDATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.RCVDDATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.RCVDDATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.ISSUEDATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.ISSUEDATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ComExGspInfo.REMARKS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.ComExGspInfo.REMARKS)
+                    </span>
+                </div>
+            </div>
+            <form id="form" class="col-6 row" role="form">
+                <div class="col-6">
+                    <div class="form-group">
+                        <strong>
+                            <label asp-for="ComExGspInfo.ISISSUE2BANK" class="control-label"></label>
+                        </strong>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="ComExGspInfo.ISISSUE2BANK" disabled />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="ComExGspInfo.ISISSUE2BANK" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <strong>
+                            <label asp-for="ComExGspInfo.ISGSPNA" class="control-label"></label>
+                        </strong>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="ComExGspInfo.ISGSPNA" disabled />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="ComExGspInfo.ISGSPNA" class="text-danger"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetGspInfoWithPaged" class="btn btn-dark" accesskey="b">Back to List</a>
+    @Html.ActionLink("Edit", "EditGspInfo", new { gspId = Model.ComExGspInfo.EncryptedId }, new { @class = "btn btn-warning" })
+</div>
+
+@section Scripts {
+<script type="text/javascript">
+    $(function () {
+        $("#form :input").prop("disabled", true);
+    });
+</script>
+}

@@ -1,0 +1,673 @@
+﻿@model PrWarpingProcessSlasherViewModel
+@{
+    ViewData["Title"] = "Create Warping Process(Slasher)";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Warping Process(Slasher)</h2>
+
+<hr />
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Step 1</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p><small>Finish</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" role="form" asp-action="EditWarpingProcessSlasher">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+
+                <div class="pl-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        <h2 class="panel-title text-success">Program/Set No.</h2>
+                    </div>
+                    <hr />
+                </div>
+                @Html.HiddenFor(c=>c.FPrWarpingProcessDwMaster.EncryptedId)
+                @Html.HiddenFor(c=>c.FPrWarpingProcessDwMaster.WARPID)
+                <span class="d-none" id="ballCount"></span>
+                <span class="d-none" id="programNo"></span>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.SETID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWarpingProcessDwMaster.SETID, new SelectList(Model.PlProductionSetDistributions, "SETID", "PROG_.PROG_NO"), "Select Prog./Set No", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.SETID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.BALL_NO" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwMaster.BALL_NO" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.BALL_NO" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.TIME_START" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwMaster.TIME_START" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.TIME_START" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.TIME_END" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwMaster.TIME_END" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.TIME_END" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.DEL_DATE" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwMaster.DEL_DATE" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.DEL_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.WARPLENGTH" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwMaster.WARPLENGTH" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.WARPLENGTH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Warp Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="wrpLength">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Set Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="setLength">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.WARPRATIO" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwMaster.WARPRATIO" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.WARPRATIO" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Warp Ratio</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="ratioWarp">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Style Name</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="style">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Order No</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="orderNo">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">P.O No.</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="po">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">P.O Length</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="poLength">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label class="control-label">Ref. Lot</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="refLot">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label class="control-label">Act. Supplier</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="supplier">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Order Type</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="orderType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Buyer</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="Buyer">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Ref. Color</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="color">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Yarn Type</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="yarnType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Warp Type</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="warpType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Loom Type</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="loomType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Type Process</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="processType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Program Type</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="programType">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Total Ends</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="totalEnds">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Act. Lot</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="lot">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwMaster.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwMaster.IS_DECLARE" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FPrWarpingProcessDwMaster.IS_DECLARE" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="FPrWarpingProcessDwMaster.IS_DECLARE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Total Yarn Consumption</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwYarnConsumDetails.COUNT_ID" class="control-label"></label>
+                        <select asp-for="FPrWarpingProcessDwYarnConsumDetails.COUNT_ID" class="form-control js-example-basic-single">
+                            <option value="">Select Count Name</option>
+                        </select>
+                        <span asp-validation-for="FPrWarpingProcessDwYarnConsumDetails.COUNT_ID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwYarnConsumDetails.BGT_KG" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwYarnConsumDetails.BGT_KG" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="FPrWarpingProcessDwYarnConsumDetails.BGT_KG" class="text-danger"></span>
+                    </div>
+                </div>
+                @*<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FPrWarpingProcessRopeYarnConsumDetails.BGT_KG_PER_SET" class="control-label"></label>
+                            <input asp-for="FPrWarpingProcessRopeYarnConsumDetails.BGT_KG_PER_SET" class="form-control" readonly="readonly" />
+                            <span asp-validation-for="FPrWarpingProcessRopeYarnConsumDetails.BGT_KG_PER_SET" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwYarnConsumDetails.CONSM" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwYarnConsumDetails.CONSM" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwYarnConsumDetails.CONSM" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwYarnConsumDetails.WASTE" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwYarnConsumDetails.WASTE" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwYarnConsumDetails.WASTE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwYarnConsumDetails.WASTE_PERCENTAGE" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwYarnConsumDetails.WASTE_PERCENTAGE" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="FPrWarpingProcessDwYarnConsumDetails.WASTE_PERCENTAGE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwYarnConsumDetails.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwYarnConsumDetails.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwYarnConsumDetails.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <button id="btnAddCount" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                    <a asp-action="GetWarpingProcessSlasherList" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="CountDetails">
+                    @await Html.PartialAsync("~/Views/FPrWarpingProcessSlasher/AddCountList.cshtml", Model)
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body row">
+                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-end">
+                        <div class="form-group">
+                            <button class="btn btn-outline-success" id="subGroup" type="button">Add Ball</button>
+                        </div>
+                    </div>*@
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Ball Info.</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.BALL_NO" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWarpingProcessDwDetails.BALL_NO, new SelectList(Model.BasBallInfos, "BALLID", "BALL_NO"), "Select Ball No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.BALL_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.BALL_LENGTH" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwDetails.BALL_LENGTH" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.BALL_LENGTH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.LINK_BALL_NO" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWarpingProcessDwDetails.LINK_BALL_NO, new SelectList(Model.BasBallInfos, "BALLID", "BALL_NO"), "Select Link Ball No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.LINK_BALL_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.LINK_BALL_LENGTH" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwDetails.LINK_BALL_LENGTH" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.LINK_BALL_LENGTH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.SHIFTNAME" class="control-label"></label>
+                        <select asp-for="FPrWarpingProcessDwDetails.SHIFTNAME" class="form-control js-example-basic-single">
+                            <option value="">Select Process No</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.SHIFTNAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.COUNTID" class="control-label"></label>
+                        <select asp-for="FPrWarpingProcessDwDetails.COUNTID" class="form-control js-example-basic-single">
+                            <option value="">Select Count Name</option>
+                        </select>
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.COUNTID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.MACHINE_ID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FPrWarpingProcessDwDetails.MACHINE_ID, new SelectList(Model.FPrWarpingMachines, "ID", "MACHINE_NAME"), "Select Machine No", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.MACHINE_ID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.BREAKS_ENDS" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwDetails.BREAKS_ENDS" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.BREAKS_ENDS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.ENDS_ROPE" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwDetails.ENDS_ROPE" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.ENDS_ROPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.LEADLINE" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwDetails.LEADLINE" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.LEADLINE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FPrWarpingProcessDwDetails.REMARKS" class="control-label"></label>
+                        <input asp-for="FPrWarpingProcessDwDetails.REMARKS" class="form-control" />
+                        <span asp-validation-for="FPrWarpingProcessDwDetails.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-success pull-right" type="submit" id="btn_submit">Create</button>
+                    <button id="btnAddBall" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetWarpingProcessSlasherList" class="btn btn-dark pull-right mr-2">Back to List</a>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="BallDetails">
+                    @await Html.PartialAsync("~/Views/FPrWarpingProcessSlasher/AddBallNoList.cshtml", Model)
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script type="text/javascript" asp-append-version="true">
+
+
+        function GetSetDetails(selectedVal) {
+
+            $("#FPrWarpingProcessDwYarnConsumDetails_CONSUM").val("");
+            $("#FPrWarpingProcessDwYarnConsumDetails_WASTE").val("");
+            $("#FPrWarpingProcessDwYarnConsumDetails_WASTE_PERCENTAGE").val("");
+            $("#FPrWarpingProcessRopeYarnConsumDetails_REMARKS").val("");
+            $("#FPrWarpingProcessDwYarnConsumDetails_BGT_KG").val("");
+
+            if (selectedVal === "") {
+                $("#style").text("");
+                $("#orderNo").text("");
+                $("#po").text("");
+                $("#poLength").text("");
+                $("#supplier").text("");
+                $("#orderType").text("");
+                $("#Buyer").text("");
+                $("#color").text("");
+                $("#yarnType").text("");
+                $("#warpType").text("");
+                $("#loomType").text("");
+                $("#processType").text("");
+                $("#programType").text("");
+                $("#totalEnds").text("");
+                $("#lot").text("");
+                endsRope.val("");
+                return false;
+            }
+
+            $("#ballCount").text(0);
+            $.ajax({
+                async: true,
+                cache: false,
+                data: { "setId": selectedVal },
+                type: "GET",
+                url: "/FPrWarpingProcessRopeMaster/GetDataBySetIdAsync",
+                success: function (data) {
+                    console.log(data);
+
+                    // Value Set to Read-only Field
+                    $("#style").text(data.piDetails.style.fabcodeNavigation.stylE_NAME);
+                    $("#orderNo").text(data.piDetails.sO_NO);
+                    $("#po").text(data.piDetails.pino);
+                    $("#poLength").text(data.plProductionSetDistribution.proG_.blK_PROG_.rndProductionOrder.ordeR_QTY_MTR);
+                    //$("#supplier").text(data.piDetails.style.fabcodeNavigation.stylE_NAME);
+                    $("#orderType").text(data.plProductionSetDistribution.proG_.blK_PROG_.rndProductionOrder.otype.otypename);
+                    $("#Buyer").text(data.piDetails.pimaster.buyer.buyeR_NAME);
+                    $("#color").text(data.piDetails.style.fabcodeNavigation.colorcodeNavigation !== null && data.piDetails.style.fabcodeNavigation.colorcodeNavigation.color);
+                    $("#yarnType").text(data.plProductionSetDistribution.proG_.yarnfor.yarnname);
+                    $("#warpType").text(data.plProductionSetDistribution.proG_.warP_TYPE);
+                    $("#loomType").text(data.piDetails.style.fabcodeNavigation.loom.looM_TYPE_NAME);
+                    $("#processType").text(data.plProductionSetDistribution.proG_.procesS_TYPE);
+                    $("#programType").text(data.plProductionSetDistribution.proG_.prograM_TYPE);
+                    $("#totalEnds").text(data.piDetails.style.fabcodeNavigation.totalends);
+                    $("#programNo").text(data.plProductionSetDistribution.proG_.proG_ID);
+
+                    // Value Set to Input Field
+                    $("#setLength").text(data.plProductionSetDistribution.proG_.seT_QTY);
+                    $("#wrpLength").text(data.plProductionSetDistribution.proG_.seT_QTY);
+                    $("#FPrWarpingProcessDwMaster_WARPLENGTH").val(data.plProductionSetDistribution.proG_.seT_QTY);
+
+                    var accLot = "";
+                    $.each(data.plProductionSetDistribution.proG_.pL_BULK_PROG_YARN_D,
+                        function (id, option) {
+                            accLot += option.lot.lotno;
+                            if (option.lot.brand != null) {
+                                accLot += ": " + option.lot.brand;
+                            }
+                            accLot += " + ";
+                        });
+
+                    $("#lot").text(accLot.substring(0, (accLot.lastIndexOf("+"))));
+
+                    var countIdConsum = $("#FPrWarpingProcessDwYarnConsumDetails_COUNT_ID");
+                    var countIdBall = $("#FPrWarpingProcessDwDetails_COUNTID");
+
+                    countIdConsum.html('');
+                    countIdBall.html('');
+                    countIdBall.append('<option value="" selected>Select Count Name</option>');
+                    countIdConsum.append('<option value="" selected>Select Count Name</option>');
+
+                    $.each(data.plProductionSetDistribution.proG_.blK_PROG_.rndProductionOrder.so.style.fabcodeNavigation.rnD_FABRIC_COUNTINFO,
+                        function (id, option) {
+                            if (option.yarnfor === 1) {
+                                countIdConsum.append($('<option></option>').val(option.trnsid).html(option.count.countname));
+                                countIdBall.append($('<option></option>').val(option.trnsid).html(option.count.countname));
+                            }
+                        });
+                    $("#ratioWarp").text(data.plProductionSetDistribution.subgroup.ratio);
+                    endsRope.val((totalEnds.text() / $("#FPrWarpingProcessDwMaster_WARPRATIO").val()).toFixed(0));
+
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+        $(function () {
+            GetSetDetails($("#FPrWarpingProcessDwMaster_SETID").val());
+
+            var consum = $("#FPrWarpingProcessDwYarnConsumDetails_CONSM");
+            var waste = $("#FPrWarpingProcessDwYarnConsumDetails_WASTE");
+            var ratioWarp = $("#ratioWarp");
+            var totalEnds = $("#totalEnds");
+            var endsRope = $("#FPrWarpingProcessDwDetails_ENDS_ROPE");
+            var wastePercentage = $("#FPrWarpingProcessDwYarnConsumDetails_WASTE_PERCENTAGE");
+            var warpLengthPerSet = $("#FPrWarpingProcessDwMaster_WARPLENGTH");
+            var warpLenAct = $("#warpLenAct");
+            var ballLength = $("#FPrWarpingProcessDwDetails_BALL_LENGTH");
+
+            consum.on("change",
+                function () {
+                    var result = getWastePercentage(consum.val(), waste.val());
+                    wastePercentage.val(result.toFixed(3));
+                });
+
+            waste.on("change",
+                function () {
+                    var result = getWastePercentage(consum.val(), waste.val());
+                    wastePercentage.val(result.toFixed(3));
+                });
+
+            ballLength.on("focus",
+                function () {
+                    //console.log(warpLength.val());
+                    ballLength.val(warpLengthPerSet.val());
+                });
+
+            $("#FPrWarpingProcessDwMaster_SETID").on('change',
+                function () {
+                    var selectedVal = $(this).val();
+                    GetSetDetails(selectedVal);
+                });
+
+
+            $("#FPrWarpingProcessDwYarnConsumDetails_COUNT_ID").on('change',
+                function () {
+                    if ($("#FPrWarpingProcessDwMaster_SETID").val() === "") {
+                        toastr.error("Please Select Program/Set No", "Error");
+                        $("#FPrWarpingProcessDwYarnConsumDetails_COUNT_ID").val("");
+                        return false;
+                    }
+
+                    if ($("#FPrWarpingProcessDwYarnConsumDetails_COUNT_ID").val() === "") {
+                        return false;
+                    }
+
+                    var selectedVal = $(this).val();
+                    $("#FPrWarpingProcessDwYarnConsumDetails_CONSUM").val("");
+                    $("#FPrWarpingProcessDwYarnConsumDetails_WASTE").val("");
+                    $("#FPrWarpingProcessDwYarnConsumDetails_WASTE_PERCENTAGE").val("");
+                    $("#FPrWarpingProcessRopeYarnConsumDetails_REMARKS").val("");
+
+
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: { "orderNo": $("#programNo").text(), "CountId": selectedVal, "warpLength": $("#wrpLength").text() },
+                        type: "GET",
+                        url: "/RndProductionOrder/GetPoDetailsForCountBudget",
+                        success: function (data) {
+                            console.log(data);
+                            //var programCount = $("#programCount").text();
+                            //var reqKgPerSet = data.toFixed(2);
+                            // Value Set to input Field
+                            //$("#FPrWarpingProcessRopeYarnConsumDetails_BGT_KG_PER_SET").val(reqKgPerSet);
+                            $("#FPrWarpingProcessDwYarnConsumDetails_BGT_KG").val(data.toFixed(0));
+
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                });
+
+            $("#btnAddBall").on('click',
+                function () {
+                    if ($('#FPrWarpingProcessDwMaster_SETID').val() === "") {
+                        toastrNotification("Error: Please Select Program/Set No", "error");
+                        return false;
+                    }
+
+                    if ($('#FPrWarpingProcessRopeBallDetails_BALL_ID_FK').val() === "") {
+                        toastrNotification("Error: Please Select Ball No.", "error");
+                        return false;
+                    }
+
+                    if (parseInt($("#ballCount").text()) >= parseInt($("#FPrWarpingProcessDwMaster_WARPRATIO").val())) {
+                        toastrNotification("Error: You have added maximum number of ball for this set.", "error");
+                        return false;
+                    }
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: $('#form').serialize(),
+                        type: "POST",
+                        url: "/FPrWarpingProcessSlasher/AddBallNoList",
+                        success: function (partialView, status, xhr) {
+                            var ballCount = xhr.getResponseHeader("BallCount");
+                            BallAlerts(ballCount);
+                            $('#BallDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                });
+
+            function BallAlerts(ballCount) {
+                var noOfBall = $("#FPrWarpingProcessDwMaster_WARPRATIO").val();
+                $("#ballCount").text(ballCount);
+                var ballLeft = noOfBall - ballCount;
+                toastrNotification('You Need to Add ' + ballLeft + ' More Ball(s)', 'info');
+            }
+
+            $("#btnAddCount").on('click',
+                function () {
+                    $.ajax({
+                        async: true,
+                        cache: false,
+                        data: $('#form').serialize(),
+                        type: "POST",
+                        url: "/FPrWarpingProcessSlasher/AddCountList",
+                        success: function (partialView, status, xhr) {
+                            $('#CountDetails').html(partialView);
+                        },
+                        error: function (e) {
+                            console.log(e);
+                        }
+                    });
+                });
+        });
+
+        function getWastePercentage(consum, waste) {
+            var result = (waste * 100) / consum;
+            return result;
+        }
+    </script>
+}

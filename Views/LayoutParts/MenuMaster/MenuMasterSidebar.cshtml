@@ -1,0 +1,224 @@
+﻿@using DenimERP.ServiceInterfaces.MenuMaster
+@using DenimERP.Models
+@model SignInManager<DenimERP.Models.ApplicationUser>
+@inject IMenuMaster Menus
+
+@*
+<div class="col-md-3 left_col">
+    <div class="left_col">
+
+        <div class="navbar nav_title">
+            <a asp-action="Dashboard" asp-controller="Home" class="site_title">
+                <img asp-append-version="true" src="~/favicon.ico" style="width: 2.5em;" alt="" />
+                <span class="text-capitalize h5 text-gradient">@Menus.GetCompayInfo(@Model.UserManager.GetUserAsync(User).Result.BID??0).Result.COMPANY_NAME.ToLower()</span>
+            </a>
+        </div>
+
+
+        <div class="clearfix"></div>
+
+        @if (Model.IsSignedIn(User))
+        {
+            <a asp-controller="Account" asp-action="Profile">
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        @if (!string.IsNullOrEmpty(Model.UserManager.GetUserAsync(User).Result.PhotoPath))
+                        {
+                            <img alt="@Model.UserManager.GetUserAsync(User).Result.UserName" asp-append-version="true" class="img-circle profile_img" src="/Files/ProfilePhotos?fileName=@Model.UserManager.GetUserAsync(User).Result.PhotoPath">
+                        }
+                        else
+                        {
+                            <img alt="no-image" asp-append-version="true" class="img-circle profile_img" src="/images/img.jpg">
+                        }
+                    </div>
+                    <div class="profile_info">
+                        <span>Welcome,</span>
+                        <h2 class="text-gradient">@User.Identity.Name</h2>
+                    </div>
+                </div>
+            </a>
+            <a class="btn btn-warning border fa fa-clock-o d-flex justify-content-center ml-1 mt-1">
+                <span id="time-part"></span>
+                <span class="fa fa-stop-circle-o" id="stop-interval" title="Stop Clock"></span>
+            </a>
+        }
+
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+                <div class="ml-1 mr-1 d-flex justify-content-center">
+                    <input class="form-control rounded" name="menuSearch" placeholder="Search menus [Case Sensitive]" title="Search menus [Case Sensitive]" type="search">
+                </div>
+
+                <ul class="nav side-menu" id="myMenu">
+                    <li>
+                        <a><i class="fa fa-home"></i> Home <span class="fa fa-hand-o-left"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a></li>
+                        </ul>
+                    </li>
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            var menuMasters = (List<MenuMaster>) await Menus.GetMenuMaster(await Model.UserManager.GetRolesAsync(await Model.UserManager.GetUserAsync(User)));
+
+                            if (menuMasters.Any())
+                            {
+                                @foreach (var menuNames in menuMasters.Where(n => n.Parent_MenuID.Equals("*")))
+                                {
+                                    <li>
+                                        <a>@Html.Raw(@menuNames.ParentMenuIcon) @menuNames.MenuName <span class="fa fa-hand-o-left"></span></a>
+                                        <ul class="nav child_menu">
+                                            @foreach (var subMenu1 in menuMasters.Where(n => n.Parent_MenuID.Equals(@menuNames.MenuID)))
+                                            {
+                                                <li>
+                                                    @{
+                                                        if (menuMasters.Any(n => n.Parent_MenuID.Equals(@subMenu1.MenuID)))
+                                                        {
+                                                            @Html.Raw($"<a>{subMenu1.ParentMenuIcon}{subMenu1.MenuName} <span class=\"fa fa-hand-o-left\"></span></a>")
+                                                        }
+                                                        else
+                                                        {
+                                                            <a asp-controller="@subMenu1.MenuURL" asp-action="@subMenu1.MenuFileName">@subMenu1.MenuName</a>
+                                                        }
+                                                    }
+
+                                                    <ul class="nav child_menu">
+                                                        @foreach (var subMenu2 in menuMasters.Where(n => n.Parent_MenuID.Equals(@subMenu1.MenuID)))
+                                                        {
+                                                            <li><a asp-area="" asp-controller=@subMenu2.MenuURL asp-action=@subMenu2.MenuFileName>@subMenu2.MenuName</a></li>
+                                                        }
+                                                    </ul>
+                                                </li>
+
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <li>
+                                <a><i class="fa fa-edit"></i> Forgotten <span class="fa fa-chevron-left"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a asp-area="" asp-controller="Account" asp-action="ForgotPassword">Reset password</a></li>
+                                </ul>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar-footer hidden-small">
+            <a class="pull-right" data-toggle="tooltip" data-placement="top" title="" asp-action="Logout" asp-controller="Account" data-original-title="Logout">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div>*@
+
+
+
+
+<nav class="pcoded-navbar">
+    <div class="pcoded-inner-navbar main-menu">
+        @*<div class="pcoded-navigatio-lavel">Dashboard</div>*@
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="active">
+                <a asp-controller="Home" asp-action="Dashboard">
+                    <span class="pcoded-micon"><i class="fa fa-home"></i></span>
+                    <span class="pcoded-mtext">Home</span>
+                </a>
+            </li>
+        </ul>
+        @*<div class="pcoded-navigatio-lavel">Tables</div>*@
+        @*<ul class="pcoded-item pcoded-left-item">
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="feather icon-server"></i></span>
+                    <span class="pcoded-mtext">Data Table Extensions</span>
+                </a>
+                <ul class="pcoded-submenu">
+
+                    <li class="pcoded-hasmenu">
+                        <a href="javascript:void(0)">
+                            <span class="pcoded-mtext">Button</span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                            <li class=" ">
+                                <a href="dt-ext-basic-buttons.htm">
+                                    <span class="pcoded-mtext">Basic Button</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>*@
+
+        <ul class="pcoded-item pcoded-left-item">
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    var menuMasters = (List<MenuMaster>)await Menus.GetMenuMaster(await Model.UserManager.GetRolesAsync(await Model.UserManager.GetUserAsync(User)));
+
+                    if (menuMasters.Any())
+                    {
+                        @foreach (var menuNames in menuMasters.Where(n => n.Parent_MenuID.Equals("*")))
+                        {
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon">@Html.Raw(@menuNames.ParentMenuIcon)</span>
+                                    <span class="pcoded-mtext"> @menuNames.MenuName</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    @foreach (var subMenu1 in menuMasters.Where(n => n.Parent_MenuID.Equals(@menuNames.MenuID)))
+                                    {
+                                        if (menuMasters.Any(n => n.Parent_MenuID.Equals(@subMenu1.MenuID)))
+                                        {
+                                            <li class="pcoded-hasmenu">
+                                                @{
+                                                    @Html.Raw($"<a href='javascript:void(0)'><span class=\"pcoded-mtext\">{subMenu1.ParentMenuIcon}{subMenu1.MenuName}</span></a>")
+                                                }
+                                                
+                                                <ul class="pcoded-submenu">
+                                                    @foreach (var subMenu2 in menuMasters.Where(n => n.Parent_MenuID.Equals(@subMenu1.MenuID)))
+                                                    {
+                                                        <li class=" ">
+                                                            <a asp-area="" asp-controller=@subMenu2.MenuURL asp-action=@subMenu2.MenuFileName><span class="pcoded-mtext">@subMenu2.MenuName</span></a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class=" ">
+                                                <a asp-controller="@subMenu1.MenuURL" asp-action="@subMenu1.MenuFileName">
+                                                    <span class="pcoded-mtext">@subMenu1.MenuName</span>
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                }
+                else
+                {
+                    <li>
+                        <a><i class="fa fa-edit"></i> Forgotten <span class="fa fa-chevron-left"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a asp-area="" asp-controller="Account" asp-action="ForgotPassword">Reset password</a></li>
+                        </ul>
+                    </li>
+                }
+            }
+        </ul>
+
+    </div>
+</nav>

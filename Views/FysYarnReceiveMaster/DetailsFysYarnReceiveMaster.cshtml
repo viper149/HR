@@ -1,0 +1,165 @@
+﻿
+@model YarnReceiveViewModel
+
+@{
+    ViewData["Title"] = "Details Yarn Receive";
+    Layout = Layout;
+}
+
+@{
+    if (Model.FYsYarnReceiveMaster != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="m-b-md">
+                            <h2 class="text-white btn btn-info">@Html.DisplayNameFor(e => e.FYsYarnReceiveMaster.YRCVDATE) : [ @Html.DisplayFor(e => e.FYsYarnReceiveMaster.YRCVDATE) ]</h2>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div class="row details">
+                    <div class="col-12">
+                        <div class="custom-control custom-checkbox was-validated">
+                            <input type="checkbox" class="custom-control-input" asp-for="FYsYarnReceiveMaster.ISRETURNABLE" required>
+                            <label asp-for="FYsYarnReceiveMaster.ISRETURNABLE" class="custom-control-label pt-1"></label>
+                            <div class="invalid-feedback">This item is not for returnable.</div>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.RCVT.RCVTYPE" class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.RCVT.RCVTYPE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.RCVFROM" Class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.RCVFROM)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.IND.INDNO" class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.IND.INDNO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.CHALLANNO" Class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.CHALLANNO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.CHALLANDATE" Class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.CHALLANDATE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.TUCK_NO" Class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.TUCK_NO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.G_ENTRY_NO" Class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.G_ENTRY_NO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.G_ENTRY_DATE" Class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.G_ENTRY_DATE)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.COMMENTS" Class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.COMMENTS)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="FYsYarnReceiveMaster.REMARKS" Class="control-label font-weight-bold"></label>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.FYsYarnReceiveMaster.REMARKS)
+                            </span>
+                        </div>
+                    </div>
+
+                    @if (Model.FYsYarnReceiveMaster.F_YS_YARN_RECEIVE_DETAILS.Any())
+                    {
+                        <div class="col-12 table-responsive">
+                            <h2 class="panel-title text-success"><i class="fa fa-truck fa-flip-horizontal"></i> Receive Details</h2>
+                            <table class="table table-hover">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.TRNSDATE)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.PROD.COUNTNAME)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.INV_QTY)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.BasYarnLotinfo.LOTNO)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.BAG_QTY)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.RCV_QTY)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.REJ_QTY)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.LOCATION.LOCNAME)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.LEDGER.LEDNAME)</th>
+                                        <th scope="col">@Html.DisplayNameFor(model => model.FYsYarnReceiveDetail.PAGENO)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @{
+                                        foreach (var item in Model.FYsYarnReceiveMaster.F_YS_YARN_RECEIVE_DETAILS.Select((value, index) => new { index, value }))
+                                        {
+                                            <tr>
+                                                <td>@(item.index + 1) </td>
+                                                <td>@Html.DisplayFor(modelItem => item.value.TRNSDATE)</td>
+                                                <td>@item.value.PROD?.RND_COUNTNAME</td>
+                                                <td>@item.value.INV_QTY</td>
+                                                <td>@item.value.BasYarnLotinfo?.LOTNO</td>
+                                                <td>@item.value.BAG_QTY</td>
+                                                <td>@item.value.RCV_QTY</td>
+                                                <td>@item.value.REJ_QTY</td>
+                                                <td>@item.value.LOCATION?.LOCNAME</td>
+                                                <td>@item.value.LEDGER?.LEDNAME</td>
+                                                <td>@item.value.PAGENO</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-md-12">
+                    <a asp-action="EditYarnReceive" asp-route-yrcvId="@Model.FYsYarnReceiveMaster.EncryptedId" class="btn btn-warning pull-right">Edit</a>
+                    <a class="btn btn-dark pull-right mt-2" asp-action="GetReceiveMaster">Back to List</a>
+                </div>
+            </div>
+        </div>
+    }
+}

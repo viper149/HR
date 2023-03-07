@@ -1,0 +1,99 @@
+﻿
+@model CreateFSampleFabricRcvMViewModel
+
+@if (Model.FSampleFabricRcvDs.Any())
+{
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th width="50">#</th>
+                <th width="70">@Html.DisplayNameFor(e => e.FSampleFabricRcvD.BARCODE)</th>
+                <th width="30"><i class="fa fa-edit text-warning"></i> @Html.DisplayNameFor(e => e.FSampleFabricRcvD.DEV_NO)</th>
+                <th width="200">@Html.DisplayNameFor(e => e.FSampleFabricRcvD.SITEM.NAME)</th>
+                <th width="150">@Html.DisplayNameFor(e => e.FSampleFabricRcvD.FABCODENavigation.STYLE_NAME)</th>
+                <th width="150">@Html.DisplayNameFor(e => e.FSampleFabricRcvD.SET.PROG_.PROG_NO)</th>
+                <th width="200">@Html.DisplayNameFor(e => e.FSampleFabricRcvD.FAB_GRADE)</th>
+                <th width="100"><i class="fa fa-edit text-warning"></i> @Html.DisplayNameFor(e => e.FSampleFabricRcvD.QTY)</th>
+                <th width="100"><i class="fa fa-edit text-warning"></i> @Html.DisplayNameFor(e => e.FSampleFabricRcvD.ROLLNO)</th>
+                <th width="100"><i class="fa fa-edit text-warning"></i> @Html.DisplayNameFor(e => e.FSampleFabricRcvD.REMARKS)</th>
+                <th width="50">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FSampleFabricRcvDs.Count; i++)
+            {
+                <tr>
+                    <td>@Html.Raw(Model.FSampleFabricRcvDs[i].TRNSID > 0 ? $"<i class=\"fa fa-database text-danger\" aria-hidden=\"true\"></i> {i + 1}" : $"<i class=\"fa fa-plus-circle text-success\" aria-hidden=\"true\"></i> {i + 1}")</td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleFabricRcvDs[i].TRNSID)
+                        @Html.HiddenFor(e => e.FSampleFabricRcvDs[i].BARCODE)
+                        @Model.FSampleFabricRcvDs[i].BARCODE
+                    </td>
+                    <td>
+                        <input asp-for="FSampleFabricRcvDs[i].DEV_NO" class="form-control" />
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.DropDownListFor(lc => lc.FSampleFabricRcvDs[i].SITEMID, new SelectList(Model.FSampleItemDetailses, "SITEMID", "NAME"), "Select an Item Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="FSampleFabricRcvDs[i].SITEMID" class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td>
+                        @Html.HiddenFor(e => e.FSampleFabricRcvDs[i].FABCODE)
+                        @*@Model.FSampleFabricRcvDs[i].FABCODENavigation?.STYLE_NAME*@
+                        @Model.FSampleFabricRcvDs[i].StyleNo
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.DropDownListFor(lc => lc.FSampleFabricRcvDs[i].SETID, new SelectList(Model.PlProductionSetdistributions, "SETID", "PROG_.PROG_NO"), "Select a Program/Set No.", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="FSampleFabricRcvDs[i].SETID" class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select asp-for="FSampleFabricRcvDs[i].FAB_GRADE" class=" form-control height17 p-0 js-example-basic-single">
+                                <option value="">Select Grade</option>
+                                <option value="A" selected="selected">A</option>
+                                <option value="A2">A2</option>
+                            </select>
+                            <input class="" type="text" id="purpose3" style="border: none; width: 1px; height: 1px;" />
+                            <span asp-validation-for="FSampleFabricRcvDs[i].FAB_GRADE" class="text-danger"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <input asp-for="FSampleFabricRcvDs[i].QTY" class="form-control" />
+                    </td>
+                    <td>
+                        <input asp-for="FSampleFabricRcvDs[i].ROLLNO" class="form-control" />
+                    </td>
+                    <td>
+                        <input asp-for="FSampleFabricRcvDs[i].REMARKS" class="form-control" />
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="removeFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Empty!</strong> Please add data to see the list.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<script>
+    try {
+        $(".js-example-basic-single").select2({});
+    } catch (e) {
+        document.addEventListener('DOMContentLoaded',
+            () => {
+                $(".js-example-basic-single").select2({});
+            });
+    }
+</script>

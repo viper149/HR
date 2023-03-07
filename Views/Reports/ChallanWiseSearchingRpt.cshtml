@@ -1,0 +1,25 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.COM_EX
+@using rptChallanWiseSearching = DenimERP.Reports.COM_EX.rptChallanWiseSearching
+
+
+@model int
+
+@{
+    ViewData["Title"] = "Challan Wise Searching Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptChallanWiseSearching())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

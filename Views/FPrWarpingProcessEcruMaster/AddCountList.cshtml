@@ -1,0 +1,102 @@
+﻿@model FPrWarpingProcessEkruMasterViewModel
+
+@if (Model.FPrWarpingProcessEcruYarnConsumDetailsList.Any())
+{
+    <table class="table mt-2 table-condensed" style="border-collapse:collapse;" id="partialView">
+        <thead id="thead">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruYarnConsumDetailsList.FirstOrDefault().COUNT_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruYarnConsumDetailsList.FirstOrDefault().BGT_KG)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.FPrWarpingProcessRopeYarnConsumDetailsList.FirstOrDefault().BGT_KG_PER_SET)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruYarnConsumDetailsList.FirstOrDefault().CONSM)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruYarnConsumDetailsList.FirstOrDefault().WASTE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruYarnConsumDetailsList.FirstOrDefault().WASTE_PERCENTAGE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FPrWarpingProcessEcruYarnConsumDetailsList.FirstOrDefault().REMARKS)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FPrWarpingProcessEcruYarnConsumDetailsList.Count; i++)
+            {
+                <tr>
+                    <td><span class="expand-button"></span></td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruYarnConsumDetailsList[i].CONSM_ID)
+                        @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruYarnConsumDetailsList[i].COUNT_ID)
+                        @Model.FPrWarpingProcessEcruYarnConsumDetailsList[i].COUNT_?.COUNT?.COUNTNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruYarnConsumDetailsList[i].BGT_KG)
+                        @Model.FPrWarpingProcessEcruYarnConsumDetailsList[i].BGT_KG
+                    </td>
+                    @*<td>
+                            @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruYarnConsumDetailsList[i].BGT_KG_PER_SET)
+                            @Model.FPrWarpingProcessEcruYarnConsumDetailsList[i].BGT_KG_PER_SET
+                        </td>*@
+                    <td>
+                        @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruYarnConsumDetailsList[i].CONSM)
+                        @Model.FPrWarpingProcessEcruYarnConsumDetailsList[i].CONSM*@
+                        <input class="form-control" asp-for="FPrWarpingProcessEcruYarnConsumDetailsList[i].CONSM"/>
+                    </td>
+                    <td>
+                        @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruYarnConsumDetailsList[i].WASTE)
+        @Model.FPrWarpingProcessEcruYarnConsumDetailsList[i].WASTE*@
+
+                        <input class="form-control" asp-for="FPrWarpingProcessEcruYarnConsumDetailsList[i].WASTE" />
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FPrWarpingProcessEcruYarnConsumDetailsList[i].WASTE_PERCENTAGE)
+                        @Model.FPrWarpingProcessEcruYarnConsumDetailsList[i].WASTE_PERCENTAGE
+                    </td>
+                    <td>
+                        @*@Html.HiddenFor(clc => clc.FPrWarpingProcessEcruYarnConsumDetailsList[i].REMARKS)
+        @Model.FPrWarpingProcessEcruYarnConsumDetailsList[i].REMARKS*@
+
+                        <input class="form-control" asp-for="FPrWarpingProcessEcruYarnConsumDetailsList[i].REMARKS" />
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveCountFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveCountFromList(removeIndexValue) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/FPrWarpingProcessEcruMaster/RemoveCountFromList',
+            success: function (partialView, status, xhr) {
+                $('#CountDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>

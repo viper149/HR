@@ -1,0 +1,157 @@
+﻿
+@model AccLocalDoMasterViewModel
+
+@{
+    ViewData["Title"] = "Account DO (Local)";
+}
+
+<div class="container-fluid">
+    <h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> <ins>Create @ViewData["Title"]</ins></h2>
+    <form id="form" role="form" asp-action="CreateAccDoMaster">
+        <div class="panel panel-default">
+            <div class="panel-body row">
+
+                <div class="col-12 p-0">
+                    <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 float-left">
+                        <div class="form-group">
+                            <input asp-for="ACC_LOCAL_DOMASTER.IS_COMPENSATION" class="form-control js-switch js-check-change" />
+                            <label asp-for="ACC_LOCAL_DOMASTER.IS_COMPENSATION" class="control-label"></label>
+                            <span asp-validation-for="ACC_LOCAL_DOMASTER.IS_COMPENSATION" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DOMASTER.DODATE" class="control-label"></label>
+                        <input asp-for="ACC_LOCAL_DOMASTER.DODATE" class="form-control" />
+                        <span asp-validation-for="ACC_LOCAL_DOMASTER.DODATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DOMASTER.DONO" class="control-label"></label>
+                        <input asp-for="ACC_LOCAL_DOMASTER.DONO" class="form-control" id="doNo" readonly />
+                        <span asp-validation-for="ACC_LOCAL_DOMASTER.DONO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DOMASTER.REMARKS" class="control-label"></label>
+                        <input asp-for="ACC_LOCAL_DOMASTER.REMARKS" class="form-control" />
+                        <span asp-validation-for="ACC_LOCAL_DOMASTER.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">For Order</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DOMASTER.SCID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.ACC_LOCAL_DOMASTER.SCID, new SelectList(Model.COM_EX_SCINFOs, "SCID", "SCNO"), "Select Order No", htmlAttributes: new { @class = "form-control js-example-data-ajax", @id = "scNo" })
+                        <span asp-validation-for="ACC_LOCAL_DOMASTER.SCID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DOMASTER.LC.LCNO" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.ACC_LOCAL_DOMASTER.LCID, new SelectList(Model.ComExLcinfos, "LCID", "LCNO"), "Select A LC", htmlAttributes: new { @class = "form-control js-example-data-ajax" })
+                        <span asp-validation-for="ACC_LOCAL_DOMASTER.LCID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Order Date</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="scDate">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Seller</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="seller">
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Buyer</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="buyer">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label">Address</label>
+                        <span class="custom-form-control-bg form-control bg-e9ecef" id="address">
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success">Style Information</h2>
+                    <hr />
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DODETAILS.STYLE.STYLE.STYLENAME" class="control-label"></label>
+                        @Html.DropDownListFor(e => e.ACC_LOCAL_DODETAILS.STYLEID, new SelectList(Model.COM_EX_SCDETAILS, "TRNSID", "STYLE.STYLENAME"), "Select Style", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "styleID" })
+                        <span asp-validation-for="ACC_LOCAL_DODETAILS.STYLEID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DODETAILS.QTY" class="control-label"></label>
+                        <input asp-for="ACC_LOCAL_DODETAILS.QTY" class="form-control" id="qty"/>
+                        <span asp-validation-for="ACC_LOCAL_DODETAILS.QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DODETAILS.RATE" class="control-label"></label>
+                        <input asp-for="ACC_LOCAL_DODETAILS.RATE" class="form-control" id="rate"/>
+                        <span asp-validation-for="ACC_LOCAL_DODETAILS.RATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DODETAILS.AMOUNT" class="control-label"></label>
+                        <input asp-for="ACC_LOCAL_DODETAILS.AMOUNT" class="form-control" readonly="readonly" id="amount" />
+                        <span asp-validation-for="ACC_LOCAL_DODETAILS.AMOUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOCAL_DODETAILS.REMARKS" class="control-label"></label>
+                        <input asp-for="ACC_LOCAL_DODETAILS.REMARKS" class="form-control" id="remarks" />
+                        <span asp-validation-for="ACC_LOCAL_DODETAILS.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button accesskey="c" class="btn btn-success pull-right" type="submit">Create</button>
+                    <button class="btn btn-success pull-right mr-2" id="btnAdd" type="button">Add</button>
+                    <a accesskey="b" asp-action="GetAccDoMasterWithPaged" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+                <div class="col-12 table-hover table-responsive" id="doDetails"></div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/switchery/switchery.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/lib/switchery/switchery.js"></script>
+    <script asp-append-version="true" src="~/js/AccLocalDoMaster/CreateAccLocalDoMaster.js"></script>
+}

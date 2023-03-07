@@ -1,0 +1,67 @@
+﻿
+
+
+@model ComImpCnfInfoViewModel
+
+@{
+    ViewData["Title"] = "CNF Information";
+}
+
+<h2><i class="fa fa-edit text-warning" aria-hidden="true"></i> Edit @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+
+    <form asp-action="PostEditComImpCnfInfo">
+        <div class="panel-body row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @Html.HiddenFor(e => e.ComImpCnfinfo.CNFID)
+            @Html.HiddenFor(e => e.ComImpCnfinfo.EncryptedId)
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpCnfinfo.CNFNAME" class="control-label"></label>
+                    <input asp-for="ComImpCnfinfo.CNFNAME" class="form-control" />
+                    <span asp-validation-for="ComImpCnfinfo.CNFNAME" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpCnfinfo.ADDRESS" class="control-label"></label>
+                    <input asp-for="ComImpCnfinfo.ADDRESS" class="form-control" />
+                    <span asp-validation-for="ComImpCnfinfo.ADDRESS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpCnfinfo.C_PERSON" class="control-label"></label>
+                    <input asp-for="ComImpCnfinfo.C_PERSON" class="form-control" />
+                    <span asp-validation-for="ComImpCnfinfo.C_PERSON" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpCnfinfo.CELL_NO" class="control-label"></label>
+                    <input asp-for="ComImpCnfinfo.CELL_NO" class="form-control" />
+                    <span asp-validation-for="ComImpCnfinfo.CELL_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpCnfinfo.REMARKS" class="control-label"></label>
+                    <input asp-for="ComImpCnfinfo.REMARKS" class="form-control" />
+                    <span asp-validation-for="ComImpCnfinfo.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group pull-right">
+                    <a asp-action="GetComImpCnfInfo" class="btn btn-dark" accesskey="b">Back to List</a>
+                    <input type="submit" value="Update" class="btn btn-warning" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

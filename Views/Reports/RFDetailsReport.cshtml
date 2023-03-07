@@ -1,0 +1,22 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.RndFabricInfo.Reports
+@using rpt_FDR = DenimERP.Views.RndFabricInfo.Reports.rpt_FDR
+
+@{
+    ViewData["Title"] = "Fabrications Details";
+    Layout = Layout;
+}
+<h2>Fabrications Details</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rpt_FDR())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

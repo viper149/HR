@@ -1,0 +1,22 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.FFabricStore
+@model int
+
+@{
+    ViewData["Title"] = "Fabric Store Delivery Challan";
+    Layout = Layout;
+}
+<h2>Fabric Details(Marketing)</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rpyDeliveryChallan())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

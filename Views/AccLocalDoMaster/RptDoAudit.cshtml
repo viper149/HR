@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.AccExportDoMaster.Report
+@using rptDOInformation_Local = DenimERP.Views.AccExportDoMaster.Report.rptDOInformation_Local
+@model int
+
+@{
+    ViewData["Title"] = "DO (Local)";
+}
+
+<h2>Reports @ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptDOInformation_Local(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

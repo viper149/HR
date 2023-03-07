@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Fabric_Store
+@using RPT_Fabric_Roll_to_Roll_RCV = DenimERP.Reports.Fabric_Store.RPT_Fabric_Roll_to_Roll_RCV
+@model int
+
+@{
+    ViewData["Title"] = "Roll To Roll Receive Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RPT_Fabric_Roll_to_Roll_RCV())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

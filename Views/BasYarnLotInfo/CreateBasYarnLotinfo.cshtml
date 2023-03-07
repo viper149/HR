@@ -1,0 +1,54 @@
+﻿@model BAS_YARN_LOTINFO
+
+@{
+    ViewData["Title"] = "Create basic yarn lot info";
+    Layout = Layout;
+}
+
+<h2>Create basic yarn lot info</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateBasYarnLotinfo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LOTNO" class="control-label"></label>
+                <input asp-for="LOTNO" class="form-control" />
+                <span asp-validation-for="LOTNO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BRAND" class="control-label"></label>
+                <input asp-for="BRAND" class="form-control" />
+                <span asp-validation-for="BRAND" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SLABCODE" class="control-label"></label>
+                <input asp-for="SLABCODE" class="form-control" />
+                <span asp-validation-for="SLABCODE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="REMARKS" class="control-label"></label>
+                <input asp-for="REMARKS" class="form-control" />
+                <span asp-validation-for="REMARKS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-dark" asp-action="GetBasYarnLotinfoWithPaged" accesskey="b">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script>
+        $(function () {
+
+            $('#form').submit(function () {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}

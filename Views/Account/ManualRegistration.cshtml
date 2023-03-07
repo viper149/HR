@@ -1,0 +1,71 @@
+﻿
+@model ExtendRegisterViewModel
+
+@{
+    ViewData["Title"] = "Manual Register";
+    Layout = Layout;
+}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
+    <div class="card col-lg-6 col-md-6 col-sm-6 col-xs-12 text-white bg-dark ">
+        <h5 class="card-header text-center"><i class="fa fa-user text-warning"></i> Manual Registration</h5>
+
+        <div class="card-body">
+            <blockquote class="blockquote">
+                <p class="fa fa-lightbulb-o text-warning"> If You Would Like To Register More Then One User. Please Add Emails Separated By Comma/Space [ , " " ]. Otherwise Leave Single Email Only.</p>
+            </blockquote>
+            <form asp-action="ManualRegistration" asp-controller="Account" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <label asp-for="Email" class="control-label required"></label>
+                        <input asp-for="Email" class="form-control rounded" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <label asp-for="UserName" class="control-label required"></label>
+                        <input asp-for="UserName" class="form-control rounded" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <label asp-for="PhoneNumber" class="control-label required"></label>
+                        <input asp-for="PhoneNumber" class="form-control rounded" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label required"></label>
+                    <input asp-for="Password" class="form-control rounded" placeholder="Password" />
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="revealPassword">
+                        <label class="custom-control-label pt-1" for="revealPassword">Reveal Password</label>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label required"></label>
+                    <input asp-for="ConfirmPassword" class="form-control rounded" placeholder="Confirm password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0 ml-1">
+                    <button type="submit" class="btn btn-success pull-right"><i class="fa fa-users"></i> Add User(s)</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-white">
+            @Html.Raw($"Today is {DateTime.Today.DayOfWeek} &#1285{new Random().Next(12, 19)};")
+            <a asp-controller="Administrator" asp-action="ListUsers" class="pull-right fa fa-hand-o-right text-white" style="text-decoration: underline;"> List Users</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-file-input.js"></script>
+    <script asp-append-version="true" src="~/js/Account/ManualRegistration.js"></script>
+}

@@ -1,0 +1,200 @@
+﻿@model FLcbProductionRopeViewModel
+
+@if (Model.FLcbProductionRopeDetailsList.Any())
+{
+
+    <div class="table-responsive">
+
+    <table class="table mt-2 table-condensed" style="border-collapse: collapse;" id="partialView">
+        <thead id="thead">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList.FirstOrDefault().TRANSDATE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList.FirstOrDefault().CANID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList.FirstOrDefault().ENDS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList.FirstOrDefault().SHIFT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList.FirstOrDefault().TIME)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList.FirstOrDefault().EMPLOYEEID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList.FirstOrDefault().REMARKS)
+                </th>
+                <th>
+                    @Html.DisplayName("Remove")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @for (var i = 0; i < Model.FLcbProductionRopeDetailsList.Count; i++)
+            {
+
+                <tr data-toggle="collapse" data-target="#demo_@i" class="accordion-toggle collapsed">
+                    <td><span class="expand-button"></span></td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].LCB_D_ID)
+                        @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].TRANSDATE)
+                        @Model.FLcbProductionRopeDetailsList[i].TRANSDATE
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].CANID)
+                        @Model.FLcbProductionRopeDetailsList[i].CAN?.CAN_NONavigation?.TUBE_NO
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].ENDS)
+                        @Model.FLcbProductionRopeDetailsList[i].ENDS
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].SHIFT)
+                        @Model.FLcbProductionRopeDetailsList[i].SHIFT
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].TIME)
+                        @Model.FLcbProductionRopeDetailsList[i].TIME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].EMPLOYEEID)
+                        @Model.FLcbProductionRopeDetailsList[i].EMPLOYEE?.FIRST_NAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].REMARKS)
+                        @Model.FLcbProductionRopeDetailsList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveCanFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="hiddenRow">
+                        <div class="accordian-body collapse show" id="demo_@i">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList.FirstOrDefault().MACHINEID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList.FirstOrDefault().BEAMID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList.FirstOrDefault().LENGTH)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList.FirstOrDefault().TENS)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList.FirstOrDefault().BREAK)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList.FirstOrDefault().KNOT)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList.FirstOrDefault().REMARKS)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var j = 0; j < Model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList.Count; j++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].LCB_P_ID)
+                                                @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].MACHINEID)
+                                                @Model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].MACHINE?.MACHINE_NO
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].BEAMID)
+                                                @Model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].BEAM?.BEAM_NO
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].LENGTH)
+                                                @Model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].LENGTH
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].TENS)
+                                                @Model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].TENS
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].BREAK)
+                                                @Model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].BREAK
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].KNOT)
+                                                @Model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].KNOT
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(clc => clc.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].REMARKS)
+                                                @Model.FLcbProductionRopeDetailsList[i].FLcbProductionRopeProcessInfoList[j].REMARKS
+                                            </td>
+                                            <td>
+                                                <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveProcessFromCanList(@i, @j)" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveCanFromList(removeIndexValue) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/FLcbProductionRope/RemoveCanFromList',
+            success: function (partialView, status, xhr) {
+                $('#CanDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    function RemoveProcessFromCanList(removeIndexValue, setRemoveIndex) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        data.push({ name: "setRemoveIndex", value: setRemoveIndex });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/FLcbProductionRope/RemoveProcessFromCanList',
+            success: function (partialView) {
+                $('#CanDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.APCD
+@using DenimERP.Views.FPrInspectionProcess.Reports
+@using DenimERP.Views.RndFabricInfo.Reports
+@using rptShiftWise_Prod_Ins = DenimERP.Views.FPrInspectionProcess.Reports.rptShiftWise_Prod_Ins
+
+@{
+    ViewData["Title"] = "Shift Wise Production Report";
+    Layout = Layout;
+}
+<h2>Shift Wise Production Report</h2>
+
+@{
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptShiftWise_Prod_Ins())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

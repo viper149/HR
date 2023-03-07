@@ -1,0 +1,105 @@
+﻿@model FFsFabricReturnReceiveViewModel
+
+@{
+    ViewData["Title"] = "Fabric Return ";
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <div class="col-lg-12 col-md-12 col-sm">
+
+        <form id="form" role="form" asp-action="CreateFFsFabricReturnReceive">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_FS_FABRIC_RETURN_RECEIVE.DC_NO" class="control-label"></label>
+                        <input asp-for="f_FS_FABRIC_RETURN_RECEIVE.DC_NO" type="text" class="form-control" />
+                        <span asp-validation-for="f_FS_FABRIC_RETURN_RECEIVE.DC_NO" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="coM_EX_PIMASTER.PINO" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.f_FS_FABRIC_RETURN_RECEIVE.PI_NO,
+                        new SelectList(Model.PiList, "PIID", "PINO"), "Select Pi",
+                        new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="f_FS_FABRIC_RETURN_RECEIVE.PI_NO" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="bAS_BUYERINFO.BUYER_NAME" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.f_FS_FABRIC_RETURN_RECEIVE.BUYER_ID,
+                        new SelectList(Model.BuyerList, "BUYERID", "BUYER_NAME"), "Select Buyer Name",
+                        new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="f_FS_FABRIC_RETURN_RECEIVE.BUYER_ID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="aCC_EXPORT_DOMASTER.DONO" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.f_FS_FABRIC_RETURN_RECEIVE.DO_NO,
+                        new SelectList(Model.DoList, "TRNSID", "DONO"), "Select DO",
+                        new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="f_FS_FABRIC_RETURN_RECEIVE.DO_NO" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="rnD_FABRICINFO.STYLE_NAME" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.f_FS_FABRIC_RETURN_RECEIVE.FABCODE,
+                        new SelectList(Model.FabList, "FABCODE", "STYLE_NAME"), "Select STYLE NAME",
+                        new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="f_FS_FABRIC_RETURN_RECEIVE.FABCODE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_FS_FABRIC_RETURN_RECEIVE.ROLL_QTY" class="control-label"></label>
+                        <input asp-for="f_FS_FABRIC_RETURN_RECEIVE.ROLL_QTY" type="text" class="form-control" id="" />
+                        <span asp-validation-for="f_FS_FABRIC_RETURN_RECEIVE.ROLL_QTY" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_FS_FABRIC_RETURN_RECEIVE.QTY_YDS" class="control-label"></label>
+                        <input asp-for="f_FS_FABRIC_RETURN_RECEIVE.QTY_YDS" type="text" class="form-control" id="" />
+                        <span asp-validation-for="f_FS_FABRIC_RETURN_RECEIVE.QTY_YDS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="f_FS_FABRIC_RETURN_RECEIVE.REMARKS" class="control-label"></label>
+                        <input asp-for="f_FS_FABRIC_RETURN_RECEIVE.REMARKS" type="text" class="form-control" id="" />
+                        <span asp-validation-for="f_FS_FABRIC_RETURN_RECEIVE.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="AttachTo">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button id="btnCreateLoan" class="btn btn-success nextBtn pull-right" type="submit">Create</button>
+                    <a asp-action="GetFFsFabricReturnReceive" class="btn btn-dark pull-right">Back to List</a>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/FFsFabricReturnReceive/CreateFFsFabricReturnReceive.js"></script>
+}

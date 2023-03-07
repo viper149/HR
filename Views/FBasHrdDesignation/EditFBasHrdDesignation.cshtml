@@ -1,0 +1,77 @@
+﻿@model FBasHrdDesignationViewModel
+<h2><i class="fa fa-edit text-warning" aria-hidden="true"></i> Edit @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="EditFBasHrdDesignation">
+        <div class="panel panel-default setup-content">
+            @Html.HiddenFor(d => d.FBasHrdDesignation.EncryptedId)
+            @Html.HiddenFor(d => d.FBasHrdDesignation.DES_NAME)
+            @Html.HiddenFor(d => d.FBasHrdDesignation.DES_NAME_BN)
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdDesignation.DES_NAME" class="control-label"></label>
+                        <input disabled="disabled" asp-for="FBasHrdDesignation.DES_NAME" class="form-control" />
+                        <span asp-validation-for="FBasHrdDesignation.DES_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdDesignation.DES_NAME_BN" class="control-label"></label>
+                        <input disabled="disabled" asp-for="FBasHrdDesignation.DES_NAME_BN" class="form-control" />
+                        <span asp-validation-for="FBasHrdDesignation.DES_NAME_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdDesignation.SHORT_NAME" class="control-label"></label>
+                        <input asp-for="FBasHrdDesignation.SHORT_NAME" class="form-control" />
+                        <span asp-validation-for="FBasHrdDesignation.SHORT_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdDesignation.SHORT_NAME_BN" class="control-label"></label>
+                        <input asp-for="FBasHrdDesignation.SHORT_NAME_BN" class="form-control" />
+                        <span asp-validation-for="FBasHrdDesignation.SHORT_NAME_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="FBasHrdDesignation.GRADEID" class="control-label"></label>&emsp;
+                            <a asp-controller="FBasHrdGrade" asp-action="CreateFBasHrdGrade" class="fa fa-plus-circle fa-lg text-info" aria-hidden="true" target="_blank"></a>&emsp;
+                            <a class="fa fa-rotate-right fa-lg text-info" aria-hidden="true" onclick="Reload()"></a>
+                        </div>
+                        @Html.DropDownListFor(dt => dt.FBasHrdDesignation.GRADEID, new SelectList(Model.FBasHrdGradeList, "GRADEID", "GRADE_NAME"), "Select Grade", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FBasHrdDesignation.GRADEID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdDesignation.DESCRIPTION" class="control-label"></label>
+                        <input asp-for="FBasHrdDesignation.DESCRIPTION" class="form-control" />
+                        <span asp-validation-for="FBasHrdDesignation.DESCRIPTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdDesignation.REMARKS" class="control-label"></label>
+                        <input asp-for="FBasHrdDesignation.REMARKS" class="form-control" />
+                        <span asp-validation-for="FBasHrdDesignation.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning pull-right" type="submit">Update</button>
+                    <a asp-action="GetFBasHrdDesignation" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/HR/FBasHrdDesignation/CreateFBasHrdDesignation.js"></script>
+}

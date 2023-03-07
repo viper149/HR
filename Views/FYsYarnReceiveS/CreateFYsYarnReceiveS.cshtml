@@ -1,0 +1,237 @@
+﻿
+@model FYsYarnReceiveSViewModel
+
+@{
+    ViewData["Title"] = "Details Yarn Receive (Sample)";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" enctype="multipart/form-data" role="form" asp-action="PostCreateFYsYarnReceiveS">
+        <div class="panel-body row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left">
+                    <h2 class="panel-title text-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> @ViewData["Title"] Information</h2>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-right">
+                    <div class="custom-control custom-switch float-right">
+                        <input asp-for="FYsYarnReceiveMaster.ISRETURNABLE" class="custom-control-input" type="checkbox">
+                        <label asp-for="FYsYarnReceiveMaster.ISRETURNABLE" class="custom-control-label"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <hr />
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.YRCVDATE" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveMaster.YRCVDATE" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveMaster.YRCVDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.IND.INDNO" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveMaster.INDID, new SelectList(Model.FYsIndentMastersList, "INDID", "INDNO"), "Select Indent", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveMaster.INDID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.RCVT.RCVTYPE" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveMaster.RCVTID, new SelectList(Model.FBasReceiveTypeList, "RCVTID", "RCVTYPE"), "Select Receive Type",new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveMaster.RCVTID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.RCVFROM" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveMaster.RCVFROM, new SelectList(Model.BasSupplierinfos, "SUPPID", "SUPPNAME"), "Select A Supplier", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveMaster.RCVFROM" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.INVID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveMaster.INVID, new SelectList(Model.ComImpInvoiceInfoList, "INVID", "INVNO"), "Select An Invoice", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveMaster.INVID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">L/C No</label>
+                    <span class="custom-form-control-bg form-control bg-e9ecef" id="lcNO">
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.CHALLANNO" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveMaster.CHALLANNO" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveMaster.CHALLANNO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.CHALLANDATE" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveMaster.CHALLANDATE" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveMaster.CHALLANDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.G_ENTRY_DATE" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveMaster.G_ENTRY_DATE" class="form-control" />
+                    <span asp-validation-for="FYsYarnReceiveMaster.G_ENTRY_DATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.G_ENTRY_NO" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveMaster.G_ENTRY_NO" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveMaster.G_ENTRY_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.TUCK_NO" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveMaster.TUCK_NO" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveMaster.TUCK_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.COMMENTS" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveMaster.COMMENTS" class="form-control" />
+                    <span asp-validation-for="FYsYarnReceiveMaster.COMMENTS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveMaster.REMARKS" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveMaster.REMARKS" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveMaster.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-eye"></i> @ViewData["Title"] Details</h2>
+                <hr />
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0" id="TargetDetails"></div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.TRNSDATE" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveDetail.TRNSDATE" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveDetail.TRNSDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.PRODID" class="control-label "></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveDetail.PRODID, new SelectList(Model.BasYarnCountInfoList, "COUNTID", "COUNTNAME"),
+                        "Select Count Name", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveDetail.PRODID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.LOT" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveDetail.LOT, new SelectList(Model.FYarnLotinfoList, "LOTID", "LOTNO"), "Select A LOT", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveDetail.LOT" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.RAW" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveDetail.RAW, new SelectList(Model.FYsRawPers, "RAWID", "RAWPER"), "Select A RAW", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveDetail.RAW" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.LOCATIONID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveDetail.LOCATIONID, new SelectList(Model.FYsLocationList, "LOCID", "LOCNAME"), "Select Location", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveDetail.LOCATIONID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.LEDGERID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FYsYarnReceiveDetail.LEDGERID, new SelectList(Model.FYsLadgerList, "LEDID", "LEDNAME"), "Select Ledger", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FYsYarnReceiveDetail.LEDGERID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.PAGENO" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveDetail.PAGENO" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveDetail.PAGENO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.INV_QTY" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveDetail.INV_QTY" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveDetail.INV_QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.BAG_QTY" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveDetail.BAG_QTY" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveDetail.BAG_QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.RCV_QTY" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveDetail.RCV_QTY" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveDetail.RCV_QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.REJ_QTY" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveDetail.REJ_QTY" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveDetail.REJ_QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FYsYarnReceiveDetail.REMARKS" class="control-label"></label>
+                    <input asp-for="FYsYarnReceiveDetail.REMARKS" class="form-control " />
+                    <span asp-validation-for="FYsYarnReceiveDetail.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button class="btn btn-info pull-right" type="submit">Create</button>
+                <button id="addToUpdate" class="btn btn-success pull-right" type="button">Add</button>
+                <a asp-action="GetFYsYarnReceiveS" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive" id="yarnReceiveDetailsTableRetrieve"></div>
+
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+    <script asp-append-version="true" src="~/js/FYsYarnReceiveS/CreateFYsYarnReceiveS.js"></script>
+}

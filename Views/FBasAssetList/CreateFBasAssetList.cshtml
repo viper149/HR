@@ -1,0 +1,47 @@
+﻿@model FBasAssetListViewModel
+
+@{
+    ViewData["Title"] = "Asset Information";
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateFBasAssetList">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasAssetList.SEC_CODE" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.FBasAssetList.SEC_CODE,
+                            new SelectList(Model.SectionList, "SECID", "SECNAME"),
+                            "Select Location", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FBasAssetList.SEC_CODE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasAssetList.ASSET_NAME" class="control-label"></label>
+                        <input asp-for="FBasAssetList.ASSET_NAME" class="form-control" />
+                        <span asp-validation-for="FBasAssetList.ASSET_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasAssetList.REMARKS" class="control-label"></label>
+                        <input asp-for="FBasAssetList.REMARKS" type="" class="form-control" id="" />
+                        <span asp-validation-for="FBasAssetList.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button asp-action="CreateFBasAssetList" id="assetBtn" class="btn btn-success nextBtn pull-right" type="submit">Create</button>
+                <a asp-action="GetFBasAssetList" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+}

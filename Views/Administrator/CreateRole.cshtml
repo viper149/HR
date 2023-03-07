@@ -1,0 +1,39 @@
+﻿@model CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "Add Role";
+    Layout = Layout;
+}
+
+<h2>Create a new Role</h2>
+
+<hr />
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <form asp-action="CreateRole">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="ListRoles" asp-controller="Administrator" class="btn btn-dark">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+    
+    <script>
+        $(function() {
+
+            $('#form').submit(function() {
+                $(this).find(':submit').attr('disabled', 'disabled');
+            });
+        })
+    </script>
+}

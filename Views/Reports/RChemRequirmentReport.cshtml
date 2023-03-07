@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Chemical_Store
+@using rptChemical_Req = DenimERP.Reports.Chemical_Store.rptChemical_Req
+@model string
+
+@{
+    ViewData["Title"] = "Chemical Requirement";
+    Layout = Layout;
+}
+<h2>Chemical Requirement</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptChemical_Req(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

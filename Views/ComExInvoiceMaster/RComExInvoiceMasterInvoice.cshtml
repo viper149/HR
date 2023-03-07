@@ -1,0 +1,23 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExInvoiceMaster.Reports
+@using RComExInvoice = DenimERP.Views.ComExInvoiceMaster.Reports.RComExInvoice
+
+@{
+    ViewData["Title"] = "Commercial Invoice";
+    Layout = Layout;
+}
+<h2>Commercial Invoice</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RComExInvoice(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

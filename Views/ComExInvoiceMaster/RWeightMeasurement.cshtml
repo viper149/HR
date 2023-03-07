@@ -1,0 +1,32 @@
+﻿
+
+
+@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExInvoiceMaster.Reports
+@using RWeightMeasurement = DenimERP.Views.ComExInvoiceMaster.Reports.RWeightMeasurement
+@model string
+
+@{
+    ViewData["Title"] = "Weight & Measurement";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Reports</li>
+        <li class="breadcrumb-item"><a asp-controller="ComExInvoiceMaster" asp-action="InvokeUserChoices">Printing Options</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a asp-action="RWeightMeasurement" asp-controller="ComExInvoiceMaster">@ViewData["Title"]</a></li>
+    </ol>
+</nav>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RWeightMeasurement(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

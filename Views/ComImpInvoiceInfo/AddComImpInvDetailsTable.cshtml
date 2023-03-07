@@ -1,0 +1,75 @@
+﻿
+@model ComImpInvoiceInfoCreateViewModel
+
+@if (Model.ComImpInvdetailses.Any())
+{
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.INVNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.BasProductinfo.PRODNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.F_CHEM_STORE_PRODUCTINFOS.PRODUCTNAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.BAS_YARN_LOTINFOS.LOTNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.UNIT)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.RATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.AMOUNT)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.ComImpInvdetailses.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.Raw(Model.ComImpInvdetailses[i].TRNSID > 0 ? $"<i class=\"fa fa-database text-danger\" aria-hidden=\"true\"></i> {i + 1}" : $"<i class=\"fa fa-plus-circle text-success\" aria-hidden=\"true\"></i> {i + 1}")
+                    </td>
+                    <td>
+                        @Html.HiddenFor(modelItem => Model.ComImpInvdetailses[i].TRNSID)
+                        @Html.HiddenFor(modelItem => Model.ComImpInvdetailses[i].TRNSDATE)
+                        @Html.HiddenFor(modelItem => Model.ComImpInvdetailses[i].INVNO)
+
+                        @Html.DisplayFor(modelItem => Model.ComImpInvdetailses[i].INVNO)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(modelItem => Model.ComImpInvdetailses[i].PRODID)
+                        @Html.DisplayFor(modelItem => Model.ComImpInvdetailses[i].BasProductinfo.PRODNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(modelItem => Model.ComImpInvdetailses[i].CHEMPRODID)
+                        @Html.DisplayFor(modelItem => Model.ComImpInvdetailses[i].F_CHEM_STORE_PRODUCTINFOS.PRODUCTNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(modelItem => Model.ComImpInvdetailses[i].YARNLOTID)
+                        @Html.DisplayFor(modelItem => Model.ComImpInvdetailses[i].BAS_YARN_LOTINFOS.LOTNO)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(modelItem => Model.ComImpInvdetailses[i].UNIT)
+                        @Html.DisplayFor(modelItem => Model.ComImpInvdetailses[i].F_BAS_UNITS.UNAME)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lci => lci.ComImpInvdetailses[i].QTY)
+                        @Html.DisplayFor(lci => lci.ComImpInvdetailses[i].QTY)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lci => lci.ComImpInvdetailses[i].RATE)
+                        @Html.DisplayFor(lci => lci.ComImpInvdetailses[i].RATE)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lci => lci.ComImpInvdetailses[i].AMOUNT)
+                        @Html.DisplayFor(lci => lci.ComImpInvdetailses[i].AMOUNT)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(lci => lci.ComImpInvdetailses[i].REMARKS)
+                        @Html.DisplayFor(lci => lci.ComImpInvdetailses[i].REMARKS)
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveImportInvoiceDetails(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

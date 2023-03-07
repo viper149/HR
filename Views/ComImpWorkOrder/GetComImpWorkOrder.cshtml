@@ -1,0 +1,59 @@
+﻿
+@model COM_IMP_WORK_ORDER_MASTER
+
+@{
+    ViewData["Title"] = "Commercial Import Work Order";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>
+            <i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> @ViewData["Title"] List
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+            @if (User.IsInRole("Y&C Procurement"))
+            {
+                <li class="mr-2">
+                    <p>
+                        <a asp-action="CreateComImpWorkOrder" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</a>
+                    </p>
+                </li>
+            }
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content table-responsive table-hover">
+        <table class="table table-striped" id="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model.WOID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.WODATE)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.CONTNO)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.INDID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.SUPPID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.REMARKS) </th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.VALDATE) </th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.BTL_APPROVE) </th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FIN_APPROVE) </th>
+                    @*<th scope="col">@Html.DisplayNameFor(model => model.IS_REVISED) </th>*@
+                    <th scope="col">@Html.DisplayName("Actions")</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true" src="~/js/ComImpWorkOrder/GetComImpWorkOrder.js"></script>
+}

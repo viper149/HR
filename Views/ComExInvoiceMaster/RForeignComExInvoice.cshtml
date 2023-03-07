@@ -1,0 +1,24 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExInvoiceMaster.Reports.Foreign
+@using RForeignComExInvoice = DenimERP.Views.ComExInvoiceMaster.Reports.Foreign.RForeignComExInvoice
+
+@{
+    ViewData["Title"] = "Foreign Commercial Export Invoice";
+    Layout = Layout;
+}
+
+<h2>Foreign Commercial Export Invoice</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RForeignComExInvoice())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

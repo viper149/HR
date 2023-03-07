@@ -1,0 +1,80 @@
+﻿
+@model FGenSRequisitionViewModel
+
+@{
+    ViewData["Title"] = "General Store Purchase Requisition";
+}
+
+@{
+    if (Model != null)
+    {
+        <div class="col-12 row">
+
+            <div class="col-12">
+                <h2 class="text-white btn btn-info">@Html.DisplayNameFor(e => e.FGenSPurchaseRequisitionMaster.INDSLDATE) : [ @Html.DisplayFor(e => e.FGenSPurchaseRequisitionMaster.INDSLDATE) ]</h2>
+            </div>
+
+            <div class="col-12 row">
+                <div class="col-6">
+                    <h2 class="panel-title text-success"><i class="fa fa-flask" aria-hidden="true"></i> @ViewData["Title"] Information</h2>
+                </div>
+                <div class="col-6 text-right">
+                    <div class="form-group">
+                        <label asp-for="FGenSPurchaseRequisitionMaster.STATUS" class="control-label font-weight-bold"></label>
+                        <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSPurchaseRequisitionMaster.STATUS)</div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr />
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSPurchaseRequisitionMaster.DEPTID" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSPurchaseRequisitionMaster.DEPTID)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSPurchaseRequisitionMaster.SECID" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSPurchaseRequisitionMaster.SECID)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSPurchaseRequisitionMaster.SSECID" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSPurchaseRequisitionMaster.SSECID)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSPurchaseRequisitionMaster.EMPID" class="control-label font-weight-bold">From Person</label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSPurchaseRequisitionMaster.EMP.EMPNO)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSPurchaseRequisitionMaster.CN_PERSON" class="control-label font-weight-bold">To Person</label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSPurchaseRequisitionMaster.CN_PERSONNavigation.EMPNO)</div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label asp-for="FGenSPurchaseRequisitionMaster.REMARKS" class="control-label font-weight-bold"></label>
+                    <div class="form-control-dark">@Html.DisplayFor(model => model.FGenSPurchaseRequisitionMaster.REMARKS)</div>
+                </div>
+            </div>
+            <div class="col-12 table-responsive">
+                <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Chemical Details</h2>
+                <hr />
+                @await Html.PartialAsync($"~/Views/FGenSPurchaseRequisition/DetailsFGenSPurchaseRequisitionTable.cshtml", Model)
+            </div>
+
+            <div class="col-md-12">
+                @Html.ActionLink("Edit", $"EditFGenSPurchaseRequisition", new { indslId = Model.FGenSPurchaseRequisitionMaster.EncryptedId }, new { @class = "btn btn-warning pull-right" })
+                <a class="btn btn-dark pull-right" asp-action="GetFGenSPurchaseRequisition" asp-controller="FGenSPurchaseRequisition">Back to List</a>
+            </div>
+        </div>
+    }
+}

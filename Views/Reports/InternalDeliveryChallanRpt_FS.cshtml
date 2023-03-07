@@ -1,0 +1,24 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Fabric_Store
+@using rptInternal_Delivery_Challan = DenimERP.Reports.Fabric_Store.rptInternal_Delivery_Challan
+
+@model int
+
+@{
+    ViewData["Title"] = "Internal Delivery Challan Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptInternal_Delivery_Challan())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

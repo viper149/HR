@@ -1,0 +1,24 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.RND
+@using RPT_RND_STICKER_PRINT = DenimERP.Reports.RND.RPT_RND_STICKER_PRINT
+
+@model int
+
+@{
+    ViewData["Title"] = "R&D Sticker";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RPT_RND_STICKER_PRINT())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.FPrWarpingProcessSlasher.Reports
+@using rptDirectWarping_Delivery = DenimERP.Views.FPrWarpingProcessSlasher.Reports.rptDirectWarping_Delivery
+@model string
+
+@{
+    ViewData["Title"] = "Warp Delivery Report";
+    Layout = Layout;
+}
+<h2>Warp Delivery Report</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptDirectWarping_Delivery(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

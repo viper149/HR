@@ -1,0 +1,68 @@
+﻿@model FHrdEmployeeViewModel
+@if (TempData["Duplicate"] != null)
+{
+    <script asp-append-version="true">
+        toastr.error('@TempData["Duplicate"]', 'Error');
+    </script>
+}
+
+@if (Model.FHrdEducationList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">@Html.DisplayName("#")</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEducation.DEGID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEducation.MAJOR)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEducation.BOARD_UNI)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEducation.PASS_DATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEducation.CGPA)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEducation.OUTOF)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FHrdEducation.OPT1)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FHrdEducationList.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        @(i + 1)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(d => d.FHrdEducationList[i].EDUID)
+                        @Html.HiddenFor(d => d.FHrdEducationList[i].DEGID)
+                        @Model.FHrdEducationList[i].DEG?.DEGNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(d => d.FHrdEducationList[i].MAJOR)
+                        @Model.FHrdEducationList[i].MAJOR
+                    </td>
+                    <td>
+                        @Html.HiddenFor(d => d.FHrdEducationList[i].BOARD_UNI)
+                        @Model.FHrdEducationList[i].BOARD_UNI
+                    </td>
+                    <td>
+                        @Html.HiddenFor(d => d.FHrdEducationList[i].PASS_DATE)
+                        @Model.FHrdEducationList[i].PASS_DATE?.ToString("dd MMM,yyyy")
+                    </td>
+                    <td>
+                        @Html.HiddenFor(d => d.FHrdEducationList[i].CGPA)
+                        @Model.FHrdEducationList[i].CGPA
+                    </td>
+                    <td>
+                        @Html.HiddenFor(d => d.FHrdEducationList[i].OUTOF)
+                        @Model.FHrdEducationList[i].OUTOF
+                    </td>
+                    <td>
+                        @Html.HiddenFor(d => d.FHrdEducationList[i].OPT1)
+                        @Model.FHrdEducationList[i].OPT1
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveEdu(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

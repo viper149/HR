@@ -1,0 +1,25 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Accounts
+@using rptFabricPhysicalInventory = DenimERP.Reports.Accounts.rptFabricPhysicalInventory
+
+
+@model int
+
+@{
+    ViewData["Title"] = "Fabric Physical Inventory Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptFabricPhysicalInventory())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

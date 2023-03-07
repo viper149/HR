@@ -1,0 +1,74 @@
+﻿@model FBasHrdNationalityViewModel
+<h2><i class="fa fa-edit text-warning" aria-hidden="true"></i> Edit @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="EditFBasHrdNationality">
+        <div class="panel panel-default setup-content">
+            @Html.HiddenFor(d => d.FBasHrdNationality.EncryptedId)
+            @Html.HiddenFor(d => d.FBasHrdNationality.NATION_DESC)
+            @Html.HiddenFor(d => d.FBasHrdNationality.NATION_DESC_BN)
+            @Html.HiddenFor(d => d.FBasHrdNationality.COUNTRY_NAME)
+            @Html.HiddenFor(d => d.FBasHrdNationality.COUNTRY_NAME_BN)
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdNationality.NATION_DESC" class="control-label"></label>
+                        <input disabled="disabled" asp-for="FBasHrdNationality.NATION_DESC" class="form-control" />
+                        <span asp-validation-for="FBasHrdNationality.NATION_DESC" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdNationality.NATION_DESC_BN" class="control-label"></label>
+                        <input disabled="disabled" asp-for="FBasHrdNationality.NATION_DESC_BN" class="form-control" />
+                        <span asp-validation-for="FBasHrdNationality.NATION_DESC_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdNationality.COUNTRY_NAME" class="control-label"></label>
+                        <input disabled="disabled" asp-for="FBasHrdNationality.COUNTRY_NAME" class="form-control" />
+                        <span asp-validation-for="FBasHrdNationality.COUNTRY_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdNationality.COUNTRY_NAME_BN" class="control-label"></label>
+                        <input disabled="disabled" asp-for="FBasHrdNationality.COUNTRY_NAME_BN" class="form-control" />
+                        <span asp-validation-for="FBasHrdNationality.COUNTRY_NAME_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdNationality.SHORT_NAME" class="control-label"></label>
+                        <input asp-for="FBasHrdNationality.SHORT_NAME" class="form-control" />
+                        <span asp-validation-for="FBasHrdNationality.SHORT_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdNationality.CURRENCYID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FBasHrdNationality.CURRENCYID, new SelectList(Model.CurrencyList, "Id", "NAME"), "Select Currency", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FBasHrdNationality.CURRENCYID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FBasHrdNationality.REMARKS" class="control-label"></label>
+                        <input asp-for="FBasHrdNationality.REMARKS" class="form-control" />
+                        <span asp-validation-for="FBasHrdNationality.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning pull-right" type="submit">Update</button>
+                    <a asp-action="GetFBasHrdNationality" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+}

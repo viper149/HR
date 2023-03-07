@@ -1,0 +1,24 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Post_Costing
+@using rptBOMvsProduction_Sizing = DenimERP.Reports.Post_Costing.rptBOMvsProduction_Sizing
+
+@model int
+
+@{
+    ViewData["Title"] = "BOM vs PRODUCTION(Sizing) REPORT";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptBOMvsProduction_Sizing())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

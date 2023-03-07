@@ -1,0 +1,137 @@
+﻿@model AccLoanManagementMViewModel
+
+@{
+    ViewData["Title"] = "Loan Information";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="CreateAccLoanManagementInfo">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.LOANDATE" class="control-label"></label>
+                        <input asp-for="ACC_LOAN_MANAGEMENT_M.LOANDATE" type="date" class="form-control" id="datePick" />
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.LOANDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.LCID" class="control-label"></label>
+                        @Html.DropDownListFor(c => c.ACC_LOAN_MANAGEMENT_M.LCID, new SelectList(Model.LcList, "LCID", "LCNO"), "Select LC No", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.LCID" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.BANKID" class="control-label"></label>
+
+                        @Html.DropDownListFor(c => c.ACC_LOAN_MANAGEMENT_M.BANKID, new SelectList(Model.BankList, "BANKID", "BEN_BANK"), "Select Bank Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.BANKID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.LOAN_AMT" class="control-label"></label>
+                        <input asp-for="ACC_LOAN_MANAGEMENT_M.LOAN_AMT" type="" class="form-control" id="" />
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.LOAN_AMT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.EXP_DATE" class="control-label"></label>
+                        <input asp-for="ACC_LOAN_MANAGEMENT_M.EXP_DATE" type="date" class="form-control" id="datePick" />
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.EXP_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.INTEREST_RATE" class="control-label"></label>
+                        <input asp-for="ACC_LOAN_MANAGEMENT_M.INTEREST_RATE" type="" class="form-control" id="" />
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.INTEREST_RATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.PAID_AMT" class="control-label"></label>
+                        <input asp-for="ACC_LOAN_MANAGEMENT_M.PAID_AMT" type="" class="form-control" id="" />
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.PAID_AMT" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.PAID_DATE" class="control-label"></label>
+                        <input asp-for="ACC_LOAN_MANAGEMENT_M.PAID_DATE" type="date" class="form-control" id="datePick" />
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.PAID_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.PAID_INT" class="control-label"></label>
+                        <input asp-for="ACC_LOAN_MANAGEMENT_M.PAID_INT" type="" class="form-control" id="" />
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.PAID_INT" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ACC_LOAN_MANAGEMENT_M.REMARKS" class="control-label"></label>
+                        <input asp-for="ACC_LOAN_MANAGEMENT_M.REMARKS" class="form-control" id="remarks" />
+                        <span asp-validation-for="ACC_LOAN_MANAGEMENT_M.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="AttachTo">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <button asp-action="CreateAccLoanManagementInfo" id="btnCreateLoan" class="btn btn-success nextBtn pull-right" type="submit">Create</button>
+                        <button id="btnAddChem" class="btn btn-info pull-right mr-2" type="button">Add</button>
+                        <a asp-action="GetAccLoanManagementMList" class="btn btn-dark pull-right">Back to List</a>
+
+                    </div>
+
+                    @*Details Table Fields*@
+
+                    @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h2 class="panel-title text-success">Account Loan Management Info Details</h2>
+                            <hr />
+                        </div>
+
+
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label asp-for="ACC_LOAN_MANAGEMENT_D.TRANSDATE" class="control-label"></label>
+                                <input asp-for="ACC_LOAN_MANAGEMENT_D.TRANSDATE" type="date" class="form-control" id="datePick" />
+                                <span asp-validation-for="ACC_LOAN_MANAGEMENT_D.TRANSDATE" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label asp-for="ACC_LOAN_MANAGEMENT_D.INVID" class="control-label"></label>
+                                @Html.DropDownListFor(c => c.ACC_LOAN_MANAGEMENT_D.INVID, new SelectList(Model.InvoiceList, "INVID", "INVNO"), "Select Invo No", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+
+                                <span asp-validation-for="ACC_LOAN_MANAGEMENT_D.INVID" class="text-danger"></span>
+                            </div>
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+
+}
+
+
+

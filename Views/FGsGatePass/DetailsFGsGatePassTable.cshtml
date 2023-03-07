@@ -1,0 +1,36 @@
+﻿@model FGsGatePassViewModel
+
+@if (Model.FGsGatepassInformationDList.Any())
+{
+    <div class="col-12 p-0">
+        <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Details</h2>
+        <hr />
+    </div>
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>@Html.DisplayName("#")</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.PRODID)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.ISSUE_QTY)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.UNIT_NM)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.ISSUE_BAG)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.ETR)</th>
+                <th>@Html.DisplayNameFor(model => model.FGsGatepassInformationD.REMARKS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FGsGatepassInformationDList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>@Model.FGsGatepassInformationDList[i].PROD?.PRODNAME</td>
+                    <td>@Model.FGsGatepassInformationDList[i].ISSUE_QTY</td>
+                    <td>@Model.FGsGatepassInformationDList[i].PROD?.UNITNavigation?.UNAME</td>
+                    <td>@Model.FGsGatepassInformationDList[i].ISSUE_BAG</td>
+                    <td>@Html.DisplayFor(modelItem => Model.FGsGatepassInformationDList[i].ETR)</td>
+                    <td>@Model.FGsGatepassInformationDList[i].REMARKS</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

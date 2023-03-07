@@ -1,0 +1,36 @@
+﻿
+@model F_QA_YARN_TEST_INFORMATION_POLYESTER
+
+@{
+    ViewData["Title"] = "Yarn Test Information";
+}
+
+@{
+    <div class="x_panel">
+        <div class="x_title">
+            <h2><i class="fa fa-xing fa-lg text-success" aria-hidden="true"></i>@ViewData["Title"] List<i class="fa fa-at text-info">Polyester</i></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content table-responsive table-hover">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th scope="col">@Html.DisplayNameFor(model => model.TESTDATE)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.YRCV.CHALLANNO)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.COLOR.COLOR)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.DENIER_ACT)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.TENACITY_GPD)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.NIP_MTR_ACT)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.REMARKS)</th>
+                        <th scope="col">@Html.DisplayName("Action")</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+}

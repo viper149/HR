@@ -1,0 +1,24 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Views.FGenSRequirement.Reports
+@using RPT_GS_REQUSITINO_SR = DenimERP.Views.FGenSRequirement.Reports.RPT_GS_REQUSITINO_SR
+@model string
+
+@{
+    ViewData["Title"] = "Requirement Information (General Store)";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RPT_GS_REQUSITINO_SR(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

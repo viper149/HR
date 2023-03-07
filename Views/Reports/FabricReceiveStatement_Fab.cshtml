@@ -1,0 +1,28 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Reports.Fabric_Store
+@using RPT_Fabric_Receive_Statement = DenimERP.Reports.Fabric_Store.RPT_Fabric_Receive_Statement
+
+@{
+    ViewData["Title"] = "Fabric Receive Statement";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Reports</li>
+        <li class="breadcrumb-item active" aria-current="page"><a asp-action="FabricReceiveStatement_Fab" asp-controller="Reports">@ViewData["Title"]</a></li>
+    </ol>
+</nav>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RPT_Fabric_Receive_Statement())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

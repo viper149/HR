@@ -1,0 +1,102 @@
+﻿
+@model FPrInspectionFabricDispatchViewModel
+
+@{
+    ViewData["Title"] = "Inspection Roll Scan";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> @ViewData["Title"]</h2>
+<hr />
+
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-body row">
+            <div class="col-3">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="FPrInspectionFabricDMaster.DDATE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control bg-e9ecef">
+                        @Html.DisplayFor(model => model.FPrInspectionFabricDMaster.DDATE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                @*<div class="form-group">
+                        <strong>
+                            <label asp-for="FPrInspectionFabricDMaster.SEC.SECNAME" class="control-label"></label>
+                        </strong>
+                        <span class="custom-form-control form-control bg-e9ecef">
+                            @Html.DisplayFor(model => model.FPrInspectionFabricDMaster.SEC.SECNAME)
+                        </span>
+                    </div>*@
+            </div>
+            <div class="col-3">
+                @*<div class="form-group">
+                        <strong>
+                            <label asp-for="FPrInspectionFabricDMaster.REMARKS" class="control-label"></label>
+                        </strong>
+                        <span class="custom-form-control form-control bg-e9ecef">
+                            @Html.DisplayFor(model => model.FPrInspectionFabricDMaster.REMARKS)
+                        </span>
+                    </div>*@
+            </div>
+            @*search bar start*@
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <div class="input-group md-form form-sm form-1 pl-0">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text pink lighten-3" id="basic-text1" style="background: linear-gradient( 45deg, black, transparent);">
+                            <i class="fa fa-search text-white"
+                               aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <input class="form-control my-0 py-1" id="tableSearch" type="text" placeholder="Type something to search" aria-label="Search">
+
+                </div>
+            </div>
+            @*search bar End*@
+            <div class="col-12" id="rollDetails">
+                @await Html.PartialAsync($"~/Views/FPrInspectionFabricDispatch/RollDetailsList.cshtml", Model)
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" asp-append-version="true">
+        var attachTo = $("#rollDetails");
+        $(document).ready(function () {
+            $("#tableSearch").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+
+        function RemoveDispatch(index) {
+            swal({
+                    title: "Please Confirm",
+                    text: `You won't able to revert, Are you sure to remove item no. - ${index + 1}`,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, sir",
+                    cancelButtonText: "Not at all"
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        var formData = $('#form').serializeArray();
+                        
+                        formData.push({ name: "RemoveIndex", value: index });
+
+                        $.post("/FPrInspectionFabricDispatch/RemoveDespatchDetailsFromList", formData, function (partialView) {
+                            attachTo.html(partialView);
+                        }).fail(function () {
+                            toastr.error(errors[0].title, errors[0].message);
+                        });
+                    }
+                });
+        }
+    </script>
+}

@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="RPT_Fabric_Receive_Statement" Landscape="true" Margins="35, 32, 37, 90" PaperKind="A4" PageWidth="1169" PageHeight="827" Version="19.2" DataMember="RPT_Fabric_Receive_Statement" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="4" Description="Show between" ValueSourceSettings="#Ref-2" Name="Date" Type="#Ref-3" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="5" ControlType="TopMarginBand" Name="TopMargin" HeightF="37">
+      <Controls>
+        <Item1 Ref="6" ControlType="XRPageInfo" Name="pageInfo1" PageInfo="DateTime" TextFormatString="{0:dd, MMMM, yyyy HH:mm}" SizeF="194.500015,22.9999981" LocationFloat="10, 14.0000029" StyleName="PageInfo" />
+        <Item2 Ref="7" ControlType="XRPageInfo" Name="pageInfo2" TextFormatString="Page {0} of {1}" TextAlignment="TopLeft" SizeF="102.833252,22.9999981" LocationFloat="999.1666, 14.0000029" StyleName="PageInfo">
+          <StylePriority Ref="8" UseTextAlignment="false" />
+        </Item2>
+      </Controls>
+    </Item1>
+    <Item2 Ref="9" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="90">
+      <Controls>
+        <Item1 Ref="10" ControlType="XRRichText" Name="richText3" SerializableRtfString="ewBcAHIAdABmADEAXABkAGUAZgBmADAAewBcAGYAbwBuAHQAdABiAGwAewBcAGYAMAAgAEMAYQBsAGkAYgByAGkAOwB9AHsAXABmADEAIABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgA7AH0AfQB7AFwAYwBvAGwAbwByAHQAYgBsACAAOwBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADAAXABiAGwAdQBlADIANQA1ACAAOwB9AHsAXAAqAFwAZABlAGYAYwBoAHAAIABcAGYAMQBcAGYAcwAyADQAfQB7AFwAcwB0AHkAbABlAHMAaABlAGUAdAAgAHsAXABxAGwAXABmADEAXABmAHMAMgA0ACAATgBvAHIAbQBhAGwAOwB9AHsAXAAqAFwAYwBzADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABEAGUAZgBhAHUAbAB0ACAAUABhAHIAYQBnAHIAYQBwAGgAIABGAG8AbgB0ADsAfQB7AFwAKgBcAGMAcwAyAFwAcwBiAGEAcwBlAGQAbwBuADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABMAGkAbgBlACAATgB1AG0AYgBlAHIAOwB9AHsAXAAqAFwAYwBzADMAXABmADEAXABmAHMAMgA0AFwAdQBsAFwAYwBmADIAIABIAHkAcABlAHIAbABpAG4AawA7AH0AewBcACoAXAB0AHMANABcAHQAcwByAG8AdwBkAFwAZgAxAFwAZgBzADIANABcAHEAbABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgBsADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAGwAMQAwADgAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAYgAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgB0ADMAXAB0AHMAdgBlAHIAdABhAGwAdABcAGMAbAB0AHgAbAByAHQAYgAgAE4AbwByAG0AYQBsACAAVABhAGIAbABlADsAfQB7AFwAKgBcAHQAcwA1AFwAdABzAHIAbwB3AGQAXABzAGIAYQBzAGUAZABvAG4ANABcAGYAMQBcAGYAcwAyADQAXABxAGwAXAB0AHIAYgByAGQAcgB0AFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGwAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAYgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgByAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGgAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAdgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAbAAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABsADEAMAA4AFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwB2AGUAcgB0AGEAbAB0AFwAYwBsAHQAeABsAHIAdABiACAAVABhAGIAbABlACAAUwBpAG0AcABsAGUAIAAxADsAfQB9AHsAXAAqAFwAbABpAHMAdABvAHYAZQByAHIAaQBkAGUAdABhAGIAbABlAH0AXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcABcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGMAewBcAGYAMQBcAGYAcwAyADAAXABjAGYAMQAgAEkAbgAtAEMAaABhAHIAZwBlACgARgBhAGIAcgBpAGMAIABTAHQAbwByAGUAKQB9AFwAZgAxAFwAZgBzADIAMABcAGMAZgAxAFwAcABhAHIAfQA=" SizeF="164.166626,23.3333359" LocationFloat="841.9576, 66.6666641" />
+        <Item2 Ref="11" ControlType="XRRichText" Name="richText2" SerializableRtfString="ewBcAHIAdABmADEAXABkAGUAZgBmADAAewBcAGYAbwBuAHQAdABiAGwAewBcAGYAMAAgAEMAYQBsAGkAYgByAGkAOwB9AHsAXABmADEAIABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgA7AH0AfQB7AFwAYwBvAGwAbwByAHQAYgBsACAAOwBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADAAXABiAGwAdQBlADIANQA1ACAAOwB9AHsAXAAqAFwAZABlAGYAYwBoAHAAIABcAGYAMQBcAGYAcwAyADQAfQB7AFwAcwB0AHkAbABlAHMAaABlAGUAdAAgAHsAXABxAGwAXABmADEAXABmAHMAMgA0ACAATgBvAHIAbQBhAGwAOwB9AHsAXAAqAFwAYwBzADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABEAGUAZgBhAHUAbAB0ACAAUABhAHIAYQBnAHIAYQBwAGgAIABGAG8AbgB0ADsAfQB7AFwAKgBcAGMAcwAyAFwAcwBiAGEAcwBlAGQAbwBuADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABMAGkAbgBlACAATgB1AG0AYgBlAHIAOwB9AHsAXAAqAFwAYwBzADMAXABmADEAXABmAHMAMgA0AFwAdQBsAFwAYwBmADIAIABIAHkAcABlAHIAbABpAG4AawA7AH0AewBcACoAXAB0AHMANABcAHQAcwByAG8AdwBkAFwAZgAxAFwAZgBzADIANABcAHEAbABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgBsADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAGwAMQAwADgAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAYgAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgB0ADMAXAB0AHMAdgBlAHIAdABhAGwAdABcAGMAbAB0AHgAbAByAHQAYgAgAE4AbwByAG0AYQBsACAAVABhAGIAbABlADsAfQB7AFwAKgBcAHQAcwA1AFwAdABzAHIAbwB3AGQAXABzAGIAYQBzAGUAZABvAG4ANABcAGYAMQBcAGYAcwAyADQAXABxAGwAXAB0AHIAYgByAGQAcgB0AFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGwAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAYgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgByAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGgAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAdgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAbAAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABsADEAMAA4AFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwB2AGUAcgB0AGEAbAB0AFwAYwBsAHQAeABsAHIAdABiACAAVABhAGIAbABlACAAUwBpAG0AcABsAGUAIAAxADsAfQB9AHsAXAAqAFwAbABpAHMAdABvAHYAZQByAHIAaQBkAGUAdABhAGIAbABlAH0AXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcABcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGMAewBcAGYAMQBcAGYAcwAyADAAXABjAGYAMQAgAEMAaABlAGMAawBlAGQAIABiAHkAfQBcAGYAMQBcAGYAcwAyADAAXABjAGYAMQBcAHAAYQByAH0A" SizeF="80,23.333334" LocationFloat="475.2909, 66.6666641" />
+        <Item3 Ref="12" ControlType="XRRichText" Name="richText1" SerializableRtfString="ewBcAHIAdABmADEAXABkAGUAZgBmADAAewBcAGYAbwBuAHQAdABiAGwAewBcAGYAMAAgAEMAYQBsAGkAYgByAGkAOwB9AHsAXABmADEAIABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgA7AH0AfQB7AFwAYwBvAGwAbwByAHQAYgBsACAAOwBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADAAXABiAGwAdQBlADIANQA1ACAAOwB9AHsAXAAqAFwAZABlAGYAYwBoAHAAIABcAGYAMQBcAGYAcwAyADQAfQB7AFwAcwB0AHkAbABlAHMAaABlAGUAdAAgAHsAXABxAGwAXABmADEAXABmAHMAMgA0ACAATgBvAHIAbQBhAGwAOwB9AHsAXAAqAFwAYwBzADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABEAGUAZgBhAHUAbAB0ACAAUABhAHIAYQBnAHIAYQBwAGgAIABGAG8AbgB0ADsAfQB7AFwAKgBcAGMAcwAyAFwAcwBiAGEAcwBlAGQAbwBuADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABMAGkAbgBlACAATgB1AG0AYgBlAHIAOwB9AHsAXAAqAFwAYwBzADMAXABmADEAXABmAHMAMgA0AFwAdQBsAFwAYwBmADIAIABIAHkAcABlAHIAbABpAG4AawA7AH0AewBcACoAXAB0AHMANABcAHQAcwByAG8AdwBkAFwAZgAxAFwAZgBzADIANABcAHEAbABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgBsADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAGwAMQAwADgAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAYgAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgB0ADMAXAB0AHMAdgBlAHIAdABhAGwAdABcAGMAbAB0AHgAbAByAHQAYgAgAE4AbwByAG0AYQBsACAAVABhAGIAbABlADsAfQB7AFwAKgBcAHQAcwA1AFwAdABzAHIAbwB3AGQAXABzAGIAYQBzAGUAZABvAG4ANABcAGYAMQBcAGYAcwAyADQAXABxAGwAXAB0AHIAYgByAGQAcgB0AFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGwAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAYgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgByAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGgAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAdgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAbAAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABsADEAMAA4AFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwB2AGUAcgB0AGEAbAB0AFwAYwBsAHQAeABsAHIAdABiACAAVABhAGIAbABlACAAUwBpAG0AcABsAGUAIAAxADsAfQB9AHsAXAAqAFwAbABpAHMAdABvAHYAZQByAHIAaQBkAGUAdABhAGIAbABlAH0AXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcABcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGwAewBcAGwAYQBuAGcAMQAwADMAMwBcAGwAYQBuAGcAZgBlADEAMAAzADMAXABmADEAXABmAHMAMgAwAFwAYwBmADEAIAAgACAAIAB9AHsAXABmADEAXABmAHMAMgAwAFwAYwBmADEAIABQAHIAZQBwAGEAcgBlAGQAIABiAHkAfQBcAGYAMQBcAGYAcwAyADAAXABjAGYAMQBcAHAAYQByAH0A" SizeF="94.1666641,20" LocationFloat="112.749222, 70" Borders="Top">
+          <StylePriority Ref="13" UseBorders="false" />
+        </Item3>
+      </Controls>
+    </Item2>
+    <Item3 Ref="14" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="0" />
+    <Item4 Ref="15" ControlType="GroupHeaderBand" Name="GroupHeader1" GroupUnion="WithFirstDetail" HeightF="23">
+      <GroupFields>
+        <Item1 Ref="16" FieldName="FAB_GRADE" />
+      </GroupFields>
+      <Controls>
+        <Item1 Ref="17" ControlType="XRLabel" Name="label13" Multiline="true" Text="label13" TextAlignment="MiddleCenter" SizeF="52.0833321,23" LocationFloat="0, 0" Font="Calibri, 12pt, style=Bold" ForeColor="255,215,0,0" Padding="2,2,0,0,100" Borders="None">
+          <ExpressionBindings>
+            <Item1 Ref="18" EventName="BeforePrint" PropertyName="Text" Expression="[FAB_GRADE]" />
+          </ExpressionBindings>
+          <StylePriority Ref="19" UseFont="false" UseForeColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item4>
+    <Item5 Ref="20" ControlType="DetailBand" Name="Detail" HeightF="18.8333378">
+      <Controls>
+        <Item1 Ref="21" ControlType="XRTable" Name="table1" TextAlignment="MiddleCenter" SizeF="1102,18.8333378" LocationFloat="0, 0" Font="Calibri, 10pt" BackColor="Transparent" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="22" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="23" ControlType="XRTableCell" Name="tableCell2" Weight="0.63992737765256758" Multiline="true" Text="Sl. No.">
+                  <Summary Ref="24" Running="Report" IgnoreNullValues="true" />
+                  <ExpressionBindings>
+                    <Item1 Ref="25" EventName="BeforePrint" PropertyName="Text" Expression="sumRecordNumber([STYLE_NAME])" />
+                  </ExpressionBindings>
+                </Item1>
+                <Item2 Ref="26" ControlType="XRTableCell" Name="tableCell3" Weight="1.5963865623304459" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Text="FTR &#xD;&#xA;Date">
+                  <ExpressionBindings>
+                    <Item1 Ref="27" EventName="BeforePrint" PropertyName="Text" Expression="[RCVDATE]" />
+                  </ExpressionBindings>
+                </Item2>
+                <Item3 Ref="28" ControlType="XRTableCell" Name="tableCell4" Weight="1.5071466326973633" Multiline="true" Text="FTR&#xD;&#xA;No.">
+                  <ExpressionBindings>
+                    <Item1 Ref="29" EventName="BeforePrint" PropertyName="Text" Expression="[FFTR_NO]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="30" ControlType="XRTableCell" Name="tableCell5" Weight="3.415009791117841" Multiline="true" ProcessDuplicatesMode="Merge" Text="Style&#xD;&#xA;Name">
+                  <ExpressionBindings>
+                    <Item1 Ref="31" EventName="BeforePrint" PropertyName="Text" Expression="[STYLE_NAME]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="32" ControlType="XRTableCell" Name="tableCell6" Weight="0.93920848946141078" Multiline="true" Text="Yds" />
+                <Item6 Ref="33" ControlType="XRTableCell" Name="tableCell7" Weight="0.89412351299486525" Multiline="true" Text="Roll Qty">
+                  <ExpressionBindings>
+                    <Item1 Ref="34" EventName="BeforePrint" PropertyName="Text" Expression="[Production_Roll]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="35" ControlType="XRTableCell" Name="tableCell8" Weight="1.1605184752931659" Multiline="true" Text="Fabric Qty">
+                  <ExpressionBindings>
+                    <Item1 Ref="36" EventName="BeforePrint" PropertyName="Text" Expression="[Production_YDS]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="37" ControlType="XRTableCell" Name="tableCell9" Weight="0.83948054562859387" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="38" EventName="BeforePrint" PropertyName="Text" Expression="[Others_Roll]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="39" ControlType="XRTableCell" Name="tableCell10" Weight="1.0123696220682181" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="40" EventName="BeforePrint" PropertyName="Text" Expression="[Others_YDS]" />
+                  </ExpressionBindings>
+                </Item9>
+                <Item10 Ref="41" ControlType="XRTableCell" Name="tableCell32" Weight="0.99136724883964755" TextFormatString="{0:#.00}" Multiline="true" Text="tableCell32">
+                  <ExpressionBindings>
+                    <Item1 Ref="42" EventName="BeforePrint" PropertyName="Text" Expression="[UNITPRICE]" />
+                  </ExpressionBindings>
+                </Item10>
+                <Item11 Ref="43" ControlType="XRTableCell" Name="tableCell11" Weight="0.97401856296923861" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="44" EventName="BeforePrint" PropertyName="Text" Expression="[FAB_GRADE]" />
+                  </ExpressionBindings>
+                </Item11>
+                <Item12 Ref="45" ControlType="XRTableCell" Name="tableCell12" Weight="1.8178233462187989" Multiline="true" Text="Color">
+                  <ExpressionBindings>
+                    <Item1 Ref="46" EventName="BeforePrint" PropertyName="Text" Expression="[COLOR]" />
+                  </ExpressionBindings>
+                </Item12>
+                <Item13 Ref="47" ControlType="XRTableCell" Name="tableCell13" Weight="1.3229240331262642" Multiline="true" Text="Design">
+                  <ExpressionBindings>
+                    <Item1 Ref="48" EventName="BeforePrint" PropertyName="Text" Expression="[Design]" />
+                  </ExpressionBindings>
+                </Item13>
+                <Item14 Ref="49" ControlType="XRTableCell" Name="tableCell14" Weight="1.63047825559496" Multiline="true" Text="Type">
+                  <ExpressionBindings>
+                    <Item1 Ref="50" EventName="BeforePrint" PropertyName="Text" Expression="[PROCESS_TYPE]" />
+                  </ExpressionBindings>
+                </Item14>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="51" UseFont="false" UseBackColor="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item5>
+    <Item6 Ref="52" ControlType="PageHeaderBand" Name="PageHeader" HeightF="140.166687">
+      <Controls>
+        <Item1 Ref="53" ControlType="XRTable" Name="table2" TextAlignment="MiddleCenter" SizeF="1092,46.0000153" LocationFloat="0, 94.16667" Font="Calibri, 10pt, style=Bold" BackColor="WhiteSmoke" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="54" ControlType="XRTableRow" Name="tableRow5" Weight="1">
+              <Cells>
+                <Item1 Ref="55" ControlType="XRTableCell" Name="tableCell34" Weight="0.57308741084864878" RowSpan="2" Multiline="true" Text="Sl. No." />
+                <Item2 Ref="56" ControlType="XRTableCell" Name="tableCell35" Weight="1.4296450380419121" RowSpan="2" Multiline="true" Text="FTR &#xD;&#xA;Date" />
+                <Item3 Ref="57" ControlType="XRTableCell" Name="tableCell36" Weight="1.3497266925749227" RowSpan="2" Multiline="true" Text="FTR&#xD;&#xA;No." />
+                <Item4 Ref="58" ControlType="XRTableCell" Name="tableCell40" Weight="3.0583144288203585" RowSpan="2" Multiline="true" Text="Style&#xD;&#xA;Name" />
+                <Item5 Ref="59" ControlType="XRTableCell" Name="tableCell41" Weight="0.86149280903125125" RowSpan="2" Multiline="true" Text="Unit" />
+                <Item6 Ref="60" ControlType="XRTableCell" Name="tableCell44" Weight="1.8196520986457458" Multiline="true" Text="Production" />
+                <Item7 Ref="61" ControlType="XRTableCell" Name="tableCell49" Weight="1.6584258400434804" Multiline="true" Text="Others" />
+                <Item8 Ref="62" ControlType="XRTableCell" Name="tableCell50" Weight="0.88781974787446016" RowSpan="2" Multiline="true" Text="Rate" />
+                <Item9 Ref="63" ControlType="XRTableCell" Name="tableCell1" Weight="0.87228313357506737" RowSpan="2" Multiline="true" Text="Grade" />
+                <Item10 Ref="64" ControlType="XRTableCell" Name="tableCell26" Weight="1.627953267271878" RowSpan="2" Multiline="true" Text="Color" />
+                <Item11 Ref="65" ControlType="XRTableCell" Name="tableCell28" Weight="1.1847455661836945" RowSpan="2" Multiline="true" Text="Design" />
+                <Item12 Ref="66" ControlType="XRTableCell" Name="tableCell30" Weight="1.307879441049856" RowSpan="2" Multiline="true" Text="Type" />
+              </Cells>
+            </Item1>
+            <Item2 Ref="67" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="68" ControlType="XRTableCell" Name="tableCell15" Weight="0.57308741084864878" Multiline="true" Text="tableCell15" />
+                <Item2 Ref="69" ControlType="XRTableCell" Name="tableCell16" Weight="1.4296450380419121" Multiline="true" Text="tableCell16" />
+                <Item3 Ref="70" ControlType="XRTableCell" Name="tableCell17" Weight="1.3497266925749227" Multiline="true" Text="tableCell17" />
+                <Item4 Ref="71" ControlType="XRTableCell" Name="tableCell18" Weight="3.0583144288203585" Multiline="true" Text="tableCell18" />
+                <Item5 Ref="72" ControlType="XRTableCell" Name="tableCell19" Weight="0.86149280903125125" Multiline="true" Text="tableCell19" />
+                <Item6 Ref="73" ControlType="XRTableCell" Name="tableCell20" Weight="0.78034889090563564" Multiline="true" Text="Roll Qty" />
+                <Item7 Ref="74" ControlType="XRTableCell" Name="tableCell21" Weight="1.0393032077401099" Multiline="true" Text="Fabric Qty" />
+                <Item8 Ref="75" ControlType="XRTableCell" Name="tableCell22" Weight="0.75179756542123854" Multiline="true" Text="Roll Qty" />
+                <Item9 Ref="76" ControlType="XRTableCell" Name="tableCell23" Weight="0.90662850701169351" Multiline="true" Text="Fabric Qty" />
+                <Item10 Ref="77" ControlType="XRTableCell" Name="tableCell24" Weight="0.88781974787446016" Multiline="true" Text="Grade" />
+                <Item11 Ref="78" ControlType="XRTableCell" Name="tableCell25" Weight="0.87228313357506737" Multiline="true" Text="tableCell25" />
+                <Item12 Ref="79" ControlType="XRTableCell" Name="tableCell27" Weight="1.627953267271878" Multiline="true" Text="tableCell27" />
+                <Item13 Ref="80" ControlType="XRTableCell" Name="tableCell29" Weight="1.1847455661836945" Multiline="true" Text="tableCell29" />
+                <Item14 Ref="81" ControlType="XRTableCell" Name="tableCell31" Weight="1.3078792086604043" Multiline="true" Text="tableCell31" />
+              </Cells>
+            </Item2>
+          </Rows>
+          <StylePriority Ref="82" UseFont="false" UseBackColor="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="83" ControlType="XRLabel" Name="label3" Multiline="true" Text="Date Range : [?Date_Start!dd-MM-yyyy] to [?Date_End!dd-MM-yyyy]" TextAlignment="TopCenter" SizeF="1101.99976,18.79168" LocationFloat="0.000127156571, 59.2500229" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="84" UseFont="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="85" ControlType="XRLabel" Name="label1" Multiline="true" Text="PIONEER DENIM LIMITED" TextAlignment="TopCenter" SizeF="1101.99988,29.6250019" LocationFloat="3.17891427E-05, 0" Font="Calibri, 18pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="86" UseFont="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="87" ControlType="XRLabel" Name="label2" Multiline="true" Text="Fabric Receiving Statement" TextAlignment="TopCenter" SizeF="1101.99988,29.6250076" LocationFloat="0.000127156571, 29.62502" Font="Calibri, 14pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="88" UseFont="false" UseTextAlignment="false" />
+        </Item4>
+      </Controls>
+    </Item6>
+    <Item7 Ref="89" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="21.166687" KeepTogether="true" />
+    <Item8 Ref="90" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="19.1666927">
+      <Controls>
+        <Item1 Ref="91" ControlType="XRLabel" Name="label12" Multiline="true" Text="Roll Total" TextAlignment="TopCenter" SizeF="59.5296021,18.7916832" LocationFloat="644.133362, 0" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100" Borders="Bottom" BorderWidth="0.5">
+          <Summary Ref="92" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="93" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([Others_YDS])" />
+          </ExpressionBindings>
+          <StylePriority Ref="94" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="95" ControlType="XRLabel" Name="label11" Multiline="true" Text="Roll Total" TextAlignment="TopCenter" SizeF="49.36328,18.7916832" LocationFloat="594.77, 0" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100" Borders="Bottom" BorderWidth="0.5">
+          <Summary Ref="96" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="97" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([Others_Roll])" />
+          </ExpressionBindings>
+          <StylePriority Ref="98" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="99" ControlType="XRLabel" Name="label10" Multiline="true" Text="Roll Total" TextAlignment="TopCenter" SizeF="68.24109,18.7916832" LocationFloat="526.5289, 0" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100" Borders="Bottom" BorderWidth="0.5">
+          <Summary Ref="100" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="101" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([Production_YDS])" />
+          </ExpressionBindings>
+          <StylePriority Ref="102" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="103" ControlType="XRLabel" Name="label9" Multiline="true" Text="Roll Total" TextAlignment="TopCenter" SizeF="51.2380371,18.7916832" LocationFloat="475.2909, 0" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100" Borders="Bottom" BorderWidth="0.5">
+          <Summary Ref="104" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="105" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([Production_Roll])" />
+          </ExpressionBindings>
+          <StylePriority Ref="106" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item4>
+      </Controls>
+    </Item8>
+    <Item9 Ref="107" ControlType="GroupHeaderBand" Name="GroupHeader2" Level="1" HeightF="23">
+      <GroupFields>
+        <Item1 Ref="108" FieldName="PROCESS_TYPE" />
+      </GroupFields>
+      <Controls>
+        <Item1 Ref="109" ControlType="XRLabel" Name="label8" Multiline="true" Text="label8" TextAlignment="MiddleLeft" SizeF="220.123779,23" LocationFloat="0, 0" Font="Calibri, 12pt, style=Bold" ForeColor="255,0,88,176" BackColor="WhiteSmoke" Padding="4,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="110" EventName="BeforePrint" PropertyName="Text" Expression="Iif([PROCESS_TYPE]&#xA;='Production','Production' ,'Other Receive' )" />
+          </ExpressionBindings>
+          <StylePriority Ref="111" UseFont="false" UseForeColor="false" UseBackColor="false" UsePadding="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item9>
+    <Item10 Ref="112" ControlType="GroupFooterBand" Name="GroupFooter2" Level="1" HeightF="18.7916832">
+      <Controls>
+        <Item1 Ref="113" ControlType="XRLabel" Name="label14" Multiline="true" Text="Roll Total" TextAlignment="TopCenter" SizeF="51.2380371,18.7916832" LocationFloat="475.2909, 0" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100" Borders="Bottom" BorderWidth="0.5">
+          <Summary Ref="114" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="115" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([Production_Roll])" />
+          </ExpressionBindings>
+          <StylePriority Ref="116" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="117" ControlType="XRLabel" Name="label15" Multiline="true" Text="Roll Total" TextAlignment="TopCenter" SizeF="68.24109,18.7916832" LocationFloat="526.5289, 0" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100" Borders="Bottom" BorderWidth="0.5">
+          <Summary Ref="118" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="119" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([Production_YDS])" />
+          </ExpressionBindings>
+          <StylePriority Ref="120" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="121" ControlType="XRLabel" Name="label16" Multiline="true" Text="Roll Total" TextAlignment="TopCenter" SizeF="49.36328,18.7916832" LocationFloat="594.77, 0" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100" Borders="Bottom" BorderWidth="0.5">
+          <Summary Ref="122" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="123" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([Others_Roll])" />
+          </ExpressionBindings>
+          <StylePriority Ref="124" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="125" ControlType="XRLabel" Name="label17" Multiline="true" Text="Roll Total" TextAlignment="TopCenter" SizeF="59.5296021,18.7916832" LocationFloat="644.133362, 0" Font="Calibri, 10pt, style=Bold" Padding="2,2,0,0,100" Borders="Bottom" BorderWidth="0.5">
+          <Summary Ref="126" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="127" EventName="BeforePrint" PropertyName="Text" Expression="sumSum([Others_YDS])" />
+          </ExpressionBindings>
+          <StylePriority Ref="128" UseFont="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item4>
+      </Controls>
+    </Item10>
+  </Bands>
+  <StyleSheet>
+    <Item1 Ref="129" Name="Title" BorderStyle="Inset" Font="Arial, 14.25pt" ForeColor="255,75,75,75" BackColor="Transparent" BorderColor="Black" Sides="None" StringFormat="Near;Near;0;None;Character;Default" BorderWidthSerializable="1" />
+    <Item2 Ref="130" Name="DetailCaption1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="White" BackColor="255,75,75,75" BorderColor="White" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item3 Ref="131" Name="DetailData1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BorderColor="Transparent" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item4 Ref="132" Name="DetailData3_Odd" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BackColor="255,231,231,231" BorderColor="Transparent" Sides="None" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="1" />
+    <Item5 Ref="133" Name="PageInfo" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="255,75,75,75" StringFormat="Near;Near;0;None;Character;Default" />
+  </StyleSheet>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v19.2" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IlBETEVSUENvbm5lY3Rpb24iIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IlN0b3JlZFByb2NRdWVyeSIgTmFtZT0iUlBUX0ZhYnJpY19SZWNlaXZlX1N0YXRlbWVudCI+PFBhcmFtZXRlciBOYW1lPSJARkRBVEUiIFR5cGU9IkRldkV4cHJlc3MuRGF0YUFjY2Vzcy5FeHByZXNzaW9uIj4oU3lzdGVtLkRhdGVUaW1lLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkpKD9EYXRlX1N0YXJ0KTwvUGFyYW1ldGVyPjxQYXJhbWV0ZXIgTmFtZT0iQFREQVRFIiBUeXBlPSJEZXZFeHByZXNzLkRhdGFBY2Nlc3MuRXhwcmVzc2lvbiI+KFN5c3RlbS5EYXRlVGltZSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5KSg/RGF0ZV9FbmQpPC9QYXJhbWV0ZXI+PFByb2NOYW1lPlJQVF9GYWJyaWNfUmVjZWl2ZV9TdGF0ZW1lbnQ8L1Byb2NOYW1lPjwvUXVlcnk+PFJlc3VsdFNjaGVtYT48RGF0YVNldCBOYW1lPSJzcWxEYXRhU291cmNlMSI+PFZpZXcgTmFtZT0iUlBUX0ZhYnJpY19SZWNlaXZlX1N0YXRlbWVudCI+PEZpZWxkIE5hbWU9IkZGVFJfTk8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUkNWREFURSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IkZBQkNPREUiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJTVFlMRV9OQU1FIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNPTE9SIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkRlc2lnbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQUk9DRVNTX1RZUEUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRkFCX0dSQURFIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlByb2R1Y3Rpb25fWURTIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IlByb2R1Y3Rpb25fUm9sbCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9Ik90aGVyc19ZRFMiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iT3RoZXJzX1JvbGwiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJVTklUUFJJQ0UiIFR5cGU9IkRvdWJsZSIgLz48L1ZpZXc+PC9EYXRhU2V0PjwvUmVzdWx0U2NoZW1hPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 Ref="2" ObjectType="DevExpress.XtraReports.Parameters.RangeParametersSettings, DevExpress.Printing.v19.2.Core" StartParameter="#Ref-134" EndParameter="#Ref-135" />
+    <Item2 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v19.2" Ref="3" Content="System.DateTime" Type="System.Type" />
+    <Item3 Ref="134" ObjectType="DevExpress.XtraReports.Parameters.RangeStartParameter, DevExpress.Printing.v19.2.Core" Name="Date_Start">
+      <ExpressionBindings>
+        <Item1 Ref="136" PropertyName="Value" Expression="Today()" />
+      </ExpressionBindings>
+    </Item3>
+    <Item4 Ref="135" ObjectType="DevExpress.XtraReports.Parameters.RangeEndParameter, DevExpress.Printing.v19.2.Core" Name="Date_End">
+      <ExpressionBindings>
+        <Item1 Ref="137" PropertyName="Value" Expression="AddDays(Today(), 30)" />
+      </ExpressionBindings>
+    </Item4>
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

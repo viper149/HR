@@ -1,0 +1,166 @@
+﻿
+@model YarnRequirementViewModel
+
+@if (Model.FYarnRequirementDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            @if (Model.FYarnRequirementDetails.ORDER_TYPE != "RSNO")
+            {
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.TRNSDATE)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.ORDER_TYPE)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.ORDERNO)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.SETID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.COUNTID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.LOTID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.UNIT)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.REQ_QTY)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.REMARKS)</th>
+                    <th scope="col">@Html.Raw("Actions")</th>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.TRNSDATE)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.ORDER_TYPE)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.RSID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.COUNTID_RS)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.LOTID)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.UNIT)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.REQ_QTY)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.FYarnRequirementDetails.REMARKS)</th>
+                    <th scope="col">@Html.Raw("Actions")</th>
+                </tr>
+            }
+
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FYarnRequirementDetailsList.Count; i++)
+            {
+                <tr>
+                    @if (!Model.FYarnRequirementDetailsList[i].ORDER_TYPE.Equals("RSNO"))
+                    {
+                        <td>@(i + 1)</td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].TRNSID)
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].YSRID)
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].TRNSDATE)
+                            @Html.DisplayFor(item => Model.FYarnRequirementDetailsList[i].TRNSDATE)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].ORDER_TYPE)
+                            @Html.DisplayName("Bulk")
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].ORDERNO)
+                            @Model.FYarnRequirementDetailsList[i].PO?.SO?.SO_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].SETID)
+                            @Model.FYarnRequirementDetailsList[i].SET?.PROG_?.PROG_NO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].COUNTID)
+                            @Model.FYarnRequirementDetailsList[i].COUNT?.COUNT?.RND_COUNTNAME - @Model.FYarnRequirementDetailsList[i].COUNT?.Color?.COLOR
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].LOTID)
+                            @Model.FYarnRequirementDetailsList[i].LOT?.LOTNO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].UNIT)
+                            @Model.FYarnRequirementDetailsList[i].FBasUnits?.UNAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].REQ_QTY)
+                            @Model.FYarnRequirementDetailsList[i].REQ_QTY
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].REMARKS)
+                            @Model.FYarnRequirementDetailsList[i].REMARKS
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x text-danger"
+                               onclick="removeFromList('@i');" aria-hidden="true"></i>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>@(i + 1)</td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].TRNSID)
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].YSRID)
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].TRNSDATE)
+                            @Html.DisplayFor(item => Model.FYarnRequirementDetailsList[i].TRNSDATE)
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].ORDER_TYPE)
+                            @Html.DisplayName("Sample")
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].RSID)
+                            @Model.FYarnRequirementDetailsList[i].RS?.RSOrder
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].COUNTID_RS)
+                            @Model.FYarnRequirementDetailsList[i].RSCOUNT?.RND_COUNTNAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].LOTID)
+                            @Model.FYarnRequirementDetailsList[i].LOT?.LOTNO
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].UNIT)
+                            @Model.FYarnRequirementDetailsList[i].FBasUnits?.UNAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].REQ_QTY)
+                            @Model.FYarnRequirementDetailsList[i].REQ_QTY
+                        </td>
+                        <td>
+                            @Html.HiddenFor(model => model.FYarnRequirementDetailsList[i].REMARKS)
+                            @Model.FYarnRequirementDetailsList[i].REMARKS
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x text-danger"
+                               onclick="removeFromList('@i');" aria-hidden="true"></i>
+                        </td>
+                    }
+                </tr>
+            }
+            <tr class="bg-info text-white">
+                @if (Model.FYarnRequirementDetails.ORDER_TYPE != "RSNO")
+                {
+                    <td><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Sum Of Total :")</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@($"{Model.FYarnRequirementDetailsList.Sum(e => e.REQ_QTY)}") </td>
+                    <td></td>
+                    <td></td>
+                }
+                else
+                {
+                    <td><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Sum Of Total :")</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@($"{Model.FYarnRequirementDetailsList.Sum(e => e.REQ_QTY)}") </td>
+                    <td></td>
+                    <td></td>
+                }
+            </tr>
+        </tbody>
+    </table>
+}

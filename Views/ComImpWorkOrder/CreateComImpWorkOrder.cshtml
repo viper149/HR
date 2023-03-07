@@ -1,0 +1,163 @@
+﻿
+@model ComImpWorkOrderViewModel
+
+@{
+    ViewData["Title"] = "Commercial Import Work Order";
+}
+
+<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" enctype="multipart/form-data" role="form" asp-action="CreateComImpWorkOrder">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="panel-body row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Work Order Information </h2>
+                <hr />
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderMaster.WODATE" class="control-label"></label>
+                    <input asp-for="ComImpWorkOrderMaster.WODATE" class="form-control" />
+                    <span asp-validation-for="ComImpWorkOrderMaster.WODATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderMaster.CONTNO" class="control-label"></label>
+                    <input asp-for="ComImpWorkOrderMaster.CONTNO" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="ComImpWorkOrderMaster.CONTNO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderMaster.INDID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.ComImpWorkOrderMaster.INDID, new SelectList(Model.FYsIndentMasterList, "INDID", "INDSL.INDSLNO"),
+                        "Select Indent No.", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="ComImpWorkOrderMaster.INDID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderMaster.SUPPID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.ComImpWorkOrderMaster.SUPPID, new SelectList(Model.BasSupplierinfoList, "SUPPID", "SUPPNAME"),
+                        "Select Seller", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="ComImpWorkOrderMaster.SUPPID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderMaster.OPT3" class="control-label"></label>
+                    <input asp-for="ComImpWorkOrderMaster.OPT3" class="form-control" />
+                    <span asp-validation-for="ComImpWorkOrderMaster.OPT3" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Work Order Details</h2><hr />
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderDetails.COUNTID" class="control-label"></label>
+                    <select asp-for="ComImpWorkOrderDetails.COUNTID" class="form-control js-example-basic-single">
+                        <option value="">Select Count</option>
+                    </select>
+                    <span asp-validation-for="ComImpWorkOrderDetails.COUNTID" class="text-danger"></span>
+                </div>
+            </div>
+            @Html.HiddenFor(modelItem => Model.ComImpWorkOrderDetails.LOTID)
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">Lot</label>
+                    <span class="custom-form-control-bg form-control bg-e9ecef" id="lot">
+                    </span>
+                </div>
+            </div>
+            @*<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label asp-for="ComImpWorkOrderDetails.LOTID" class="control-label"></label>
+                @Html.DropDownListFor(dt => dt.ComImpWorkOrderDetails.LOTID, new SelectList(Model.BasYarnLotinfoList, "LOTID", "LOTNO"),
+                    "Select Lot", new { @class = "form-control js-example-basic-single" })
+                <span asp-validation-for="ComImpWorkOrderDetails.LOTID" class="text-danger"></span>
+            </div>
+        </div>*@
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderDetails.QTY" class="control-label"></label>
+                    <input asp-for="ComImpWorkOrderDetails.QTY" class="form-control" />
+                    <span asp-validation-for="ComImpWorkOrderDetails.QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">Unit</label>
+                    <span class="custom-form-control-bg form-control bg-e9ecef" id="unit">
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">Slub Code</label>
+                    <span class="custom-form-control-bg form-control bg-e9ecef" id="slubCode">
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">No of Cone</label>
+                    <span class="custom-form-control-bg form-control bg-e9ecef" id="cone">
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">Remarks</label>
+                    <span class="custom-form-control-bg form-control bg-e9ecef" id="indRemarks">
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderDetails.UPRICE" class="control-label"></label>
+                    <input asp-for="ComImpWorkOrderDetails.UPRICE" class="form-control" />
+                    <span asp-validation-for="ComImpWorkOrderDetails.UPRICE" class="text-danger"></span>
+                </div>
+            </div><div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderDetails.TOTAL" class="control-label"></label>
+                    <input asp-for="ComImpWorkOrderDetails.TOTAL" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="ComImpWorkOrderDetails.TOTAL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderDetails.REMARKS" class="control-label"></label>
+                    <input asp-for="ComImpWorkOrderDetails.REMARKS" class="form-control" />
+                    <span asp-validation-for="ComImpWorkOrderDetails.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-none">
+                <div class="form-group">
+                    <label asp-for="ComImpWorkOrderDetails.NOTES" class="control-label"></label>
+                    <input asp-for="ComImpWorkOrderDetails.NOTES" class="form-control" />
+                    <span asp-validation-for="ComImpWorkOrderDetails.NOTES" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button id="btn_submit" class="btn btn-info nextBtn pull-right" type="submit">Create</button>
+                <button id="addToList" class="btn btn-success pull-right" type="button">Add to List</button>
+                <a asp-action="GetComImpWorkOrder" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive table-hover" id="comImpWorkOrderDetailsTable"></div>
+
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/ComImpWorkOrder/CreateComImpWorkOrder.js"></script>
+}

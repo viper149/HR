@@ -1,0 +1,22 @@
+﻿
+@using DevExpress.AspNetCore
+@using DenimERP.Reports.COM_IMP
+@using rptLCDetails = DenimERP.Reports.COM_IMP.rptLCDetails
+
+@{
+    ViewData["Title"] = "L/C Details";
+}
+<h2>Reports @ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptLCDetails())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

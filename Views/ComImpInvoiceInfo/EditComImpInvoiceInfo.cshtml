@@ -1,0 +1,715 @@
+﻿
+@using DenimERP.Models
+@model ComImpInvoiceInfoEditViewModel
+@inject SignInManager<ApplicationUser> _signInManager
+
+@{
+    ViewData["Title"] = "Commercial Invoice";
+}
+
+<h2><i class="fa fa-edit text-warning" aria-hidden="true"></i> @ViewData["Title"] <i class="fa fa-at text-info">Import</i></h2>
+
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Invoice Information</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle">2</a>
+                <p><small>Finish</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" role="form" asp-action="EditComImpInvoiceInfo" enctype="multipart/form-data">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                @Html.HiddenFor(inv => inv.ComImpInvoiceinfo.INVID)
+                @Html.HiddenFor(inv => inv.ComImpInvoiceinfo.INVNO)
+                @Html.HiddenFor(inv => inv.ComImpInvoiceinfo.EncryptedId)
+                @Html.HiddenFor(inv => inv.ComImpInvoiceinfo.INVPATH)
+                @Html.HiddenFor(inv => inv.ComImpInvoiceinfo.BLPATH)
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.INVNO" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.INVNO" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.INVNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.INVDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.INVDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.INVDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.LC.LCNO" class="control-label"></label>
+                        @Html.DropDownListFor(lc => lc.ComImpInvoiceinfo.LC_ID, new SelectList(Model.ComImpLcinformations, "LC_ID", "LCNO"), "Select a LC Number", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        @Html.ValidationMessageFor(lc => lc.ComImpInvoiceinfo.LC_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.LPORT" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.LPORT" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.LPORT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.DOCHANDSON" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.DOCHANDSON" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.DOCHANDSON" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.ETADATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.ETADATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.ETADATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.DEL_STATUS" class="control-label"></label>
+                        @Html.DropDownListFor(lc => lc.ComImpInvoiceinfo.DEL_STATUS, new SelectList(Model.ComImpDelStatuses, "ID", "NAME"), "Select Delivery Status", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="ComImpInvoiceinfo.DEL_STATUS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.DEL_DATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.DEL_DATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.DEL_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.SBDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.SBDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.SBDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.BLNO" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.BLNO" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.BLNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.BLDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.BLDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.BLDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.CONTQTY" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.CONTQTY" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.CONTQTY" class="text-danger"></span>
+                    </div>
+                </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpInvoiceinfo.CONTSIZE" class="control-label"></label>
+                    @Html.DropDownListFor(lc => lc.ComImpInvoiceinfo.CONTSIZE, new SelectList(Model.ComContainers, "CONTAINERID", "CONTAINERSIZE"), "Select Container Size", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="ComImpInvoiceinfo.CONTSIZE" class="text-danger"></span>
+                </div>
+            </div>
+            
+            
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComImpInvoiceinfo.BENTRYVALUE" class="control-label"></label>
+                    <input asp-for="ComImpInvoiceinfo.BENTRYVALUE" class="form-control" />
+                    <span asp-validation-for="ComImpInvoiceinfo.BENTRYVALUE" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.BENTRYNO" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.BENTRYNO" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.BENTRYNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.BENTRYDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.BENTRYDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.BENTRYDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.RCVSTATUS" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.RCVSTATUS" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.RCVSTATUS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-inline-flex">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-0">
+                        <h2 class="panel-title text-success"><i class="fa fa-files-o"></i> Upload New Files</h2>
+                        <hr />
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label asp-for="INVPATH" class="control-label"></label>
+                                <div class="custom-file">
+                                    <input asp-for="INVPATH" class="form-control custom-file-input" />
+                                    <label class="custom-file-label">Choose a pdf file...</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label asp-for="BLPATH" class="control-label"></label>
+                                <div class="custom-file">
+                                    <input asp-for="BLPATH" class="form-control custom-file-input" />
+                                    <label class="custom-file-label">Choose a pdf file...</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-0">
+                        <h2 class="panel-title text-success"><i class="fa fa-files-o"></i> Old Files</h2>
+                        <hr />
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label asp-for="ComImpInvoiceinfo.INVPATH">@Html.DisplayName("Previous Invoice File")</label>
+                            @{
+                                if (Model.ComImpInvoiceinfo.INVPATH != null)
+                                {
+                                    <a asp-action="imp_invoice_files" asp-controller="Files" asp-route-fileName="@Model.ComImpInvoiceinfo.INVPATH" class="d-flex btn-link" target="_blank"><i class="fa fa-file" aria-hidden="true"> @Model.ComImpInvoiceinfo.INVPATH.Split(new char[] { ' ', '_' }, 2)[1]</i></a>
+                                }
+                                else
+                                {
+                                    @Html.DisplayName("N/A")
+                                }
+                            }
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label asp-for="ComImpInvoiceinfo.BLPATH">@Html.DisplayName("Previous BL File")</label>
+                            @{
+                                if (Model.ComImpInvoiceinfo.BLPATH != null)
+                                {
+                                    <a asp-action="imp_invoice_files" asp-controller="Files" asp-route-fileName="@Model.ComImpInvoiceinfo.BLPATH" class="d-flex btn-link" target="_blank"><i class="fa fa-file" aria-hidden="true"> @Model.ComImpInvoiceinfo.BLPATH.Split(new char[] { ' ', '_' }, 2)[1]</i></a>
+                                }
+                                else
+                                {
+                                    @Html.DisplayName("N/A")
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Product Details</h2>
+                    </div>
+                    @{
+                        if (Model.ComImpInvdetailsesForExistingList.Any())
+                        {
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive table-hover">
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ComImpInvdetailsesForExistingList.FirstOrDefault().INVNO)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.BasProductinfos.FirstOrDefault().PRODNAME)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ComImpInvdetailsesForExistingList.FirstOrDefault().UNIT)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ComImpInvdetailsesForExistingList.FirstOrDefault().QTY)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ComImpInvdetailsesForExistingList.FirstOrDefault().RATE)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ComImpInvdetailsesForExistingList.FirstOrDefault().AMOUNT)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ComImpInvdetailsesForExistingList.FirstOrDefault().REMARKS)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Modified by")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Action")
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="PreviousListImportLC">
+                                        @for (var i = 0; i < Model.ComImpInvdetailsesForExistingList.Count; i++)
+                                        {
+                                            <tr>
+                                                <td>@Model.ComImpInvdetailsesForExistingList[i].INVNO</td>
+                                                <td>@Model.ComImpInvdetailsesForExistingList[i].BasProductinfo?.PRODNAME</td>
+                                                <td>@Model.ComImpInvdetailsesForExistingList[i].F_BAS_UNITS.UNAME</td>
+                                                <td>@Model.ComImpInvdetailsesForExistingList[i].QTY</td>
+                                                <td>@Model.ComImpInvdetailsesForExistingList[i].RATE</td>
+                                                <td>@Model.ComImpInvdetailsesForExistingList[i].AMOUNT</td>
+                                                <td>@Model.ComImpInvdetailsesForExistingList[i].REMARKS</td>
+                                                <td>@_signInManager.UserManager.FindByIdAsync(Model.ComImpInvdetailsesForExistingList[i].USRID).Result.UserName</td>
+                                                <td><i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveImportInvoiceFromPreviousList('@Model.ComImpInvdetailsesForExistingList[i].EncryptedId', '@Model.ComImpInvoiceinfo.EncryptedId');" aria-hidden="true"></i></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    }*@
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Product Details</h2>
+                    <hr>
+                </div>
+
+                @Html.HiddenFor(c => c.ComImpInvdetails.TRNSDATE)
+                @Html.HiddenFor(c => c.ComImpInvdetails.INVNO)
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvdetails.BasProductinfo.PRODNAME" class="control-label"></label>
+                        @Html.DropDownListFor(lc => lc.ComImpInvdetails.PRODID, new SelectList(Model.BasProductinfos, "PRODID", "PRODNAME"), "Select a Product Name", htmlAttributes: new { @class = "form-control js-example-data-ajax" })
+                        <span asp-validation-for="ComImpInvdetails.PRODID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvdetails.F_CHEM_STORE_PRODUCTINFOS.PRODUCTNAME" class="control-label"></label>
+                        @Html.DropDownListFor(lc => lc.ComImpInvdetails.CHEMPRODID, new SelectList(Model.FChemStoreProductinfos, "PRODUCTID", "PRODUCTNAME"), "Select a Chemical Product Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="ComImpInvdetails.CHEMPRODID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvdetails.BAS_YARN_LOTINFOS.LOTNO" class="control-label"></label>
+                        @Html.DropDownListFor(lc => lc.ComImpInvdetails.YARNLOTID, new SelectList(Model.BasYarnLotinfos, "LOTID", "LOTNO"), "Select a Yarn Lot Number", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="ComImpInvdetails.YARNLOTID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvdetails.F_BAS_UNITS.UNAME" class="control-label"></label>
+                        @Html.DropDownListFor(lc => lc.ComImpInvdetails.UNIT, new SelectList(Model.FBasUnitses, "UID", "UNAME", Model.FBasUnitses.FirstOrDefault().UID), "Select An Unit Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="ComImpInvdetails.UNIT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvdetails.QTY" class="control-label"></label>
+                        <input asp-for="ComImpInvdetails.QTY" class="form-control" />
+                        <span asp-validation-for="ComImpInvdetails.QTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvdetails.RATE" class="control-label"></label>
+                        <input asp-for="ComImpInvdetails.RATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvdetails.RATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvdetails.AMOUNT" class="control-label"></label>
+                        <input asp-for="ComImpInvdetails.AMOUNT" class="form-control" readonly />
+                        <span asp-validation-for="ComImpInvdetails.AMOUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvdetails.REMARKS" class="control-label"></label>
+                        <input asp-for="ComImpInvdetails.REMARKS" class="form-control" />
+                        <span asp-validation-for="ComImpInvdetails.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button id="btnAdd" class="btn btn-success pull-right" type="button">Add</button>
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetComImpInvoiceInfo" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive table-hover" id="AttachToImportInvoice">
+                    @await Html.PartialAsync($"~/Views/ComImpInvoiceInfo/AddComImpInvDetailsTable.cshtml", Model)
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.MRRNO" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.MRRNO" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.MRRNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.MRRDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.MRRDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.MRRDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.CnF" class="control-label"></label>
+                        @Html.DropDownListFor(lc => lc.ComImpInvoiceinfo.CnF, new SelectList(Model.CnFList, "CNFID", "CNFNAME"), "Select CnF", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        @Html.ValidationMessageFor(lc => lc.ComImpInvoiceinfo.CnF, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.PAYMENTDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.PAYMENTDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.PAYMENTDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.CnFBILL" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.CnFBILL" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.CnFBILL" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.CnFBILLDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.CnFBILLDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.CnFBILLDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.TRUCKQTY" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.TRUCKQTY" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.TRUCKQTY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.TRNSPID" class="control-label"></label>
+                        @Html.DropDownListFor(lc => lc.ComImpInvoiceinfo.TRNSPID, new SelectList(Model.BasTransportinfos, "TRNSPID", "TRNSPNAME"), "Select a Transport Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        @Html.ValidationMessageFor(lc => lc.ComImpInvoiceinfo.TRNSPID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.TRNSPBILL" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.TRNSPBILL" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.TRNSPBILL" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.TRNSPBILLDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.TRNSPBILLDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.TRNSPBILLDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.TRNS_BILL_SUB_DATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.TRNS_BILL_SUB_DATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.TRNS_BILL_SUB_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.MPNO" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.MPNO" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.MPNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.MPDATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.MPDATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.MPDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.MPSUB_DATE" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.MPSUB_DATE" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.MPSUB_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.MPBILL" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.MPBILL" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.MPBILL" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.SHIPBY" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.SHIPBY" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.SHIPBY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label asp-for="ComImpInvoiceinfo.REMARKS" class="control-label"></label>
+                        <input asp-for="ComImpInvoiceinfo.REMARKS" class="form-control" />
+                        <span asp-validation-for="ComImpInvoiceinfo.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning pull-right" type="submit">Update</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetComImpInvoiceInfo" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" type="text/javascript">
+        $(function () {
+
+            var invDetailsQty = $("#ComImpInvdetails_QTY");
+            var invDetailsRate = $('#ComImpInvdetails_RATE');
+            var invDetailsAmount = $('#ComImpInvdetails_AMOUNT');
+            var comImpInvoiceInfo = $("#ComImpInvoiceinfo_INVNO");
+            var comImpLcDetailsLcNo = $("#ComImpInvdetails_INVNO");
+
+            var lcId = $("#ComImpInvoiceinfo_LC_ID");
+            var prodId = $("#ComImpInvdetails_PRODID");
+            var chemProdId = $("#ComImpInvdetails_CHEMPRODID");
+            var yarnLotId = $("#ComImpInvdetails_YARNLOTID");
+
+            var btnAdd = $("#btnAdd");
+            var customFileInput = $('.custom-file-input');
+
+            var errors = {
+                0: {
+                    title: "Invalid Submission.",
+                    message: "We can not process your request. Please try again later."
+                }
+            }
+
+            var removeSelectionData = function () {
+                prodId.html("");
+                prodId.append('<option value="" selected>Select a Product Name</option>');
+
+                yarnLotId.html("");
+                yarnLotId.append('<option value="" selected>Select a Yarn Lot Number</option>');
+
+                chemProdId.html("");
+                chemProdId.append('<option value="" selected>Select a Chemical Product Name</option>');
+            }
+
+            prodId.select2({
+                placeholder: "Select a Product Name",
+                allowClear: true,
+                ajax: {
+                    url: "/CommercialImport/GetProducts",
+                    data: function (params) {
+
+                        var query = {
+                            search: params.term,
+                            lcId: lcId.val(),
+                            page: params.page || 1
+                        }
+
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data.basProductinfos, function (item) {
+                                return {
+                                    id: item.prodid,
+                                    text: item.prodname
+                                };
+                            })
+                        };
+                    }
+                }
+            });
+
+            //lcId.on("change", function () {
+
+            //    const formData = $("#form").serializeArray();
+
+            //    $.post("/ComImpInvoiceInfo/GetProductInfo", formData, function (data) {
+
+            //        if (typeof data !== "undefined") {
+
+            //            if (Array.isArray(data.prodinfo) && data.prodinfo.length > 0) {
+
+            //                removeSelectionData();
+            //                prodId.attr('disabled', false);
+
+            //                $.each(data.prodinfo, function (index, option) {
+            //                    prodId.append($("<option>",
+            //                        {
+            //                            value: option.prodid,
+            //                            text: option.prodname
+            //                        }));
+            //                });
+
+            //                prodId.focus();
+            //                yarnLotId.attr('disabled', true);
+            //                chemProdId.attr('disabled', true);
+
+            //            } else if (Array.isArray(data.yarnlotinfo) && data.yarnlotinfo.length > 0) {
+
+            //                removeSelectionData();
+            //                yarnLotId.attr('disabled', false);
+
+            //                $.each(data.yarnlotinfo, function (index, option) {
+            //                    yarnLotId.append($("<option>",
+            //                        {
+            //                            value: option.lotid,
+            //                            text: option.lotno
+            //                        }));
+            //                });
+
+            //                yarnLotId.focus();
+            //                prodId.attr('disabled', true);
+            //                chemProdId.attr('disabled', true);
+
+            //            } else if (Array.isArray(data.chemstoreprodinfo) && data.chemstoreprodinfo.length > 0) {
+
+            //                removeSelectionData();
+            //                chemProdId.attr('disabled', false);
+
+            //                $.each(data.chemstoreprodinfo, function (index, option) {
+            //                    chemProdId.append($("<option>",
+            //                        {
+            //                            value: option.productid,
+            //                            text: option.productname
+            //                        }));
+            //                });
+
+            //                chemProdId.focus();
+            //                prodId.attr('disabled', true);
+            //                yarnLotId.attr('disabled', true);
+
+            //            }
+            //        }
+
+            //    }).fail(function () {
+            //        toastr.error(errors[0].title, errors[0].message);
+            //    });
+            //});
+
+            customFileInput.on('change', function () {
+                console.log($(this));
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+
+            // QTY CHANGE
+            invDetailsQty.on('change', function () {
+                StoreMultiplicationResult(invDetailsQty, invDetailsRate, invDetailsAmount);
+            });
+
+            // RATE CHNAGE
+            invDetailsRate.on('change', function () {
+                StoreMultiplicationResult(invDetailsQty, invDetailsRate, invDetailsAmount);
+            });
+
+            // SHOW IT TO ANOTHER FIELD
+            comImpInvoiceInfo.on('change', function () {
+                comImpLcDetailsLcNo.val($(this).val());
+            });
+
+            // ADD TO LIST
+            btnAdd.on('click', function () {
+
+                var fdata = new FormData();
+                var formData = $('#form').serializeArray();
+                var invPath = $('#INVPATH')[0].files[0];
+                var blPath = $('#BLPATH')[0].files[0];
+
+                fdata.append("INVPATH", invPath);
+                fdata.append("BLPATH", blPath);
+
+                $.each(formData, function (key, input) {
+                    fdata.append(input.name, input.value);
+                });
+
+                $.ajax({
+                    async: true,
+                    cache: false,
+                    data: fdata,
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    url: '/ComImpInvoiceInfo/AddComImpInvDetails',
+                    success: function (partialView) {
+                        $('#AttachToImportInvoice').html(partialView);
+                    },
+                    error: function () {
+                        console.log("failed to upload...");
+                    }
+                });
+            });
+        });
+
+        // STORE THE RESULT
+        function StoreMultiplicationResult(x, y, out) {
+            out.val(x.val() * y.val());
+        };
+
+        // REMOVE FROM THE PREVIOUS LIST
+        function RemoveImportInvoiceFromPreviousList(x, y) {
+
+            $.ajax({
+                async: true,
+                cache: false,
+                data: { "X": x, "Y": y },
+                type: "POST",
+                url: '/ComImpInvoiceInfo/RemoveImportInvoiceFromPreviousList',
+                success: function (partialView) {
+                    $('#PreviousListImportLC').html(partialView);
+                },
+                error: function (e) {
+                    console.log("failed to upload...");
+                }
+            });
+        };
+
+        // REMOVE FROM THE LIST
+        function RemoveImportInvoiceDetails(index) {
+
+            var formData = $('#form').serializeArray();
+
+            formData.push({ name: "RemoveIndex", value: index });
+            formData.push({ name: "IsDelete", value: true });
+
+            $.post("/ComImpInvoiceInfo/AddComImpInvDetails", formData, function (partialView) {
+                $('#AttachToImportInvoice').html(partialView);
+            }).fail(function () {
+                console.log("failed.");
+            });
+        };
+    </script>
+}

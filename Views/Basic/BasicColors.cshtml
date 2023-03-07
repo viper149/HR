@@ -1,0 +1,65 @@
+﻿@model PagedResult<DenimERP.Models.BAS_COLOR>
+
+@{
+    ViewData["Title"] = "List of colors";
+    Layout = Layout;
+}
+
+@{
+    if (Model.Data.Any())
+    {
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Basic Color<small>@Html.DisplayName($"(List, Total Found: { Model.TotalItems })")</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="mr-4">
+                        <p>
+                            <a asp-action="Create" class="btn btn-primary">Add Color</a>
+                        </p>
+                    </li>
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Data.SingleOrDefault().COLOR)</th>
+                            <th>@Html.DisplayNameFor(model => model.Data.SingleOrDefault().REMARKS)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Data)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COLOR)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.REMARKS)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("", "", new { id = item.EncryptedId }, new { @class = "fa fa-edit fa-2x-custom text-warning mr-2" })
+                                    @*@Html.ActionLink("Details", "Find", new { id = item.EncryptedId }, new { @class = "btn btn-info btn-sm m-0 mr-2" })*@
+                                    @Html.ActionLink("", "", new { id = item.EncryptedId }, new { @class = "fa fa-trash fa-2x-custom text-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <partial name="_PaginationPartial" model="Model" view-data="ViewData" />
+            </div>
+        </div>
+    }
+    else
+    {
+        <h4>Currently we do not have any data to show. To create </h4><a asp-action="Create" class="btn btn-primary">click here</a>
+    }
+}

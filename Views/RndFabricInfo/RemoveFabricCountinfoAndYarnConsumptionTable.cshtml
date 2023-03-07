@@ -1,0 +1,67 @@
+﻿@model ModifyRndFabricInfoViewModel
+
+@if (Model.rndFabricCountinfoAndRndYarnConsumptionViewModels.Any())
+{
+    for (var i = 0; i < Model.rndFabricCountinfoAndRndYarnConsumptionViewModels.Count(); i++)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.TRNSID)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.FABCODE)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.COUNTID)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.YARNTYPE)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.DESCRIPTION)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.LOTID)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.SUPPID)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.RATIO)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.NE)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.YARNFOR)
+
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_YARNCONSUMPTION.TRNSID)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_YARNCONSUMPTION.FABCODE)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_YARNCONSUMPTION.COUNTID)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_YARNCONSUMPTION.YARNFOR)
+                @Html.HiddenFor(e => e.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_YARNCONSUMPTION.AMOUNT)
+                
+                @if (Model.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.TRNSID > 0
+                     && Model.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_YARNCONSUMPTION.TRNSID > 0)
+                {
+                    <i class="fa fa-database text-danger" aria-hidden="true" title="From database."></i>
+                }
+                else
+                {
+                    <i class="fa fa-plus-circle text-info" aria-hidden="true" title="New data."></i>
+                }
+
+                @Model.bAS_YARN_COUNTINFOs.Where(e => e.COUNTID.Equals(Model.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.COUNTID)).Select(e => e.RND_COUNTNAME).FirstOrDefault()
+            </td>
+            <td>
+                @Html.DisplayFor(fi => fi.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.YARNTYPE)
+            </td>
+            <td>
+                @Html.DisplayFor(fi => fi.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.DESCRIPTION)
+            </td>
+            <td>
+                @Model.bAS_YARN_LOTINFOs.Where(e => e.LOTID.Equals(Model.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.LOTID)).Select(e => e.LOTNO).FirstOrDefault()
+            </td>
+            <td>
+                @Model.bAS_SUPPLIERINFOs.Where(e => e.SUPPID.Equals(Model.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.SUPPID)).Select(e => e.SUPPNAME).FirstOrDefault()
+            </td>
+            <td>
+                @Html.DisplayFor(fi => fi.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.RATIO)
+            </td>
+            <td>
+                @Html.DisplayFor(fi => fi.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.NE)
+            </td>
+            <td>
+                @Html.DisplayFor(fi => fi.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_FABRIC_COUNTINFO.YARNFOR)
+            </td>
+            <td>
+                @Html.DisplayFor(fi => fi.rndFabricCountinfoAndRndYarnConsumptionViewModels[i].rND_YARNCONSUMPTION.AMOUNT)
+            </td>
+            <td>
+                <i aria-hidden="true" class="fa fa-trash fa-2x text-danger" onclick="removeFromDynamicList('@i');"></i>
+            </td>
+        </tr>
+    }
+}

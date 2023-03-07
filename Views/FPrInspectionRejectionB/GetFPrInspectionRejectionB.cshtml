@@ -1,0 +1,39 @@
+﻿@model F_PR_INSPECTION_REJECTION_B
+
+@{
+    ViewData["Title"] = "Inspection Rejection (Bulk & Sample)";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h6><i class="fa fa-xing fa-lg text-success" aria-hidden="true"></i>@ViewData["Title"] List</h6>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content table-responsive table-hover" id="lcList">
+        <table class="table" id="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.IBR_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.TRANS_DATE)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DOFF_.WV_BEAM.WV_PROCESS.SET.PROG_.BLK_PROG_.RndProductionOrder.SO.STYLE.FABCODENavigation.STYLE_NAME)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.DOFF_.WV_BEAM.WV_PROCESS.SET.PROG_.PROG_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.DOFF_.LOOM_NONavigation.LOOM_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.REDECTION_YDS)</th>
+                    <th>@Html.DisplayNameFor(model => model.SECTION_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.SHIFT)</th>
+                    <th>@Html.DisplayNameFor(model => model.DEFECT_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.DOFFING_DATE)</th>
+                    <th>@Html.DisplayNameFor(model => model.DOFFING_LENGTH)</th>
+                    <th>@Html.DisplayNameFor(model => model.REMARKS)</th>
+                    <th>@Html.DisplayName("Action")</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+

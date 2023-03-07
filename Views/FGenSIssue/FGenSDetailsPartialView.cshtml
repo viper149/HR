@@ -1,0 +1,51 @@
+﻿
+@model FGenSIssueViewModel
+
+@if (Model.FGenSIssueDetailsesList.Any())
+{
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIssueDetails.GISSDDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIssueDetails.PRODUCTID)</th>
+                <th scope="col">@Html.DisplayName("Unit")</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIssueDetails.ISSUE_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIssueDetails.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FGenSIssueDetailsesList.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIssueDetailsesList[i].GISSDID)
+                        @Html.HiddenFor(model => model.FGenSIssueDetailsesList[i].GISSDDATE)
+                        @Model.FGenSIssueDetailsesList[i].GISSDDATE
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIssueDetailsesList[i].PRODUCTID)
+                        @Model.FGenSIssueDetailsesList[i].PRODUCT?.PRODNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIssueDetailsesList[i].PRODUCTID)
+                        @Model.FGenSIssueDetailsesList[i].PRODUCT?.UNITNavigation?.UNAME
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIssueDetailsesList[i].ISSUE_QTY)
+                        @Model.FGenSIssueDetailsesList[i].ISSUE_QTY
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.FGenSIssueDetailsesList[i].REMARKS)
+                        @Model.FGenSIssueDetailsesList[i].REMARKS
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="RemoveIndex(@i)" aria-hidden="false"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

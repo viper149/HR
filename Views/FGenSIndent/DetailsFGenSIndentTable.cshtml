@@ -1,0 +1,36 @@
+﻿@model FGenSRequisitionViewModel
+
+@if (Model.FGenSIndentdetailsesList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.PRODUCTID)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.TRNSDATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.VALIDITY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.UNIT)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.FULL_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.BAL_QTY)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.LOCATION)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FGenSIndentdetails.REMARKS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FGenSIndentdetailsesList.Count(); i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>@Model.FGenSIndentdetailsesList[i].PRODUCT?.PRODNAME</td>
+                    <td>@Model.FGenSIndentdetailsesList[i].TRNSDATE</td>
+                    <td>@Model.FGenSIndentdetailsesList[i].VALIDITY</td>
+                    <td>@Model.FGenSIndentdetailsesList[i].UNIT</td>
+                    <td>@Model.FGenSIndentdetailsesList[i].FULL_QTY</td>
+                    <td>@Model.FGenSIndentdetailsesList[i].BAL_QTY</td>
+                    <td>@Model.FGenSIndentdetailsesList[i].LOCATION</td>
+                    <td>@Model.FGenSIndentdetailsesList[i].REMARKS</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

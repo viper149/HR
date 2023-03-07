@@ -1,0 +1,422 @@
+﻿@model EditRndSampleInfoWeavingViewModel
+
+@{
+    ViewData["Title"] = "Edit RnD Sample Info Weaving";
+    Layout = Layout;
+}
+
+<h4><i class="fa fa-flask fa-lg text-success" aria-hidden="true"></i> RnD Sample Info <i class="fa fa-at text-info">Weaving</i></h4>
+
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Weaving Information</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a class="btn btn-default btn-circle" disabled="disabled" href="#step-2" type="button">2</a>
+                <p><small>Finish</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" asp-action="EditRndSampleInfoWeaving">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @Html.HiddenFor(e => e.RndSampleInfoWeaving.WVID)
+            @Html.HiddenFor(e => e.RndSampleInfoWeaving.CREATED_AT)
+            @Html.HiddenFor(e => e.RndSampleInfoWeaving.CREATED_BY)
+
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.STATUS" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="RndSampleInfoWeaving.STATUS" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="RndSampleInfoWeaving.STATUS" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-2 d-none">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.SDID" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.SDID" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.SDID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.PROG_.PROG_NO" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeaving.PROG_ID, new SelectList(Model.PlSampleProgSetups, "TRNSID", "PROG_NO"), "Select a Prog. Number", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeaving.PROG_ID" class="text-danger"></span>
+                    </div>
+                </div>
+                @*<div class="col-2">
+                        <div class="form-group">
+                            <label asp-for="RndSampleInfoWeaving.DEV_NO" class="control-label"></label>
+                            <input asp-for="RndSampleInfoWeaving.DEV_NO" class="form-control" />
+                            <span asp-validation-for="RndSampleInfoWeaving.DEV_NO" class="text-danger"></span>
+                        </div>
+                    </div>*@
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.FABCODE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.FABCODE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.FABCODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.CONCEPT" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.CONCEPT" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.CONCEPT" class="text-danger"></span>
+                    </div>
+                </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <label asp-for="RndSampleInfoWeaving.RND_CONCERN" class="control-label"></label>
+                    @Html.DropDownListFor(wv => wv.RndSampleInfoWeaving.RND_CONCERN, new SelectList(Model.RndConcerns, "EMPID", "FIRST_NAME"), "Select a R&D Concern", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="RndSampleInfoWeaving.RND_CONCERN" class="text-danger"></span>
+                </div>
+            </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.BUYERID" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeaving.BUYERID, new SelectList(Model.BuyerInfos, "BUYERID", "BUYER_NAME"), "Select a Buyer Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeaving.BUYERID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.MKT_PERSON" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeaving.MKT_PERSON, new SelectList(Model.MktTeams, "MKT_TEAMID", "PERSON_NAME"), "Select a Marketing Person Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeaving.MKT_PERSON" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.Set.SETID" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeaving.SETNO, new SelectList(Model.PlProductionSetDistributions, "SETID", "PROG_.PROG_NO"), "Select Set/Prog. No", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeaving.SETNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2" id="beam">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.BEAMID" class="control-label"></label>
+                        <select asp-for="RndSampleInfoWeaving.BEAMID" class="form-control js-example-basic-single">
+                            <option value="">Select Beam</option>
+                        </select>
+                        <span asp-validation-for="RndSampleInfoWeaving.BEAMID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2" id="sBeam">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.SBEAMID" class="control-label"></label>
+                        <select asp-for="RndSampleInfoWeaving.SBEAMID" class="form-control js-example-basic-single">
+                            <option value="">Select Beam</option>
+                        </select>
+                        <span asp-validation-for="RndSampleInfoWeaving.SBEAMID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.BEAMNO" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.BEAMNO" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.BEAMNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2 d-none">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.FNPPI" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.FNPPI" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.FNPPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.REED_COUNT" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.REED_COUNT" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.REED_COUNT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.REED_DENT" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.REED_DENT" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.REED_DENT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.TOTAL_ENDS" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.TOTAL_ENDS" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.TOTAL_ENDS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.REED_SPACE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.REED_SPACE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.REED_SPACE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.GR_EPI" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.GR_EPI" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.GR_EPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.LOOM.LOOM_TYPE_NAME" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeaving.LOOMID, new SelectList(Model.LoomTypes, "LOOMID", "LOOM_TYPE_NAME"), "Select a Loom Type Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeaving.LOOMID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.GR_PPI" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.GR_PPI" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.GR_PPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.WEAVE" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeaving.WEAVE, new SelectList(Model.RndWeaves, "WID", "NAME"), "Select a Weave", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeaving.WEAVE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.LENGTH_MTR" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.LENGTH_MTR" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.LENGTH_MTR" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.CLOSE_DATE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.CLOSE_DATE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.CLOSE_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.REMARKS" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.REMARKS" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.OPT2" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.OPT2" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.OPT2" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.OPT3" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.OPT3" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.OPT3" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeaving.OPT4" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeaving.OPT4" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeaving.OPT4" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-12 row" id="PreviousData"></div>
+
+                <div class="col-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <a asp-action="GetRndSampleInfoWeaving" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body row">
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.COUNT.COUNTNAME" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeavingDetails.COUNTID, new SelectList(Model.BasYarnCountinfos, "COUNTID", "COUNTNAME"), "Select a Count Name", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.COUNTID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.TYPE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeavingDetails.TYPE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.TYPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.DESCRIPTION" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeavingDetails.DESCRIPTION" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.DESCRIPTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.COLORCODENavigation.COLOR" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeavingDetails.COLORCODE, new SelectList(Model.BasColors, "COLORCODE", "COLOR"), "Select a Color", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.COLORCODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.LOT.LOTNO" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeavingDetails.LOTID, new SelectList(Model.BasYarnLotinfos, "LOTID", "LOTNO"), "Select a Lot Number", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.LOTID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.SUPP.SUPPNAME" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeavingDetails.SUPPID, new SelectList(Model.BasSupplierinfos, "SUPPID", "SUPPNAME"), "Select a Supplier", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.SUPPID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.YARN.YARNNAME" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndSampleInfoWeavingDetails.YARNID, new SelectList(Model.Yarnfors, "YARNID", "YARNNAME"), htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.YARN.YARNNAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.RATIO" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeavingDetails.RATIO" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.RATIO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.NE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeavingDetails.NE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.NE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoWeavingDetails.BGT" class="control-label"></label>
+                        <input asp-for="RndSampleInfoWeavingDetails.BGT" class="form-control" readonly />
+                        <span asp-validation-for="RndSampleInfoWeavingDetails.BGT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary pull-right" type="submit">Update</button>
+                    <button id="btnAdd" class="btn btn-success pull-right" type="button">Add</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetRndSampleInfoWeaving" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+
+                <div class="table-responsive col-12" id="RndSampleInfoWeavingDetails">
+                    @{
+                        if (Model.RndSampleInfoWeavingDetailses.Any())
+                        {
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.COUNT.COUNTNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.TYPE)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.DESCRIPTION)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.COLORCODENavigation.COLOR)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.LOT.LOTNO)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.SUPP.SUPPNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.YARN.YARNNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.RATIO)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.NE)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetails.BGT)</th>
+                                        <th>@Html.DisplayName("Actions")</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @{
+                                        for (var i = 0; i < Model.RndSampleInfoWeavingDetailses.Count; i++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <i class="fa fa-database text-danger" aria-hidden="true" title="From database."></i>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].WVID)
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].COUNTID)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].COUNT.COUNTNAME
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].TYPE)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].TYPE
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].DESCRIPTION)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].DESCRIPTION
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].COLORCODE)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].COLORCODENavigation?.COLOR
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].LOTID)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].LOT.LOTNO
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].SUPPID)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].SUPP.SUPPNAME
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].YARNID)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].YARN.YARNNAME
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].RATIO)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].RATIO
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].NE)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].NE
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(e => e.RndSampleInfoWeavingDetailses[i].BGT)
+                                                    @Model.RndSampleInfoWeavingDetailses[i].BGT
+                                                </td>
+                                                <td><i class="fa fa-trash fa-2x text-danger" onclick="removeFromList(@i)" aria-hidden="true"></i></td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link asp-append-version="true" href="~/css/CustomCSS/Stepper.css" rel="stylesheet" />
+    <link asp-append-version="true" href="~/css/CustomCSS/summary.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/RndSampleInfoWeaving/EditRndSampleInfoWeaving.js"></script>
+    <script asp-append-version="true" src="~/js/RndSampleInfoWeaving/Common-RndSampleInfoWeaving.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+}

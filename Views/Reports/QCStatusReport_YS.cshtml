@@ -1,0 +1,24 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.Clearance
+@using DenimERP.Reports.Yarn_Store
+@using RPT_Yarn_QC_Status = DenimERP.Reports.Yarn_Store.RPT_Yarn_QC_Status
+@model int
+
+@{
+    ViewData["Title"] = "QC Status Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new RPT_Yarn_QC_Status())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

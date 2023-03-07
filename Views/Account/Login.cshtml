@@ -1,0 +1,78 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Portal";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<div class="w3ls-login box row mr-0">
+    <div class="col-12 d-flex justify-content-center">
+        <!-- form starts here -->
+        <form asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="agile-field-txt">
+                <label asp-for="Email" class="control-label"><i class="fa fa-user" aria-hidden="true"></i> @Html.DisplayNameFor(l => l.Email) </label>
+                <input asp-for="Email" class="form-control" placeholder="Enter username/email address" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="agile-field-txt">
+                <label asp-for="Password"><i class="fa fa-unlock-alt" aria-hidden="true"></i> @Html.DisplayNameFor(l => l.Password) </label>
+                <input asp-for="Password" class="form-control" placeholder="Enter Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <div>
+                    <div class="agile_label">
+                        <input asp-for="RememberMe" />
+                        <label class="check" asp-for="RememberMe">@Html.DisplayNameFor(model => model.RememberMe)</label>
+                    </div>
+                    <div class="agile-right">
+                        <a asp-action="ForgotPassword" asp-controller="Account">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <p class="text-info">Don't have an account? Click the <a asp-action="Register" asp-controller="Account">Register</a></p>
+            </div>
+            <input type="submit" value="Log in" />
+        </form>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+        <div>
+            @{
+                if (Model.ExternalLogins.Count == 0)
+                {
+                    <div class="card-body">
+                        <h5 class="card-title">No external logins configured</h5>
+                    </div>
+                }
+                else
+                {
+                    <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" style="padding: 0; margin: 0; width: auto; display: block;">
+                        <div>
+                            @foreach (var provider in Model.ExternalLogins)
+                            {
+                                <button type="submit" class="btn btn-primary-outline bg-white"
+                                        name="provider" value="@provider.Name"
+                                        title="Log in using your @provider.DisplayName account" style="color: #007bff; border: 1px solid;">
+                                    Log in using your @provider.DisplayName account
+                                </button>
+                            }
+                        </div>
+                    </form>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptsPartial");}
+@*    <script asp-append-version="true" src="~/js/particles/particles.js"></script>
+    <script asp-append-version="true" src="~/js/particles/config.particles.js"></script>*@
+}
+
+@section Styles {
+    @*<link asp-append-version="true" href="~/css/particles/particles.css" rel="stylesheet" />*@
+}

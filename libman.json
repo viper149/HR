@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr.js/"
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/lib/sweetalert/"
+    },
+    {
+      "library": "bootstrap-sweetalert@1.0.1",
+      "destination": "wwwroot/lib/bootstrap-sweetalert/"
+    },
+    {
+      "library": "datatables@1.10.21",
+      "destination": "wwwroot/datatables/"
+    },
+    {
+      "library": "signalr.js@2.4.1",
+      "destination": "wwwroot/signalr.js/"
+    },
+    {
+      "library": "ckeditor5@27.0.0",
+      "destination": "wwwroot/ckeditor5/"
+    },
+    {
+      "library": "particles.js@2.0.0",
+      "destination": "wwwroot/js/particles/"
+    },
+    {
+      "library": "canvasjs@1.7.0",
+      "destination": "wwwroot/canvasjs/"
+    },
+    {
+      "library": "bxslider@4.2.15",
+      "destination": "wwwroot/bxslider/"
+    },
+    {
+      "library": "jqueryui@1.12.1",
+      "destination": "wwwroot/lib/jqueryui/"
+    },
+    {
+      "library": "datatables.net-select@1.3.4",
+      "destination": "wwwroot/lib/datatables.net-select/"
+    },
+    {
+      "library": "datatables.net@2.1.1",
+      "destination": "wwwroot/lib/datatables.net/"
+    },
+    {
+      "library": "switchery@0.8.2",
+      "destination": "wwwroot/lib/switchery/"
+    },
+    {
+      "library": "nprogress@0.2.0",
+      "destination": "wwwroot/lib/nprogress/"
+    }
+  ]
+}

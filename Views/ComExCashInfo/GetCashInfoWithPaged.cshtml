@@ -1,0 +1,55 @@
+﻿
+@model COM_EX_CASHINFO
+
+@{
+    ViewData["Title"] = "BTMA (Cash)";
+}
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2><i class="fa fa-list fa-lg text-info" aria-hidden="true"></i> Get @ViewData["Title"] <i class="fa fa-at text-info">Export</i></h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li class="mr-2">
+                <p>
+                    <a accesskey="a" asp-action="CreateCashInfo" class="btn btn-primary">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i> Add
+                    </a>
+                </p>
+            </li>
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content table-hover table-responsive">
+        <table class="table" id="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.CASHID)</th>
+                    <th>@Html.DisplayNameFor(model => model.CASHNO)</th>
+                    <th>@Html.DisplayNameFor(model => model.LCID)</th>
+                    <th>@Html.DisplayNameFor(model => model.ITEMQTY_YDS)</th>
+                    <th>@Html.DisplayNameFor(model => model.VCNO)</th>
+                    <th>@Html.DisplayNameFor(model => model.RATE)</th>
+                    <th>@Html.DisplayNameFor(model => model.BACKTOBACK_LCTYPE)</th>
+                    <th>@Html.DisplayNameFor(model => model.SUBDATE)</th>
+                    <th>@Html.DisplayNameFor(model => model.RCVDDATE)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Styles
+{
+    <link asp-append-version="true" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script asp-append-version="true" src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true" src="~/js/comEx/GetCashInfoWithPaged.js"></script>
+}

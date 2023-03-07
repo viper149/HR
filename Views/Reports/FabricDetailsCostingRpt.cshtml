@@ -1,0 +1,25 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Reports.PreCost
+@using rptFabricDetailsCosting = DenimERP.Reports.PreCost.rptFabricDetailsCosting
+
+
+@model int
+
+@{
+    ViewData["Title"] = "Fabric Details Costing";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptFabricDetailsCosting())
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

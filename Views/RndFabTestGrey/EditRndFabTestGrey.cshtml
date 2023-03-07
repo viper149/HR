@@ -1,0 +1,344 @@
+﻿
+@model CreateRndFabTestGreyViewModel
+
+@{
+    ViewData["Title"] = "Fabric Test Information";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-xing fa-lg text-success" aria-hidden="true"></i>Update @ViewData["Title"] <i class="fa fa-at text-info">Grey</i></h2>
+<hr />
+
+<div class="container-fluid">
+
+    <form id="form" role="form" asp-action="EditRndFabTestGrey">
+        <div class="panel panel-default">
+            <div class="panel-body row">
+
+                @Html.HiddenFor(e => e.RndFabtestGrey.EncryptedId)
+
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.LAB_NO" class="control-label"></label>
+                        <span class="input-group-btn d-flex">
+                            <button type="button" class="btn btn-warning">G</button>
+                            <input asp-for="RndFabtestGrey.LAB_NO" class="form-control" />
+                        </span>
+                        <span asp-validation-for="RndFabtestGrey.LAB_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.LTGDATE" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.LTGDATE" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.LTGDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.SHIFT" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.RndFabtestGrey.SHIFT, new SelectList(Model.FHrShiftInfoList, "ID", "SHIFT"), "Select Shift", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestGrey.SHIFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.PROG.PROG_NO" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndFabtestGrey.PROGID, new SelectList(Model.PlProductionSetdistributionsList, "SETID", "PROG_.PROG_NO"), "Select a Program Number", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestGrey.PROGID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.ORDER_REPEAT" class="control-label"></label>
+                        @*@Html.DropDownListFor(wv => wv.RndFabtestGrey.ORDER_REPEAT, new SelectList(Model.OrderRepeats, "ORPTID", "ORPTNAME"), "Select Order Repeat", new { @class = "form-control js-example-basic-single" })*@
+                        <input asp-for="RndFabtestGrey.ORDER_REPEAT" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="RndFabtestGrey.ORDER_REPEAT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.BATCHNO" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.BATCHNO" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.BATCHNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.DEVELOPMENTNO" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.DEVELOPMENTNO" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.DEVELOPMENTNO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.DOFF_ROLL_NO" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndFabtestGrey.DOFF_ROLL_NO, new SelectList(Model.Doffs, "TRNSID", "OPT1"), "Select Doff. No", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestGrey.DOFF_ROLL_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.LENGTHTEST" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.LENGTHTEST" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="RndFabtestGrey.LENGTHTEST" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.WASHEDBY" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndFabtestGrey.WASHEDBY, new SelectList(Model.FHrEmployees, "EMPID", "FIRST_NAME"), "Select An Employee Name", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestGrey.WASHEDBY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.UNWASHEDBY" class="control-label"></label>
+                        @Html.DropDownListFor(wv => wv.RndFabtestGrey.UNWASHEDBY, new SelectList(Model.FHrEmployees, "EMPID", "FIRST_NAME"), "Select An Employee Name", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndFabtestGrey.UNWASHEDBY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.GREPI" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.GREPI" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="RndFabtestGrey.GREPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.GRPPI" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.GRPPI" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="RndFabtestGrey.GRPPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.WIGRBW" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.WIGRBW" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.WIGRBW" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.WIGRAW" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.WIGRAW" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.WIGRAW" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.WGGRBW" class="control-label"></label><sup>2</sup>)
+                        <input asp-for="RndFabtestGrey.WGGRBW" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.WGGRBW" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.WGGRAW" class="control-label"></label><sup>2</sup>)
+                        <input asp-for="RndFabtestGrey.WGGRAW" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.WGGRAW" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.BWEPI" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.BWEPI" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.BWEPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.BWPPI" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.BWPPI" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.BWPPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.AWEPI" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.AWEPI" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.AWEPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.AWPPI" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.AWPPI" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.AWPPI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.SRGRWRAP" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.SRGRWRAP" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.SRGRWRAP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.SRGRWEFT" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.SRGRWEFT" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.SRGRWEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.SKEWWASH" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.SKEWWASH" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.SKEWWASH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.SKEWMOVE" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.SKEWMOVE" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.SKEWMOVE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.SGWARP" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.SGWARP" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.SGWARP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.SGWEFT" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.SGWEFT" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.SGWEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.GRWRAP" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.GRWRAP" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.GRWRAP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.GRWEFT" class="control-label"></label>
+                        <input asp-for="RndFabtestGrey.GRWEFT" class="form-control" />
+                        <span asp-validation-for="RndFabtestGrey.GRWEFT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndFabtestGrey.REMARKS" class="control-label"></label>
+                        <textarea asp-for="RndFabtestGrey.REMARKS" class="form-control"></textarea>
+                        <span asp-validation-for="RndFabtestGrey.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive">
+                    @{
+                        if (Model.RndSampleInfoWeavingDetailses.Any())
+                        {
+                            <h2 class="panel-title text-success">Weaving Details</h2>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().COUNT.COUNTNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().TYPE)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().DESCRIPTION)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().COLORCODENavigation.COLOR)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().LOT.LOTNO)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().SUPP.SUPPNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().RATIO)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().NE)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().BGT)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().YARNTYPE)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().YARN.YARNNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoWeavingDetailses.FirstOrDefault().REMARKS)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var i = 0; i < Model.RndSampleInfoWeavingDetailses.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].COUNT.COUNTNAME</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].TYPE</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].DESCRIPTION</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].COLORCODENavigation.COLOR</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].LOT.LOTNO</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].SUPP.SUPPNAME</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].RATIO</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].NE</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].BGT</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].YARNTYPE</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].YARN.YARNNAME</td>
+                                            <td>@Model.RndSampleInfoWeavingDetailses[i].REMARKS</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive">
+                    @{
+                        if (Model.RndSampleInfoDetailses.Any())
+                        {
+                            <h2 class="panel-title text-success">Dyeing Details</h2>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().COUNT.COUNTNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().TYPE)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().DESCRIPTION)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().COLORCODENavigation.COLOR)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().LOT.LOTNO)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().SUPP.SUPPNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().RATIO)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().NE)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().BGT)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().YARNTYPE)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().YARN.YARNNAME)</th>
+                                        <th>@Html.DisplayNameFor(e => e.RndSampleInfoDetailses.FirstOrDefault().REMARKS)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var i = 0; i < Model.RndSampleInfoDetailses.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.RndSampleInfoDetailses[i].COUNT.COUNTNAME</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].TYPE</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].DESCRIPTION</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].COLORCODENavigation.COLOR</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].LOT.LOTNO</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].SUPP.SUPPNAME</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].RATIO</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].NE</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].BGT</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].YARNTYPE</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].YARN.YARNNAME</td>
+                                            <td>@Model.RndSampleInfoDetailses[i].REMARKS</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                @if (!User.IsInRole("Clearance"))
+                {
+                    <button class="btn btn-warning nextBtn pull-right" type="submit">Update</button>
+                }
+                <a class="btn btn-dark pull-right" asp-action="GetRndFabTestGrey" asp-controller="RndFabTestGrey">Back to List</a>
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/custom-js/Stepper.js" asp-append-version="true"></script>
+    <script src="~/js/rndFabric/RndFabricInfo-Common.js" asp-append-version="true"></script>
+    <script src="~/js/rndFabric/EditRndFabricInfo.js" asp-append-version="true"></script>
+}

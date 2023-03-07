@@ -1,0 +1,897 @@
+﻿@model FHrdEmployeeViewModel
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Basic Information</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                <p><small>Official Information</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                <p><small>Education Information</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                <p><small>Others</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" enctype="multipart/form-data" role="form" asp-action="CreateFHrdEmployee">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div class="panel-body row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 row">
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.EMPNO" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.EMPNO" class="form-control" />
+                            <span asp-validation-for="FHrdEmployee.EMPNO" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.PROX_CARD" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.PROX_CARD" class="form-control important" />
+                            <span asp-validation-for="FHrdEmployee.PROX_CARD" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.FIRST_NAME" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.FIRST_NAME" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.FIRST_NAME" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.LAST_NAME" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.LAST_NAME" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.LAST_NAME" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.FIRST_NAME_BN" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.FIRST_NAME_BN" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.FIRST_NAME_BN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.LAST_NAME_BN" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.LAST_NAME_BN" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.LAST_NAME_BN" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.MOBILE" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.MOBILE" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.MOBILE" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.EMAIL" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.EMAIL" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.EMAIL" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.DATE_BIRTH" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.DATE_BIRTH" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.DATE_BIRTH" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.NATIONALITY_ID" class="control-label"></label>
+                            @Html.DropDownListFor(dt => dt.FHrdEmployee.NATIONALITY_ID, new SelectList(Model.FBasHrdNationalityList, "NATIONID", "NATION_DESC"), "Select Nationality", new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="FHrdEmployee.NATIONALITY_ID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.GENDERID" class="control-label"></label>
+                            @Html.DropDownListFor(dt => dt.FHrdEmployee.GENDERID, new SelectList(Model.BasGenderList, "GENID", "GENNAME"), "Select Gender", new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="FHrdEmployee.GENDERID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.RELIGIONID" class="control-label"></label>
+                            @Html.DropDownListFor(dt => dt.FHrdEmployee.RELIGIONID, new SelectList(Model.FBasHrdReligionList, "RELIGIONID", "RELEGION_NAME"), "Select Religion", new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="FHrdEmployee.RELIGIONID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.BLDGRPID" class="control-label"></label>
+                            @Html.DropDownListFor(dt => dt.FHrdEmployee.BLDGRPID, new SelectList(Model.FBasHrdBloodGroupList, "BLDGRPID", "BLDGRP_NAME"), "Select Blood Group", new { @class = "form-control js-example-basic-single" })
+                            <span asp-validation-for="FHrdEmployee.BLDGRPID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.NID_NO" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.NID_NO" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.NID_NO" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.BID_NO" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.BID_NO" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.BID_NO" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label asp-for="FHrdEmployee.PASSPORT" class="control-label"></label>
+                            <input asp-for="FHrdEmployee.PASSPORT" class="form-control " />
+                            <span asp-validation-for="FHrdEmployee.PASSPORT" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <img id="employeeProfilePicture" src="~/images/Denim/frame4.png" type="file" style="width: 14rem; height: 14rem" class="d-block mx-auto img-thumbnail" alt="" />
+                    <label class="control-label fa fa-picture-o text-info"> Change Photo</label>
+                    <div class="custom-file">
+                        <input asp-for="FHrdEmployee.IMAGE" class="form-control custom-file-input" />
+                        <label class="custom-file-label">Choose a profile photo...</label>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.F_NAME" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.F_NAME" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.F_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.M_NAME" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.M_NAME" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.M_NAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.F_NAME_BN" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.F_NAME_BN" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.F_NAME_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.M_NAME_BN" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.M_NAME_BN" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.M_NAME_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.MOBILE_F" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.MOBILE_F" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.MOBILE_F" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.MOBILE_M" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.MOBILE_M" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.MOBILE_M" class="text-danger"></span>
+                    </div>
+                </div>
+                @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <a asp-action="GetFHrdEmployee" class="btn btn-dark pull-right">Back to List</a>
+                </div>*@
+            </div>
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span class="h5 panel-title text-success"><i class="fa fa-home" aria-hidden="true"></i> Present Address</span>
+                    <hr />
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.DIVID_PRE" class="control-label"></label>
+                        <select asp-for="FHrdEmployee.DIVID_PRE" class="form-control js-example-basic-single">
+                            <option>Select Division</option>
+                        </select>
+                        <span asp-validation-for="FHrdEmployee.DIVID_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for ="FHrdEmployee.DISTID_PRE" class="control-label"></label>
+                        <select asp-for="FHrdEmployee.DISTID_PRE" class="form-control js-example-basic-single">
+                            <option>Select District</option>
+                        </select>
+                        <span asp-validation-for="FHrdEmployee.DISTID_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.THANAID_PRE" class="control-label"></label>
+                        <select asp-for="FHrdEmployee.THANAID_PRE" class="form-control js-example-basic-single">
+                            <option>Select Thana/Upazila</option>
+                        </select>
+                        <span asp-validation-for="FHrdEmployee.THANAID_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.UNIONID_PRE" class="control-label"></label>
+                        <select asp-for="FHrdEmployee.UNIONID_PRE" class="form-control js-example-basic-single">
+                            <option>Select Union/Municipality</option>
+                        </select>
+                        <span asp-validation-for="FHrdEmployee.UNIONID_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.WORDNO_PRE" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.WORDNO_PRE" class="form-control " type="number" />
+                        <span asp-validation-for="FHrdEmployee.WORDNO_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.ADD_PRE" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.ADD_PRE" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.ADD_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.ADD_PRE_BN" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.ADD_PRE_BN" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.ADD_PRE_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.VILLAGE_PRE" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.VILLAGE_PRE" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.VILLAGE_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.PO_PRE" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.PO_PRE" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.PO_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.VILLAGE_PRE_BN" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.VILLAGE_PRE_BN" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.VILLAGE_PRE_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.PO_PRE_BN" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.PO_PRE_BN" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.PO_PRE_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                        <span class="h5 panel-title text-success"><i class="fa fa-home" aria-hidden="true"></i> Permanent Address</span>
+                        <hr />
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-exchange" aria-hidden="true"></i> <label asp-for="FHrdEmployee.SAME_AS_PRESENT_ADDRESS" class="control-label pr-2"></label>
+                        <span class="radio_toggle p-0">
+                            <label class="toggle_r mr-4">
+                                @Html.CheckBoxFor(model => model.FHrdEmployee.SAME_AS_PRESENT_ADDRESS) <span class="label-text"></span>
+                            </label>
+                        </span>
+                        <span asp-validation-for="FHrdEmployee.SAME_AS_PRESENT_ADDRESS" class="text-danger"></span>
+                    </div>
+                    <hr />
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.DIVID_PER" class="control-label"></label>
+                        <select asp-for="FHrdEmployee.DIVID_PER" class="form-control js-example-basic-single">
+                            <option>Select Division</option>
+                        </select>
+                        <span asp-validation-for="FHrdEmployee.DIVID_PER" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.DISTID_PER" class="control-label"></label>
+                        <select asp-for="FHrdEmployee.DISTID_PER" class="form-control js-example-basic-single">
+                            <option>Select District</option>
+                        </select>
+                        <span asp-validation-for="FHrdEmployee.DISTID_PER" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.THANAID_PER" class="control-label"></label>
+                        <select asp-for="FHrdEmployee.THANAID_PER" class="form-control js-example-basic-single">
+                            <option>Select Thana/Upazila</option>
+                        </select>
+                        <span asp-validation-for="FHrdEmployee.THANAID_PER" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.UNIONID_PER" class="control-label"></label>
+                        <select asp-for="FHrdEmployee.UNIONID_PER" class="form-control js-example-basic-single">
+                            <option>Select Union/Municipality</option>
+                        </select>
+                        <span asp-validation-for="FHrdEmployee.UNIONID_PER" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.WORDNO_PER" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.WORDNO_PER" class="form-control " type="number" />
+                        <span asp-validation-for="FHrdEmployee.WORDNO_PER" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.ADD_PER" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.ADD_PER" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.ADD_PER" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.ADD_PER_BN" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.ADD_PER_BN" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.ADD_PER_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.VILLAGE_PER" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.VILLAGE_PER" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.VILLAGE_PER" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.PO_PER" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.PO_PER" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.PO_PER" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.VILLAGE_PER_BN" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.VILLAGE_PER_BN" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.VILLAGE_PER_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.PO_PER_BN" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.PO_PER_BN" class="form-control " />
+                        <span asp-validation-for="FHrdEmployee.PO_PER_BN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetFHrdEmployee" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default setup-content" id="step-2">
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-building" aria-hidden="true"></i> Official Information</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="FHrdEmployee.DEPTID" class="control-label"></label>&emsp;
+                            <a asp-controller="FBasHrdDepartment" asp-action="CreateFBasHrdDepartment" class="fa fa-plus-circle fa-lg text-info" aria-hidden="true" target="_blank"></a>&emsp;
+                            <a class="fa fa-rotate-right fa-lg text-info" aria-hidden="true" onclick="Reload('Department')"></a>
+                        </div>
+                        @Html.DropDownListFor(dt => dt.FHrdEmployee.DEPTID, new SelectList(Model.FBasHrdDepartmentList, "DEPTID", "DEPTNAME"), "Select Department", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FHrdEmployee.DEPTID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="FHrdEmployee.SECID" class="control-label"></label>&emsp;
+                            <a asp-controller="FBasHrdSection" asp-action="CreateFBasHrdSection" class="fa fa-plus-circle fa-lg text-info" aria-hidden="true" target="_blank"></a>&emsp;
+                            <a class="fa fa-rotate-right fa-lg text-info" aria-hidden="true" onclick="Reload('Section')"></a>
+                        </div>
+                        @Html.DropDownListFor(dt => dt.FHrdEmployee.SECID, new SelectList(Model.FBasHrdSectionList, "SECID", "SEC_NAME"), "Select Section", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FHrdEmployee.SECID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="FHrdEmployee.SUBSECID" class="control-label"></label>&emsp;
+                            <a asp-controller="FBasHrdSubSection" asp-action="CreateFBasHrdSubSection" class="fa fa-plus-circle fa-lg text-info" aria-hidden="true" target="_blank"></a>&emsp;
+                            <a class="fa fa-rotate-right fa-lg text-info" aria-hidden="true" onclick="Reload('Sub-Section')"></a>
+                        </div>
+                        @Html.DropDownListFor(dt => dt.FHrdEmployee.SUBSECID, new SelectList(Model.FBasHrdSubSectionList, "SUBSECID", "SUBSEC_NAME"), "Select Sub-Section", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FHrdEmployee.SUBSECID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="FHrdEmployee.DESIGID" class="control-label"></label>&emsp;
+                            <a asp-controller="FBasHrdDesignation" asp-action="CreateFBasHrdDesignation" class="fa fa-plus-circle fa-lg text-info" aria-hidden="true" target="_blank"></a>&emsp;
+                            <a class="fa fa-rotate-right fa-lg text-info" aria-hidden="true" onclick="Reload('Designation')"></a>
+                        </div>
+                        @Html.DropDownListFor(dt => dt.FHrdEmployee.DESIGID, new SelectList(Model.FBasHrdDesignationList, "DESID", "DES_NAME"), "Select Designation", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FHrdEmployee.DESIGID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="FHrdEmployee.EMPTYPEID" class="control-label"></label>&emsp;
+                            <a asp-controller="FBasHrdEmpType" asp-action="CreateFBasHrdEmpType" class="fa fa-plus-circle fa-lg text-info" aria-hidden="true" target="_blank"></a>&emsp;
+                            <a class="fa fa-rotate-right fa-lg text-info" aria-hidden="true" onclick="Reload('Employee Type')"></a>
+                        </div>
+                        @Html.DropDownListFor(dt => dt.FHrdEmployee.EMPTYPEID, new SelectList(Model.FBasHrdEmpTypeList, "TYPEID", "TYPE_NAME"), "Select Employee Type", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FHrdEmployee.EMPTYPEID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.SHIFTID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FHrdEmployee.SHIFTID, new SelectList(Model.FBasHrdShiftList, "SHIFTID", "SHIFT_NAME"), "Select Shift", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FHrdEmployee.SHIFTID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.ODID" class="control-label"></label>
+                        @Html.DropDownListFor(dt => dt.FHrdEmployee.ODID, new SelectList(Model.FBasHrdWeekendList, "ODID", "OD_FULL_NAME"), "Select Off Day", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FHrdEmployee.ODID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.DATE_JOINING" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.DATE_JOINING" class="form-control" />
+                        <span asp-validation-for="FHrdEmployee.DATE_JOINING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.MOBILE_G" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.MOBILE_G" class="form-control" />
+                        <span asp-validation-for="FHrdEmployee.MOBILE_G" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-money" aria-hidden="true"></i> Salary Setup</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.SALARY_JOINING" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.SALARY_JOINING" class="form-control" type="number" />
+                        <span asp-validation-for="FHrdEmployee.SALARY_JOINING" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.SALARY_PRE" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.SALARY_PRE" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="FHrdEmployee.SALARY_PRE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.SALARY_BANK" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.SALARY_BANK" class="form-control" type="number" />
+                        <span asp-validation-for="FHrdEmployee.SALARY_BANK" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.SALARY_CASH" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.SALARY_CASH" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="FHrdEmployee.SALARY_CASH" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.AMT_TAX" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.AMT_TAX" class="form-control" />
+                        <span asp-validation-for="FHrdEmployee.AMT_TAX" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.AMT_MESS" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.AMT_MESS" class="form-control" />
+                        <span asp-validation-for="FHrdEmployee.AMT_MESS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.AMT_UTILITY" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.AMT_UTILITY" class="form-control" />
+                        <span asp-validation-for="FHrdEmployee.AMT_UTILITY" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <label asp-for="FHrdEmployee.BANKID" class="control-label"></label>&emsp;
+                            <a asp-controller="BasBenBank" asp-action="CreateBasBenBank" class="fa fa-plus-circle fa-lg text-info" aria-hidden="true" target="_blank"></a>&emsp;
+                            <a class="fa fa-rotate-right fa-lg text-info" aria-hidden="true" onclick="Reload('Bank Name (Beneficiary)')"></a>
+                        </div>
+                        @Html.DropDownListFor(dt => dt.FHrdEmployee.BANKID, new SelectList(Model.BasBenBankList, "BANKID", "BEN_BANK"), "Select Bank Name (Beneficiary)", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="FHrdEmployee.BANKID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.BANK_ACC_NO" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.BANK_ACC_NO" class="form-control" />
+                        <span asp-validation-for="FHrdEmployee.BANK_ACC_NO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.TIN_NO" class="control-label"></label>
+                        <input asp-for="FHrdEmployee.TIN_NO" class="form-control" />
+                        <span asp-validation-for="FHrdEmployee.TIN_NO" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="panel-title text-success"><i class="fa fa-star-half-o" aria-hidden="true"></i> Status</h2>
+                    <hr />
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_JOB" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_JOB" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_TAX" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_TAX" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_OT" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_OT" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_MARIED" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_MARIED" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.SP_BONUS" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.SP_BONUS" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_EB_25" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_EB_25" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_EB_50" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_EB_50" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_MFL" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_MFL" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_ML" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_ML" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_TRANSPORT" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_TRANSPORT" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_UTC" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_UTC" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="FHrdEmployee.STATUS_ONE_PUNCH" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="FHrdEmployee.STATUS_ONE_PUNCH" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetFHrdEmployee" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+    <div class="panel panel-primary setup-content" id="step-3">
+        <div class="panel-body row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-book" aria-hidden="true"></i> Education History</h2>
+                <hr />
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <div class="row">
+                        <label asp-for="FHrdEducation.DEGID" class="control-label"></label>&emsp;
+                        <a asp-controller="FHrdEmpEduDegree" asp-action="CreateFHrdEmpEduDegree" class="fa fa-plus-circle fa-lg text-info" aria-hidden="true" target="_blank"></a>&emsp;
+                        <a class="fa fa-rotate-right fa-lg text-info" aria-hidden="true" onclick="Reload('Degree')"></a>
+                    </div>
+                    @Html.DropDownListFor(dt => dt.FHrdEducation.DEGID, new SelectList(Model.FHrdEmpEduDegreeList, "DEGID", "DEGNAME"), "Select Degree", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FHrdEducation.DEGID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEducation.MAJOR" class="control-label"></label>
+                    <input asp-for="FHrdEducation.MAJOR" class="form-control" />
+                    <span asp-validation-for="FHrdEducation.MAJOR" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEducation.BOARD_UNI" class="control-label"></label>
+                    <input asp-for="FHrdEducation.BOARD_UNI" class="form-control" />
+                    <span asp-validation-for="FHrdEducation.BOARD_UNI" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEducation.IS_GRADUATE" class="control-label"></label>
+                    <div class="form-control custom-form-control">
+                        <label class="switch">
+                            <input asp-for="FHrdEducation.IS_GRADUATE" />
+                            <span class="slider round"></span>
+                            <span class="absolute-no">NO</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 resultField d-none">
+                <div class="form-group">
+                    <label asp-for="FHrdEducation.PASS_DATE" class="control-label"></label>
+                    <input asp-for="FHrdEducation.PASS_DATE" class="form-control" />
+                    <span asp-validation-for="FHrdEducation.PASS_DATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 resultField d-none">
+                <div class="form-group">
+                    <label asp-for="FHrdEducation.CGPA" class="control-label"></label>
+                    <input asp-for="FHrdEducation.CGPA" class="form-control" />
+                    <span asp-validation-for="FHrdEducation.CGPA" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 resultField d-none">
+                <div class="form-group">
+                    <label asp-for="FHrdEducation.OUTOF" class="control-label"></label>
+                    <input asp-for="FHrdEducation.OUTOF" class="form-control" />
+                    <span asp-validation-for="FHrdEducation.OUTOF" class="text-danger"></span>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 resultField d-none">
+                    <div class="form-group">
+                        <label asp-for="FHrdEducation.OPT1" class="control-label"></label>
+                        <input asp-for="FHrdEducation.OPT1" class="form-control" />
+                        <span asp-validation-for="FHrdEducation.OPT1" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button id="btnAddEdu" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                <a asp-action="GetFHrdEmployee" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive table-hover" id="eduDetailsTable"></div>
+        </div>
+    </div>
+    
+    <div class="panel panel-primary setup-content" id="step-4">
+        <div class="panel-body row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-book" aria-hidden="true"></i> Spouse Information</h2>
+                <hr />
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEmpSpouse.SPNAME" class="control-label"></label>
+                    <input asp-for="FHrdEmpSpouse.SPNAME" class="form-control" />
+                    <span asp-validation-for="FHrdEmpSpouse.SPNAME" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEmpSpouse.SPNAME_BN" class="control-label"></label>
+                    <input asp-for="FHrdEmpSpouse.SPNAME_BN" class="form-control" />
+                    <span asp-validation-for="FHrdEmpSpouse.SPNAME_BN" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEmpSpouse.SP_PROFESSION" class="control-label"></label>
+                    <input asp-for="FHrdEmpSpouse.SP_PROFESSION" class="form-control" />
+                    <span asp-validation-for="FHrdEmpSpouse.SP_PROFESSION" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEmpSpouse.SP_NID" class="control-label"></label>
+                    <input asp-for="FHrdEmpSpouse.SP_NID" class="form-control" />
+                    <span asp-validation-for="FHrdEmpSpouse.SP_NID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEmpSpouse.SP_BID" class="control-label"></label>
+                    <input asp-for="FHrdEmpSpouse.SP_BID" class="form-control" />
+                    <span asp-validation-for="FHrdEmpSpouse.SP_BID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEmpSpouse.SP_PASSPORT" class="control-label"></label>
+                    <input asp-for="FHrdEmpSpouse.SP_PASSPORT" class="form-control" />
+                    <span asp-validation-for="FHrdEmpSpouse.SP_PASSPORT" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEmpSpouse.SP_DOB" class="control-label"></label>
+                    <input asp-for="FHrdEmpSpouse.SP_DOB" class="form-control" />
+                    <span asp-validation-for="FHrdEmpSpouse.SP_DOB" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FHrdEmpSpouse.REMARKS" class="control-label"></label>
+                    <input asp-for="FHrdEmpSpouse.REMARKS" class="form-control" />
+                    <span asp-validation-for="FHrdEmpSpouse.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button class="btn btn-success pull-right" type="submit">Create</button>
+                <button id="btnAddSpouse" class="btn btn-success pull-right mr-2" type="button">Add</button>
+                <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                <a asp-action="GetFHrdEmployee" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive table-hover" id="spouseDetailsTable"></div>
+        </div>
+    </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/custom-file-input.js"></script>
+    <script asp-append-version="true" src="~/js/HR/FHrdEmployee/CreateFHrdEmployee.js"></script>
+}

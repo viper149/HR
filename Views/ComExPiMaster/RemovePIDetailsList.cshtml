@@ -1,0 +1,36 @@
+﻿@model List<DenimERP.Models.COM_EX_PI_DETAILS>
+
+@Html.EditorFor(model => model)
+
+@if (Model.Any())
+{
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>
+                @Model[i].STYLE.STYLENAME
+            </td>
+            <td>
+                @Model[i].UNIT
+            </td>
+            <td>
+                @Model[i].COSTREF
+            </td>
+            <td>
+                @Model[i].QTY
+            </td>
+            <td>
+                @Model[i].UNITPRICE
+            </td>
+            <td>
+                @Model[i].TOTAL
+            </td>
+            <td>
+                @Model[i].REMARKS
+            </td>
+            <td>
+                <i class="fa fa-edit fa-2x-custom mr-2 text-warning cursor-pointer" onclick="EditPIInfo('@Model[i].TRNSID');" aria-hidden="true"></i><i class="fa fa-trash fa-2x-custom text-danger cursor-pointer" onclick="RemovePIInfo('@Model[i].TRNSID', '@Model[i].PIID');" aria-hidden="true"></i>
+            </td>
+        </tr>
+    }
+}

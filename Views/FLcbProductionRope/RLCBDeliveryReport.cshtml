@@ -1,0 +1,23 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.FLcbProductionRope.Reports
+@using rptLCB_Delivery = DenimERP.Views.FLcbProductionRope.Reports.rptLCB_Delivery
+@model string
+
+@{
+    ViewData["Title"] = "LCB Delivery Report";
+    Layout = Layout;
+}
+<h2>LCB Delivery Report</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptLCB_Delivery(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

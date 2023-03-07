@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="rptSetWiseSizing_Consumption" Margins="31, 33, 7, 16" PageWidth="850" PageHeight="1100" Version="19.2" DataMember="rptSetWiseSizing_Consumption" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Parameters>
+    <Item1 Ref="4" ValueSourceSettings="#Ref-2" Name="SETNO" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="5" ControlType="TopMarginBand" Name="TopMargin" HeightF="7.29166651" />
+    <Item2 Ref="6" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="15.625" />
+    <Item3 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="18">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRTable" Name="table2" TextAlignment="MiddleCenter" SizeF="786.000061,18" LocationFloat="0, 0" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="9" ControlType="XRTableRow" Name="tableRow4" Weight="1">
+              <Cells>
+                <Item1 Ref="10" ControlType="XRTableCell" Name="tableCell7" Weight="0.47314890837061452" Multiline="true" Text="tableCell7" TextAlignment="MiddleCenter" Font="Calibri, 9.75pt">
+                  <Summary Ref="11" Running="Report" IgnoreNullValues="true" />
+                  <ExpressionBindings>
+                    <Item1 Ref="12" EventName="BeforePrint" PropertyName="Text" Expression="sumRecordNumber()" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="13" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="14" ControlType="XRTableCell" Name="tableCell5" Weight="2.5005104034724903" Multiline="true" Text="Product Name" TextAlignment="MiddleCenter" Font="Calibri, 9.75pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="15" EventName="BeforePrint" PropertyName="Text" Expression="[PRODUCTNAME]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="16" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="17" ControlType="XRTableCell" Name="tableCell9" Weight="0.96924817177931455" Multiline="true" Text="tableCell9" TextAlignment="MiddleCenter" Font="Calibri, 9.75pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="18" EventName="BeforePrint" PropertyName="Text" Expression="[UNIT]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="19" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="20" ControlType="XRTableCell" Name="tableCell6" Weight="1.2617304633507962" TextFormatString="{0:#.00}" Multiline="true" Text="Consumped" Font="Calibri, 9.75pt">
+                  <ExpressionBindings>
+                    <Item1 Ref="21" EventName="BeforePrint" PropertyName="Text" Expression="[QTY]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="22" UseFont="false" />
+                </Item4>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="23" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item3>
+    <Item4 Ref="24" ControlType="PageHeaderBand" Name="PageHeader" HeightF="40">
+      <Controls>
+        <Item1 Ref="25" ControlType="XRTable" Name="table1" TextAlignment="MiddleCenter" SizeF="786.000061,40" LocationFloat="0, 0" Padding="2,2,0,0,96" Borders="All" BorderWidth="0.5">
+          <Rows>
+            <Item1 Ref="26" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="27" ControlType="XRTableCell" Name="tableCell1" Weight="3.1108888275233926" Multiline="true" Text="Chemical Consumption (SIZING) " Font="Calibri, 9.75pt, style=Bold">
+                  <StylePriority Ref="28" UseFont="false" />
+                </Item1>
+              </Cells>
+            </Item1>
+            <Item2 Ref="29" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="30" ControlType="XRTableCell" Name="tableCell3" Weight="0.28280801904235653" Multiline="true" Text="SL No." Font="Calibri, 9.75pt, style=Bold">
+                  <StylePriority Ref="31" UseFont="false" />
+                </Item1>
+                <Item2 Ref="32" ControlType="XRTableCell" Name="tableCell2" Weight="1.4945919772177687" Multiline="true" Text="Product Name" Font="Calibri, 9.75pt, style=Bold">
+                  <StylePriority Ref="33" UseFont="false" />
+                </Item2>
+                <Item3 Ref="34" ControlType="XRTableCell" Name="tableCell8" Weight="0.57933348437371646" Multiline="true" Text="Unit" Font="Calibri, 9.75pt, style=Bold">
+                  <StylePriority Ref="35" UseFont="false" />
+                </Item3>
+                <Item4 Ref="36" ControlType="XRTableCell" Name="tableCell4" Weight="0.75415534688955066" Multiline="true" Text="Consumped" Font="Calibri, 9.75pt, style=Bold">
+                  <StylePriority Ref="37" UseFont="false" />
+                </Item4>
+              </Cells>
+            </Item2>
+          </Rows>
+          <StylePriority Ref="38" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item4>
+    <Item5 Ref="39" ControlType="PageFooterBand" Name="PageFooter" HeightF="0" />
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v19.2" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IlBETEVSUENvbm5lY3Rpb24iIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IlN0b3JlZFByb2NRdWVyeSIgTmFtZT0icnB0U2V0V2lzZVNpemluZ19Db25zdW1wdGlvbiI+PFBhcmFtZXRlciBOYW1lPSJAU0VUTk8iIFR5cGU9IkRldkV4cHJlc3MuRGF0YUFjY2Vzcy5FeHByZXNzaW9uIj4oU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5KSg/U0VUTk8pPC9QYXJhbWV0ZXI+PFByb2NOYW1lPnJwdFNldFdpc2VTaXppbmdfQ29uc3VtcHRpb248L1Byb2NOYW1lPjwvUXVlcnk+PFF1ZXJ5IFR5cGU9IkN1c3RvbVNxbFF1ZXJ5IiBOYW1lPSJRdWVyeSI+PFNxbD5TZWxlY3QgU0VUX05PIGZyb20gdmV3X3Byb2dyYW1faW5mbzwvU3FsPjwvUXVlcnk+PFJlc3VsdFNjaGVtYT48RGF0YVNldCBOYW1lPSJzcWxEYXRhU291cmNlMSI+PFZpZXcgTmFtZT0icnB0U2V0V2lzZVNpemluZ19Db25zdW1wdGlvbiI+PEZpZWxkIE5hbWU9IkNIRU1fUFJPRElEIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iUVRZIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IlVOSVQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU0VUX05PIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlBST0RVQ1ROQU1FIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iU0VUX05PIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjwvRGF0YVNldD48L1Jlc3VsdFNjaGVtYT48Q29ubmVjdGlvbk9wdGlvbnMgQ2xvc2VDb25uZWN0aW9uPSJ0cnVlIiAvPjwvU3FsRGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 Ref="2" ObjectType="DevExpress.XtraReports.Parameters.DynamicListLookUpSettings, DevExpress.Printing.v19.2.Core" DataSource="#Ref-0" DataMember="Query" ValueMember="SET_NO" DisplayMember="SET_NO" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

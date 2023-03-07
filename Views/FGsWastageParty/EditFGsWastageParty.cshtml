@@ -1,0 +1,65 @@
+﻿@model F_GS_WASTAGE_PARTY
+
+@{
+    ViewData["Title"] = "Wastage Party";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-plus-circle fa-lg text-success" aria-hidden="true"></i>Edit @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" role="form" asp-action="EditFGsWastageParty">
+        <div class="row">
+
+            @Html.HiddenFor(c => c.PID)
+            @Html.HiddenFor(c => c.EncryptedId)
+
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="PNAME" class="control-label"></label>
+                        <input asp-for="PNAME" type="text" class="form-control" />
+                        <span asp-validation-for="PNAME" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="ADDRESS" class="control-label"></label>
+                        <input asp-for="ADDRESS" type="text" class="form-control" id="" />
+                        <span asp-validation-for="ADDRESS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="PHONE" class="control-label"></label>
+                        <input asp-for="PHONE" type="text" class="form-control" id="" />
+                        <span asp-validation-for="PHONE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="REMARKS" class="control-label"></label>
+                        <input asp-for="REMARKS" type="text" class="form-control" id="" />
+                        <span asp-validation-for="REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row" id="AttachTo">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-warning nextBtn pull-right" type="submit">Update</button>
+                    <a asp-action="GetFGsWastageParty" class="btn btn-dark pull-right">Back to List</a>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </form>
+</div>

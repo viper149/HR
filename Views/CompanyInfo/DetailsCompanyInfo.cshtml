@@ -1,0 +1,155 @@
+﻿@model COMPANY_INFO
+
+<h2><i class="fa fa-info-circle text-success" aria-hidden="true"></i>@ViewData["Title"] Details</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row details">
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="LOGO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        <img style='height: 3rem;' alt='@Html.DisplayFor(model => model.COMPANY_NAME)' src="@Html.DisplayFor(model => model.LogoBase64)">
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="COMPANY_NAME" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.COMPANY_NAME)
+                    </span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="DESCRIPTION" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.DESCRIPTION)
+                    </span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="TAGLINE" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.TAGLINE)
+                    </span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="HEADOFFICE_ADDRESS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.HEADOFFICE_ADDRESS)
+                    </span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="FACTORY_ADDRESS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.FACTORY_ADDRESS)
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="WEB_ADDRESS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.WEB_ADDRESS)
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="EMAIL" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.EMAIL)
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="PHONE1" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.PHONE1)
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="PHONE2" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.PHONE2)
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="PHONE3" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.PHONE3)
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="BIN_NO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.BIN_NO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="ETIN_NO" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.ETIN_NO)
+                    </span>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <strong>
+                        <label asp-for="REMARKS" class="control-label"></label>
+                    </strong>
+                    <span class="custom-form-control form-control ">
+                        @Html.DisplayFor(model => model.REMARKS)
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        @Html.ActionLink("Update", "EditCompanyInfo", new { trnspId = Model.EncryptedId }, new { @class = "btn btn-warning pull-right" })
+        <a class="btn btn-dark pull-right" asp-action="GetCompanyInfo" asp-controller="CompanyInfo">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+﻿
+@model FGsGatepassReturnRcvViewModel
+
+@{
+    ViewData["Title"] = "General Store Gatepass Return Receive Information";
+}
+
+<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+    <form id="form" enctype="multipart/form-data" role="form" asp-action="CreateFGsGatepassReturnRcv">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="panel-body row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> Gatepass Return Receive Information </h2>
+                <hr />
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvMaster.RCVDATE" class="control-label"></label>
+                    <input asp-for="FGsGatepassReturnRcvMaster.RCVDATE" class="form-control" />
+                    <span asp-validation-for="FGsGatepassReturnRcvMaster.RCVDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvMaster.GPID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FGsGatepassReturnRcvMaster.GPID, new SelectList(Model.FGsGatepassInformationMList, "GPID", "GPNO"),
+                        "Select Gate Pass Issue No.", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FGsGatepassReturnRcvMaster.GPID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvMaster.RCVD_BY" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.FGsGatepassReturnRcvMaster.RCVD_BY, new SelectList(Model.FHrEmployeesList, "EMPID", "FIRST_NAME"),
+                        "Select Employee", new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="FGsGatepassReturnRcvMaster.RCVD_BY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvMaster.REMARKS" class="control-label"></label>
+                    <input asp-for="FGsGatepassReturnRcvMaster.REMARKS" class="form-control" />
+                    <span asp-validation-for="FGsGatepassReturnRcvMaster.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-eye" aria-hidden="true"></i> Gatepass Return Receive Details</h2>
+                <hr />
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvDetails.PRODID" class="control-label"></label>
+                    <select asp-for="FGsGatepassReturnRcvDetails.PRODID" class="form-control js-example-basic-single">
+                        <option value="">Select Product</option>
+                    </select>
+                    <span asp-validation-for="FGsGatepassReturnRcvDetails.PRODID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">Unit</label>
+                    <span class="custom-form-control-bg form-control bg-e9ecef" id="unit">
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvDetails.RCV_QTY" class="control-label"></label>
+                    <input asp-for="FGsGatepassReturnRcvDetails.RCV_QTY" class="form-control" />
+                    <span asp-validation-for="FGsGatepassReturnRcvDetails.RCV_QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvDetails.RCV_BAG" class="control-label"></label>
+                    <input asp-for="FGsGatepassReturnRcvDetails.RCV_BAG" class="form-control" />
+                    <span asp-validation-for="FGsGatepassReturnRcvDetails.RCV_BAG" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvDetails.GATE_ENTRYNO" class="control-label"></label>
+                    <input asp-for="FGsGatepassReturnRcvDetails.GATE_ENTRYNO" class="form-control" />
+                    <span asp-validation-for="FGsGatepassReturnRcvDetails.GATE_ENTRYNO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="FGsGatepassReturnRcvDetails.REMARKS" class="control-label"></label>
+                    <input asp-for="FGsGatepassReturnRcvDetails.REMARKS" class="form-control" />
+                    <span asp-validation-for="FGsGatepassReturnRcvDetails.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button id="btn_submit" class="btn btn-info nextBtn pull-right" type="submit">Create</button>
+                <button id="addToList" class="btn btn-success pull-right" type="button">Add to List</button>
+                <a asp-action="GetFGsGatepassReturnRcv" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive table-hover" id="fGsGatepassReturnRcvTable"></div>
+
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/GeneralStore/GatePassReturnRcv/CreateFGsGatepassReturnRcv.js"></script>
+}

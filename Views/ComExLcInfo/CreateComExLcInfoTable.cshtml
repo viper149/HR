@@ -1,0 +1,83 @@
+﻿
+@model CreateComExLcInfoViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (Model.ComExLcdetailses.Any())
+{
+    <div class="alert alert-info mb-1">
+        <strong>L/C Value: </strong>@($"{Model.ComExLcdetailses.Sum(e => e.PI.COM_EX_PI_DETAILS.Where(f=>f.SO_STATUS).Sum(f => f.TOTAL)):N}")
+    </div>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>@Html.DisplayNameFor(model => model.ComExLcdetails.PI.PINO)</th>
+                <th>@Html.DisplayNameFor(model => model.ComExLcdetails.BANKID)</th>
+                <th>@Html.DisplayNameFor(model => model.ComExLcdetails.BANK_ID)</th>
+                <th>@Html.DisplayName("PI Quantity")</th>
+                <th>@Html.DisplayName("PI Value")</th>
+                <th>@Html.DisplayNameFor(model => model.ComExLcdetails.REMARKS)</th>
+                <th>@Html.DisplayNameFor(model => model.ComExLcdetails.PIFILE)</th>
+                <th>@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.ComExLcdetailses.Count(); i++)
+            {
+            <tr>
+                <td>@Html.Raw(Model.ComExLcdetailses[i].TRNSID > 0 ? $"<i class=\"fa fa-database text-danger\" aria-hidden=\"true\"></i> {i + 1}" : $"<i class=\"fa fa-plus-circle text-success\" aria-hidden=\"true\"></i> {i + 1}")</td>
+                <td>
+                    @Html.HiddenFor(e => e.ComExLcdetailses[i].TRNSID)
+                    @Html.HiddenFor(e => e.ComExLcdetailses[i].PIID)
+                    @Model.ComExLcdetailses[i].PI?.PINO
+                </td>
+                <td>
+                    @Html.HiddenFor(e => e.ComExLcdetailses[i].BANKID)
+                    @Model.ComExLcdetailses[i].BANK?.BEN_BANK
+                </td>
+                <td>
+                    @Html.HiddenFor(e => e.ComExLcdetailses[i].BANK_ID)
+                    @Model.ComExLcdetailses[i].BANK_?.BEN_BANK
+                </td>
+                <td>
+                    @Model.ComExLcdetailses[i].PI?.COM_EX_PI_DETAILS.Where(e => e.SO_STATUS).Sum(e => e.QTY)
+                </td>
+                <td>
+                    @Model.ComExLcdetailses[i].PI?.COM_EX_PI_DETAILS.Where(e => e.SO_STATUS).Sum(e => e.TOTAL)
+                </td>
+                <td>
+                    @Html.HiddenFor(e => e.ComExLcdetailses[i].REMARKS)
+                    @Model.ComExLcdetailses[i].REMARKS
+                </td>
+                <td>
+                    @Html.HiddenFor(clc => clc.ComExLcdetailses[i].PIFILE)
+                    @if (!string.IsNullOrEmpty(Model.ComExLcdetailses[i].PIFILE))
+                    {
+                        <a class="fa fa-file btn-link" target="_blank" asp-controller="Files" asp-action="pi_files" asp-route-fileName="@Model.ComExLcdetailses[i].PIFILE"> @Model.ComExLcdetailses[i].PIFILE.Split(new char[] { ' ', '_' }, 2)[1]</a>
+                    }
+                    else
+                    {
+                        @Html.Raw("<span class=\"text-danger fa fa-paperclip btn-link\"> No Attachments<span>")
+                    }
+                </td>
+                <td>
+                    <i class="fa fa-trash fa-lg text-danger" onclick="RemoveLCDetails(@i)" aria-hidden="true"></i>
+                </td>
+            </tr>
+            }
+        <tr>
+            <td>Total</td>
+            <td>:</td>
+            <td colspan="2"></td>
+            <td>@Model.ComExLcdetailses.Sum(e => e.PI.COM_EX_PI_DETAILS.Where(f => f.SO_STATUS).Sum(f => f.QTY))</td>
+            <td colspan="4">@Model.ComExLcdetailses.Sum(e => e.PI.COM_EX_PI_DETAILS.Where(f => f.SO_STATUS).Sum(f => f.TOTAL))</td>
+        </tr>
+        </tbody>
+    </table>
+}
+
+<script>
+    document.getElementById("ComExLcinfo_VALUE").value = '@Model.ComExLcdetailses.Sum(e => e.PI.COM_EX_PI_DETAILS.Where(f => f.SO_STATUS).Sum(f => f.TOTAL))';
+</script>

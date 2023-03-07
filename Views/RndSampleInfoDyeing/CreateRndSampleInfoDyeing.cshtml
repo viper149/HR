@@ -1,0 +1,292 @@
+﻿@model CreateRndSampleInfoDyeingAndDetailsViewModel
+
+@{
+    ViewData["Title"] = "Create Warping & Dyeing";
+    Layout = Layout;
+}
+
+<h4><i class="fa fa-flask fa-lg text-success" aria-hidden="true"></i> RND Sample Info <i class="fa fa-at text-info">Warping & Dyeing</i></h4>
+<hr />
+
+<div class="container-fluid">
+    <div class="stepwizard">
+        <div class="stepwizard-row setup-panel d-flex justify-content-around">
+            <div class="stepwizard-step">
+                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+                <p><small>Dyeing Information</small></p>
+            </div>
+            <div class="stepwizard-step">
+                <a href="#step-2" type="button" class="btn btn-default btn-circle border-1" disabled="disabled">2</a>
+                <p><small>Finish</small></p>
+            </div>
+        </div>
+    </div>
+
+    <form id="form" asp-action="CreateRndSampleInfoDyeing">
+        <div class="panel panel-default setup-content" id="step-1">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.STATUS" class="control-label"></label>
+                        <div class="form-control custom-form-control">
+                            <label class="switch">
+                                <input asp-for="RndSampleInfoDyeing.STATUS" />
+                                <span class="slider round"></span>
+                                <span class="absolute-no">NO</span>
+                            </label>
+                        </div>
+                        <span asp-validation-for="RndSampleInfoDyeing.STATUS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.SIDATE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.SIDATE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.SIDATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.SDRF.SDRF_NO" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDyeing.SDRFID, new SelectList(Model.MktSdrfInfos, "SDRFID", "SDRF_NO"), "Select A SDRF No", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDyeing.SDRFID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.OPT1" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.OPT1" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.OPT1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.DYEINGCODE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.DYEINGCODE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.DYEINGCODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.STYLEREF" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.STYLEREF" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.STYLEREF" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.RNDTEAM" class="control-label"></label>
+                        <select asp-for="RndSampleInfoDyeing.RNDTEAM" class="form-control js-example-basic-single">
+                            <option value="">Select RnD Team</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                        <span asp-validation-for="RndSampleInfoDyeing.RNDTEAM" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.RNDPERSON" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDyeing.RNDPERSON, new SelectList(Model.FHrEmployeesList, "EMPID", "FIRST_NAME"), "Select Employee", new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDyeing.RNDPERSON" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.BUYERID" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDyeing.BUYERID, new SelectList(Model.BasBuyerInfos, "BUYERID", "BUYER_NAME"), "Select A Buyer", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDyeing.BUYERID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.ENDS_ROPE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.ENDS_ROPE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.ENDS_ROPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.NO_OF_ROPE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.NO_OF_ROPE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.NO_OF_ROPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.TOTAL_ENDS" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.TOTAL_ENDS" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="RndSampleInfoDyeing.TOTAL_ENDS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.LENGTH_MTR" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.LENGTH_MTR" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.LENGTH_MTR" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.DYEING_REF" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.DYEING_REF" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.DYEING_REF" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.D.DTYPE" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDyeing.DID, new SelectList(Model.DyeingTypes, "DID", "DTYPE"), "Select Dyeing Type", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDyeing.DID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.COLORCODE" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDyeing.COLORCODE, new SelectList(Model.BasColors, "COLORCODE", "COLOR"), "Select Color", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDyeing.COLORCODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.LOOM.LOOM_TYPE_NAME" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDyeing.LOOMID, new SelectList(Model.LoomTypes, "LOOMID", "LOOM_TYPE_NAME"), "Select Loom Type", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDyeing.LOOMID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.REED_SPACE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.REED_SPACE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.REED_SPACE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.WARP_PROG_DATE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.WARP_PROG_DATE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.WARP_PROG_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.COMMITED_DEL_DATE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.COMMITED_DEL_DATE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.COMMITED_DEL_DATE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.YARN_LOCATION" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.YARN_LOCATION" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.YARN_LOCATION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDyeing.REMARKS" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDyeing.REMARKS" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDyeing.REMARKS" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-info nextBtn pull-right" type="button">Next</button>
+                    <a asp-action="GetRndSampleInfoDyeing" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary setup-content" id="step-2">
+            <div class="panel-body row">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.COUNT.COUNTNAME" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDetails.COUNTID, new SelectList(Model.BasYarnCountinfos, "COUNTID", "COUNTNAME"), "Select a Count", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDetails.COUNTID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.TYPE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDetails.TYPE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDetails.TYPE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.DESCRIPTION" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDetails.DESCRIPTION" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDetails.DESCRIPTION" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.COLORCODENavigation.COLOR" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDetails.COLORCODE, new SelectList(Model.BasColors, "COLORCODE", "COLOR"), "Select a Color", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDetails.COLORCODE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.LOT.LOTNO" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDetails.LOTID, new SelectList(Model.BasYarnLotinfos, "LOTID", "LOTNO"), "Select a LOT", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDetails.LOTID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.SUPP.SUPPNAME" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDetails.SUPPID, new SelectList(Model.BasSupplierinfos, "SUPPID", "SUPPNAME"), "Select a Supplier", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDetails.SUPPID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.YARN.YARNNAME" class="control-label"></label>
+                        @Html.DropDownListFor(dy => dy.RndSampleInfoDetails.YARNID, new SelectList(Model.Yarnfors, "YARNID", "YARNNAME"), "Select a Yarn", htmlAttributes: new { @class = "form-control js-example-basic-single" })
+                        <span asp-validation-for="RndSampleInfoDetails.YARNID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.RATIO" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDetails.RATIO" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDetails.RATIO" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.NE" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDetails.NE" class="form-control" />
+                        <span asp-validation-for="RndSampleInfoDetails.NE" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 d-none">
+                    <div class="form-group">
+                        <label asp-for="RndSampleInfoDetails.BGT" class="control-label"></label>
+                        <input asp-for="RndSampleInfoDetails.BGT" class="form-control" readonly />
+                        <span asp-validation-for="RndSampleInfoDetails.BGT" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-primary pull-right" type="submit">Create</button>
+                    <button id="btnAdd" class="btn btn-success pull-right" type="button">Add</button>
+                    <button class="btn btn-info prevBtn pull-right" type="button">Prev</button>
+                    <a asp-action="GetRndSampleInfoDyeing" class="btn btn-dark pull-right">Back to List</a>
+                </div>
+            </div>
+            <div class="table-responsive" id="RndSampleInfoDetails"></div>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync($"_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/RndSampleInfoDyeing/CreateRndSampleInfoDyeing.js"></script>
+    <script asp-append-version="true" src="~/js/site-common.js"></script>
+}

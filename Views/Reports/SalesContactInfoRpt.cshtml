@@ -1,0 +1,24 @@
+﻿@using DevExpress.AspNetCore
+@using DenimERP.Views.ComExPiMaster.Reports
+@using rptSalesCOntactInfo = DenimERP.Views.ComExPiMaster.Reports.rptSalesCOntactInfo
+
+@model int
+
+@{
+    ViewData["Title"] = "Sales Contact Report";
+    Layout = Layout;
+}
+<h2>@ViewData["Title"]</h2>
+
+@{
+
+    @Html.DevExpress().WebDocumentViewer("WebDocumentViewer").Height("1000px").Bind(new rptSalesCOntactInfo(Model))
+}
+
+@section Styles {
+    <partial name="_LayoutReport" />
+}
+
+@section Scripts {
+    <script asp-append-version="true" src="~/js/jquery-resizable/jquery-resizable.js"></script>
+}

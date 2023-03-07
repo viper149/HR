@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "devextreme": "19.2.3",
+    "@devexpress/analytics-core": "19.2.3",
+    "devexpress-reporting": "19.2.3",
+    "jquery-ui-dist": "^1.12.1"
+  },
+  "description": "> Pioneer Denim Limited has been awarded as the world’s largest Leed Platinum certified textile mill. A second generation denim mill created under Badsha Group of Industries, situated in Habiganj, Bangladesh. Being an emerging, vertically integrated, state of the art, denim fabric manufacturing business, Pioneer Denim is able to assure high standards of quality right from the spinning process all the way to finished denim fabric ready for shipping, creating a strong presence in the fashion industry at the forefront of innovation. Pioneer Denim has built a great R&D team, with international consultants, who create a 360° approach to denim fabric making all under one roof.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

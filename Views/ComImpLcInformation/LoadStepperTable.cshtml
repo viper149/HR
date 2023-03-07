@@ -1,0 +1,222 @@
+﻿
+@*@model ComImpLcInformationForCreateViewModel
+
+<div class="col-12">
+    <hr />
+</div>
+
+<div class="col-12 row p-0">
+    <div class="col-6 row">
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="cOM_IMP_LCINFORMATION.ComExLcinfo.LCNO" class="control-label"></label>
+                @Html.DropDownListFor(lc => lc.cOM_IMP_LCINFORMATION.LCID, new SelectList(Model.ComExLcinfos, "LCID", "LCNO"), "Please select a Master LC", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "masterLcNo" })
+                @Html.ValidationMessageFor(lc => lc.cOM_IMP_LCINFORMATION.LCID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="ComExLcinfo.LCDATE" class="control-label"></label>
+                <input asp-for="ComExLcinfo.LCDATE" class="form-control" readonly />
+                <span asp-validation-for="ComExLcinfo.LCDATE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="ComExLcinfo.VALUE" class="control-label"></label>
+                <input asp-for="ComExLcinfo.VALUE" class="form-control" readonly />
+                <span asp-validation-for="ComExLcinfo.VALUE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="ComExLcinfo.AMENTDATE" class="control-label"></label>
+                <input asp-for="ComExLcinfo.AMENTDATE" class="form-control" readonly />
+                <span asp-validation-for="ComExLcinfo.AMENTDATE" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="ComExLcinfo.AMENTVALUE" class="control-label"></label>
+                <input asp-for="ComExLcinfo.AMENTVALUE" class="form-control" readonly />
+                <span asp-validation-for="ComExLcinfo.AMENTVALUE" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 row">
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="ComExLcinfo.BANK_.PARTY_BANK" class="control-label"></label>
+                <input asp-for="ComExLcinfo.BANK_.PARTY_BANK" class="form-control" readonly />
+                <span asp-validation-for="ComExLcinfo.BANK_.PARTY_BANK" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="cOM_IMP_LCINFORMATION.LIENVAL" class="control-label"></label>
+                <input asp-for="cOM_IMP_LCINFORMATION.LIENVAL" class="form-control" id="cOM_IMP_LCINFORMATION_LIENVAL" readonly />
+                <span asp-validation-for="cOM_IMP_LCINFORMATION.LIENVAL" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="cOM_IMP_LCINFORMATION.BALANCE" class="control-label"></label>
+                <input asp-for="cOM_IMP_LCINFORMATION.BALANCE" class="form-control" readonly />
+                <span asp-validation-for="cOM_IMP_LCINFORMATION.BALANCE" class="text-danger"></span>
+            </div>
+        </div>
+
+        <input asp-for="ComExLcinfo.FILENO" type="hidden" value="dummy" />
+        <input asp-for="ComExLcinfo.LCNO" type="hidden" value="dummy" />
+
+    </div>
+</div>
+
+
+
+<script asp-append-version="true" type="text/javascript">
+    $(function () {
+
+        var masterLcNo = $("#masterLcNo");
+        var lienVal = $("#cOM_IMP_LCINFORMATION_LIENVAL");
+        var lcDate = $("#ComExLcinfo_LCDATE");
+        var exValue = $("#ComExLcinfo_VALUE");
+        var amentDate = $("#ComExLcinfo_AMENTDATE");
+        var amentValue = $("#ComExLcinfo_AMENTVALUE");
+        var lienValueBalance = $("#cOM_IMP_LCINFORMATION_BALANCE");
+        var bankPartyBank = $("#ComExLcinfo_BANK__PARTY_BANK");
+        var expDate = $("#cOM_IMP_LCINFORMATION_EXPDATE");
+        var previousList = $("#previousList");
+
+        $('.js-example-basic-single').select2({});
+
+        editLcmMaster();
+
+        function editLcmMaster() {
+            _masterLcNo = masterLcNo.val();
+            _expDate = expDate.val();
+
+            if (!_masterLcNo) {
+
+                clearFields();
+                previousList.empty();
+                toastrNotification("Please select master LC number.", "warning");
+
+            } else if (!_expDate) {
+                masterLcNo.val('');
+                toastrNotification("Please select LC Expire date", "warning");
+            } else {
+                $.ajax({
+                    async: true,
+                    cache: false,
+                    data: $("#form").serialize(),
+                    type: "POST",
+                    url: "/ComImpLcInformation/GetExportLcZenbuJyuhou",
+                    success: function (data) {
+
+                        $.ajax({
+                            async: true,
+                            cache: false,
+                            data: { "masterLcNo": _masterLcNo },
+                            type: "GET",
+                            url: "/ComImpLcInformation/LoadPreviousList",
+                            success: function (partialView) {
+                                $("#previousList").html(partialView);
+                            },
+                            error: function () {
+                                console.log("An error occurred during your submission.");
+                            }
+                        });
+
+                        if (data !== null) {
+
+                            if (!data.override) {
+                                lienVal.val(((data.value - data.amentvalue) * 0.7).toFixed(4));
+                                exValue.val(data.value);
+                                amentValue.val(data.amentvalue);
+
+                                if (data.banK_ !== null) {
+                                    bankPartyBank.val(data.banK_.partY_BANK);
+                                }
+
+                                if (data.lcdate !== null) {
+                                    lcDate.val(data.lcdate.substring(0, data.lcdate.indexOf('T')));
+                                } else {
+                                    lcDate.val('');
+                                }
+
+                                if (data.amentdate !== null) {
+                                    amentDate.val(data.amentdate.substring(0, data.amentdate.indexOf('T')));
+                                } else {
+                                    amentDate.val('');
+                                }
+
+                                if ($("#sumOfTotal").text() !== null) {
+                                    lienValueBalance.val(((data.value * 0.7) - $("#sumOfTotal").text()).toFixed(4));
+                                }
+
+                                toastrNotification("Procced To Work...", "success");
+
+                            } else {
+
+                                console.log(data);
+
+                                lienVal.val(((data.comExLcInfo.value - data.comExLcInfo.amentvalue) * 0.7).toFixed(4));
+                                exValue.val(data.comExLcInfo.value);
+                                amentValue.val(data.comExLcInfo.amentvalue);
+
+                                if (data.comExLcInfo.banK_ !== null) {
+                                    bankPartyBank.val(data.comExLcInfo.banK_.partY_BANK);
+                                }
+
+                                if (data.comExLcInfo.lcdate !== null) {
+                                    lcDate.val(data.comExLcInfo.lcdate.substring(0, data.comExLcInfo.lcdate.indexOf('T')));
+                                } else {
+                                    lcDate.val('');
+                                }
+
+                                if (data.comExLcInfo.amentdate !== null) {
+                                    amentDate.val(data.comExLcInfo.amentdate.substring(0, data.comExLcInfo.amentdate.indexOf('T')));
+                                } else {
+                                    amentDate.val('');
+                                }
+
+                                if ($("#sumOfTotal").text() !== null) {
+
+                                    //console.log("Previous amount: " + (isNaN(data.comExLcInfo.previousAmount) ? 0 : data.comExLcInfo.previousAmount));
+
+                                    lienValueBalance.val((((data.comExLcInfo.value - data.comExLcInfo.amentvalue) * 0.7) - $("#sumOfTotal").text() - (isNaN(data.comExLcInfo.previousAmount) ? 0 : data.comExLcInfo.previousAmount)).toFixed(4));
+                                }
+
+                                toastrNotification("Procced To Work...", "success");
+
+                            }
+                        } else {
+                            clearFields();
+                            toastrNotification("Possibility: <br />1. 90 Days Exceeded Compare To Export LC Date.<br />2. Select Import LC Date or Doesn't Have Any Export LC Date.", "warning");
+                        }
+                    },
+                    error: function (e) {
+                        console.log("failed to add partialView...");
+                    }
+                });
+            }
+        }
+
+
+        masterLcNo.on("change", function () {
+            editLcmMaster();
+
+        });
+
+        function clearFields() {
+            lienVal.val('');
+            lcDate.val('');
+            exValue.val('');
+            amentDate.val('');
+            amentValue.val('');
+            lienValueBalance.val('');
+            bankPartyBank.val('');
+        }
+    });
+</script>*@

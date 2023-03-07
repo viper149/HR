@@ -1,0 +1,369 @@
+﻿
+@model ComExCashInfoViewModel
+
+@{
+    ViewData["Title"] = "BTMA (Cash) Information";
+}
+
+<h2><i class="fa fa-plus-circle text-success" aria-hidden="true"></i> Create @ViewData["Title"]</h2>
+
+<div class="container-fluid">
+
+    <form id="form" role="form" asp-action="CreateCashInfo">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row p-0">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-envelope-o" aria-hidden="true"></i> L/C Information</h2>
+                <hr />
+            </div>
+
+            @*<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label asp-for="ComExCashInfo.LCID" class="control-label"></label>
+                @Html.DropDownListFor(dt => dt.ComExCashInfo.LCID, new SelectList(Model.ComExLcInfos, "LCID", "LCNO"), "Select L/C", htmlAttributes: new { @class = "form-control js-example-basic-single", @id = "lcId" })
+                <span asp-validation-for="ComExCashInfo.LCID" class="text-danger"></span>
+            </div>
+        </div>*@
+
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.LCID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.ComExCashInfo.LCID,
+                    new SelectList(Model.ComExLcInfos, "LCID", "LCNO"), "Select L/C",
+                    new { @class = "form-control js-example-basic-single" })
+                    <span asp-validation-for="ComExCashInfo.LCID" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.BACKTOBACK_LCTYPE" class="control-label"></label>
+                    <select asp-for="ComExCashInfo.BACKTOBACK_LCTYPE" class="form-control js-example-basic-single">
+                        <option value="Direct" selected="selected">Direct</option>
+                        <option value="Deemed">Deemed</option>
+                    </select>
+                    <span asp-validation-for="ComExCashInfo.BACKTOBACK_LCTYPE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.CURRENCY_ID" class="control-label"></label>
+                    @Html.DropDownListFor(dt => dt.ComExCashInfo.CURRENCY_ID, new SelectList(Model.CurrenciesList, "Id", "CODE"), new { @class = "form-control js-example-basic-single", @id = "lcId" })
+                    <span asp-validation-for="ComExCashInfo.CURRENCY_ID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.MLCVALUE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.MLCVALUE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.MLCVALUE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.ORDER_VALUE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.ORDER_VALUE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.ORDER_VALUE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.MLCNO" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.MLCNO" class="form-control" id="mLcNo" />
+                    <span asp-validation-for="ComExCashInfo.MLCNO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.LCDATE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.LCDATE" class="form-control" id="lcDate" />
+                    <span asp-validation-for="ComExCashInfo.LCDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.GARMENT_QTY" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.GARMENT_QTY" class="form-control" id="qty" />
+                    <span asp-validation-for="ComExCashInfo.GARMENT_QTY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.LCVALUE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.LCVALUE" class="form-control" id="value" />
+                    <span asp-validation-for="ComExCashInfo.LCVALUE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.LCEXPIRY" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.LCEXPIRY" class="form-control" id="expiry" />
+                    <span asp-validation-for="ComExCashInfo.LCEXPIRY" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-info-circle" aria-hidden="true"></i> Information</h2>
+                <hr />
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.CASHNO" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.CASHNO" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.CASHNO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.VCNO" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.VCNO" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.VCNO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.VCDATE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.VCDATE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.VCDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.YARN_CASH_BTMA_NO" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.YARN_CASH_BTMA_NO" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.YARN_CASH_BTMA_NO" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.YARN_CASH_BTMA_DATE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.YARN_CASH_BTMA_DATE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.YARN_CASH_BTMA_DATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.ITEMQTY_YDS" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.ITEMQTY_YDS" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.ITEMQTY_YDS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.ITEMQTY_MTS" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.ITEMQTY_MTS" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.ITEMQTY_MTS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.RATE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.RATE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.RATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.DELIVERY_DATE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.DELIVERY_DATE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.DELIVERY_DATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.REMARKS" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.REMARKS" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.REMARKS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.OTHERS" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.OTHERS" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.OTHERS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.FABDESCRIPTION" class="control-label"></label>
+                    <textarea asp-for="ComExCashInfo.FABDESCRIPTION" class="form-control" style="height: 130px;"></textarea>
+                    <span asp-validation-for="ComExCashInfo.FABDESCRIPTION" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.FABDESCRIPTION_DETAILS" class="control-label"></label>
+                    <textarea asp-for="ComExCashInfo.FABDESCRIPTION_DETAILS" class="form-control" style="height: 130px;"></textarea>
+                    <span asp-validation-for="ComExCashInfo.FABDESCRIPTION_DETAILS" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="panel-title text-success"><i class="fa fa-cogs" aria-hidden="true"></i> Management</h2>
+                <hr />
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.SUBDATE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.SUBDATE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.SUBDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.RCVDDATE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.RCVDDATE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.RCVDDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.ISSUEDATE" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.ISSUEDATE" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.ISSUEDATE" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.NOTES" class="control-label"></label>
+                    <input asp-for="ComExCashInfo.NOTES" class="form-control" />
+                    <span asp-validation-for="ComExCashInfo.NOTES" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-2 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.ISISSUE2BANK" class="control-label"></label>
+                    <div class="form-control custom-form-control">
+                        <label class="switch">
+                            <input asp-for="ComExCashInfo.ISISSUE2BANK" />
+                            <span class="slider round"></span>
+                            <span class="absolute-no">NO</span>
+                        </label>
+                    </div>
+                    <span asp-validation-for="ComExCashInfo.ISISSUE2BANK" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-2 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <label asp-for="ComExCashInfo.ISCASHNA" class="control-label"></label>
+                    <div class="form-control custom-form-control">
+                        <label class="switch">
+                            <input asp-for="ComExCashInfo.ISCASHNA" />
+                            <span class="slider round"></span>
+                            <span class="absolute-no">NO</span>
+                        </label>
+                    </div>
+                    <span asp-validation-for="ComExCashInfo.ISCASHNA" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button accesskey="c" class="btn btn-success pull-right" type="submit">Create</button>
+                <a accesskey="b" asp-action="GetCashInfoWithPaged" class="btn btn-dark pull-right">Back to List</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Styles {
+    <link href="~/css/CustomCSS/Stepper.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptPartial_Except_jQuery");}
+    <script asp-append-version="true" src="~/js/custom-js/Stepper.js"></script>
+    <script asp-append-version="true" src="~/js/ComExCashInfo/CreateComExCashInfo.js"></script>
+
+
+    <script type="text/javascript" asp-append-version="true">
+        $(function () {
+
+            $('#ComExCashInfo_ITEMQTY_YDS').on("change",
+                function () {
+                    var qty_y = $(this).val();
+                    var qty_m = (parseFloat(qty_y) / 1.0936).toFixed(0);
+                    $("#ComExCashInfo_ITEMQTY_MTS").val(qty_m);
+                });
+
+            $('#ComExCashInfo_ITEMQTY_MTS').on("change",
+                function () {
+                    var qty_m = $(this).val();
+                    var qty_y = (parseFloat(qty_m) * 1.0936).toFixed(0);
+                    $("#ComExCashInfo_ITEMQTY_YDS").val(qty_y);
+                });
+
+
+            $('#ComExCashInfo_LCID').change(function () {
+
+                const formData = {
+                    "lcId": $(this).val()
+                };
+
+                $.get("/ComExCashInfo/GetLcInfo", formData, function (data) {
+                    console.log(data);
+                    if (data != null) {
+                        console.log(data);
+                        var lcDate = data[0].lcdate.substring(0, data[0].lcdate.indexOf('T'));
+                        var eX_DATE = data[0].eX_DATE.substring(0, data[0].eX_DATE.indexOf('T'));
+                        $('#lcDate').val(lcDate);
+                        $('#expiry').val(eX_DATE);
+                        $('#mLcNo').val(data[0].mlcno);
+
+                        var garmenT_QTY = 0;
+                        var value = 0;
+                        $.each(data,
+                            function (id, option) {
+                                value += option.value;
+                                garmenT_QTY += option.garmenT_QTY;
+                            });
+
+                        $('#qty').val(garmenT_QTY);
+                        $('#value').val(value);
+
+                        //For Qty
+                        var qty_y = 0;
+                        var rate = "";
+                        $.each(data, function (id, lc) {
+                            $.each(lc.coM_EX_INVOICEMASTER, function (id, option) {
+                                $.each(option.comExInvdetailses, function (id, opt) {
+                                    qty_y += opt.qty;
+                                    rate += opt.rate + ", ";
+                                });
+                            });
+                        });
+
+
+                        $('#ComExCashInfo_ITEMQTY_YDS').val(qty_y.toFixed(0));
+                        var qty_m = (parseFloat(qty_y) / 1.0936).toFixed(0);
+                        $("#ComExCashInfo_ITEMQTY_MTS").val(qty_m);
+                        $("#ComExCashInfo_RATE").val(rate.substring(0, rate.length - 2));
+
+
+                        //For Fabric Description
+                        var fabDetails = "";
+                        $.each(data, function (id, lc) {
+                            $.each(lc.coM_EX_LCDETAILS, function (id, option) {
+                                $.each(option.pi.coM_EX_PI_DETAILS, function (id, opt) {
+                                    //fabDetails += opt.style.stylename + "\n";
+                                    fabDetails += opt.style.coM_FABRIC_COMPOSITION + "\n";
+                                    fabDetails += `Weight : ${opt.style.fabcodeNavigation.wgdec}OZ/YD2\n`;
+                                    fabDetails += `Width : ${opt.style.fabcodeNavigation.widec}\n`;
+                                    fabDetails += `Color : ${opt.style.fabcodeNavigation.colorcodeNavigation.color}\n\n`;
+                                });
+                            });
+                        });
+
+                        $("#ComExCashInfo_FABDESCRIPTION").val(fabDetails);
+
+                    } else {
+                        toastr.error("Sorry! No L/C Information.", "error");
+                    }
+                }).fail(function () {
+                    toastr.error("Error: Failed To Retrieve L/C Information.", "error");
+                });
+            });
+        });
+    </script>
+}

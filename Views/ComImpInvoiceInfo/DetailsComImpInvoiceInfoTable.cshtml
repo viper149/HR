@@ -1,0 +1,57 @@
+﻿
+@model ComImpInvoiceInfoDetailsViewModel
+
+@{
+    if (Model.ComImpInvdetailses.Any())
+    {
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            @Html.DisplayName("Invoice Details") #1
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body table-responsive table-hover">
+                        <table class="table table-striped">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.TRNSDATE)</th>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.INVNO)</th>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.BasProductinfo.PRODNAME)</th>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.F_CHEM_STORE_PRODUCTINFOS.PRODUCTNAME)</th>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.BAS_YARN_LOTINFOS.LOTNO)</th>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.QTY)</th>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.RATE)</th>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.AMOUNT)</th>
+                                    <th scope="col">@Html.DisplayNameFor(model => model.ComImpInvdetails.REMARKS)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model.ComImpInvdetailses)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.TRNSDATE)</td>
+                                            <td>@item.INVNO</td>
+                                            <td>@item.BasProductinfo.PRODNAME</td>
+                                            <td>@item.F_CHEM_STORE_PRODUCTINFOS.PRODUCTNAME</td>
+                                            <td>@item.BAS_YARN_LOTINFOS.LOTNO</td>
+                                            <td>@item.QTY</td>
+                                            <td>@item.RATE</td>
+                                            <td>@item.AMOUNT</td>
+                                            <td>@item.REMARKS</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

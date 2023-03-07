@@ -1,0 +1,58 @@
+﻿@model FFsFabricUPViewModel
+
+@if (Model.FFsFabricDetailsList.Any())
+{
+    <table class="table" id="partialView">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsFabricDetail.ComExLcInfo.LCNO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsFabricDetail.ComExLcInfo.EX_DATE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsFabricDetail.ComExLcInfo.BUYER.BUYER_NAME)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsFabricDetail.ComExLcInfo.VALUE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.FFsFabricDetail.REMARKS)</th>
+                <th scope="col">@Html.Raw("Actions")</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FFsFabricDetailsList.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>
+                        @Html.HiddenFor(model => model.FFsFabricDetailsList[i].LC_ID)
+                        @Html.HiddenFor(model => model.FFsFabricDetailsList[i].UP_ID)
+                        @Html.HiddenFor(model => model.FFsFabricDetailsList[i].UP_DID)
+                        @Html.DisplayFor(item => Model.FFsFabricDetailsList[i].ComExLcInfo.LCNO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(item => Model.FFsFabricDetailsList[i].ComExLcInfo.EX_DATE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(item => Model.FFsFabricDetailsList[i].ComExLcInfo.BUYER.BUYER_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(item => Model.FFsFabricDetailsList[i].ComExLcInfo.VALUE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(item => Model.FFsFabricDetailsList[i].REMARKS)
+                    </td>
+                    <td>
+                        <i class="fa fa-trash fa-2x text-danger"
+                           onclick="removeFromList('@i');" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+            <tr class="bg-info text-white">
+                <td><i class="fa fa-cart-plus" aria-hidden="true"></i> @Html.DisplayName("Sum Of Total :")</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@($"{Model.FFsFabricDetailsList.Sum(e => e.ComExLcInfo.VALUE)}")</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+}

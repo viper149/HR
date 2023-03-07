@@ -1,0 +1,60 @@
+﻿
+@model FPrReconeMasterViewModel
+
+@if (Model.ReconeYarnDetailsList.Any())
+{
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.F_PR_RECONE_YARN_DETAILS.BALL_NO)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.F_PR_RECONE_YARN_DETAILS.BALL_LENGTH)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.F_PR_RECONE_YARN_DETAILS.LINK_BALL)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.F_PR_RECONE_YARN_DETAILS.LINK_BALL_LENGTH)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.F_PR_RECONE_YARN_DETAILS.BREAK_ENDS)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.F_PR_RECONE_YARN_DETAILS.ENDS_ROPE)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.F_PR_RECONE_YARN_DETAILS.REMARKS)</th>
+                <th scope="col">@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.ReconeYarnDetailsList.Count; i++)
+            {
+            <tr>
+                <td>@(i+1)</td>
+                <td>
+                    @Html.HiddenFor(model => model.ReconeYarnDetailsList[i].BALL_NO)
+                    @Html.DisplayFor(modelItem => Model.ReconeYarnDetailsList[i].BALL_NO)
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.ReconeYarnDetailsList[i].BALL_LENGTH)
+                    @Html.DisplayFor(modelItem => Model.ReconeYarnDetailsList[i].BALL_LENGTH)
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.ReconeYarnDetailsList[i].LINK_BALL)
+                    @Model.ReconeYarnDetailsList[i].LINK_BALL
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.ReconeYarnDetailsList[i].LINK_BALL_LENGTH)
+                    @Model.ReconeYarnDetailsList[i].LINK_BALL_LENGTH
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.ReconeYarnDetailsList[i].BREAK_ENDS)
+                    @Model.ReconeYarnDetailsList[i].BREAK_ENDS
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.ReconeYarnDetailsList[i].ENDS_ROPE)
+                    @Model.ReconeYarnDetailsList[i].ENDS_ROPE
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model.ReconeYarnDetailsList[i].REMARKS)
+                    @Model.ReconeYarnDetailsList[i].REMARKS
+                </td>
+                <td>
+                    <i class="fa fa-trash fa-lg text-danger" onclick="RemoveFPrReconeDetails('@i')" aria-hidden="true"></i>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

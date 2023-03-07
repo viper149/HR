@@ -1,0 +1,83 @@
+﻿
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService _authorizationService
+@model CreateFSampleFabricIssueViewModel
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (Model.FSampleFabricIssueDetailses.Any())
+{
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricIssueDetails.Fabricinfo.FABCODE)</th>
+                <th>@Html.DisplayNameFor(e => e.FSampleFabricIssueDetails.SR_QTY)</th>
+                <th><i class="fa fa-edit text-warning"></i> @Html.DisplayNameFor(e => e.FSampleFabricIssueDetails.SR_ISSUE_QTY)</th>
+                <th><i class="fa fa-edit text-warning"></i> @Html.DisplayNameFor(e => e.FSampleFabricIssueDetails.REMARKS)</th>
+                <th>@Html.DisplayName("Actions")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.FSampleFabricIssueDetailses.Count; i++)
+            {
+                <tr>
+                    <td><input type="checkbox" asp-for="FSampleFabricIssueDetailses[i].HasRemoved" /> @Html.Raw(i + 1)</td>
+                    @{
+                        var authorizationResult = await _authorizationService.AuthorizeAsync(User, "SampleFabricIssueForFactoryView");
+                    }
+
+                    @if (authorizationResult.Succeeded)
+                    {
+                        <td>
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].SFIDID)
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].SFIID)
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].FABCODE)
+                            @Model.FSampleFabricIssueDetailses[i].Fabricinfo?.STYLE_NAME
+                        </td>
+                        <td>
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].SR_QTY)
+                            @Model.FSampleFabricIssueDetailses[i].SR_QTY
+                        </td>
+                        <td><input asp-for="FSampleFabricIssueDetailses[i].SR_ISSUE_QTY" class="form-control" /></td>
+                        <td>
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].REMARKS)
+                            @Model.FSampleFabricIssueDetailses[i].REMARKS
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].SFIDID)
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].SFIID)
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].FABCODE)
+                            @Html.HiddenFor(e => e.FSampleFabricIssueDetailses[i].SR_ISSUE_QTY)
+                            @Model.FSampleFabricIssueDetailses[i].Fabricinfo?.STYLE_NAME
+                        </td>
+                        <td>
+                            <input asp-for="FSampleFabricIssueDetailses[i].SR_QTY" class="form-control" />
+                        </td>
+                        <td>
+                            @Model.FSampleFabricIssueDetailses[i].SR_ISSUE_QTY
+                        </td>
+                        <td>
+                            <input asp-for="FSampleFabricIssueDetailses[i].REMARKS" class="form-control" />
+                        </td>
+                    }
+                    <td>
+                        <i class="fa fa-trash fa-lg text-danger" onclick="removeFromList(@i)" aria-hidden="true"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Empty!</strong> Please add data to see the list.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}

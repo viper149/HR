@@ -1,0 +1,136 @@
+﻿
+@model RndYarnRequisitionViewModel
+
+@{
+    ViewData["Title"] = "RnD Purchase Requisition";
+    Layout = Layout;
+}
+
+<h2><i class="fa fa-info-circle fa-lg text-success" aria-hidden="true"></i> Details @ViewData["Title"]</h2>
+
+@{
+    if (Model != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="m-b-md">
+                            <div class="btn btn-primary">@Html.DisplayNameFor(e => e.RndPurchaseRequisitionMaster.INDSLDATE) : [ @Html.DisplayFor(e => e.RndPurchaseRequisitionMaster.INDSLDATE) ]</div>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div class="row details">
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="RndPurchaseRequisitionMaster.INDENT_SL_NO" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.INDENT_SL_NO)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="RndPurchaseRequisitionMaster.RESEMPID" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.RESEMP.FIRST_NAME)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label class="control-label">Ref. Person</label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.EMP.FIRST_NAME)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="RndPurchaseRequisitionMaster.YARN_FOR" class="control-label"></label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.YARN_FOR)
+                            </span>
+                        </div>
+                    </div>
+                    @{
+                        if (Model.RndPurchaseRequisitionMaster.ORDER_NO != null)
+                        {
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="RndPurchaseRequisitionMaster.ORDER_NONavigation.ORDERNO" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.ORDER_NONavigation.SO.SO_NO)
+                                    </span>
+                                </div>
+                            </div>
+                        }
+
+                        if (Model.RndPurchaseRequisitionMaster.ORDERNO_S != null)
+                        {
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <strong>
+                                        <label asp-for="RndPurchaseRequisitionMaster.ORDERNO_SNavigation.SDRF_NO" class="control-label"></label>
+                                    </strong>
+                                    <span class="custom-form-control form-control bg-e9ecef">
+                                        @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.ORDERNO_SNavigation.SDRF_NO)
+                                    </span>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="RndPurchaseRequisitionMaster.COSTREF.CSID" class="control-label">Cost Ref.</label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.COSTREF.CSID)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="RndPurchaseRequisitionMaster.STATUS" class="control-label">Cost Ref.</label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.STATUS)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <strong>
+                                <label asp-for="RndPurchaseRequisitionMaster.REMARKS" class="control-label">Cost Ref.</label>
+                            </strong>
+                            <span class="custom-form-control form-control bg-e9ecef">
+                                @Html.DisplayFor(model => model.RndPurchaseRequisitionMaster.REMARKS)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                @await Html.PartialAsync($"~/Views/RndPurchaseRequisitionMaster/IndentDetailsTable.cshtml", Model)
+
+            </div>
+
+            <div class="col-md-12">
+                @Html.ActionLink("Edit", $"EditRndPurchaseRequisitionMaster", new { indslId = Model.RndPurchaseRequisitionMaster.EncryptedId }, new { @class = "btn btn-warning pull-right mt-2" })
+                <a class="btn btn-dark pull-right mt-2" asp-action="GetPurchaseRequisition" asp-controller="RndPurchaseRequisitionMaster">Back to List</a>
+            </div>
+        </div>
+    }
+}

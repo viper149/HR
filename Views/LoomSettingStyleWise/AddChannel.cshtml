@@ -1,0 +1,117 @@
+﻿@model LoomSettingStyleWiseViewModel
+
+@if (Model.LoomSettingChannelInfoList.Any())
+{
+
+    @for (var i = 0; i < Model.LoomSettingChannelInfoList.Count; i++)
+    {
+    <tr>
+        <td><span class="expand-button"></span></td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].CHANNEL_ID)
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].CHANNEL_NO)
+            @Model.LoomSettingChannelInfoList[i].CHANNEL_NO
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].MODE)
+            @Model.LoomSettingChannelInfoList[i].MODE
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].BREAK_FORCE)
+            @Model.LoomSettingChannelInfoList[i].BREAK_FORCE
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].BREAK_TIME)
+            @Model.LoomSettingChannelInfoList[i].BREAK_TIME
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].COUNT)
+            @Model.LoomSettingChannelInfoList[i].COUNTNavigation?.COUNT?.COUNTNAME
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].LOT)
+            @Model.LoomSettingChannelInfoList[i].LOTNavigation?.LOTNO
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].SUPPLIER)
+            @Model.LoomSettingChannelInfoList[i].SUPPLIERNavigation?.SUPPNAME
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].FIXED_ELCA_START)
+            @Model.LoomSettingChannelInfoList[i].FIXED_ELCA_START
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].FIXED_ELCA_STOP)
+            @Model.LoomSettingChannelInfoList[i].FIXED_ELCA_STOP
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].MOV_ELCA_START)
+            @Model.LoomSettingChannelInfoList[i].MOV_ELCA_START
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].MOV_ELCA_STOP)
+            @Model.LoomSettingChannelInfoList[i].MOV_ELCA_STOP
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].PS)
+            @Model.LoomSettingChannelInfoList[i].PS
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].PAEXP)
+            @Model.LoomSettingChannelInfoList[i].PAEXP
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].MAIN_VALVE)
+            @Model.LoomSettingChannelInfoList[i].MAIN_VALVE
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].RELAY_VALVE)
+            @Model.LoomSettingChannelInfoList[i].RELAY_VALVE
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].WEFT_CUTTER_ANGLE)
+            @Model.LoomSettingChannelInfoList[i].WEFT_CUTTER_ANGLE
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].MAIN_NOZZLE)
+            @Model.LoomSettingChannelInfoList[i].MAIN_NOZZLE
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].RELAY_NOZZLE_LR)
+            @Model.LoomSettingChannelInfoList[i].RELAY_NOZZLE_LR
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].RELAY_NOZZLE_M)
+            @Model.LoomSettingChannelInfoList[i].RELAY_NOZZLE_M
+        </td>
+        <td>
+            @Html.HiddenFor(clc => clc.LoomSettingChannelInfoList[i].REMARKS)
+            @Model.LoomSettingChannelInfoList[i].REMARKS
+        </td>
+        <td>
+            <i class="fa fa-trash fa-2x-custom text-danger" onclick="RemoveChannelFromList(@i)" aria-hidden="true"></i>
+        </td>
+    </tr>
+    }
+}
+
+
+<script type="text/javascript" asp-append-version="true">
+    function RemoveChannelFromList(removeIndexValue) {
+        var data = $('#form').serializeArray();
+        data.push({ name: "removeIndexValue", value: removeIndexValue });
+        $.ajax({
+            async: true,
+            cache: false,
+            data: data,
+            type: "POST",
+            url: '/LoomSettingStyleWise/RemoveChannelFromList',
+            success: function (partialView, status, xhr) {
+                $('#settingDetails').html(partialView);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+        }
+</script>
