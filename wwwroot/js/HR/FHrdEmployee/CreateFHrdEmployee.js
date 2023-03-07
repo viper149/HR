@@ -33,20 +33,22 @@ const errors = {
 
 $(function () {
     const nationality = $("#FHrdEmployee_NATIONALITY_ID");
-    const divPre = $("#FHrdEmployee_THANAID_PRE");
-    const divPer = $("#FHrdEmployee_THANAID_PER");
+    const divPre = $("#FHrdEmployee_DIVID_PRE");
+    const divPer = $("#FHrdEmployee_DIVID_PER");
     const distPre = $("#FHrdEmployee_DISTID_PRE");
     const distPer = $("#FHrdEmployee_DISTID_PER");
     const thanaPre = $("#FHrdEmployee_THANAID_PRE");
     const thanaPer = $("#FHrdEmployee_THANAID_PER");
     const unionPre = $("#FHrdEmployee_UNIONID_PRE");
     const unionPer = $("#FHrdEmployee_UNIONID_PER");
+    const sameAsPre = $("#FHrdEmployee_SAME_AS_PRESENT_ADDRESS");
     const salJoin = $("#FHrdEmployee_SALARY_JOINING");
     const salPre = $("#FHrdEmployee_SALARY_PRE");
     const salBank = $("#FHrdEmployee_SALARY_BANK");
     const salCash = $("#FHrdEmployee_SALARY_CASH");
     const grad = $("#FHrdEducation_IS_GRADUATE");
     const resultFields = $(".resultField");
+    const perAddFields = $(".perAdd");
     const btnAddEdu = $("#btnAddEdu");
     const btnAddSpouse = $("#btnAddSpouse");
 
@@ -88,6 +90,10 @@ $(function () {
     salBank.on("change", () => {
         var result = salPre.val() - salBank.val();
         result >= 0 ? salCash.val(result) : toastr.error(errors[2].message, errors[2].title);
+    });
+
+    sameAsPre.on("change", function () {
+        $(this).is(":checked") ? perAddFields.addClass("d-none") : perAddFields.removeClass("d-none");
     });
 
     grad.on("change", function () {
