@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DenimERP.Common
+namespace HRMS.Common
 {
     public static class Common
     {

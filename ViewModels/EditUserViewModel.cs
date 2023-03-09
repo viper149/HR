@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using DenimERP.Models;
-using DenimERP.ViewModels.Employee;
+using HRMS.Models;
+using HRMS.ViewModels.Employee;
 using Microsoft.AspNetCore.Http;
 
-namespace DenimERP.ViewModels
+namespace HRMS.ViewModels
 {
     public class EditUserViewModel
     {

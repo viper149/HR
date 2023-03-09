@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace DenimERP.ServiceInterfaces.BaseInterfaces
+namespace HRMS.ServiceInterfaces.BaseInterfaces
 {
     public interface IBaseService<TEntity> where TEntity : class
     {

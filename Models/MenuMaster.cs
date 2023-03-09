@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public partial class MenuMaster
     {

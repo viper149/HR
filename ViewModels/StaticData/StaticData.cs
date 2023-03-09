@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace DenimERP.ViewModels.StaticData
+namespace HRMS.ViewModels.StaticData
 {
     public static class StaticData
     {

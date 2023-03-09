@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DenimERP.ServiceInfrastructures
+namespace HRMS.ServiceInfrastructures
 {
     public static class OrderedResult<TEntity>
     {

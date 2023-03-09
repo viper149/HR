@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInfrastructures;
-using DenimERP.ServiceInterfaces;
-using DenimERP.ServiceInterfaces.CompanyInfo;
-using DenimERP.ServiceInterfaces.IdentityUser;
-using DenimERP.ServiceInterfaces.MenuMaster;
-using DenimERP.ServiceInterfaces.OtherInterfaces;
-using DenimERP.ViewModels;
-using DenimERP.ViewModels.Employee;
-using DenimERP.ViewModels.MenuMaster;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInfrastructures;
+using HRMS.ServiceInterfaces;
+using HRMS.ServiceInterfaces.CompanyInfo;
+using HRMS.ServiceInterfaces.IdentityUser;
+using HRMS.ServiceInterfaces.MenuMaster;
+using HRMS.ServiceInterfaces.OtherInterfaces;
+using HRMS.ViewModels;
+using HRMS.ViewModels.Employee;
+using HRMS.ViewModels.MenuMaster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
@@ -21,7 +21,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     [Authorize(Policy = "AdminRolePolicy")]
     //[RefreshLogin]

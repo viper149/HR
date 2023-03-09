@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using DenimERP.Models.BaseModels;
+using HRMS.Models.BaseModels;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public partial class F_HRD_SKILL : BaseEntity
     {

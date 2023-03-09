@@ -1,26 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.HR;
-using DenimERP.ViewModels.HR;
+using HRMS.Data;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.HR;
+using HRMS.ViewModels.HR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.ServiceInfrastructures.HR
+namespace HRMS.ServiceInfrastructures.HR
 {
     public class SQLF_BAS_HRD_DESIGNATION_Repository: BaseRepository<F_BAS_HRD_DESIGNATION>, IF_BAS_HRD_DESIGNATION
     {
         private readonly IF_BAS_HRD_GRADE _fBasHrdGrade;
         private readonly IDataProtector _protector;
 
-        public SQLF_BAS_HRD_DESIGNATION_Repository(DenimDbContext denimDbContext,
+        public SQLF_BAS_HRD_DESIGNATION_Repository(HRDbContext hrDbContext,
             IDataProtectionProvider dataProtectionProvider,
             DataProtectionPurposeStrings dataProtectionPurposeStrings,
-            IF_BAS_HRD_GRADE fBasHrdGrade) : base(denimDbContext)
+            IF_BAS_HRD_GRADE fBasHrdGrade) : base(hrDbContext)
         {
             _fBasHrdGrade = fBasHrdGrade;
             _protector = dataProtectionProvider.CreateProtector(dataProtectionPurposeStrings.IdRouteValue);
@@ -28,7 +28,7 @@ namespace DenimERP.ServiceInfrastructures.HR
 
         public async Task<IEnumerable<F_BAS_HRD_DESIGNATION>> GetAllFBasHrdDesignationAsync()
         {
-            return await DenimDbContext.F_BAS_HRD_DESIGNATION
+            return await HrDbContext.F_BAS_HRD_DESIGNATION
                 .Include(d => d.GRADE)
                 .Select(d => new F_BAS_HRD_DESIGNATION
                 {
@@ -49,8 +49,8 @@ namespace DenimERP.ServiceInfrastructures.HR
 
         public async Task<bool> FindByDesNameAsync(string desName, bool isBn)
         {
-            return !isBn ? !await DenimDbContext.F_BAS_HRD_DESIGNATION.AnyAsync(d => d.DES_NAME.Equals(desName))
-                : !await DenimDbContext.F_BAS_HRD_DESIGNATION.AnyAsync(d => d.DES_NAME_BN.Equals(desName));
+            return !isBn ? !await HrDbContext.F_BAS_HRD_DESIGNATION.AnyAsync(d => d.DES_NAME.Equals(desName))
+                : !await HrDbContext.F_BAS_HRD_DESIGNATION.AnyAsync(d => d.DES_NAME_BN.Equals(desName));
         }
 
         public async Task<FBasHrdDesignationViewModel> GetInitObjByAsync(FBasHrdDesignationViewModel fBasHrdDesignationViewModel)
@@ -62,7 +62,7 @@ namespace DenimERP.ServiceInfrastructures.HR
 
         public async Task<List<F_BAS_HRD_DESIGNATION>> GetAllDesignationsAsync()
         {
-            return await DenimDbContext.F_BAS_HRD_DESIGNATION
+            return await HrDbContext.F_BAS_HRD_DESIGNATION
                 .Select(d => new F_BAS_HRD_DESIGNATION
                 {
                     DESID = d.DESID,

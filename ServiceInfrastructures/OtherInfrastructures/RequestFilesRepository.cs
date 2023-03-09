@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using DenimERP.ServiceInterfaces.OtherInterfaces;
+using HRMS.ServiceInterfaces.OtherInterfaces;
 using Microsoft.AspNetCore.Hosting;
 
-namespace DenimERP.ServiceInfrastructures.OtherInfrastructures
+namespace HRMS.ServiceInfrastructures.OtherInfrastructures
 {
     public class RequestFilesRepository : IRequestFiles
     {

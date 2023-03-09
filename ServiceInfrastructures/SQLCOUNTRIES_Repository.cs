@@ -1,13 +1,13 @@
-﻿using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces;
+﻿using HRMS.Data;
+using HRMS.Models;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces;
 
-namespace DenimERP.ServiceInfrastructures
+namespace HRMS.ServiceInfrastructures
 {
     public class SQLCOUNTRIES_Repository:BaseRepository<COUNTRIES>, ICOUNTRIES
     {
-        public SQLCOUNTRIES_Repository(DenimDbContext denimDbContext) : base(denimDbContext)
+        public SQLCOUNTRIES_Repository(HRDbContext hrDbContext) : base(hrDbContext)
         {
         }
     }

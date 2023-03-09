@@ -2,16 +2,16 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInterfaces.CompanyInfo;
-using DenimERP.ViewModels;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInterfaces.CompanyInfo;
+using HRMS.ViewModels;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     [Route("Company")]
     public class CompanyInfoController : Controller

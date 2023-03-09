@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DenimERP.ViewModels.Hubs
+namespace HRMS.ViewModels.Hubs
 {
     public class ChatUsersMesaages<TMessageEntity, TListOf>
         where TMessageEntity : class

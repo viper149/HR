@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using DenimERP.ServiceInterfaces.OtherInterfaces;
+using HRMS.ServiceInterfaces.OtherInterfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     [Authorize]
     public class FilesController : Controller

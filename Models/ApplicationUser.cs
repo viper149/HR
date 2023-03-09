@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public class ApplicationUser : IdentityUser
     {

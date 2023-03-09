@@ -1,4 +1,4 @@
-﻿namespace DenimERP.ViewModels.Tips
+﻿namespace HRMS.ViewModels.Tips
 {
     public class UserSecrets
     {

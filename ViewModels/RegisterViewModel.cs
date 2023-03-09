@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DenimERP.ViewModels
+namespace HRMS.ViewModels
 {
     public class RegisterViewModel
     {

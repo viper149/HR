@@ -1,7 +1,7 @@
-﻿using DenimERP.Security;
+﻿using HRMS.Security;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DenimERP.ConfigureServices
+namespace HRMS.ConfigureServices
 {
     public static class ExtractEMPolicyService
     {

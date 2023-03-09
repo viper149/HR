@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
-using DenimERP.ServiceInterfaces.OtherInterfaces;
 using DevExpress.Data.Extensions;
+using HRMS.ServiceInterfaces.OtherInterfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using static System.String;
 
-namespace DenimERP.ServiceInfrastructures.OtherInfrastructures
+namespace HRMS.ServiceInfrastructures.OtherInfrastructures
 {
     public class ProcessUploadFileToFolderRepository : IProcessUploadFile
     {

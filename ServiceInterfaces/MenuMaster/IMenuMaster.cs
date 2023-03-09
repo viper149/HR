@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
-using DenimERP.ViewModels;
-using DenimERP.ViewModels.MenuMaster;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
+using HRMS.ViewModels;
+using HRMS.ViewModels.MenuMaster;
 
-namespace DenimERP.ServiceInterfaces.MenuMaster
+namespace HRMS.ServiceInterfaces.MenuMaster
 {
     public interface IMenuMaster : IBaseService<Models.MenuMaster>
     {

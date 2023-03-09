@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DenimERP.Models;
+using HRMS.Models;
 
-namespace DenimERP.ViewModels.Account
+namespace HRMS.ViewModels.Account
 {
     public class UserProfileInformation<T>
     {

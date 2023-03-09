@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
 
-namespace DenimERP.ServiceInterfaces
+namespace HRMS.ServiceInterfaces
 {
     public interface IBAS_BEN_BANK_MASTER : IBaseService<BAS_BEN_BANK_MASTER>
     {

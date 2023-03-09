@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public class MESSAGE_INDIVIDUAL
     {

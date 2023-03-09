@@ -1,4 +1,4 @@
-﻿namespace DenimERP.ServiceInterfaces.OtherInterfaces
+﻿namespace HRMS.ServiceInterfaces.OtherInterfaces
 {
     public interface IRequestFiles
     {

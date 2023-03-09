@@ -2,34 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.CompanyInfo;
+using HRMS.Data;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.CompanyInfo;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.ServiceInfrastructures.CompanyInfo
+namespace HRMS.ServiceInfrastructures.CompanyInfo
 {
     public class SQLCOMPANY_INFO_Repository : BaseRepository<COMPANY_INFO>, ICOMPANY_INFO
     {
         private readonly IDataProtector _protector;
-        public SQLCOMPANY_INFO_Repository(DenimDbContext denimDbContext,
+        public SQLCOMPANY_INFO_Repository(HRDbContext hrDbContext,
             IDataProtectionProvider dataProtectionProvider,
-            DataProtectionPurposeStrings dataProtectionPurposeStrings) : base(denimDbContext)
+            DataProtectionPurposeStrings dataProtectionPurposeStrings) : base(hrDbContext)
         {
             _protector = dataProtectionProvider.CreateProtector(dataProtectionPurposeStrings.IdRouteValue);
         }
 
         public async Task<bool> FindByCompanyName(string companyName)
         {
-            return !await DenimDbContext.COMPANY_INFO.AnyAsync(d => d.COMPANY_NAME.Equals(companyName));
+            return !await HrDbContext.COMPANY_INFO.AnyAsync(d => d.COMPANY_NAME.Equals(companyName));
         }
         
         public async Task<IEnumerable<COMPANY_INFO>> GetAllCompanyInfoAsync()
         {
-            return await DenimDbContext.COMPANY_INFO
+            return await HrDbContext.COMPANY_INFO
                 .Select(d => new COMPANY_INFO
                 {
                     ID = d.ID,

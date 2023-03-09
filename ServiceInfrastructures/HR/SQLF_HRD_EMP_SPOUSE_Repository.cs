@@ -1,13 +1,13 @@
-﻿using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.HR;
+﻿using HRMS.Data;
+using HRMS.Models;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.HR;
 
-namespace DenimERP.ServiceInfrastructures.HR
+namespace HRMS.ServiceInfrastructures.HR
 {
     public class SQLF_HRD_EMP_SPOUSE_Repository : BaseRepository<F_HRD_EMP_SPOUSE>, IF_HRD_EMP_SPOUSE
     {
-        public SQLF_HRD_EMP_SPOUSE_Repository(DenimDbContext denimDbContext) : base(denimDbContext)
+        public SQLF_HRD_EMP_SPOUSE_Repository(HRDbContext hrDbContext) : base(hrDbContext)
         {
         }
     }

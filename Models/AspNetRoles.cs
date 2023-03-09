@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public partial class AspNetRoles
     {

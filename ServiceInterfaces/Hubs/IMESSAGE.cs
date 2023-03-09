@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
 
-namespace DenimERP.ServiceInterfaces.Hubs
+namespace HRMS.ServiceInterfaces.Hubs
 {
     public interface IMESSAGE : IBaseService<MESSAGE>
     {

@@ -1,7 +1,7 @@
-﻿using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
+﻿using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
 
-namespace DenimERP.ServiceInterfaces
+namespace HRMS.ServiceInterfaces
 {
     public interface IMAILBOX : IBaseService<MAILBOX>
     {

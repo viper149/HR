@@ -2,35 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.HR;
+using HRMS.Data;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.HR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.ServiceInfrastructures.HR
+namespace HRMS.ServiceInfrastructures.HR
 {
     public class SQLF_BAS_HRD_SHIFT_Repository : BaseRepository<F_BAS_HRD_SHIFT>, IF_BAS_HRD_SHIFT
     {
         private readonly IDataProtector _protector;
 
-        public SQLF_BAS_HRD_SHIFT_Repository(DenimDbContext denimDbContext,
+        public SQLF_BAS_HRD_SHIFT_Repository(HRDbContext hrDbContext,
             IDataProtectionProvider dataProtectionProvider,
-            DataProtectionPurposeStrings dataProtectionPurposeStrings) : base(denimDbContext)
+            DataProtectionPurposeStrings dataProtectionPurposeStrings) : base(hrDbContext)
         {
             _protector = dataProtectionProvider.CreateProtector(dataProtectionPurposeStrings.IdRouteValue);
         }
 
         public async Task<bool> FindByShiftAsync(string shift)
         {
-            return !await DenimDbContext.F_BAS_HRD_SHIFT.AnyAsync(d => d.SHIFT_NAME.Equals(shift));
+            return !await HrDbContext.F_BAS_HRD_SHIFT.AnyAsync(d => d.SHIFT_NAME.Equals(shift));
         }
 
         public async Task<IEnumerable<F_BAS_HRD_SHIFT>> GetAllFBasHrdShiftAsync()
         {
-            return await DenimDbContext.F_BAS_HRD_SHIFT
+            return await HrDbContext.F_BAS_HRD_SHIFT
                 .Select(d => new F_BAS_HRD_SHIFT
                 {
                     SHIFTID = d.SHIFTID,

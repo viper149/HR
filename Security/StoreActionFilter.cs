@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace DenimERP.Security
+namespace HRMS.Security
 {
     public class StoreActionFilter : IActionFilter
     {

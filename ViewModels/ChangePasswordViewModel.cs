@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DenimERP.ViewModels
+namespace HRMS.ViewModels
 {
     public class ChangePasswordViewModel
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DenimERP.Models.BaseModels;
+using HRMS.Models.BaseModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public partial class F_BAS_HRD_GRADE : BaseEntity
     {

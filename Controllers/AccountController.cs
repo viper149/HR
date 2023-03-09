@@ -4,17 +4,17 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
-using DenimERP.ServiceInterfaces.OtherInterfaces;
-using DenimERP.ViewModels;
-using DenimERP.ViewModels.Account;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
+using HRMS.ServiceInterfaces.OtherInterfaces;
+using HRMS.ViewModels;
+using HRMS.ViewModels.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     [Authorize]
     public class AccountController : Controller

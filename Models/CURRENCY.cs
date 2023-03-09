@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public partial class CURRENCY
     {

@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using DenimERP.Models;
+using HRMS.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DenimERP.Security
+namespace HRMS.Security
 {
     public static class HttpContextExtensions
     {

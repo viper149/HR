@@ -2,40 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.MenuMaster;
-using DenimERP.ViewModels;
-using DenimERP.ViewModels.MenuMaster;
+using HRMS.Data;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.MenuMaster;
+using HRMS.ViewModels;
+using HRMS.ViewModels.MenuMaster;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.ServiceInfrastructures.MenuMaster
+namespace HRMS.ServiceInfrastructures.MenuMaster
 {
     public class SQLMenuMaster_Repository : BaseRepository<Models.MenuMaster>, IMenuMaster
     {
         private readonly IDataProtector _protector;
 
-        public SQLMenuMaster_Repository(DenimDbContext denimDbContext,
+        public SQLMenuMaster_Repository(HRDbContext hrDbContext,
             IDataProtectionProvider dataProtectionProvider,
-            DataProtectionPurposeStrings dataProtectionPurposeStrings) : base(denimDbContext)
+            DataProtectionPurposeStrings dataProtectionPurposeStrings) : base(hrDbContext)
         {
             _protector = dataProtectionProvider.CreateProtector(dataProtectionPurposeStrings.IdRouteValue);
         }
 
         public IEnumerable<Models.MenuMaster> GetMenuMaster()
         {
-            return DenimDbContext.MenuMaster.AsEnumerable();
+            return HrDbContext.MenuMaster.AsEnumerable();
 
         }
 
         public async Task<IEnumerable<Models.MenuMaster>> GetMenuMaster(IList<string> userRoles)
         {
-            var result = await DenimDbContext.MenuMaster
-                .Where(m => DenimDbContext.MenuMasterRoles
-                    .Where(e => DenimDbContext.Roles
+            var result = await HrDbContext.MenuMaster
+                .Where(m => HrDbContext.MenuMasterRoles
+                    .Where(e => HrDbContext.Roles
                         .Where(f => userRoles.Contains(f.Name))
                         .Select(f => f.Id)
                         .Contains(e.RoleId))
@@ -50,7 +50,7 @@ namespace DenimERP.ServiceInfrastructures.MenuMaster
 
         public async Task<MenuMasterViewModel> GetInitObjects(MenuMasterViewModel menuMasterViewModel)
         {
-            menuMasterViewModel.MenuMasters = await DenimDbContext.MenuMaster
+            menuMasterViewModel.MenuMasters = await HrDbContext.MenuMaster
                 .Select(e => new Models.MenuMaster { MenuID = e.MenuID })
                 .OrderBy(e => e.MenuID)
                 .ToListAsync();
@@ -65,18 +65,18 @@ namespace DenimERP.ServiceInfrastructures.MenuMaster
 
         public async Task<bool> IsMenuIdAlreadyExistByAsync(string menuId)
         {
-            return await DenimDbContext.MenuMaster.Where(e => e.MenuID.Equals(menuId)).AnyAsync();
+            return await HrDbContext.MenuMaster.Where(e => e.MenuID.Equals(menuId)).AnyAsync();
         }
         public async Task<bool> IsMenuNameAlreadyExistByAsync(string menuName)
         {
-            return await DenimDbContext.MenuMaster.Where(e => e.MenuName.Equals(menuName)).AnyAsync();
+            return await HrDbContext.MenuMaster.Where(e => e.MenuName.Equals(menuName)).AnyAsync();
         }
 
         public async Task<DataTableObject<Models.MenuMaster>> GetForDataTableByAsync(string sortColumn, string sortColumnDirection, string searchValue, string draw, int skip,
             int pageSize)
         {
             var navigationPropertyStrings = new[] { "" };
-            var menuMasters = DenimDbContext.MenuMaster
+            var menuMasters = HrDbContext.MenuMaster
                 .Select(e => new Models.MenuMaster
                 {
                     MenuIdentity = e.MenuIdentity,
@@ -119,7 +119,7 @@ namespace DenimERP.ServiceInfrastructures.MenuMaster
         {
             try
             {
-                return await DenimDbContext.MenuMaster
+                return await HrDbContext.MenuMaster
                     .Select(e => new ExtendMenuMasterViewModel
                     {
                         MenuMaster = new Models.MenuMaster
@@ -151,14 +151,14 @@ namespace DenimERP.ServiceInfrastructures.MenuMaster
 
         public async Task<COMPANY_INFO> GetCompayInfo()
         {
-            return await DenimDbContext.COMPANY_INFO.FirstOrDefaultAsync();
+            return await HrDbContext.COMPANY_INFO.FirstOrDefaultAsync();
         }
 
         public async Task<COMPANY_INFO> GetCompayInfo(int BID)
         {
             try
             {
-                var companyInfo= await DenimDbContext.COMPANY_INFO.FirstOrDefaultAsync(c => c.ID==BID);
+                var companyInfo= await HrDbContext.COMPANY_INFO.FirstOrDefaultAsync(c => c.ID==BID);
                 return companyInfo;
             }
             catch(Exception e)

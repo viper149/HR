@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace DenimERP.ViewModels.Security
+namespace HRMS.ViewModels.Security
 {
     public class Test
     {

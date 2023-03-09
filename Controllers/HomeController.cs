@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.Models.Chart;
-using DenimERP.ServiceInterfaces;
-using DenimERP.ServiceInterfaces.Hubs;
-using DenimERP.ViewModels.Hubs;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.Hubs;
+using HRMS.ViewModels.Hubs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     [Authorize]
     public class HomeController: Controller

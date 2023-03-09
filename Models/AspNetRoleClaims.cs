@@ -1,4 +1,4 @@
-﻿namespace DenimERP.Models
+﻿namespace HRMS.Models
 {
     public partial class AspNetRoleClaims
     {

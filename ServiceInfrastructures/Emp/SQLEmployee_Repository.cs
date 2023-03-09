@@ -1,13 +1,13 @@
-﻿using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.Emp;
+﻿using HRMS.Data;
+using HRMS.Models;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.Emp;
 
-namespace DenimERP.ServiceInfrastructures.Emp
+namespace HRMS.ServiceInfrastructures.Emp
 {
     public class SQLEmployee_Repository : BaseRepository<Employee>, IEmployee
     {
-        public SQLEmployee_Repository(DenimDbContext denimDbContext) : base(denimDbContext)
+        public SQLEmployee_Repository(HRDbContext hrDbContext) : base(hrDbContext)
         {
         }
     }

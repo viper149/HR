@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     public class MailController : Controller
     {

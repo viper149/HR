@@ -11,19 +11,34 @@
 		<DebugSymbols>true</DebugSymbols>
 	</PropertyGroup>
 	<ItemGroup>
+		<Compile Remove="RequestFiles\com_ex_invoice_files\**" />
+		<Compile Remove="RequestFiles\hr_assets\**" />
+		<Compile Remove="RequestFiles\unhandled_files\**" />
 		<Compile Remove="Views\FChemReport\**" />
 		<Compile Remove="Views\FGsIssue\**" />
 		<Compile Remove="Views\FYarnReport\**" />
+		<Content Remove="RequestFiles\com_ex_invoice_files\**" />
+		<Content Remove="RequestFiles\hr_assets\**" />
+		<Content Remove="RequestFiles\unhandled_files\**" />
 		<Content Remove="Views\FChemReport\**" />
 		<Content Remove="Views\FGsIssue\**" />
 		<Content Remove="Views\FYarnReport\**" />
+		<EmbeddedResource Remove="RequestFiles\com_ex_invoice_files\**" />
+		<EmbeddedResource Remove="RequestFiles\hr_assets\**" />
+		<EmbeddedResource Remove="RequestFiles\unhandled_files\**" />
 		<EmbeddedResource Remove="Views\FChemReport\**" />
 		<EmbeddedResource Remove="Views\FGsIssue\**" />
 		<EmbeddedResource Remove="Views\FYarnReport\**" />
+		<None Remove="RequestFiles\com_ex_invoice_files\**" />
+		<None Remove="RequestFiles\hr_assets\**" />
+		<None Remove="RequestFiles\unhandled_files\**" />
 		<None Remove="Views\FChemReport\**" />
 		<None Remove="Views\FGsIssue\**" />
 		<None Remove="Views\FYarnReport\**" />
 		<TypeScriptCompile Remove="node_modules\**" />
+		<TypeScriptCompile Remove="RequestFiles\com_ex_invoice_files\**" />
+		<TypeScriptCompile Remove="RequestFiles\hr_assets\**" />
+		<TypeScriptCompile Remove="RequestFiles\unhandled_files\**" />
 		<TypeScriptCompile Remove="Views\FChemReport\**" />
 		<TypeScriptCompile Remove="Views\FGsIssue\**" />
 		<TypeScriptCompile Remove="Views\FYarnReport\**" />
@@ -104,9 +119,6 @@
 	  <Content Include="wwwroot\FLEXERP\bower_components\switchery\css\switchery.min.css" />
 	</ItemGroup>
 	<ItemGroup>
-		<EmbeddedResource Include="RequestFiles\XtraReport.repx" />
-	</ItemGroup>
-	<ItemGroup>
 		<PackageReference Include="cldrjs" Version="0.5.1" />
 		<PackageReference Include="cloudscribe.Web.Pagination" Version="2.1.1" />
 		<PackageReference Include="DevExpress.AspNetCore.Reporting" Version="19.2.3" />
@@ -137,12 +149,8 @@
 		<Folder Include="AutoMapper\" />
 		<Folder Include="Commands\" />
 		<Folder Include="Pages\" />
-		<Folder Include="RequestFiles\hr_assets\employees_files\driving_license\" />
-		<Folder Include="RequestFiles\hr_assets\employees_files\passport\" />
-		<Folder Include="RequestFiles\hr_assets\employees_files\nid\" />
 		<Folder Include="RequestFiles\lc_files\pi_files\" />
 		<Folder Include="RequestFiles\profile_photos\" />
-		<Folder Include="RequestFiles\unhandled_files\" />
 		<Folder Include="ServiceInterfaces\Security\" />
 		<Folder Include="wwwroot\images\cfooterimage\" />
 		<Folder Include="wwwroot\images\icons\" />
@@ -150,7 +158,6 @@
 		<Folder Include="wwwroot\lib\datatables.net-select\css\" />
     <Folder Include="wwwroot\FLEX\" />
     <Folder Include="wwwroot\FLEXERP\" />
-    <Folder Include="RequestFiles\com_ex_invoice_files\" />
 		<Folder Include="RequestFiles\imp_invoice_files\" />
 	</ItemGroup>
 	<ItemGroup>
@@ -282,12 +289,6 @@
 		<None Include="wwwroot\signalr\signalr.min.js.map" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Update="RequestFiles\XtraReport.cs">
-			<DependentUpon>XtraReport.repx</DependentUpon>
-		</Compile>
-		<Compile Update="RequestFiles\XtraReport.Designer.cs">
-			<DependentUpon>XtraReport.repx</DependentUpon>
-		</Compile>
 		<!--new add-->
 <!--add-->
     

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DenimERP.Utilities
+namespace HRMS.Utilities
 {
     public class ValidEmailDomainAttribute : ValidationAttribute
     {

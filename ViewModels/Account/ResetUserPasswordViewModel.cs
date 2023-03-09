@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DenimERP.ViewModels.Account
+namespace HRMS.ViewModels.Account
 {
     public class ResetUserPasswordViewModel
     {

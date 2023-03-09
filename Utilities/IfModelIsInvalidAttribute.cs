@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 
-namespace DenimERP.Utilities
+namespace HRMS.Utilities
 {
     public class IfModelIsInvalidAttribute : ActionFilterAttribute
     {

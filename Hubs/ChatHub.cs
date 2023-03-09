@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces.Hubs;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.Hubs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 
-namespace DenimERP.Hubs
+namespace HRMS.Hubs
 {
     public class ChatHub : Hub
     {

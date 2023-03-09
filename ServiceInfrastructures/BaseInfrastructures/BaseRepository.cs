@@ -4,19 +4,19 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
+using HRMS.Data;
+using HRMS.ServiceInterfaces.BaseInterfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
+namespace HRMS.ServiceInfrastructures.BaseInfrastructures
 {
     public class BaseRepository<TEntity> : IBaseService<TEntity> where TEntity : class
     {
-        protected readonly DenimDbContext DenimDbContext;
+        protected readonly HRDbContext HrDbContext;
 
-        public BaseRepository(DenimDbContext denimDbContext)
+        public BaseRepository(HRDbContext hrDbContext)
         {
-            DenimDbContext = denimDbContext;
+            HrDbContext = hrDbContext;
         }
 
         public async Task<IEnumerable<TEntity>> GetAllByAsync(Expression<Func<TEntity, bool>> filter = null, 
@@ -24,7 +24,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
                 IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
-            IQueryable<TEntity> query = DenimDbContext.Set<TEntity>();
+            IQueryable<TEntity> query = HrDbContext.Set<TEntity>();
 
             if (filter != null)
             {
@@ -70,7 +70,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                var result = await DenimDbContext.Set<TEntity>().AsNoTracking().ToListAsync();
+                var result = await HrDbContext.Set<TEntity>().AsNoTracking().ToListAsync();
                 return result.AsQueryable();
             }
             catch (Exception e)
@@ -84,7 +84,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                DenimDbContext.Set<TEntity>().Remove(entity);
+                HrDbContext.Set<TEntity>().Remove(entity);
                 await SaveChanges();
                 return true;
             }
@@ -99,7 +99,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                DenimDbContext.Set<TEntity>().RemoveRange(entities);
+                HrDbContext.Set<TEntity>().RemoveRange(entities);
                 await SaveChanges();
                 return true;
             }
@@ -114,8 +114,8 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                DenimDbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-                var res =  await DenimDbContext.Set<TEntity>().FindAsync(id);
+                HrDbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+                var res =  await HrDbContext.Set<TEntity>().FindAsync(id);
                 return res;
             }
             catch (Exception ex)
@@ -129,7 +129,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                return await DenimDbContext.Set<TEntity>().ToListAsync();
+                return await HrDbContext.Set<TEntity>().ToListAsync();
             }
             catch (Exception e)
             {
@@ -142,7 +142,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                await DenimDbContext.Set<TEntity>().AddAsync(entity);
+                await HrDbContext.Set<TEntity>().AddAsync(entity);
                 await SaveChanges();
                 return entity;
             }
@@ -157,7 +157,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                await DenimDbContext.Set<TEntity>().AddAsync(entity);
+                await HrDbContext.Set<TEntity>().AddAsync(entity);
                 await SaveChanges();
                 return true;
             }
@@ -172,7 +172,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                await DenimDbContext.Set<TEntity>().AddRangeAsync(entities);
+                await HrDbContext.Set<TEntity>().AddRangeAsync(entities);
                 await SaveChanges();
                 return true;
             }
@@ -187,7 +187,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                var result = DenimDbContext.Set<TEntity>().Attach(entity);
+                var result = HrDbContext.Set<TEntity>().Attach(entity);
                 result.State = EntityState.Modified;
                 await SaveChanges();
                 return true;
@@ -203,7 +203,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                var result = DenimDbContext.Set<TEntity>().Update(entity);
+                var result = HrDbContext.Set<TEntity>().Update(entity);
                 result.State = EntityState.Modified;
                 await SaveChanges();
                 return true;
@@ -219,7 +219,7 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
         {
             try
             {
-                DenimDbContext.Set<TEntity>().UpdateRange(entities);
+                HrDbContext.Set<TEntity>().UpdateRange(entities);
                 await SaveChanges();
                 return true;
             }
@@ -232,12 +232,12 @@ namespace DenimERP.ServiceInfrastructures.BaseInfrastructures
 
         public async Task<int> SaveChanges()
         {
-            return await DenimDbContext.SaveChangesAsync();
+            return await HrDbContext.SaveChangesAsync();
         }
 
         public void Dispose()
         {
-            DenimDbContext.Dispose();
+            HrDbContext.Dispose();
         }
     }
 }

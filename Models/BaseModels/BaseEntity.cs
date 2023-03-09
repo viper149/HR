@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DenimERP.Models.BaseModels
+namespace HRMS.Models.BaseModels
 {
     public abstract class BaseEntity
     {

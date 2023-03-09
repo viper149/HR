@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     public class ErrorController : Controller
     {

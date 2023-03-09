@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace DenimERP.Models.Chart
+namespace HRMS.Models.Chart
 {
     [DataContract]
     public class DataPoint

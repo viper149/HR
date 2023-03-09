@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
 
-namespace DenimERP.ServiceInterfaces
+namespace HRMS.ServiceInterfaces
 {
     public interface IPDL_EMAIL_SENDER : IBaseService<PDL_EMAIL_SENDER>
     {

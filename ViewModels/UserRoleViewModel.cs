@@ -1,4 +1,4 @@
-﻿namespace DenimERP.ViewModels
+﻿namespace HRMS.ViewModels
 {
     public class UserRoleViewModel
     {

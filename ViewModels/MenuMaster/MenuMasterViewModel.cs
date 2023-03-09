@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DenimERP.ViewModels.MenuMaster
+namespace HRMS.ViewModels.MenuMaster
 {
     public class MenuMasterViewModel
     {

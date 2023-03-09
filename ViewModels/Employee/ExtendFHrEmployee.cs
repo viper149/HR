@@ -1,6 +1,6 @@
-﻿using DenimERP.Models;
+﻿using HRMS.Models;
 
-namespace DenimERP.ViewModels.Employee
+namespace HRMS.ViewModels.Employee
 {
     public class ExtendFHrdEmployee : F_HRD_EMPLOYEE
     {

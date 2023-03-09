@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using DenimERP.Models;
+using HRMS.Models;
 
-namespace DenimERP.ViewModels.Security
+namespace HRMS.ViewModels.Security
 {
     public class ExtendPdlEmailSenderViewModel : PDL_EMAIL_SENDER
     {

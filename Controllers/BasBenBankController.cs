@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInterfaces;
-using DenimERP.ViewModels;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInterfaces;
+using HRMS.ViewModels;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     [Route("BeneficiaryBank")]
     public class BasBenBankController : Controller

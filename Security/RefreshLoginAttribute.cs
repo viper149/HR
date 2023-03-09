@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace DenimERP.Security
+namespace HRMS.Security
 {
     public class RefreshLoginAttribute : ActionFilterAttribute
     {

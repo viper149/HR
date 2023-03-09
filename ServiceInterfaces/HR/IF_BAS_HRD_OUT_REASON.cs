@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
 
-namespace DenimERP.ServiceInterfaces.HR
+namespace HRMS.ServiceInterfaces.HR
 {
     public interface IF_BAS_HRD_OUT_REASON : IBaseService<F_BAS_HRD_OUT_REASON>
     {

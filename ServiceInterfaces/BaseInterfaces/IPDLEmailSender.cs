@@ -1,4 +1,4 @@
-﻿namespace DenimERP.ServiceInterfaces.BaseInterfaces
+﻿namespace HRMS.ServiceInterfaces.BaseInterfaces
 {
     public interface IPDL_EMAIL_SENDER<out T>
     {

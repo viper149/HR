@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces;
-using DenimERP.ServiceInterfaces.HR;
-using DenimERP.ViewModels.HR;
+using HRMS.Data;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces;
+using HRMS.ServiceInterfaces.HR;
+using HRMS.ViewModels.HR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.ServiceInfrastructures
+namespace HRMS.ServiceInfrastructures
 {
     public class SQLF_HRD_EMPLOYEE_Repository: BaseRepository<F_HRD_EMPLOYEE>, IF_HRD_EMPLOYEE
     {
@@ -25,7 +24,7 @@ namespace DenimERP.ServiceInfrastructures
         private readonly IF_HRD_EMP_EDU_DEGREE _fHrdEmpEduDegree;
         private readonly IDataProtector _protector;
 
-        public SQLF_HRD_EMPLOYEE_Repository(DenimDbContext denimDbContext,
+        public SQLF_HRD_EMPLOYEE_Repository(HRDbContext hrDbContext,
             IDataProtectionProvider dataProtectionProvider,
             DataProtectionPurposeStrings dataProtectionPurposeStrings,
             IF_BAS_HRD_DEPARTMENT fBasHrdDepartment,
@@ -34,7 +33,7 @@ namespace DenimERP.ServiceInfrastructures
             IF_BAS_HRD_DESIGNATION fBasHrdDesignation,
             IBAS_BEN_BANK_MASTER basBenBank,
             IF_BAS_HRD_EMP_TYPE fBasHrdEmpType,
-            IF_HRD_EMP_EDU_DEGREE fHrdEmpEduDegree) : base(denimDbContext)
+            IF_HRD_EMP_EDU_DEGREE fHrdEmpEduDegree) : base(hrDbContext)
         {
             _fBasHrdDepartment = fBasHrdDepartment;
             _fBasHrdSection = fBasHrdSection;
@@ -69,7 +68,7 @@ namespace DenimERP.ServiceInfrastructures
 
         public async Task<IEnumerable<F_HRD_EMPLOYEE>> GetAllFHrdEmployeeAsync()
         {
-            var x = await DenimDbContext.F_HRD_EMPLOYEE
+            var x = await HrDbContext.F_HRD_EMPLOYEE
                 .Include(d => d.GENDER)
                 .Include(d => d.DESIG)
                 .Include(d => d.DEPT)
@@ -130,42 +129,42 @@ namespace DenimERP.ServiceInfrastructures
 
         public async Task<FHrdEmployeeViewModel> GetInitObjByAsync(FHrdEmployeeViewModel fHrdEmployeeViewModel)
         {
-            fHrdEmployeeViewModel.BasGenderList = await DenimDbContext.BAS_GENDER
+            fHrdEmployeeViewModel.BasGenderList = await HrDbContext.BAS_GENDER
                 .Select(d => new BAS_GENDER
                 {
                     GENID = d.GENID,
                     GENNAME = d.GENNAME
                 }).ToListAsync();
 
-            fHrdEmployeeViewModel.FBasHrdBloodGroupList = await DenimDbContext.F_BAS_HRD_BLOOD_GROUP
+            fHrdEmployeeViewModel.FBasHrdBloodGroupList = await HrDbContext.F_BAS_HRD_BLOOD_GROUP
                 .Select(d => new F_BAS_HRD_BLOOD_GROUP
                 {
                     BLDGRPID = d.BLDGRPID,
                     BLDGRP_NAME = d.BLDGRP_NAME
                 }).ToListAsync();
 
-            fHrdEmployeeViewModel.FBasHrdReligionList = await DenimDbContext.F_BAS_HRD_RELIGION
+            fHrdEmployeeViewModel.FBasHrdReligionList = await HrDbContext.F_BAS_HRD_RELIGION
                 .Select(d => new F_BAS_HRD_RELIGION
                 {
                     RELIGIONID = d.RELIGIONID,
                     RELEGION_NAME = $"{d.RELEGION_NAME} - {d.RELEGION_NAME_BNG}"
                 }).ToListAsync();
 
-            fHrdEmployeeViewModel.FBasHrdNationalityList = await DenimDbContext.F_BAS_HRD_NATIONALITY
+            fHrdEmployeeViewModel.FBasHrdNationalityList = await HrDbContext.F_BAS_HRD_NATIONALITY
                 .Select(d => new F_BAS_HRD_NATIONALITY
                 {
                     NATIONID = d.NATIONID,
                     NATION_DESC = d.NATION_DESC
                 }).ToListAsync();
 
-            fHrdEmployeeViewModel.FBasHrdShiftList = await DenimDbContext.F_BAS_HRD_SHIFT
+            fHrdEmployeeViewModel.FBasHrdShiftList = await HrDbContext.F_BAS_HRD_SHIFT
                 .Select(d => new F_BAS_HRD_SHIFT
                 {
                     SHIFTID = d.SHIFTID,
                     SHIFT_NAME = d.SHIFT_NAME
                 }).ToListAsync();
 
-            fHrdEmployeeViewModel.FBasHrdWeekendList = await DenimDbContext.F_BAS_HRD_WEEKEND
+            fHrdEmployeeViewModel.FBasHrdWeekendList = await HrDbContext.F_BAS_HRD_WEEKEND
                 .Select(d => new F_BAS_HRD_WEEKEND
                 {
                     ODID = d.ODID,
@@ -185,7 +184,7 @@ namespace DenimERP.ServiceInfrastructures
 
         public async Task<IEnumerable<F_BAS_HRD_DIVISION>> GetDivByNationIdAsync(int nationId)
         {
-            return await DenimDbContext.F_BAS_HRD_DIVISION
+            return await HrDbContext.F_BAS_HRD_DIVISION
                 .Where(d => d.COUNTRYID.Equals(nationId))
                 .Select(d => new F_BAS_HRD_DIVISION
                 {
@@ -196,7 +195,7 @@ namespace DenimERP.ServiceInfrastructures
 
         public async Task<IEnumerable<F_BAS_HRD_DISTRICT>> GetDistByDivIdAsync(int divId)
         {
-            return await DenimDbContext.F_BAS_HRD_DISTRICT
+            return await HrDbContext.F_BAS_HRD_DISTRICT
                 .Where(d => d.DIVID.Equals(divId))
                 .Select(d => new F_BAS_HRD_DISTRICT
                 {
@@ -207,7 +206,7 @@ namespace DenimERP.ServiceInfrastructures
 
         public async Task<IEnumerable<F_BAS_HRD_THANA>> GetThanaByDistIdAsync(int distId)
         {
-            return await DenimDbContext.F_BAS_HRD_THANA
+            return await HrDbContext.F_BAS_HRD_THANA
                 .Where(d => d.DISTID.Equals(distId))
                 .Select(d => new F_BAS_HRD_THANA
                 {
@@ -218,7 +217,7 @@ namespace DenimERP.ServiceInfrastructures
 
         public async Task<IEnumerable<F_BAS_HRD_UNION>> GetUnionByThanaIdAsync(int thanaId)
         {
-            return await DenimDbContext.F_BAS_HRD_UNION
+            return await HrDbContext.F_BAS_HRD_UNION
                 .Where(d => d.THANAID.Equals(thanaId))
                 .Select(d => new F_BAS_HRD_UNION
                 {
@@ -231,7 +230,7 @@ namespace DenimERP.ServiceInfrastructures
         {
             foreach (var item in fHrEmployeeViewModel.FHrdEducationList)
             {
-                item.DEG = await DenimDbContext.F_HRD_EMP_EDU_DEGREE
+                item.DEG = await HrDbContext.F_HRD_EMP_EDU_DEGREE
                     .Select(d => new F_HRD_EMP_EDU_DEGREE
                     {
                         DEGID = d.DEGID,
@@ -244,18 +243,18 @@ namespace DenimERP.ServiceInfrastructures
 
         public async Task<bool> FindByEmpNoAsync(string empNo)
         {
-            return !await DenimDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.EMPNO.Equals(empNo));
+            return !await HrDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.EMPNO.Equals(empNo));
         }
 
         public async Task<bool> FindByValueAsync(string value, string type)
         {
             return type switch
             {
-                "EmpNo" => !await DenimDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.EMPNO.Equals(value)),
-                "Proximity" => !await DenimDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.PROX_CARD.Equals(value)),
-                "NID" => !await DenimDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.NID_NO.Equals(value)),
-                "BID" => !await DenimDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.BID_NO.Equals(value)),
-                "Passport" => !await DenimDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.PASSPORT.Equals(value)),
+                "EmpNo" => !await HrDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.EMPNO.Equals(value)),
+                "Proximity" => !await HrDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.PROX_CARD.Equals(value)),
+                "NID" => !await HrDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.NID_NO.Equals(value)),
+                "BID" => !await HrDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.BID_NO.Equals(value)),
+                "Passport" => !await HrDbContext.F_HRD_EMPLOYEE.AnyAsync(d => d.PASSPORT.Equals(value)),
                 _ => true
             };
         }

@@ -1,13 +1,13 @@
-﻿using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.Hubs;
+﻿using HRMS.Data;
+using HRMS.Models;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.Hubs;
 
-namespace DenimERP.ServiceInfrastructures.Hubs
+namespace HRMS.ServiceInfrastructures.Hubs
 {
     public class SQLMESSAGE_INDIVIDUAL_Repository : BaseRepository<MESSAGE_INDIVIDUAL>, IMESSAGE_INDIVIDUAL
     {
-        public SQLMESSAGE_INDIVIDUAL_Repository(DenimDbContext denimDbContext) : base(denimDbContext)
+        public SQLMESSAGE_INDIVIDUAL_Repository(HRDbContext hrDbContext) : base(hrDbContext)
         {
         }
     }

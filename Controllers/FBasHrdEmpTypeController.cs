@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInterfaces.HR;
-using DenimERP.ViewModels.HR;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInterfaces.HR;
+using HRMS.ViewModels.HR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DenimERP.Controllers
+namespace HRMS.Controllers
 {
     [Route("EmployeeType")]
     public class FBasHrdEmpTypeController : Controller

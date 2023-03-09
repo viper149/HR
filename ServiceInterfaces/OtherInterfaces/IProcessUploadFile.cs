@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace DenimERP.ServiceInterfaces.OtherInterfaces
+namespace HRMS.ServiceInterfaces.OtherInterfaces
 {
     public interface IProcessUploadFile
     {

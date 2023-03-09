@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DenimERP.Models;
+using HRMS.Models;
 
-namespace DenimERP.ViewModels.HR
+namespace HRMS.ViewModels.HR
 {
     public class FBasHrdNationalityViewModel
     {

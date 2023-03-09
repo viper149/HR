@@ -1,22 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.Hubs;
+using HRMS.Data;
+using HRMS.Models;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.Hubs;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.ServiceInfrastructures.Hubs
+namespace HRMS.ServiceInfrastructures.Hubs
 {
     public class SQLMESSAGE_Repository : BaseRepository<MESSAGE>, IMESSAGE
     {
-        public SQLMESSAGE_Repository(DenimDbContext denimDbContext) : base(denimDbContext)
+        public SQLMESSAGE_Repository(HRDbContext hrDbContext) : base(hrDbContext)
         {
         }
 
         public async Task<IEnumerable<MESSAGE>> GetAllIncludeOtherObjects()
         {
-            return await DenimDbContext.MESSAGE.Include(e => e.Receiver).ToListAsync();
+            return await HrDbContext.MESSAGE.Include(e => e.Receiver).ToListAsync();
         }
     }
 }

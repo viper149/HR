@@ -1,7 +1,7 @@
-﻿using DenimERP.Models;
+﻿using HRMS.Models;
 using Microsoft.AspNetCore.Http;
 
-namespace DenimERP.ViewModels
+namespace HRMS.ViewModels
 {
     public class CompanyInfoViewModel
     {

@@ -2,10 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
-using DenimERP.Models.BaseModels;
-using Microsoft.AspNetCore.Mvc;
+using HRMS.Models.BaseModels;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public partial class F_HRD_EMP_SPOUSE : BaseEntity
     {

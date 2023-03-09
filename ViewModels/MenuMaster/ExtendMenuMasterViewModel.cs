@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DenimERP.ViewModels.MenuMaster
+namespace HRMS.ViewModels.MenuMaster
 {
     public class ExtendMenuMasterViewModel : MenuMasterViewModel
     {

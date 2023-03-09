@@ -1,26 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.Security;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces.HR;
-using DenimERP.ViewModels.HR;
+using HRMS.Data;
+using HRMS.Models;
+using HRMS.Security;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces.HR;
+using HRMS.ViewModels.HR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.ServiceInfrastructures.HR
+namespace HRMS.ServiceInfrastructures.HR
 {
     public class SQLF_BAS_HRD_DEPARTMENT_Repository : BaseRepository<F_BAS_HRD_DEPARTMENT>, IF_BAS_HRD_DEPARTMENT
     {
         private readonly IF_BAS_HRD_LOCATION _fBasHrdLocation;
         private readonly IDataProtector _protector;
 
-        public SQLF_BAS_HRD_DEPARTMENT_Repository(DenimDbContext denimDbContext,
+        public SQLF_BAS_HRD_DEPARTMENT_Repository(HRDbContext hrDbContext,
             IDataProtectionProvider dataProtectionProvider,
             DataProtectionPurposeStrings dataProtectionPurposeStrings,
-            IF_BAS_HRD_LOCATION fBasHrdLocation) : base(denimDbContext)
+            IF_BAS_HRD_LOCATION fBasHrdLocation) : base(hrDbContext)
         {
             _fBasHrdLocation = fBasHrdLocation;
             _protector = dataProtectionProvider.CreateProtector(dataProtectionPurposeStrings.IdRouteValue);
@@ -28,13 +28,13 @@ namespace DenimERP.ServiceInfrastructures.HR
 
         public async Task<bool> FindByDeptNameAsync(string deptName, bool isBn)
         {
-            return !isBn ? !await DenimDbContext.F_BAS_HRD_DEPARTMENT.AnyAsync(d => d.DEPTNAME.Equals(deptName))
-                : !await DenimDbContext.F_BAS_HRD_DEPARTMENT.AnyAsync(d => d.DEPTNAME_BN.Equals(deptName));
+            return !isBn ? !await HrDbContext.F_BAS_HRD_DEPARTMENT.AnyAsync(d => d.DEPTNAME.Equals(deptName))
+                : !await HrDbContext.F_BAS_HRD_DEPARTMENT.AnyAsync(d => d.DEPTNAME_BN.Equals(deptName));
         }
 
         public async Task<IEnumerable<F_BAS_HRD_DEPARTMENT>> GetAllFBasHrdDepartmentAsync()
         {
-            return await DenimDbContext.F_BAS_HRD_DEPARTMENT
+            return await HrDbContext.F_BAS_HRD_DEPARTMENT
                 .Include(d=>d.LOCATION)
                 .Select(d => new F_BAS_HRD_DEPARTMENT
                 {
@@ -60,7 +60,7 @@ namespace DenimERP.ServiceInfrastructures.HR
 
         public async Task<List<F_BAS_HRD_DEPARTMENT>> GetAllDepartmentsAsync()
         {
-            return await DenimDbContext.F_BAS_HRD_DEPARTMENT
+            return await HrDbContext.F_BAS_HRD_DEPARTMENT
                 .Select(d => new F_BAS_HRD_DEPARTMENT
                 {
                     DEPTID=d.DEPTID,

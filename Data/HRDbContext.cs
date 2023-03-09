@@ -1,12 +1,12 @@
-﻿using DenimERP.Models;
+﻿using HRMS.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace DenimERP.Data
+namespace HRMS.Data
 {
-    public partial class DenimDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public partial class HRDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
-        public DenimDbContext(DbContextOptions<DenimDbContext> options)
+        public HRDbContext(DbContextOptions<HRDbContext> options)
             : base(options)
         {
         }
@@ -53,7 +53,6 @@ namespace DenimERP.Data
         //public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         //public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         #endregion
-
         public virtual DbSet<AspNetUserTypes> AspNetUserTypes { get; set; }
         public virtual DbSet<BAS_BEN_BANK_MASTER> BAS_BEN_BANK_MASTER { get; set; }
         public virtual DbSet<MESSAGE> MESSAGE { get; set; }

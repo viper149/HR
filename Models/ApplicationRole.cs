@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public class ApplicationRole : IdentityRole
     {

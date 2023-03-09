@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DenimERP.Models;
+﻿using HRMS.Models;
 
-namespace DenimERP.ViewModels.HR
+namespace HRMS.ViewModels.HR
 {
     public class FHrdEmpEduDegreeViewModel
     {

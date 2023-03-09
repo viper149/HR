@@ -1,15 +1,14 @@
 ﻿using System.Threading.Tasks;
-using DenimERP.Data;
-using DenimERP.Models;
-using DenimERP.ServiceInfrastructures.BaseInfrastructures;
-using DenimERP.ServiceInterfaces;
-using Microsoft.EntityFrameworkCore;
+using HRMS.Data;
+using HRMS.Models;
+using HRMS.ServiceInfrastructures.BaseInfrastructures;
+using HRMS.ServiceInterfaces;
 
-namespace DenimERP.ServiceInfrastructures.Security
+namespace HRMS.ServiceInfrastructures.Security
 {
     public class SQLPDL_EMAIL_SENDER_Repository : BaseRepository<PDL_EMAIL_SENDER>, IPDL_EMAIL_SENDER
     {
-        public SQLPDL_EMAIL_SENDER_Repository(DenimDbContext denimDbContext) : base(denimDbContext)
+        public SQLPDL_EMAIL_SENDER_Repository(HRDbContext hrDbContext) : base(hrDbContext)
         {
         }
 

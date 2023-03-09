@@ -1,8 +1,8 @@
 ﻿using System;
-using DenimERP.ServiceInterfaces.OtherInterfaces;
+using HRMS.ServiceInterfaces.OtherInterfaces;
 using Microsoft.AspNetCore.Hosting;
 
-namespace DenimERP.ServiceInfrastructures.OtherInfrastructures
+namespace HRMS.ServiceInfrastructures.OtherInfrastructures
 {
     public class DeleteFileFromFolderRepository : IDeleteFileFromFolder
     {

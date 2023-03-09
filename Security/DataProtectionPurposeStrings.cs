@@ -1,4 +1,4 @@
-﻿namespace DenimERP.Security
+﻿namespace HRMS.Security
 {
     public class DataProtectionPurposeStrings
     {

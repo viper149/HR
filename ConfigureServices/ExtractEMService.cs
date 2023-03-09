@@ -1,32 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using DenimERP.Security;
-using DenimERP.ServiceInfrastructures;
-using DenimERP.ServiceInfrastructures.CompanyInfo;
-using DenimERP.ServiceInfrastructures.Emp;
-using DenimERP.ServiceInfrastructures.HR;
-using DenimERP.ServiceInfrastructures.Hubs;
-using DenimERP.ServiceInfrastructures.IdentityUser;
-using DenimERP.ServiceInfrastructures.MenuMaster;
-using DenimERP.ServiceInfrastructures.OtherInfrastructures;
-using DenimERP.ServiceInfrastructures.Security;
-using DenimERP.ServiceInterfaces;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
-using DenimERP.ServiceInterfaces.CompanyInfo;
-using DenimERP.ServiceInterfaces.Emp;
-using DenimERP.ServiceInterfaces.HR;
-using DenimERP.ServiceInterfaces.Hubs;
-using DenimERP.ServiceInterfaces.IdentityUser;
-using DenimERP.ServiceInterfaces.MenuMaster;
-using DenimERP.ServiceInterfaces.OtherInterfaces;
+using HRMS.Security;
+using HRMS.ServiceInfrastructures;
+using HRMS.ServiceInfrastructures.CompanyInfo;
+using HRMS.ServiceInfrastructures.Emp;
+using HRMS.ServiceInfrastructures.HR;
+using HRMS.ServiceInfrastructures.Hubs;
+using HRMS.ServiceInfrastructures.IdentityUser;
+using HRMS.ServiceInfrastructures.MenuMaster;
+using HRMS.ServiceInfrastructures.OtherInfrastructures;
+using HRMS.ServiceInfrastructures.Security;
+using HRMS.ServiceInterfaces;
+using HRMS.ServiceInterfaces.BaseInterfaces;
+using HRMS.ServiceInterfaces.CompanyInfo;
+using HRMS.ServiceInterfaces.Emp;
+using HRMS.ServiceInterfaces.HR;
+using HRMS.ServiceInterfaces.Hubs;
+using HRMS.ServiceInterfaces.IdentityUser;
+using HRMS.ServiceInterfaces.MenuMaster;
+using HRMS.ServiceInterfaces.OtherInterfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DenimERP.ConfigureServices
+namespace HRMS.ConfigureServices
 {
     public static class ExtractEmService
     {

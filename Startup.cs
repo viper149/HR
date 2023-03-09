@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
-using DenimERP.ConfigureServices;
-using DenimERP.Data;
-using DenimERP.Hubs;
-using DenimERP.Models;
-using DenimERP.Security;
 using DevExpress.AspNetCore;
+using HRMS.ConfigureServices;
+using HRMS.Data;
+using HRMS.Hubs;
+using HRMS.Models;
+using HRMS.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -25,7 +25,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace DenimERP
+namespace HRMS
 {
     public class Startup
     {
@@ -51,7 +51,7 @@ namespace DenimERP
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<DenimDbContext>(options =>
+            services.AddDbContext<HRDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DenimDbConnection")));
 
@@ -74,7 +74,7 @@ namespace DenimERP
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
             })
-            .AddEntityFrameworkStores<DenimDbContext>()
+            .AddEntityFrameworkStores<HRDbContext>()
             .AddDefaultTokenProviders()
             .AddTokenProvider<CustomEmailConfirmationTokenProvider<ApplicationUser>>("CustomEmailConfirmation");
 

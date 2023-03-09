@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces;
+using HRMS.Models;
+using HRMS.ServiceInterfaces;
 
-namespace DenimERP.Security
+namespace HRMS.Security
 {
     public class DevEmailSenderInitializer
     {

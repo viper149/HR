@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
+using HRMS.ServiceInterfaces.BaseInterfaces;
 
-namespace DenimERP.Security
+namespace HRMS.Security
 {
     public class DevEmailSender : IPDL_EMAIL_SENDER<bool>
     {

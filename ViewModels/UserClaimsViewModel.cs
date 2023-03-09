@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DenimERP.ViewModels
+namespace HRMS.ViewModels
 {
     public class UserClaimsViewModel
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace DenimERP.Security
+namespace HRMS.Security
 {
     public class ManageAdminRolesAndClaimsRequirement : IAuthorizationRequirement
     {

@@ -1,7 +1,7 @@
-﻿using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
+﻿using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
 
-namespace DenimERP.ServiceInterfaces.Hubs
+namespace HRMS.ServiceInterfaces.Hubs
 {
     public interface IMESSAGE_INDIVIDUAL : IBaseService<MESSAGE_INDIVIDUAL>
     {

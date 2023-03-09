@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using DenimERP.Models.BaseModels;
+using HRMS.Models.BaseModels;
 
-namespace DenimERP.Models
+namespace HRMS.Models
 {
     public partial class PDL_EMAIL_SENDER : BaseEntity
     {

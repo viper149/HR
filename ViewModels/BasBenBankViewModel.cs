@@ -1,6 +1,6 @@
-﻿using DenimERP.Models;
+﻿using HRMS.Models;
 
-namespace DenimERP.ViewModels
+namespace HRMS.ViewModels
 {
     public class BasBenBankViewModel
     {

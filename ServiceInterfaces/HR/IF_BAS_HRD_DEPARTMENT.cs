@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DenimERP.Models;
-using DenimERP.ServiceInterfaces.BaseInterfaces;
-using DenimERP.ViewModels.HR;
+using HRMS.Models;
+using HRMS.ServiceInterfaces.BaseInterfaces;
+using HRMS.ViewModels.HR;
 
-namespace DenimERP.ServiceInterfaces.HR
+namespace HRMS.ServiceInterfaces.HR
 {
     public interface IF_BAS_HRD_DEPARTMENT : IBaseService<F_BAS_HRD_DEPARTMENT>
     {

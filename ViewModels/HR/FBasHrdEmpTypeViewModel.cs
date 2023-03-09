@@ -1,6 +1,6 @@
-﻿using DenimERP.Models;
+﻿using HRMS.Models;
 
-namespace DenimERP.ViewModels.HR
+namespace HRMS.ViewModels.HR
 {
     public class FBasHrdEmpTypeViewModel
     {
