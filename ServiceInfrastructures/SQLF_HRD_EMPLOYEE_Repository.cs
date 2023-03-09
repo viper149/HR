@@ -8,7 +8,6 @@ using DenimERP.Security;
 using DenimERP.ServiceInfrastructures.BaseInfrastructures;
 using DenimERP.ServiceInterfaces;
 using DenimERP.ServiceInterfaces.HR;
-using DenimERP.ViewModels.Factory;
 using DenimERP.ViewModels.HR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
@@ -47,26 +46,26 @@ namespace DenimERP.ServiceInfrastructures
             _protector = dataProtectionProvider.CreateProtector(dataProtectionPurposeStrings.IdRouteValue);
         }
 
-        public async Task<IEnumerable<GetFHrEmployeeViewModel>> GetAllEmployeesAsync()
-        {
-            return await DenimDbContext.F_HRD_EMPLOYEE
-                .Include(c => c.DEPT)
-                .Include(c => c.SEC)
-                .Include(e => e.DESIG)
-                .Include(e => e.EMPTYPE)
-                .Select(c => new GetFHrEmployeeViewModel
-                {
-                    EncryptedId = _protector.Protect(c.EMPID.ToString()),
-                    EMPID = c.EMPID.ToString(),
-                    EMPNO = c.EMPNO,
-                    FULL_NAME = $"{c.FIRST_NAME} {c.LAST_NAME}",
-                    DEPARTMENT = c.DEPT.DEPTNAME,
-                    DESIGNATION = c.DESIG.DES_NAME,
-                    SECTION = c.SEC.SEC_NAME,
-                    EMP_TYPE = c.EMPTYPE.TYPE_NAME,
+        //public async Task<IEnumerable<GetFHrEmployeeViewModel>> GetAllEmployeesAsync()
+        //{
+        //    return await DenimDbContext.F_HRD_EMPLOYEE
+        //        .Include(c => c.DEPT)
+        //        .Include(c => c.SEC)
+        //        .Include(e => e.DESIG)
+        //        .Include(e => e.EMPTYPE)
+        //        .Select(c => new GetFHrEmployeeViewModel
+        //        {
+        //            EncryptedId = _protector.Protect(c.EMPID.ToString()),
+        //            EMPID = c.EMPID.ToString(),
+        //            EMPNO = c.EMPNO,
+        //            FULL_NAME = $"{c.FIRST_NAME} {c.LAST_NAME}",
+        //            DEPARTMENT = c.DEPT.DEPTNAME,
+        //            DESIGNATION = c.DESIG.DES_NAME,
+        //            SECTION = c.SEC.SEC_NAME,
+        //            EMP_TYPE = c.EMPTYPE.TYPE_NAME,
 
-                }).ToListAsync();
-        }
+        //        }).ToListAsync();
+        //}
 
         public async Task<IEnumerable<F_HRD_EMPLOYEE>> GetAllFHrdEmployeeAsync()
         {

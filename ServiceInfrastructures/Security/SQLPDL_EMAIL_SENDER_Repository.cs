@@ -15,7 +15,8 @@ namespace DenimERP.ServiceInfrastructures.Security
 
         public async Task<PDL_EMAIL_SENDER> GetTop1Async()
         {
-            return await DenimDbContext.PDL_EMAIL_SENDER.FirstOrDefaultAsync();
+            //return await DenimDbContext.PDL_EMAIL_SENDER.FirstOrDefaultAsync();
+            return null;
         }
     }
 }

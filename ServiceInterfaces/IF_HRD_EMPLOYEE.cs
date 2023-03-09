@@ -2,14 +2,12 @@
 using System.Threading.Tasks;
 using DenimERP.Models;
 using DenimERP.ServiceInterfaces.BaseInterfaces;
-using DenimERP.ViewModels.Factory;
 using DenimERP.ViewModels.HR;
 
 namespace DenimERP.ServiceInterfaces
 {
     public interface IF_HRD_EMPLOYEE : IBaseService<F_HRD_EMPLOYEE>
     {
-        Task<IEnumerable<GetFHrEmployeeViewModel>> GetAllEmployeesAsync();
         Task<IEnumerable<F_HRD_EMPLOYEE>> GetAllFHrdEmployeeAsync();
         Task<FHrdEmployeeViewModel> GetInitObjByAsync(FHrdEmployeeViewModel fHrdEmployeeViewModel);
         Task<IEnumerable<F_BAS_HRD_DIVISION>> GetDivByNationIdAsync(int nationId);

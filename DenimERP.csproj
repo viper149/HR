@@ -29,24 +29,6 @@
 		<TypeScriptCompile Remove="Views\FYarnReport\**" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Remove="Data\Migrations\20201022041545_test.cs" />
-		<Compile Remove="Data\Migrations\20201022041545_test.Designer.cs" />
-		<Compile Remove="Data\Migrations\20201028093913_test.cs" />
-		<Compile Remove="Data\Migrations\20201028093913_test.Designer.cs" />
-		<Compile Remove="Data\Migrations\20201230091854_test.cs" />
-		<Compile Remove="Data\Migrations\20201230091854_test.Designer.cs" />
-		<Compile Remove="Data\Migrations\20201230092011_ExtendIdentityUser.cs" />
-		<Compile Remove="Data\Migrations\20201230092011_ExtendIdentityUser.Designer.cs" />
-		<Compile Remove="Data\Migrations\20210209042927_test.cs" />
-		<Compile Remove="Data\Migrations\20210209042927_test.Designer.cs" />
-		<Compile Remove="Data\Migrations\20210303081549_test.cs" />
-		<Compile Remove="Data\Migrations\20210303081549_test.Designer.cs" />
-		<Compile Remove="Data\Migrations\20210303082456_test.cs" />
-		<Compile Remove="Data\Migrations\20210303082456_test.Designer.cs" />
-		<Compile Remove="Data\Migrations\20210303084241_test.cs" />
-		<Compile Remove="Data\Migrations\20210303084241_test.Designer.cs" />
-	</ItemGroup>
-	<ItemGroup>
 		<EmbeddedResource Remove="Resources\Models\MenuMaster.bn-BD.resx" />
 		<EmbeddedResource Remove="Resources\Models\MenuMaster.en.resx" />
 		<EmbeddedResource Remove="Resources\Models\MenuMaster.ja-JP.resx" />
@@ -175,7 +157,6 @@
 		<None Include="Resources\Models\MenuMaster.en.resx" />
 		<None Include="Resources\Models\MenuMaster.bn-BD.resx" />
 		<None Include="Resources\Models\MenuMaster.ja-JP.resx" />
-		<None Include="Views\Shared\EditorTemplates\ComExPIMasterAndDetailsViewModel.cshtml" />
 		<None Include="Views\Shared\Error.cshtml" />
 		<None Include="Views\Shared\NotFound.cshtml" />
 		<None Include="Views\Shared\_CookieConsentPartial.cshtml" />

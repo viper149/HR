@@ -7,8 +7,6 @@ namespace DenimERP.Models
     {
         public CURRENCY()
         {
-            COM_EX_PIMASTER = new HashSet<COM_EX_PIMASTER>();
-            COM_EX_CASHINFO = new HashSet<COM_EX_CASHINFO>();
             F_BAS_HRD_NATIONALITY = new List<F_BAS_HRD_NATIONALITY>();
         }
 
@@ -22,8 +20,6 @@ namespace DenimERP.Models
         [Display(Name = "Conjugated (Code + Symbol)")]
         public string CONJUGATEDCODESYMBOL { get; set; }
 
-        public ICollection<COM_EX_PIMASTER> COM_EX_PIMASTER { get; set; }
-        public ICollection<COM_EX_CASHINFO> COM_EX_CASHINFO { get; set; }
         public ICollection<F_BAS_HRD_NATIONALITY> F_BAS_HRD_NATIONALITY { get; set; }
     }
 }

@@ -21,58 +21,6 @@ namespace DenimERP.Models
             F_HRD_INCREMENT = new HashSet<F_HRD_INCREMENT>();
             F_HRD_PROMOTION = new HashSet<F_HRD_PROMOTION>();
             F_HRD_SKILL = new HashSet<F_HRD_SKILL>();
-
-            F_HR_EMP_SALARYSETUP = new HashSet<F_HR_EMP_SALARYSETUP>();
-            RND_FABTEST_GREY_UNWASHEDBY = new HashSet<RND_FABTEST_GREY>();
-            RND_FABTEST_GREY_WASHEDBY = new HashSet<RND_FABTEST_GREY>();
-            RND_FABTEST_SAMPLE_UNWASHEDBY = new HashSet<RND_FABTEST_SAMPLE>();
-            RND_FABTEST_SAMPLE_WASHEDBY = new HashSet<RND_FABTEST_SAMPLE>();
-            RND_PURCHASE_REQUISITION_MASTER = new HashSet<RND_PURCHASE_REQUISITION_MASTER>();
-            F_LCB_PRODUCTION_ROPE_DETAILS = new HashSet<F_LCB_PRODUCTION_ROPE_DETAILS>();
-            F_PR_SIZING_PROCESS_ROPE_DETAILS = new HashSet<F_PR_SIZING_PROCESS_ROPE_DETAILS>();
-            F_PR_WEAVING_BEAM_RECEIVING = new HashSet<F_PR_WEAVING_BEAM_RECEIVING>();
-            F_PR_WEAVING_PROCESS_DETAILS_B = new HashSet<F_PR_WEAVING_PROCESS_DETAILS_B>();
-            F_SAMPLE_GARMENT_RCV_M = new HashSet<F_SAMPLE_GARMENT_RCV_M>();
-            F_PR_FINISHING_FAB_PROCESS = new HashSet<F_PR_FINISHING_FAB_PROCESS>();
-            F_PR_FINISHING_FNPROCESS = new HashSet<F_PR_FINISHING_FNPROCESS>();
-            F_PR_INSPECTION_PROCESS_DETAILS = new HashSet<F_PR_INSPECTION_PROCESS_DETAILS>();
-            F_FS_DELIVERYCHALLAN_PACK_MASTER = new HashSet<F_FS_DELIVERYCHALLAN_PACK_MASTER>();
-            F_GS_GATEPASS_INFORMATION_MEMP = new HashSet<F_GS_GATEPASS_INFORMATION_M>();
-            F_GS_GATEPASS_INFORMATION_MREQ_BYNavigation = new HashSet<F_GS_GATEPASS_INFORMATION_M>();
-            F_GS_RETURNABLE_GP_RCV_M = new HashSet<F_GS_RETURNABLE_GP_RCV_M>();
-            F_PR_FINISHING_BEAM_RECEIVE = new HashSet<F_PR_FINISHING_BEAM_RECEIVE>();
-            F_PR_WARPING_PROCESS_ROPE_BALL_DETAILS = new HashSet<F_PR_WARPING_PROCESS_ROPE_BALL_DETAILS>();
-            F_PR_SLASHER_DYEING_DETAILS = new HashSet<F_PR_SLASHER_DYEING_DETAILS>();
-            F_PR_SLASHER_DYEING_DETAILS_OFFICER = new HashSet<F_PR_SLASHER_DYEING_DETAILS>();
-            RndPurchaseRequisitionMasters = new HashSet<RND_PURCHASE_REQUISITION_MASTER>();
-            FChemPurchaseRequisitionMasters = new HashSet<F_CHEM_PURCHASE_REQUISITION_MASTER>();
-            FChemPurchaseRequisitionMastersForConcernEmployees = new HashSet<F_CHEM_PURCHASE_REQUISITION_MASTER>();
-            RcvFChemStoreReceiveMasters = new HashSet<F_CHEM_STORE_RECEIVE_MASTER>();
-            CheckFChemStoreReceiveMasters = new HashSet<F_CHEM_STORE_RECEIVE_MASTER>();
-            FChemReqMasters = new HashSet<F_CHEM_REQ_MASTER>();
-            IssueFChemIssueMasters = new HashSet<F_CHEM_ISSUE_MASTER>();
-            ReceiveFChemIssueMasters = new HashSet<F_CHEM_ISSUE_MASTER>();
-            RND_FABTEST_BULK_WASHEDBY = new HashSet<RND_FABTEST_BULK>();
-            RND_FABTEST_BULK_UNWASHEDBY = new HashSet<RND_FABTEST_BULK>();
-            RND_FABTEST_SAMPLE_BULK_WASHEDBY = new HashSet<RND_FABTEST_SAMPLE_BULK>();
-            RND_FABTEST_SAMPLE_BULK_UNWASHEDBY = new HashSet<RND_FABTEST_SAMPLE_BULK>();
-            F_GEN_S_PURCHASE_REQUISITION_MASTERCN_PERSONNavigation = new HashSet<F_GEN_S_PURCHASE_REQUISITION_MASTER>();
-            F_GEN_S_PURCHASE_REQUISITION_MASTEREMP = new HashSet<F_GEN_S_PURCHASE_REQUISITION_MASTER>();
-            F_GEN_S_REQ_MASTER = new HashSet<F_GEN_S_REQ_MASTER>();
-            F_GEN_S_RECEIVE_MASTERCHECKBYNavigation = new HashSet<F_GEN_S_RECEIVE_MASTER>();
-            F_GEN_S_RECEIVE_MASTERRCVBYNavigation = new HashSet<F_GEN_S_RECEIVE_MASTER>();
-            F_GEN_S_ISSUE_MASTERISSUEBYNavigation = new HashSet<F_GEN_S_ISSUE_MASTER>();
-            F_GEN_S_ISSUE_MASTERRECEIVEBYNavigation = new HashSet<F_GEN_S_ISSUE_MASTER>();
-            F_GS_GATEPASS_RETURN_RCV_MASTER = new HashSet<F_GS_GATEPASS_RETURN_RCV_MASTER>();
-            F_FS_FABRIC_CLEARENCE_2ND_BEAM = new HashSet<F_FS_FABRIC_CLEARENCE_2ND_BEAM>();
-            RND_SAMPLE_INFO_WEAVING = new HashSet<RND_SAMPLE_INFO_WEAVING>();
-            F_FS_CLEARANCE_WASTAGE_TRANSFER = new HashSet<F_FS_CLEARANCE_WASTAGE_TRANSFER>();
-            RND_FABRICINFO = new HashSet<RND_FABRICINFO>();
-            RND_SAMPLE_INFO_DYEING = new HashSet<RND_SAMPLE_INFO_DYEING>();
-            F_QA_FIRST_MTR_ANALYSIS_M = new HashSet<F_QA_FIRST_MTR_ANALYSIS_M>();
-            F_PR_WEAVING_PRODUCTION = new HashSet<F_PR_WEAVING_PRODUCTION>();
-            F_PR_WEAVING_WORKLOAD_EFFICIENCELOSS = new HashSet<F_PR_WEAVING_WORKLOAD_EFFICIENCELOSS>();
-            F_SAMPLE_FABRIC_RCV_M = new HashSet<F_SAMPLE_FABRIC_RCV_M>();
         }
 
         public int EMPID { get; set; }
@@ -344,57 +292,5 @@ namespace DenimERP.Models
         public ICollection<F_HRD_INCREMENT> F_HRD_INCREMENT { get; set; }
         public ICollection<F_HRD_PROMOTION> F_HRD_PROMOTION { get; set; }
         public ICollection<F_HRD_SKILL> F_HRD_SKILL { get; set; }
-
-        public ICollection<F_HR_EMP_SALARYSETUP> F_HR_EMP_SALARYSETUP { get; set; }
-        public ICollection<RND_FABTEST_GREY> RND_FABTEST_GREY_UNWASHEDBY { get; set; }
-        public ICollection<RND_FABTEST_GREY> RND_FABTEST_GREY_WASHEDBY { get; set; }
-        public ICollection<RND_FABTEST_SAMPLE> RND_FABTEST_SAMPLE_UNWASHEDBY { get; set; }
-        public ICollection<RND_FABTEST_SAMPLE> RND_FABTEST_SAMPLE_WASHEDBY { get; set; }
-        public ICollection<RND_PURCHASE_REQUISITION_MASTER> RND_PURCHASE_REQUISITION_MASTER { get; set; }
-        public ICollection<RND_PURCHASE_REQUISITION_MASTER> RndPurchaseRequisitionMasters { get; set; }
-        public ICollection<F_LCB_PRODUCTION_ROPE_DETAILS> F_LCB_PRODUCTION_ROPE_DETAILS { get; set; }
-        public ICollection<F_PR_SIZING_PROCESS_ROPE_DETAILS> F_PR_SIZING_PROCESS_ROPE_DETAILS { get; set; }
-        public ICollection<F_PR_WEAVING_BEAM_RECEIVING> F_PR_WEAVING_BEAM_RECEIVING { get; set; }
-        public ICollection<F_PR_WEAVING_PROCESS_DETAILS_B> F_PR_WEAVING_PROCESS_DETAILS_B { get; set; }
-        public ICollection<F_SAMPLE_GARMENT_RCV_M> F_SAMPLE_GARMENT_RCV_M { get; set; }
-        public ICollection<F_PR_FINISHING_FAB_PROCESS> F_PR_FINISHING_FAB_PROCESS { get; set; }
-        public ICollection<F_PR_FINISHING_FNPROCESS> F_PR_FINISHING_FNPROCESS { get; set; }
-        public ICollection<F_PR_INSPECTION_PROCESS_DETAILS> F_PR_INSPECTION_PROCESS_DETAILS { get; set; }
-        public ICollection<F_FS_DELIVERYCHALLAN_PACK_MASTER> F_FS_DELIVERYCHALLAN_PACK_MASTER { get; set; }
-        public ICollection<F_GS_GATEPASS_INFORMATION_M> F_GS_GATEPASS_INFORMATION_MEMP { get; set; }
-        public ICollection<F_GS_GATEPASS_INFORMATION_M> F_GS_GATEPASS_INFORMATION_MREQ_BYNavigation { get; set; }
-        public ICollection<F_GS_RETURNABLE_GP_RCV_M> F_GS_RETURNABLE_GP_RCV_M { get; set; }
-        public ICollection<F_PR_FINISHING_BEAM_RECEIVE> F_PR_FINISHING_BEAM_RECEIVE { get; set; }
-        public ICollection<F_PR_WARPING_PROCESS_ROPE_BALL_DETAILS> F_PR_WARPING_PROCESS_ROPE_BALL_DETAILS { get; set; }
-        public ICollection<F_PR_SLASHER_DYEING_DETAILS> F_PR_SLASHER_DYEING_DETAILS { get; set; }
-        public ICollection<F_PR_SLASHER_DYEING_DETAILS> F_PR_SLASHER_DYEING_DETAILS_OFFICER { get; set; }
-        public ICollection<F_CHEM_PURCHASE_REQUISITION_MASTER> FChemPurchaseRequisitionMasters { get; set; }
-        public ICollection<F_CHEM_PURCHASE_REQUISITION_MASTER> FChemPurchaseRequisitionMastersForConcernEmployees { get; set; }
-        public ICollection<F_CHEM_STORE_RECEIVE_MASTER> RcvFChemStoreReceiveMasters { get; set; }
-        public ICollection<F_CHEM_STORE_RECEIVE_MASTER> CheckFChemStoreReceiveMasters { get; set; }
-        public ICollection<F_CHEM_REQ_MASTER> FChemReqMasters { get; set; }
-        public ICollection<F_CHEM_ISSUE_MASTER> IssueFChemIssueMasters { get; set; }
-        public ICollection<F_CHEM_ISSUE_MASTER> ReceiveFChemIssueMasters { get; set; }
-        public ICollection<RND_FABTEST_BULK> RND_FABTEST_BULK_WASHEDBY { get; set; }
-        public ICollection<RND_FABTEST_BULK> RND_FABTEST_BULK_UNWASHEDBY { get; set; }
-        public ICollection<RND_FABTEST_SAMPLE_BULK> RND_FABTEST_SAMPLE_BULK_WASHEDBY { get; set; }
-        public ICollection<RND_FABTEST_SAMPLE_BULK> RND_FABTEST_SAMPLE_BULK_UNWASHEDBY { get; set; }
-        public ICollection<F_GEN_S_PURCHASE_REQUISITION_MASTER> F_GEN_S_PURCHASE_REQUISITION_MASTERCN_PERSONNavigation { get; set; }
-        public ICollection<F_GEN_S_PURCHASE_REQUISITION_MASTER> F_GEN_S_PURCHASE_REQUISITION_MASTEREMP { get; set; }
-        public ICollection<F_GEN_S_REQ_MASTER> F_GEN_S_REQ_MASTER { get; set; }
-        public ICollection<F_GEN_S_RECEIVE_MASTER> F_GEN_S_RECEIVE_MASTERCHECKBYNavigation { get; set; }
-        public ICollection<F_GEN_S_RECEIVE_MASTER> F_GEN_S_RECEIVE_MASTERRCVBYNavigation { get; set; }
-        public ICollection<F_GS_GATEPASS_RETURN_RCV_MASTER> F_GS_GATEPASS_RETURN_RCV_MASTER { get; set; }
-        public ICollection<F_FS_FABRIC_CLEARENCE_2ND_BEAM> F_FS_FABRIC_CLEARENCE_2ND_BEAM { get; set; }
-        public ICollection<RND_SAMPLE_INFO_WEAVING> RND_SAMPLE_INFO_WEAVING { get; set; }
-        public ICollection<F_FS_CLEARANCE_WASTAGE_TRANSFER> F_FS_CLEARANCE_WASTAGE_TRANSFER { get; set; }
-        public ICollection<RND_FABRICINFO> RND_FABRICINFO { get; set; }
-        public ICollection<RND_SAMPLE_INFO_DYEING> RND_SAMPLE_INFO_DYEING { get; set; }
-        public ICollection<F_QA_FIRST_MTR_ANALYSIS_M> F_QA_FIRST_MTR_ANALYSIS_M { get; set; }
-        public ICollection<F_PR_WEAVING_PRODUCTION> F_PR_WEAVING_PRODUCTION { get; set; }
-        public ICollection<F_PR_WEAVING_WORKLOAD_EFFICIENCELOSS> F_PR_WEAVING_WORKLOAD_EFFICIENCELOSS { get; set; }
-        public ICollection<F_SAMPLE_FABRIC_RCV_M> F_SAMPLE_FABRIC_RCV_M { get; set; }
-        public ICollection<F_GEN_S_ISSUE_MASTER> F_GEN_S_ISSUE_MASTERISSUEBYNavigation { get; set; }
-        public ICollection<F_GEN_S_ISSUE_MASTER> F_GEN_S_ISSUE_MASTERRECEIVEBYNavigation { get; set; }
     }
 }
