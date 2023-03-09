@@ -53,7 +53,7 @@ namespace HRMS
 
             services.AddDbContext<HRDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DenimDbConnection")));
+                    Configuration.GetConnectionString("HRDbConnection")));
 
             services.Configure<FormOptions>(options =>
             {

@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/DenimERP",
+      "applicationUrl": "http://localhost/HRMS",
       "sslPort": 0
     },
     "iisExpress": {
@@ -20,7 +20,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DenimERP": {
+    "HRMS": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
